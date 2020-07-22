@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
+    username: root
+    password: db2020
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+
+logging:
+  level:
+    root: warn
+    com: info
+  file: log/blog-pro.log
+

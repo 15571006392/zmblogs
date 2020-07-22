@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="MySQL - zmblog@localhost" uuid="7e36cebf-4ba2-4b73-bdbf-4f3e74713dad">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/zmblog?serverTimezone=UTC&amp;useUnicode=true&amp;useSSL=false&amp;characterEncoding=UTF8</jdbc-url>
+    </data-source>
+  </component>
+</project>
