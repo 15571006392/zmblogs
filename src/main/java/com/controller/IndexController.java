@@ -19,6 +19,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Properties;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 public class IndexController {
 
@@ -31,18 +34,28 @@ public class IndexController {
     @Autowired
     private TagService tagService;
 
+    /**
+     * 主页跳转
+     * @param pageable
+     * @param model
+     * @return
+     */
     @GetMapping("/")
     public String index(@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,Model model){
+        // 分页查询所有博客
         model.addAttribute("page",blogService.listBlog(pageable));
+        // 查找前6个分类
         model.addAttribute("types",typeService.listTypeTop(6));
+        // 查找前10个标签
         model.addAttribute("tags",tagService.listTagTop(10));
+        // 查找前8个推荐的博客
         model.addAttribute("recommendBlogs",blogService.listRecommendBlogTop(8));
 
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));
@@ -55,16 +68,25 @@ public class IndexController {
         return "index";
     }
 
+    /**
+     * 搜索功能
+     * @param pageable
+     * @param model
+     * @param query
+     * @return
+     */
     @PostMapping("/search")
     public String search(@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,Model model,@RequestParam String query){
+        // 分页查询，按标题和内容关键字查询
         model.addAttribute("page",blogService.listBlog("%"+query+"%", pageable));
+        // 用户输入的内容
         model.addAttribute("query",query);
 
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));
@@ -77,15 +99,22 @@ public class IndexController {
         return "search";
     }
 
+    /**
+     * 根据id查找指定博客
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model) {
+        // markdown格式转换
         model.addAttribute("blog",blogService.getAndConvert(id));
 
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));

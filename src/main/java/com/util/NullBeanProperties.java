@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * 查找属性中的空值
+ * @author Zm-Mmm
  */
 public class NullBeanProperties {
 

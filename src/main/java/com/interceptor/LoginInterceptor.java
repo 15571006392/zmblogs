@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 后台页面拦截器
  * 未登录
+ * @author Zm-Mmm
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if(request.getSession().getAttribute("user") == null){
+        String getMsg = "user";
+        if(request.getSession().getAttribute(getMsg) == null){
             response.sendRedirect("/admin");
             return false;
         }

@@ -16,17 +16,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 public class LeavingMessageController {
 
     @Autowired
     private MessageService messageService;
 
+    /**
+     * 留言页面跳转
+     * @param model
+     * @return
+     */
     @GetMapping("/leavingmessage")
     public String show(Model model){
+        // 获取所有留言
         List<LeavingMessage> leavingMessages = messageService.getLeavingMessage();
         List<LeavingMessage> end = new ArrayList<>();
-        if(leavingMessages.size() > 5){
+        // 指定展示的留言条数
+        int size = 5;
+        // 按留言提交时间展示最新的5条
+        if(leavingMessages.size() > size){
             end.add(leavingMessages.get(leavingMessages.size()-1));
             end.add(leavingMessages.get(leavingMessages.size()-2));
             end.add(leavingMessages.get(leavingMessages.size()-3));
@@ -40,8 +52,8 @@ public class LeavingMessageController {
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));
@@ -55,6 +67,14 @@ public class LeavingMessageController {
         return "leavingmessage";
     }
 
+    /**
+     * 提交留言
+     * @param yourName
+     * @param email
+     * @param yourMessage
+     * @param attributes
+     * @return
+     */
     @PostMapping("/leavingmessage/getmessage")
     public String getMessage(@RequestParam String yourName, @RequestParam String email, @RequestParam String yourMessage, RedirectAttributes attributes){
         if(messageService.updateLeavingMessage(yourName,email,yourMessage) == 1){

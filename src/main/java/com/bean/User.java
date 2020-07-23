@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Entity
 @Table(name = "t_user")
 public class User {

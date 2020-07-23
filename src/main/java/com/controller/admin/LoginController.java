@@ -12,6 +12,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
@@ -38,7 +41,8 @@ public class LoginController {
 
         if(user != null){
             // 验证成功
-            user.setPassword(null); // 防止密码返回到前端
+            // 防止密码返回到前端
+            user.setPassword(null);
             session.setAttribute("user",user);
             return "admin/index";
         }else {

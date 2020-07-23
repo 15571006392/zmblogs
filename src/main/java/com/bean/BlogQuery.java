@@ -2,6 +2,7 @@ package com.bean;
 
 /**
  * 查询博客用
+ * @author Zm-Mmm
  */
 public class BlogQuery {
 

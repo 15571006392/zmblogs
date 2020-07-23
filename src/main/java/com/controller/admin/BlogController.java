@@ -20,6 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 @RequestMapping("/admin")
 public class BlogController {
@@ -33,19 +36,40 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
+    /**
+     * 博客页面跳转
+     * @param model
+     * @param detail
+     * @param pageable
+     * @return
+     */
     @GetMapping("/blogs")
     public String list(Model model, BlogQuery detail, @PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable){
+        // 所有分类
         model.addAttribute("types",typeService.listType());
+        // 分页查询，所有博客
         model.addAttribute("page",blogService.listBlog(pageable, detail));
         return "admin/admin-blog";
     }
 
+    /**
+     * 分页搜索博客
+     * @param model
+     * @param detail
+     * @param pageable
+     * @return
+     */
     @PostMapping("/blogs/search")
     public String search(Model model, BlogQuery detail,@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("page",blogService.listBlog(pageable, detail));
         return "admin/admin-blog :: blogList";
     }
 
+    /**
+     * 提交新博客页面跳转
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs/input")
     public String input(Model model){
         model.addAttribute("types",typeService.listType());
@@ -54,6 +78,12 @@ public class BlogController {
         return "admin/admin-create";
     }
 
+    /**
+     * 修改博客功能
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         model.addAttribute("types",typeService.listType());
@@ -64,6 +94,13 @@ public class BlogController {
         return "admin/admin-create";
     }
 
+    /**
+     * 发布-编辑功能公用
+     * @param detail
+     * @param session
+     * @param attributes
+     * @return
+     */
     @PostMapping("/blogs")
     public String post(Detail detail, HttpSession session, RedirectAttributes attributes){
         detail.setUser((User) session.getAttribute("user"));
@@ -89,6 +126,12 @@ public class BlogController {
         return "redirect:/admin/blogs";
     }
 
+    /**
+     * 删除博客
+     * @param id
+     * @param attributes
+     * @return
+     */
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes){
         blogService.deleteBlog(id);

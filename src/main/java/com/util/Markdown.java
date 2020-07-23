@@ -14,6 +14,9 @@ import org.commonmark.renderer.html.HtmlRenderer;
 
 import java.util.*;
 
+/**
+ * @author Zm-Mmm
+ */
 public class Markdown {
 
     /**
@@ -47,6 +50,7 @@ public class Markdown {
                 .extensions(headingAnchorExtensions)
                 .extensions(tableExtension)
                 .attributeProviderFactory(new AttributeProviderFactory() {
+                    @Override
                     public AttributeProvider create(AttributeProviderContext context) {
                         return new CustomAttributeProvider();
                     }

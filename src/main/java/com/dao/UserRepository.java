@@ -4,6 +4,9 @@ package com.dao;
 import com.bean.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/**
+ * @author Zm-Mmm
+ */
 public interface UserRepository extends JpaRepository<User,Long> {
 
     /**

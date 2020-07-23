@@ -2,6 +2,9 @@ package com.service;
 
 import com.bean.User;
 
+/**
+ * @author Zm-Mmm
+ */
 public interface UserService {
 
     /**

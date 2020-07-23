@@ -7,10 +7,23 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 public interface TypeRepository extends JpaRepository<Type, Long> {
-
+    /**
+     * 根据名字查询分类
+     * @param name
+     * @return
+     */
     Type findByName(String name);
 
+    /**
+     * 分页查询
+     * 查询分类
+     * @param pageable
+     * @return
+     */
     @Query("select t from Type t")
     List<Type> findTop(Pageable pageable);
 }

@@ -2,6 +2,9 @@ package com.bean;
 
 import java.util.Arrays;
 
+/**
+ * @author Zm-Mmm
+ */
 public class LogBean {
     private String url;
     private String ip;

@@ -5,28 +5,70 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Entity
 @Table(name = "t_detail")
 public class Detail {
 
     @Id
     @GeneratedValue
-    private Long id; // 主键
-    private String title; // 标题
-    private String content; // 内容
-    private String firstPicture; // 首图
-    private String flag; // 标记
-    private Integer views; // 浏览次数
-    private boolean appreciation; // 赞赏开启
-    private boolean shareStatement; // 转载声明开启
-    private boolean comment; // 评论开启
-    private boolean published; // 是否发布
-    private boolean recommend; // 是否推荐
-    private String description; // 描述
+    private Long id;
+    /**
+     * 标题
+     */
+    private String title;
+    /**
+     * 文本内容
+     */
+    private String content;
+    /**
+     * 首图
+     */
+    private String firstPicture;
+    /**
+     * 标记
+     */
+    private String flag;
+    /**
+     * 浏览次数
+     */
+    private Integer views;
+    /**
+     * 赞赏是否开启
+     */
+    private boolean appreciation;
+    /**
+     * 转载声明开启
+     */
+    private boolean shareStatement;
+    /**
+     * 评论开启
+     */
+    private boolean comment;
+    /**
+     * 是否发布
+     */
+    private boolean published;
+    /**
+     * 是否推荐
+     */
+    private boolean recommend;
+    /**
+     * 描述
+     */
+    private String description;
+    /**
+     * 发布日期
+     */
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime; // 发布日期
+    private Date createTime;
+    /**
+     * 更新日期
+     */
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updateTime; // 更新日期
+    private Date updateTime;
 
     @ManyToOne
     private Type type;

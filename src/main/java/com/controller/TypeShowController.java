@@ -18,6 +18,9 @@ import java.io.FileInputStream;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 public class TypeShowController {
 
@@ -29,21 +32,29 @@ public class TypeShowController {
 
     @GetMapping("/types/{id}")
     public String types(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @PathVariable Long id) {
-        List<Type> list = typeService.listTypeTop(2333); // 所有分类数据
+        // 2333代指所有分类数据
+        List<Type> list = typeService.listTypeTop(2333);
+        /*
+        如果是通过导航栏跳转
+        id默认为-1
+        默认赋值给所有分类中的第一个分类
+         */
         if(id == -1){
             id = list.get(0).getId();
         }
         BlogQuery blogQuery = new BlogQuery();
         blogQuery.setTypeId(id);
         model.addAttribute("types",list);
-        model.addAttribute("page",blogService.listBlog(pageable,blogQuery)); // 分页查询
-        model.addAttribute("activeTypeId",id); // 当前活跃的id
+        // 分页查询
+        model.addAttribute("page",blogService.listBlog(pageable,blogQuery));
+        // 当前活跃的id
+        model.addAttribute("activeTypeId",id);
 
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));

@@ -8,17 +8,25 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 public class AboutController {
 
+    /**
+     * 返回关于我页面
+     * @param model
+     * @return
+     */
     @GetMapping("/about")
     public String about(Model model){
 
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));

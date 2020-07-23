@@ -22,6 +22,9 @@ import javax.persistence.criteria.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * @author Zm-Mmm
+ */
 @Service
 public class BlogServiceImpl implements BlogService {
 
@@ -45,6 +48,7 @@ public class BlogServiceImpl implements BlogService {
      * @param id
      * @return
      */
+    @Override
     @Transactional
     public Detail getAndConvert(Long id) {
         Optional<Detail> byId = blogRepository.findById(id);
@@ -94,11 +98,22 @@ public class BlogServiceImpl implements BlogService {
         },pageable);
     }
 
+    /**
+     * 分页查找全部博客
+     * @param pageable
+     * @return
+     */
     @Override
     public Page<Detail> listBlog(Pageable pageable) {
         return blogRepository.findAll(pageable);
     }
 
+    /**
+     * 分页查询关联的标签
+     * @param tagId
+     * @param pageable
+     * @return
+     */
     @Override
     public Page<Detail> listBlog(Long tagId, Pageable pageable) {
         return blogRepository.findAll(new Specification<Detail>() {
@@ -109,6 +124,7 @@ public class BlogServiceImpl implements BlogService {
              * @param criteriaBuilder
              * @return
              */
+            @Override
             public Predicate toPredicate(Root<Detail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 Join join = root.join("tags");
                 return criteriaBuilder.equal(join.get("id"),tagId);
@@ -138,6 +154,10 @@ public class BlogServiceImpl implements BlogService {
         return map;
     }
 
+    /**
+     * 总数
+     * @return
+     */
     @Override
     public Long countBlog() {
         return blogRepository.count();
@@ -148,6 +168,7 @@ public class BlogServiceImpl implements BlogService {
      * @param detail
      * @return
      */
+    @Override
     @Transactional
     public Detail saveBlog(Detail detail) {
         // 首次创建，初始化属性
@@ -167,6 +188,7 @@ public class BlogServiceImpl implements BlogService {
      * @param detail
      * @return
      */
+    @Override
     @Transactional
     public Detail updateBlog(Long id, Detail detail) {
         Optional<Detail> byId = blogRepository.findById(id);
@@ -181,6 +203,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(detail1);
     }
 
+    @Override
     @Transactional
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);

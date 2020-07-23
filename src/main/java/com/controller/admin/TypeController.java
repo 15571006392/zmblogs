@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 @RequestMapping("/admin")
 public class TypeController {
@@ -21,24 +24,48 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
+    /**
+     * 分类页面跳转
+     * @param pageable
+     * @param model
+     * @return
+     */
     @GetMapping("/types")
     public String list(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable, Model model){
         model.addAttribute("page",typeService.listType(pageable));
         return "admin/types";
     }
 
+    /**
+     * 新增页面跳转
+     * @param model
+     * @return
+     */
     @GetMapping("/types/input")
     public String input(Model model){
         model.addAttribute("type",new Type());
         return "admin/types-create";
     }
 
+    /**
+     * 更新页面跳转
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         model.addAttribute("type",typeService.getType(id));
         return "admin/types-create";
     }
 
+    /**
+     * 新增分类功能
+     * @param type
+     * @param attributes
+     * @param model
+     * @return
+     */
     @PostMapping("/types-create")
     public String post(Type type, RedirectAttributes attributes,Model model){
         Type type2 = typeService.getTypeByName(type.getName());
@@ -58,6 +85,14 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
+    /**
+     * 更新分类功能
+     * @param type
+     * @param id
+     * @param attributes
+     * @param model
+     * @return
+     */
     @PostMapping("/types-create/{id}")
     public String editPost(Type type,@PathVariable Long id, RedirectAttributes attributes,Model model){
         Type type2 = typeService.getTypeByName(type.getName());
@@ -77,6 +112,12 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
+    /**
+     * 删除
+     * @param id
+     * @param attributes
+     * @return
+     */
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes){
         typeService.deleteType(id);

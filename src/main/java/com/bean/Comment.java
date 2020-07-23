@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Entity
 @Table(name = "t_comment")
 public class Comment {
@@ -12,12 +15,30 @@ public class Comment {
     @Id
     @GeneratedValue
     private Long id;
-    private String nickname; // 昵称
-    private String email; // 邮箱
-    private String content; // 内容
-    private String avatar; // 头像
+    /**
+     * 昵称
+     */
+    private String nickname;
+    /**
+     * 邮箱
+     */
+    private String email;
+    /**
+     * 内容
+     */
+    private String content;
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
+     * 创建日期
+     */
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+    /**
+     * 判断有没有头像
+     */
     private boolean adminComment;
 
     @ManyToOne
@@ -30,10 +51,6 @@ public class Comment {
     private Comment parentComment;
 
     public Comment() {
-    }
-
-    public boolean isAdminComment() {
-        return adminComment;
     }
 
     public void setAdminComment(boolean adminComment) {
@@ -102,10 +119,6 @@ public class Comment {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
     }
 
     public void setCreateTime(Date createTime) {

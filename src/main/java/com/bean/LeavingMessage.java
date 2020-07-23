@@ -2,6 +2,9 @@ package com.bean;
 
 import javax.persistence.*;
 
+/**
+ * @author Zm-Mmm
+ */
 @Entity
 @Table(name = "t_leaving_message")
 public class LeavingMessage {

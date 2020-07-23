@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Zm-Mmm
+ */
 @Service
 public class TagServiceImpl implements TagService {
 
@@ -28,6 +31,7 @@ public class TagServiceImpl implements TagService {
      * @param tag
      * @return
      */
+    @Override
     @Transactional
     public Tag saveTag(Tag tag) {
         return tagRepository.save(tag);
@@ -38,6 +42,7 @@ public class TagServiceImpl implements TagService {
      * @param id
      * @return
      */
+    @Override
     @Transactional
     public Tag getTag(Long id) {
         Optional<Tag> byId = tagRepository.findById(id);
@@ -50,6 +55,7 @@ public class TagServiceImpl implements TagService {
      * @param pageable
      * @return
      */
+    @Override
     @Transactional
     public Page<Tag> listTag(Pageable pageable) {
         return tagRepository.findAll(pageable);
@@ -59,6 +65,7 @@ public class TagServiceImpl implements TagService {
      * 查找全部
      * @return
      */
+    @Override
     @Transactional
     public List<Tag> listTag() {
         return tagRepository.findAll();
@@ -69,6 +76,7 @@ public class TagServiceImpl implements TagService {
      * @param ids
      * @return
      */
+    @Override
     @Transactional
     public List<Tag> listTag(String ids) {
         return tagRepository.findAllById(convertToList(ids));
@@ -92,6 +100,7 @@ public class TagServiceImpl implements TagService {
         return list;
     }
 
+    @Override
     @Transactional
     public Tag updateTag(Long id, Tag tag) {
         Optional<Tag> byId = tagRepository.findById(id);
@@ -103,11 +112,13 @@ public class TagServiceImpl implements TagService {
         return tagRepository.save(tag1);
     }
 
+    @Override
     @Transactional
     public void deleteTag(Long id) {
         tagRepository.deleteById(id);
     }
 
+    @Override
     @Transactional
     public Tag getTagByName(String name) {
         return tagRepository.findByName(name);

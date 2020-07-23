@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 @RequestMapping("/admin")
 public class TagController {
@@ -22,24 +25,48 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
+    /**
+     * 标签页面跳转
+     * @param pageable
+     * @param model
+     * @return
+     */
     @GetMapping("/tags")
     public String list(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable, Model model){
         model.addAttribute("page",tagService.listTag(pageable));
         return "admin/tags";
     }
 
+    /**
+     * 新增页面跳转
+     * @param model
+     * @return
+     */
     @GetMapping("/tags/input")
     public String input(Model model){
         model.addAttribute("tag",new Tag());
         return "admin/tags-create";
     }
 
+    /**
+     * 更新页面跳转
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/tags/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         model.addAttribute("tag",tagService.getTag(id));
         return "admin/tags-create";
     }
 
+    /**
+     * 新增标签功能
+     * @param tag
+     * @param attributes
+     * @param model
+     * @return
+     */
     @PostMapping("/tags-create")
     public String post(Tag tag, RedirectAttributes attributes, Model model){
         Tag tag2 = tagService.getTagByName(tag.getName());
@@ -59,6 +86,14 @@ public class TagController {
         return "redirect:/admin/tags";
     }
 
+    /**
+     * 更新标签请求
+     * @param tag
+     * @param id
+     * @param attributes
+     * @param model
+     * @return
+     */
     @PostMapping("/tags-create/{id}")
     public String editPost(Tag tag,@PathVariable Long id, RedirectAttributes attributes,Model model){
         Tag tag2 = tagService.getTagByName(tag.getName());
@@ -78,6 +113,12 @@ public class TagController {
         return "redirect:/admin/tags";
     }
 
+    /**
+     * 删除
+     * @param id
+     * @param attributes
+     * @return
+     */
     @GetMapping("/tags/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes){
         tagService.deleteTag(id);

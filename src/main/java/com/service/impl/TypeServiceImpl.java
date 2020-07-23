@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Zm-Mmm
+ */
 @Service
 public class TypeServiceImpl implements TypeService {
 
@@ -27,6 +30,7 @@ public class TypeServiceImpl implements TypeService {
      * @param type
      * @return
      */
+    @Override
     @Transactional
     public Type saveType(Type type) {
         return typeRepository.save(type);
@@ -37,6 +41,7 @@ public class TypeServiceImpl implements TypeService {
      * @param id
      * @return
      */
+    @Override
     @Transactional
     public Type getType(Long id) {
         Optional<Type> optional =  typeRepository.findById(id);
@@ -49,6 +54,7 @@ public class TypeServiceImpl implements TypeService {
      * @param pageable
      * @return
      */
+    @Override
     @Transactional
     public Page<Type> listType(Pageable pageable) {
         return typeRepository.findAll(pageable);
@@ -66,6 +72,7 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.findTop(pageable);
     }
 
+    @Override
     @Transactional
     public Type updateType(Long id, Type type) {
         Optional<Type> optional = typeRepository.findById(id);
@@ -77,6 +84,7 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.save(type1);
     }
 
+    @Override
     @Transactional
     public void deleteType(Long id) {
         typeRepository.deleteById(id);
@@ -85,6 +93,7 @@ public class TypeServiceImpl implements TypeService {
     /**
      * 通过名字查询
      */
+    @Override
     @Transactional
     public Type getTypeByName(String name) {
         return typeRepository.findByName(name);

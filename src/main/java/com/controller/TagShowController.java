@@ -17,6 +17,9 @@ import java.io.FileInputStream;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 public class TagShowController {
 
@@ -28,19 +31,27 @@ public class TagShowController {
 
     @GetMapping("/tags/{id}")
     public String tags(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @PathVariable Long id) {
-        List<Tag> list = tagService.listTagTop(2333); // 所有标签数据
+        // 2333代指所有标签数据
+        List<Tag> list = tagService.listTagTop(2333);
+        /*
+        如果是通过导航栏跳转
+        id默认为-1
+        默认赋值给所有标签中的第一个标签
+         */
         if(id == -1){
             id = list.get(0).getId();
         }
         model.addAttribute("tags",list);
-        model.addAttribute("page",blogService.listBlog(id,pageable)); // 分页查询
-        model.addAttribute("activeTagId",id); // 当前活跃的id
+        // 分页查询
+        model.addAttribute("page",blogService.listBlog(id,pageable));
+        // 当前活跃的id
+        model.addAttribute("activeTagId",id);
 
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
+            File file = new File("D:\\ip.properties");
+            File file2 = new File("D:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));

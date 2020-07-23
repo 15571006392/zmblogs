@@ -3,6 +3,9 @@ package com;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * @author Zm-Mmm
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class NotFoundException extends RuntimeException {
 

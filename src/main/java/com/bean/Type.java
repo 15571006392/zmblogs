@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Entity
 @Table(name = "t_type")
 public class Type {
