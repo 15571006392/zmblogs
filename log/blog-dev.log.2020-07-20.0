@@ -1,0 +1,1163 @@
+2020-07-20 13:02:42.904  INFO 8584 --- [restartedMain] com.BlogApplication                      : Starting BlogApplication on DESKTOP-K156SMJ with PID 8584 (started by 14561 in H:\IntelliJ IDEA 2019.3.2\blog)
+2020-07-20 13:02:42.907 DEBUG 8584 --- [restartedMain] com.BlogApplication                      : Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2020-07-20 13:02:42.908  INFO 8584 --- [restartedMain] com.BlogApplication                      : The following profiles are active: dev
+2020-07-20 13:02:43.006  INFO 8584 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3bc02bc7: startup date [Mon Jul 20 13:02:43 CST 2020]; root of context hierarchy
+2020-07-20 13:02:45.966  INFO 8584 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2272abd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-20 13:02:46.667  INFO 8584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-07-20 13:02:46.715  INFO 8584 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 13:02:46.716  INFO 8584 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2020-07-20 13:02:46.722  INFO 8584 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;D:\apache-tomcat-9.0.30\bin;D:\node.js\;D:\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\14561\AppData\Local\Microsoft\WindowsApps;H:\IntelliJ IDEA 2019.3.2\bin;C:\Users\14561\AppData\Roaming\npm;D:\PyCharm 2020.1.2\bin;.]
+2020-07-20 13:02:46.936  INFO 8584 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 13:02:46.937  INFO 8584 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3930 ms
+2020-07-20 13:02:47.015  INFO 8584 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2020-07-20 13:02:47.020  INFO 8584 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-07-20 13:02:47.020  INFO 8584 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-07-20 13:02:47.020  INFO 8584 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-07-20 13:02:47.021  INFO 8584 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2020-07-20 13:02:47.085 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : Driver class com.mysql.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@44c68e05
+2020-07-20 13:02:47.232 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - configuration:
+2020-07-20 13:02:47.235 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : allowPoolSuspension.............false
+2020-07-20 13:02:47.235 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : autoCommit......................true
+2020-07-20 13:02:47.235 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : catalog.........................none
+2020-07-20 13:02:47.235 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionInitSql...............none
+2020-07-20 13:02:47.236 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionTestQuery.............none
+2020-07-20 13:02:47.236 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionTimeout...............30000
+2020-07-20 13:02:47.236 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSource......................none
+2020-07-20 13:02:47.236 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceClassName.............none
+2020-07-20 13:02:47.236 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceJNDI..................none
+2020-07-20 13:02:47.236 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceProperties............{password=<masked>}
+2020-07-20 13:02:47.237 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : driverClassName................."com.mysql.jdbc.Driver"
+2020-07-20 13:02:47.238 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : healthCheckProperties...........{}
+2020-07-20 13:02:47.238 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : healthCheckRegistry.............none
+2020-07-20 13:02:47.239 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : idleTimeout.....................600000
+2020-07-20 13:02:47.239 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : initializationFailFast..........true
+2020-07-20 13:02:47.240 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : initializationFailTimeout.......1
+2020-07-20 13:02:47.240 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : isolateInternalQueries..........false
+2020-07-20 13:02:47.240 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : jdbc4ConnectionTest.............false
+2020-07-20 13:02:47.241 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : jdbcUrl.........................jdbc:mysql://localhost:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
+2020-07-20 13:02:47.242 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : leakDetectionThreshold..........0
+2020-07-20 13:02:47.242 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : maxLifetime.....................1800000
+2020-07-20 13:02:47.242 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : maximumPoolSize.................10
+2020-07-20 13:02:47.242 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : metricRegistry..................none
+2020-07-20 13:02:47.243 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : metricsTrackerFactory...........none
+2020-07-20 13:02:47.243 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : minimumIdle.....................10
+2020-07-20 13:02:47.243 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : password........................<masked>
+2020-07-20 13:02:47.243 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : poolName........................"HikariPool-1"
+2020-07-20 13:02:47.244 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : readOnly........................false
+2020-07-20 13:02:47.244 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : registerMbeans..................false
+2020-07-20 13:02:47.244 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : scheduledExecutor...............none
+2020-07-20 13:02:47.245 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : scheduledExecutorService........internal
+2020-07-20 13:02:47.245 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : schema..........................none
+2020-07-20 13:02:47.245 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : threadFactory...................internal
+2020-07-20 13:02:47.245 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : transactionIsolation............default
+2020-07-20 13:02:47.245 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : username........................"root"
+2020-07-20 13:02:47.245 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : validationTimeout...............5000
+2020-07-20 13:02:47.247  INFO 8584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-20 13:02:47.416 DEBUG 8584 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@1941f1d6
+2020-07-20 13:02:47.418  INFO 8584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-20 13:02:47.521 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
+2020-07-20 13:02:47.555 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@2cb81aa9
+2020-07-20 13:02:47.562 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@5819ad65
+2020-07-20 13:02:47.578 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@5f380b12
+2020-07-20 13:02:47.590 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@381cdd96
+2020-07-20 13:02:47.603  INFO 8584 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2020-07-20 13:02:47.617 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@388af8c5
+2020-07-20 13:02:47.629 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@5a8aeae0
+2020-07-20 13:02:47.640 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@2b0fcd3c
+2020-07-20 13:02:47.646 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@360664d7
+2020-07-20 13:02:47.649  INFO 8584 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-07-20 13:02:47.650 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@4d6e752e
+2020-07-20 13:02:47.650 DEBUG 8584 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:02:47.761  INFO 8584 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2020-07-20 13:02:47.781  INFO 8584 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-07-20 13:02:47.829  INFO 8584 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2020-07-20 13:02:48.091  INFO 8584 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-20 13:02:48.922  INFO 8584 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-20 13:02:49.297  INFO 8584 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-07-20 13:02:49.789  INFO 8584 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 13:02:50.070  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3bc02bc7: startup date [Mon Jul 20 13:02:43 CST 2020]; root of context hierarchy
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about],methods=[GET]}" onto public java.lang.String com.controller.AboutController.about(org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.list(org.springframework.ui.Model,com.bean.BlogQuery,org.springframework.data.domain.Pageable)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/search],methods=[POST]}" onto public java.lang.String com.controller.admin.BlogController.search(org.springframework.ui.Model,com.bean.BlogQuery,org.springframework.data.domain.Pageable)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/input],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.input(org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs],methods=[POST]}" onto public java.lang.String com.controller.admin.BlogController.post(com.bean.Detail,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.show(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/login],methods=[POST]}" onto public java.lang.String com.controller.admin.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin],methods=[GET]}" onto public java.lang.String com.controller.admin.LoginController.loginPage()
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/logout],methods=[GET]}" onto public java.lang.String com.controller.admin.LoginController.logout(javax.servlet.http.HttpSession)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.list(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.input(org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags-create],methods=[POST]}" onto public java.lang.String com.controller.admin.TagController.post(com.bean.Tag,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:02:50.164  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags-create/{id}],methods=[POST]}" onto public java.lang.String com.controller.admin.TagController.editPost(com.bean.Tag,java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.list(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.input(org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types-create],methods=[POST]}" onto public java.lang.String com.controller.admin.TypeController.post(com.bean.Type,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types-create/{id}],methods=[POST]}" onto public java.lang.String com.controller.admin.TypeController.editPost(com.bean.Type,java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/archives],methods=[GET]}" onto public java.lang.String com.controller.ArchiveController.archives(org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/comments/{blogId}],methods=[GET]}" onto public java.lang.String com.controller.CommentController.comments(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/comments],methods=[POST]}" onto public java.lang.String com.controller.CommentController.post(com.bean.Comment,javax.servlet.http.HttpSession)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.controller.IndexController.index(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search],methods=[POST]}" onto public java.lang.String com.controller.IndexController.search(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.String)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/blog/{id}],methods=[GET]}" onto public java.lang.String com.controller.IndexController.blog(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/leavingmessage/getmessage],methods=[POST]}" onto public java.lang.String com.controller.LeavingMessageController.getMessage(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/leavingmessage],methods=[GET]}" onto public java.lang.String com.controller.LeavingMessageController.show(org.springframework.ui.Model)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tags/{id}],methods=[GET]}" onto public java.lang.String com.controller.TagShowController.tags(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.Long)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/types/{id}],methods=[GET]}" onto public java.lang.String com.controller.TypeShowController.types(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.Long)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2020-07-20 13:02:50.179  INFO 8584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-07-20 13:02:50.211  INFO 8584 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 13:02:50.211  INFO 8584 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 13:02:50.226  INFO 8584 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in controllerExceptionHandler
+2020-07-20 13:02:50.351  INFO 8584 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-20 13:02:50.949  INFO 8584 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-20 13:02:50.984  INFO 8584 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2020-07-20 13:02:50.985  INFO 8584 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2020-07-20 13:02:50.991  INFO 8584 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2020-07-20 13:02:51.005  INFO 8584 --- [restartedMain] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2020-07-20 13:02:51.042  INFO 8584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-07-20 13:02:51.045  INFO 8584 --- [restartedMain] com.BlogApplication                      : Started BlogApplication in 8.907 seconds (JVM running for 10.411)
+2020-07-20 13:02:55.263  INFO 8584 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2020-07-20 13:02:55.264  INFO 8584 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2020-07-20 13:02:55.293  INFO 8584 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 29 ms
+2020-07-20 13:02:55.349  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:02:55.350  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:02:55.350  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:02:55.350  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:02:55.350  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:02:55.350  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:02:55.350  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:02:55.359  INFO 8584 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:02:55.360  INFO 8584 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:02:55.695  WARN 8584 --- [http-nio-8081-exec-1] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.details.size]; use collection function syntax instead [size(t.details)].
+2020-07-20 13:02:55.712  WARN 8584 --- [http-nio-8081-exec-1] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.details.size]; use collection function syntax instead [size(t.details)].
+2020-07-20 13:02:55.719  INFO 8584 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:03:10.635  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:03:10.636  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:03:10.743  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:03:11.361  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:03:11.361  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:03:11.361  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:03:11.361  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:03:11.361  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:03:11.361  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:03:11.362  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:03:11.362  INFO 8584 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:03:11.362  INFO 8584 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:03:11.382  INFO 8584 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:03:17.523 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:03:41.983  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:03:41.983  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:03:41.983  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:03:41.984  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:03:41.984  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:03:41.984  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:03:41.984  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:03:41.984  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:03:41.984  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:03:41.992  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:03:42.443  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:03:42.443  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:03:42.443  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:03:42.443  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:03:42.443  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:03:42.443  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:03:42.444  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:03:42.444  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:03:42.444  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:03:42.446  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:03:47.524 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:03:59.403  INFO 8584 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:03:59.411  INFO 8584 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:03:59.965  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:03:59.966  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:03:59.969  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:04:05.455  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:04:05.456  INFO 8584 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:04:05.457  INFO 8584 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:04:05.469  INFO 8584 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:04:17.525 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:04:47.537 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:05:12.499  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:05:12.500  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:05:12.509  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:05:17.538 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:05:40.239  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:05:40.240  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:05:40.250  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:05:47.552 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:06:17.556 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:06:47.558 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:07:17.560 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:07:36.526  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:07:36.527  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:07:36.540  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:07:47.562 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:08:17.564 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:08:47.572 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:09:17.579 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:09:47.581 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:10:17.583 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:10:34.202  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:10:34.202  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:10:34.202  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:10:34.203  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:10:34.203  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:10:34.203  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:10:34.203  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:10:34.203  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:10:34.203  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:10:34.214  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:10:47.584 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:10:52.512  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:10:52.513  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:10:52.514  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:10:52.524  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:11:17.585 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:11:29.057  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:11:29.057  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:11:29.057  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:11:29.057  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:11:29.058  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:11:29.058  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:11:29.058  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:11:29.058  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:11:29.058  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:11:29.069  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:11:47.587 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:11:48.706  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:11:48.706  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:11:48.706  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:11:48.706  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:11:48.707  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:11:48.707  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:11:48.707  INFO 8584 --- [http-nio-8081-exec-2] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:11:48.707  INFO 8584 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:11:48.708  INFO 8584 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:11:48.717  INFO 8584 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:12:09.571  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/types/-1', ip='0:0:0:0:0:0:0:1', method='com.controller.TypeShowController.types', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, -1]}
+2020-07-20 13:12:09.572  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:12:09.586  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:type
+2020-07-20 13:12:17.588 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:12:24.877  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:12:24.878  INFO 8584 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:12:24.887  INFO 8584 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:12:47.590 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:13:17.591 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:13:47.593 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:14:17.594 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:14:41.301  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:14:41.301  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:14:41.301  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:14:41.301  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:14:41.301  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:14:41.302  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:14:41.302  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:14:41.302  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/search', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.search', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, ]}
+2020-07-20 13:14:41.302  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:14:41.311  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:search
+2020-07-20 13:14:47.596 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:15:17.597 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:15:47.599 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:16:17.600 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:16:43.030  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:16:43.031  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:16:43.032  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:16:43.042  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:16:47.602 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:16:52.900  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:16:52.901  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/types/-1', ip='0:0:0:0:0:0:0:1', method='com.controller.TypeShowController.types', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, -1]}
+2020-07-20 13:16:52.902  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:16:52.909  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:type
+2020-07-20 13:16:53.550  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:16:53.550  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:16:53.550  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:16:53.550  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:16:53.550  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:16:53.550  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:16:53.551  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:16:53.551  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:16:53.551  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:16:53.561  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:16:59.445  INFO 8584 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:16:59.446  INFO 8584 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:16:59.452  INFO 8584 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:16:59.782  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:16:59.783  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:16:59.784  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:17:17.602 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:17:47.605 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:18:17.607 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:18:45.168  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:18:45.168  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:18:45.168  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:18:45.168  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:18:45.168  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:18:45.168  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:18:45.169  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:18:45.169  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:18:45.169  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:18:45.180  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:18:47.609 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:18:53.582  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:18:53.583  INFO 8584 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:18:53.583  INFO 8584 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:18:53.591  INFO 8584 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:18:53.934  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:18:53.934  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:18:53.934  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:18:53.934  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:18:53.935  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:18:53.935  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:18:53.935  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:18:53.935  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:18:53.935  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:18:53.937  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:19:17.611 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:19:22.386  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:19:22.393  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:19:22.806  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:19:22.807  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:19:22.810  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:19:47.621 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:20:17.666 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:20:39.399  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:20:39.400  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:20:39.408  INFO 8584 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:20:39.864  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:20:39.865  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:20:39.865  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:20:39.867  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:20:43.854  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:20:43.864  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:20:47.669 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:21:12.539  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:21:12.540  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:21:12.550  INFO 8584 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:21:17.671 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:21:47.673 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:22:17.674 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:22:47.676 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:23:17.677 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:23:47.678 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:24:17.680 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:24:47.681 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:25:06.327  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:25:06.328  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:25:06.339  INFO 8584 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:25:06.751  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:25:06.752  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:25:06.755  INFO 8584 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:25:17.682 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:25:47.704 DEBUG 8584 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:25:58.434  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:25:58.435  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:25:58.441  INFO 8584 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:25:58.899  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:25:58.900  INFO 8584 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:25:58.902  INFO 8584 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:26:06.601  INFO 5724 --- [restartedMain] com.BlogApplication                      : Starting BlogApplication on DESKTOP-K156SMJ with PID 5724 (started by 14561 in H:\IntelliJ IDEA 2019.3.2\blog)
+2020-07-20 13:26:06.602 DEBUG 5724 --- [restartedMain] com.BlogApplication                      : Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2020-07-20 13:26:06.603  INFO 5724 --- [restartedMain] com.BlogApplication                      : The following profiles are active: dev
+2020-07-20 13:26:06.643  INFO 5724 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@f8b157a: startup date [Mon Jul 20 13:26:06 CST 2020]; root of context hierarchy
+2020-07-20 13:26:10.221  INFO 5724 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fb0b9ca9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-20 13:26:10.988  INFO 5724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-07-20 13:26:11.010  INFO 5724 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 13:26:11.010  INFO 5724 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2020-07-20 13:26:11.015  INFO 5724 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;D:\apache-tomcat-9.0.30\bin;D:\node.js\;D:\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\14561\AppData\Local\Microsoft\WindowsApps;H:\IntelliJ IDEA 2019.3.2\bin;C:\Users\14561\AppData\Roaming\npm;D:\PyCharm 2020.1.2\bin;.]
+2020-07-20 13:26:11.250  INFO 5724 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 13:26:11.250  INFO 5724 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4607 ms
+2020-07-20 13:26:11.347  INFO 5724 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2020-07-20 13:26:11.352  INFO 5724 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-07-20 13:26:11.353  INFO 5724 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-07-20 13:26:11.353  INFO 5724 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-07-20 13:26:11.353  INFO 5724 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2020-07-20 13:26:11.417 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : Driver class com.mysql.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@790bef93
+2020-07-20 13:26:11.557 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - configuration:
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : allowPoolSuspension.............false
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : autoCommit......................true
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : catalog.........................none
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionInitSql...............none
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionTestQuery.............none
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionTimeout...............30000
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSource......................none
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceClassName.............none
+2020-07-20 13:26:11.560 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceJNDI..................none
+2020-07-20 13:26:11.561 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceProperties............{password=<masked>}
+2020-07-20 13:26:11.562 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : driverClassName................."com.mysql.jdbc.Driver"
+2020-07-20 13:26:11.562 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : healthCheckProperties...........{}
+2020-07-20 13:26:11.562 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : healthCheckRegistry.............none
+2020-07-20 13:26:11.562 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : idleTimeout.....................600000
+2020-07-20 13:26:11.564 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : initializationFailFast..........true
+2020-07-20 13:26:11.564 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : initializationFailTimeout.......1
+2020-07-20 13:26:11.564 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : isolateInternalQueries..........false
+2020-07-20 13:26:11.564 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : jdbc4ConnectionTest.............false
+2020-07-20 13:26:11.564 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : jdbcUrl.........................jdbc:mysql://localhost:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : leakDetectionThreshold..........0
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : maxLifetime.....................1800000
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : maximumPoolSize.................10
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : metricRegistry..................none
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : metricsTrackerFactory...........none
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : minimumIdle.....................10
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : password........................<masked>
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : poolName........................"HikariPool-1"
+2020-07-20 13:26:11.565 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : readOnly........................false
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : registerMbeans..................false
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : scheduledExecutor...............none
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : scheduledExecutorService........internal
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : schema..........................none
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : threadFactory...................internal
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : transactionIsolation............default
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : username........................"root"
+2020-07-20 13:26:11.566 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : validationTimeout...............5000
+2020-07-20 13:26:11.566  INFO 5724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-20 13:26:11.727 DEBUG 5724 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@2f479f89
+2020-07-20 13:26:11.729  INFO 5724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-20 13:26:11.887 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
+2020-07-20 13:26:11.927 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@2103dc19
+2020-07-20 13:26:11.932  INFO 5724 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2020-07-20 13:26:11.932 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@552f5407
+2020-07-20 13:26:11.937 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@6beff39
+2020-07-20 13:26:11.941 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@59ec15e9
+2020-07-20 13:26:11.945 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@630e0101
+2020-07-20 13:26:11.949 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@40e0ac1b
+2020-07-20 13:26:11.954 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@51e98544
+2020-07-20 13:26:11.960  INFO 5724 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-07-20 13:26:11.978 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@5edf3e02
+2020-07-20 13:26:11.984 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@5a7e1a38
+2020-07-20 13:26:11.984 DEBUG 5724 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:26:12.056  INFO 5724 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2020-07-20 13:26:12.058  INFO 5724 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-07-20 13:26:12.124  INFO 5724 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2020-07-20 13:26:12.462  INFO 5724 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-20 13:26:13.214  INFO 5724 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-20 13:26:13.757  INFO 5724 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-07-20 13:26:14.255  INFO 5724 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 13:26:14.563  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@f8b157a: startup date [Mon Jul 20 13:26:06 CST 2020]; root of context hierarchy
+2020-07-20 13:26:14.632  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about],methods=[GET]}" onto public java.lang.String com.controller.AboutController.about(org.springframework.ui.Model)
+2020-07-20 13:26:14.635  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.636  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.list(org.springframework.ui.Model,com.bean.BlogQuery,org.springframework.data.domain.Pageable)
+2020-07-20 13:26:14.636  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/search],methods=[POST]}" onto public java.lang.String com.controller.admin.BlogController.search(org.springframework.ui.Model,com.bean.BlogQuery,org.springframework.data.domain.Pageable)
+2020-07-20 13:26:14.636  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/input],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.input(org.springframework.ui.Model)
+2020-07-20 13:26:14.636  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs],methods=[POST]}" onto public java.lang.String com.controller.admin.BlogController.post(com.bean.Detail,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.637  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:26:14.638  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.638  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.show(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:26:14.638  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:26:14.639  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/login],methods=[POST]}" onto public java.lang.String com.controller.admin.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.640  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/logout],methods=[GET]}" onto public java.lang.String com.controller.admin.LoginController.logout(javax.servlet.http.HttpSession)
+2020-07-20 13:26:14.640  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin],methods=[GET]}" onto public java.lang.String com.controller.admin.LoginController.loginPage()
+2020-07-20 13:26:14.642  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.643  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.list(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:26:14.643  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.input(org.springframework.ui.Model)
+2020-07-20 13:26:14.643  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags-create],methods=[POST]}" onto public java.lang.String com.controller.admin.TagController.post(com.bean.Tag,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:26:14.643  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:26:14.643  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags-create/{id}],methods=[POST]}" onto public java.lang.String com.controller.admin.TagController.editPost(com.bean.Tag,java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:26:14.647  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.647  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.list(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:26:14.648  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.input(org.springframework.ui.Model)
+2020-07-20 13:26:14.648  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types-create],methods=[POST]}" onto public java.lang.String com.controller.admin.TypeController.post(com.bean.Type,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:26:14.648  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:26:14.648  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types-create/{id}],methods=[POST]}" onto public java.lang.String com.controller.admin.TypeController.editPost(com.bean.Type,java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 13:26:14.648  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/archives],methods=[GET]}" onto public java.lang.String com.controller.ArchiveController.archives(org.springframework.ui.Model)
+2020-07-20 13:26:14.649  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/comments/{blogId}],methods=[GET]}" onto public java.lang.String com.controller.CommentController.comments(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:26:14.649  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/comments],methods=[POST]}" onto public java.lang.String com.controller.CommentController.post(com.bean.Comment,javax.servlet.http.HttpSession)
+2020-07-20 13:26:14.650  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.controller.IndexController.index(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 13:26:14.650  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search],methods=[POST]}" onto public java.lang.String com.controller.IndexController.search(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.String)
+2020-07-20 13:26:14.650  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/blog/{id}],methods=[GET]}" onto public java.lang.String com.controller.IndexController.blog(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 13:26:14.651  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/leavingmessage/getmessage],methods=[POST]}" onto public java.lang.String com.controller.LeavingMessageController.getMessage(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 13:26:14.651  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/leavingmessage],methods=[GET]}" onto public java.lang.String com.controller.LeavingMessageController.show(org.springframework.ui.Model)
+2020-07-20 13:26:14.651  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tags/{id}],methods=[GET]}" onto public java.lang.String com.controller.TagShowController.tags(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.Long)
+2020-07-20 13:26:14.651  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/types/{id}],methods=[GET]}" onto public java.lang.String com.controller.TypeShowController.types(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.Long)
+2020-07-20 13:26:14.653  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2020-07-20 13:26:14.654  INFO 5724 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-07-20 13:26:14.690  INFO 5724 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 13:26:14.691  INFO 5724 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 13:26:14.707  INFO 5724 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in controllerExceptionHandler
+2020-07-20 13:26:14.815  INFO 5724 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-20 13:26:15.233  INFO 5724 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-20 13:26:15.262  INFO 5724 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2020-07-20 13:26:15.265  INFO 5724 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2020-07-20 13:26:15.271  INFO 5724 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2020-07-20 13:26:15.283  INFO 5724 --- [restartedMain] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2020-07-20 13:26:15.314  INFO 5724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-07-20 13:26:15.317  INFO 5724 --- [restartedMain] com.BlogApplication                      : Started BlogApplication in 9.342 seconds (JVM running for 10.743)
+2020-07-20 13:26:18.178  INFO 5724 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2020-07-20 13:26:18.178  INFO 5724 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2020-07-20 13:26:18.207  INFO 5724 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 29 ms
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:26:18.245  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:26:18.250  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 13:26:18.251  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:26:18.621  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : return values:detail
+2020-07-20 13:26:19.345  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:26:19.345  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:26:19.345  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:26:19.345  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:26:19.345  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:26:19.346  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:26:19.346  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:26:19.346  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 13:26:19.346  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:26:19.387  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 13:26:41.889 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:26:52.716  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:26:52.717  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:26:52.717  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:26:52.717  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:26:52.717  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:26:52.717  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:26:52.717  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:26:52.718  INFO 5724 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:26:52.718  INFO 5724 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:26:52.746  WARN 5724 --- [http-nio-8081-exec-4] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.details.size]; use collection function syntax instead [size(t.details)].
+2020-07-20 13:26:52.755  WARN 5724 --- [http-nio-8081-exec-4] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.details.size]; use collection function syntax instead [size(t.details)].
+2020-07-20 13:26:52.761  INFO 5724 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:26:53.375  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/leavingmessage', ip='0:0:0:0:0:0:0:1', method='com.controller.LeavingMessageController.show', args=[{}]}
+2020-07-20 13:26:53.376  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:26:53.387  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : return values:leavingmessage
+2020-07-20 13:26:54.406  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:26:54.406  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/about', ip='0:0:0:0:0:0:0:1', method='com.controller.AboutController.about', args=[{}]}
+2020-07-20 13:26:54.407  INFO 5724 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:26:54.410  INFO 5724 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:aboutme
+2020-07-20 13:26:56.938  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/leavingmessage', ip='0:0:0:0:0:0:0:1', method='com.controller.LeavingMessageController.show', args=[{}]}
+2020-07-20 13:26:56.939  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:26:56.943  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : return values:leavingmessage
+2020-07-20 13:27:01.350  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/about', ip='0:0:0:0:0:0:0:1', method='com.controller.AboutController.about', args=[{}]}
+2020-07-20 13:27:01.351  INFO 5724 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:01.352  INFO 5724 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : return values:aboutme
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:06.890  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/search', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.search', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, ]}
+2020-07-20 13:27:06.891  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:06.904  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : return values:search
+2020-07-20 13:27:11.385  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:11.385  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:11.385  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:11.386  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:11.386  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:11.386  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:11.386  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:11.386  INFO 5724 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:27:11.387  INFO 5724 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:11.400  INFO 5724 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:27:11.890 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:27:14.047  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/leavingmessage', ip='0:0:0:0:0:0:0:1', method='com.controller.LeavingMessageController.show', args=[{}]}
+2020-07-20 13:27:14.048  INFO 5724 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:14.052  INFO 5724 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:leavingmessage
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:19.959  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:19.960  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:27:19.960  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:19.974  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:27:40.887  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:40.888  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:40.888  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:40.888  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:40.888  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:40.888  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:40.888  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:40.889  INFO 5724 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/types/-1', ip='0:0:0:0:0:0:0:1', method='com.controller.TypeShowController.types', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, -1]}
+2020-07-20 13:27:40.889  INFO 5724 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:40.905  INFO 5724 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:type
+2020-07-20 13:27:41.890 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:27:43.059  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:43.060  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:27:43.061  INFO 5724 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:43.073  INFO 5724 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/archives', ip='0:0:0:0:0:0:0:1', method='com.controller.ArchiveController.archives', args=[{}]}
+2020-07-20 13:27:52.012  INFO 5724 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:52.031  INFO 5724 --- [http-nio-8081-exec-8] com.aspect.LogAspect                     : return values:archives
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:53.511  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/tags/-1', ip='0:0:0:0:0:0:0:1', method='com.controller.TagShowController.tags', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, -1]}
+2020-07-20 13:27:53.512  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:53.535  INFO 5724 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : return values:tags
+2020-07-20 13:27:55.093  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/types/-1', ip='0:0:0:0:0:0:0:1', method='com.controller.TypeShowController.types', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, -1]}
+2020-07-20 13:27:55.094  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:55.101  INFO 5724 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : return values:type
+2020-07-20 13:27:56.286  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:27:56.287  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:27:56.287  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:27:56.287  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:27:56.287  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:27:56.287  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:27:56.287  INFO 5724 --- [http-nio-8081-exec-5] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:27:56.288  INFO 5724 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:27:56.288  INFO 5724 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:27:56.298  INFO 5724 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/types/141', ip='0:0:0:0:0:0:0:1', method='com.controller.TypeShowController.types', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, 141]}
+2020-07-20 13:28:06.721  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:28:06.728  INFO 5724 --- [http-nio-8081-exec-6] com.aspect.LogAspect                     : return values:type
+2020-07-20 13:28:09.280  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:28:09.281  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:28:09.281  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:28:09.281  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:28:09.281  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:28:09.281  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:28:09.281  INFO 5724 --- [http-nio-8081-exec-7] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:28:09.282  INFO 5724 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/types/141', ip='0:0:0:0:0:0:0:1', method='com.controller.TypeShowController.types', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}, 141]}
+2020-07-20 13:28:09.282  INFO 5724 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:28:09.288  INFO 5724 --- [http-nio-8081-exec-7] com.aspect.LogAspect                     : return values:type
+2020-07-20 13:28:11.892 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:28:25.253  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 13:28:25.253  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 13:28:25.253  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 13:28:25.253  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 13:28:25.253  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 13:28:25.253  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 13:28:25.254  INFO 5724 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 13:28:25.254  INFO 5724 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 13:28:25.254  INFO 5724 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 13:28:25.265  INFO 5724 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:index
+2020-07-20 13:28:41.893 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:29:11.895 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:29:41.897 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:30:11.899 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:30:41.900 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:31:11.901 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:31:41.902 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:32:11.903 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:32:41.905 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:33:11.907 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:33:41.907 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:34:11.909 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:34:41.910 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:35:11.911 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:35:41.912 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:36:11.914 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:36:41.915 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:37:11.917 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:37:41.917 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:38:11.918 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:38:41.919 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:39:11.920 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:39:41.922 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:40:11.924 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:40:41.926 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:41:11.927 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:41:41.928 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:42:11.930 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:42:41.930 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:43:11.931 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:43:41.932 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:44:11.933 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:44:41.934 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:45:11.934 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:45:41.936 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:46:11.937 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:46:41.938 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:47:11.940 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:47:41.941 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:48:11.942 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:48:41.942 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:49:11.943 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:49:41.945 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:50:11.947 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:50:41.949 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 13:51:11.951 DEBUG 5724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:52:21.540  INFO 10040 --- [restartedMain] com.BlogApplication                      : Starting BlogApplication on DESKTOP-K156SMJ with PID 10040 (started by 14561 in H:\IntelliJ IDEA 2019.3.2\blog)
+2020-07-20 21:52:21.542 DEBUG 10040 --- [restartedMain] com.BlogApplication                      : Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2020-07-20 21:52:21.543  INFO 10040 --- [restartedMain] com.BlogApplication                      : The following profiles are active: dev
+2020-07-20 21:52:21.649  INFO 10040 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@60fe944f: startup date [Mon Jul 20 21:52:21 CST 2020]; root of context hierarchy
+2020-07-20 21:52:24.727  INFO 10040 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c249eba3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-20 21:52:25.450  INFO 10040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-07-20 21:52:25.476  INFO 10040 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 21:52:25.477  INFO 10040 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2020-07-20 21:52:25.481  INFO 10040 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;D:\apache-tomcat-9.0.30\bin;D:\node.js\;D:\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\14561\AppData\Local\Microsoft\WindowsApps;H:\IntelliJ IDEA 2019.3.2\bin;C:\Users\14561\AppData\Roaming\npm;D:\PyCharm 2020.1.2\bin;.]
+2020-07-20 21:52:25.677  INFO 10040 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 21:52:25.677  INFO 10040 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4028 ms
+2020-07-20 21:52:25.766  INFO 10040 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2020-07-20 21:52:25.771  INFO 10040 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-07-20 21:52:25.772  INFO 10040 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-07-20 21:52:25.772  INFO 10040 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-07-20 21:52:25.772  INFO 10040 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2020-07-20 21:52:25.836 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : Driver class com.mysql.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@9aee32c
+2020-07-20 21:52:25.994 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - configuration:
+2020-07-20 21:52:25.996 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : allowPoolSuspension.............false
+2020-07-20 21:52:25.996 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : autoCommit......................true
+2020-07-20 21:52:25.996 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : catalog.........................none
+2020-07-20 21:52:25.996 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionInitSql...............none
+2020-07-20 21:52:25.996 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionTestQuery.............none
+2020-07-20 21:52:25.996 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : connectionTimeout...............30000
+2020-07-20 21:52:25.997 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSource......................none
+2020-07-20 21:52:25.997 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceClassName.............none
+2020-07-20 21:52:25.997 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceJNDI..................none
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : dataSourceProperties............{password=<masked>}
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : driverClassName................."com.mysql.jdbc.Driver"
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : healthCheckProperties...........{}
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : healthCheckRegistry.............none
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : idleTimeout.....................600000
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : initializationFailFast..........true
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : initializationFailTimeout.......1
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : isolateInternalQueries..........false
+2020-07-20 21:52:25.998 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : jdbc4ConnectionTest.............false
+2020-07-20 21:52:25.999 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : jdbcUrl.........................jdbc:mysql://localhost:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
+2020-07-20 21:52:26.000 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : leakDetectionThreshold..........0
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : maxLifetime.....................1800000
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : maximumPoolSize.................10
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : metricRegistry..................none
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : metricsTrackerFactory...........none
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : minimumIdle.....................10
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : password........................<masked>
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : poolName........................"HikariPool-1"
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : readOnly........................false
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : registerMbeans..................false
+2020-07-20 21:52:26.001 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : scheduledExecutor...............none
+2020-07-20 21:52:26.002 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : scheduledExecutorService........internal
+2020-07-20 21:52:26.002 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : schema..........................none
+2020-07-20 21:52:26.002 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : threadFactory...................internal
+2020-07-20 21:52:26.002 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : transactionIsolation............default
+2020-07-20 21:52:26.002 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : username........................"root"
+2020-07-20 21:52:26.002 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : validationTimeout...............5000
+2020-07-20 21:52:26.002  INFO 10040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-20 21:52:26.145 DEBUG 10040 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@271bac9
+2020-07-20 21:52:26.146  INFO 10040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-20 21:52:26.248 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
+2020-07-20 21:52:26.254 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@297d7a5a
+2020-07-20 21:52:26.258 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@5dd90d8b
+2020-07-20 21:52:26.263 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@3ba51436
+2020-07-20 21:52:26.268 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@9134abd
+2020-07-20 21:52:26.273 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@6435587b
+2020-07-20 21:52:26.275  INFO 10040 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2020-07-20 21:52:26.277 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@7821b460
+2020-07-20 21:52:26.282 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@70b74e82
+2020-07-20 21:52:26.287 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@2a739b33
+2020-07-20 21:52:26.291 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.jdbc.JDBC4Connection@459f6e1
+2020-07-20 21:52:26.291 DEBUG 10040 --- [HikariPool-1 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:52:26.296  INFO 10040 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-07-20 21:52:26.374  INFO 10040 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2020-07-20 21:52:26.376  INFO 10040 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-07-20 21:52:26.432  INFO 10040 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2020-07-20 21:52:26.706  INFO 10040 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-20 21:52:27.641  INFO 10040 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-20 21:52:28.104  INFO 10040 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-07-20 21:52:28.670  INFO 10040 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 21:52:29.035  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@60fe944f: startup date [Mon Jul 20 21:52:21 CST 2020]; root of context hierarchy
+2020-07-20 21:52:29.110  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about],methods=[GET]}" onto public java.lang.String com.controller.AboutController.about(org.springframework.ui.Model)
+2020-07-20 21:52:29.113  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.114  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.list(org.springframework.ui.Model,com.bean.BlogQuery,org.springframework.data.domain.Pageable)
+2020-07-20 21:52:29.114  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/search],methods=[POST]}" onto public java.lang.String com.controller.admin.BlogController.search(org.springframework.ui.Model,com.bean.BlogQuery,org.springframework.data.domain.Pageable)
+2020-07-20 21:52:29.115  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/input],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.input(org.springframework.ui.Model)
+2020-07-20 21:52:29.115  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs],methods=[POST]}" onto public java.lang.String com.controller.admin.BlogController.post(com.bean.Detail,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.116  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/blogs/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.BlogController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 21:52:29.118  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.118  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.show(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 21:52:29.118  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/leavingmessage/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.LeavingMessageAdminController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 21:52:29.120  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin],methods=[GET]}" onto public java.lang.String com.controller.admin.LoginController.loginPage()
+2020-07-20 21:52:29.120  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/login],methods=[POST]}" onto public java.lang.String com.controller.admin.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.120  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/logout],methods=[GET]}" onto public java.lang.String com.controller.admin.LoginController.logout(javax.servlet.http.HttpSession)
+2020-07-20 21:52:29.124  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.124  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.list(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 21:52:29.124  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.input(org.springframework.ui.Model)
+2020-07-20 21:52:29.125  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags-create],methods=[POST]}" onto public java.lang.String com.controller.admin.TagController.post(com.bean.Tag,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 21:52:29.125  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TagController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 21:52:29.125  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/tags-create/{id}],methods=[POST]}" onto public java.lang.String com.controller.admin.TagController.editPost(com.bean.Tag,java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 21:52:29.128  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/{id}/delete],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.delete(java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.129  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.list(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 21:52:29.129  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.input(org.springframework.ui.Model)
+2020-07-20 21:52:29.129  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types-create],methods=[POST]}" onto public java.lang.String com.controller.admin.TypeController.post(com.bean.Type,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 21:52:29.130  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types/{id}/input],methods=[GET]}" onto public java.lang.String com.controller.admin.TypeController.editInput(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 21:52:29.130  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/admin/types-create/{id}],methods=[POST]}" onto public java.lang.String com.controller.admin.TypeController.editPost(com.bean.Type,java.lang.Long,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.ui.Model)
+2020-07-20 21:52:29.130  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/archives],methods=[GET]}" onto public java.lang.String com.controller.ArchiveController.archives(org.springframework.ui.Model)
+2020-07-20 21:52:29.131  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/comments/{blogId}],methods=[GET]}" onto public java.lang.String com.controller.CommentController.comments(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 21:52:29.132  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/comments],methods=[POST]}" onto public java.lang.String com.controller.CommentController.post(com.bean.Comment,javax.servlet.http.HttpSession)
+2020-07-20 21:52:29.132  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.controller.IndexController.index(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2020-07-20 21:52:29.132  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search],methods=[POST]}" onto public java.lang.String com.controller.IndexController.search(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.String)
+2020-07-20 21:52:29.133  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/blog/{id}],methods=[GET]}" onto public java.lang.String com.controller.IndexController.blog(java.lang.Long,org.springframework.ui.Model)
+2020-07-20 21:52:29.134  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/leavingmessage/getmessage],methods=[POST]}" onto public java.lang.String com.controller.LeavingMessageController.getMessage(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-07-20 21:52:29.134  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/leavingmessage],methods=[GET]}" onto public java.lang.String com.controller.LeavingMessageController.show(org.springframework.ui.Model)
+2020-07-20 21:52:29.135  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tags/{id}],methods=[GET]}" onto public java.lang.String com.controller.TagShowController.tags(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.Long)
+2020-07-20 21:52:29.136  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/types/{id}],methods=[GET]}" onto public java.lang.String com.controller.TypeShowController.types(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.Long)
+2020-07-20 21:52:29.138  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2020-07-20 21:52:29.139  INFO 10040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-07-20 21:52:29.182  INFO 10040 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 21:52:29.182  INFO 10040 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-20 21:52:29.200  INFO 10040 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in controllerExceptionHandler
+2020-07-20 21:52:29.371  INFO 10040 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-20 21:52:29.893  INFO 10040 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-20 21:52:29.926  INFO 10040 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2020-07-20 21:52:29.928  INFO 10040 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2020-07-20 21:52:29.934  INFO 10040 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2020-07-20 21:52:29.948  INFO 10040 --- [restartedMain] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2020-07-20 21:52:29.999  INFO 10040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-07-20 21:52:30.002  INFO 10040 --- [restartedMain] com.BlogApplication                      : Started BlogApplication in 9.263 seconds (JVM running for 11.205)
+2020-07-20 21:52:36.761  INFO 10040 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2020-07-20 21:52:36.761  INFO 10040 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2020-07-20 21:52:36.797  INFO 10040 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 36 ms
+2020-07-20 21:52:36.889  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:52:36.890  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:52:36.890  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:52:36.890  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:52:36.890  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:52:36.890  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:52:36.890  INFO 10040 --- [http-nio-8081-exec-1] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:52:36.900  INFO 10040 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 21:52:36.901  INFO 10040 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:52:37.069  WARN 10040 --- [http-nio-8081-exec-1] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.details.size]; use collection function syntax instead [size(t.details)].
+2020-07-20 21:52:37.083  WARN 10040 --- [http-nio-8081-exec-1] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.details.size]; use collection function syntax instead [size(t.details)].
+2020-07-20 21:52:37.093  INFO 10040 --- [http-nio-8081-exec-1] com.aspect.LogAspect                     : return values:index
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:52:47.104  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/174', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[174, {}]}
+2020-07-20 21:52:47.105  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:52:47.276  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:detail
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/174', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[174, {}]}
+2020-07-20 21:52:47.808  INFO 10040 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:52:47.834  INFO 10040 --- [http-nio-8081-exec-9] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 21:52:56.250 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:52:59.571  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:52:59.572  INFO 10040 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/176', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[176, {}]}
+2020-07-20 21:52:59.573  INFO 10040 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:52:59.583  INFO 10040 --- [http-nio-8081-exec-10] com.aspect.LogAspect                     : return values:detail
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:52:59.904  INFO 10040 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/176', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[176, {}]}
+2020-07-20 21:52:59.905  INFO 10040 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:52:59.913  INFO 10040 --- [http-nio-8081-exec-3] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 21:53:03.952  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:53:03.952  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:53:03.952  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:53:03.952  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:53:03.952  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:53:03.952  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:53:03.953  INFO 10040 --- [http-nio-8081-exec-2] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:53:03.953  INFO 10040 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/blog/94', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.blog', args=[94, {}]}
+2020-07-20 21:53:03.953  INFO 10040 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:53:03.963  INFO 10040 --- [http-nio-8081-exec-2] com.aspect.LogAspect                     : return values:detail
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/comments/94', ip='0:0:0:0:0:0:0:1', method='com.controller.CommentController.comments', args=[94, {}]}
+2020-07-20 21:53:04.208  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:53:04.210  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:detail :: commentList
+2020-07-20 21:53:26.251 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:53:56.253 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:54:26.255 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:54:56.257 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:55:26.258 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:55:48.500  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 21:55:48.500  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 21:55:48.500  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 21:55:48.500  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 21:55:48.500  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 21:55:48.501  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 21:55:48.501  INFO 10040 --- [http-nio-8081-exec-5] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 21:55:48.501  INFO 10040 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 21:55:48.501  INFO 10040 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 21:55:48.524  INFO 10040 --- [http-nio-8081-exec-5] com.aspect.LogAspect                     : return values:index
+2020-07-20 21:55:56.261 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:56:26.263 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:56:56.264 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:57:26.266 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:57:56.268 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:58:26.269 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:58:56.271 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:59:26.271 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 21:59:56.273 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 22:00:26.275 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 22:00:56.277 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 22:01:26.279 DEBUG 10040 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-07-20 22:01:50.041  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : x-forwarded-for ip: null
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : Proxy-Client-IP ip: null
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : WL-Proxy-Client-IP ip: null
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_CLIENT_IP ip: null
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : HTTP_X_FORWARDED_FOR ip: null
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : X-Real-IP ip: null
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.util.GetIp                           : getRemoteAddr ip: 0:0:0:0:0:0:0:1
+2020-07-20 22:01:50.042  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : <<AOP>>new request：{url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', method='com.controller.IndexController.index', args=[Page request [number: 0, size 10, sort: updateTime: DESC], {}]}
+2020-07-20 22:01:50.043  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : 该IP为旧访客
+2020-07-20 22:01:50.057  INFO 10040 --- [http-nio-8081-exec-4] com.aspect.LogAspect                     : return values:index
