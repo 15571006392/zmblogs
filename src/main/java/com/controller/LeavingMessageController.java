@@ -52,8 +52,8 @@ public class LeavingMessageController {
         Properties properties = new Properties();
         Properties properties2 = new Properties();
         try {
-            File file = new File("D:\\ip.properties");
-            File file2 = new File("D:\\visitors.properties");
+            File file = new File("C:\\ip.properties");
+            File file2 = new File("C:\\visitors.properties");
             properties.load(new FileInputStream(file));
             properties2.load(new FileInputStream(file2));
             int count = Integer.parseInt(properties2.getProperty("count"));

@@ -55,7 +55,7 @@ public class LogAspect {
         Properties properties2 = new Properties();
         Properties properties = new Properties();
         try{
-            File file = new File("D:\\ip.properties");
+            File file = new File("C:\\ip.properties");
             if(!file.exists()){
                 file.createNewFile();
             }
@@ -71,14 +71,14 @@ public class LogAspect {
             try{
                 // 该访客今日第一次访问
                 properties2.put(ip,"true");
-                FileOutputStream fileOutputStream = new FileOutputStream("D:\\ip.properties");
+                FileOutputStream fileOutputStream = new FileOutputStream("C:\\ip.properties");
                 properties2.store(fileOutputStream,"访客");
                 fileOutputStream.close();
             }catch (Exception e){
                 logger.error("访客统计出错！");
             }
             try {
-                File file = new File("D:\\visitors.properties");
+                File file = new File("C:\\visitors.properties");
                 if(!file.exists()){
                     file.createNewFile();
                     FileOutputStream fileOutputStream = new FileOutputStream(file,true);
@@ -89,7 +89,7 @@ public class LogAspect {
                 int count = Integer.parseInt(properties.getProperty("count"));
                 count += 1;
                 properties.setProperty("count", String.valueOf(count));
-                FileOutputStream fileOutputStream = new FileOutputStream("D:\\visitors.properties");
+                FileOutputStream fileOutputStream = new FileOutputStream("C:\\visitors.properties");
                 properties.store(fileOutputStream,"访客数量");
                 fileOutputStream.close();
             }catch (Exception e){

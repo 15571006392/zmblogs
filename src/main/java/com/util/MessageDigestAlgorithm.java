@@ -10,7 +10,7 @@ public class MessageDigestAlgorithm {
 
     public static String code(String str){
         try {
-            MessageDigest md = MessageDigest.getInstance("MessageDigestAlgorithm");
+            MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(str.getBytes());
             byte[]byteDigest = md.digest();
             int i;
