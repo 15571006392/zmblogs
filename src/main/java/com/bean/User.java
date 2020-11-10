@@ -15,12 +15,22 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String nickname; // 昵称
+    /**
+     * 昵称
+     */
+    private String nickname;
     private String username;
     private String password;
     private String email;
-    private String avatar; // 头像
-    private Integer type; // 类型
+
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
+     * 类型
+     */
+    private Integer type;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)

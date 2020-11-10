@@ -14,7 +14,10 @@ public class LeavingMessage {
     private String name;
     private String mail;
     private String message;
-    private String ct; // 留言日期
+    /**
+     * 留言日期
+     */
+    private String ct;
 
     public Long getId() {
         return id;
