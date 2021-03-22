@@ -51,15 +51,18 @@ public class CommentServiceImpl implements CommentService {
      * @return
      */
     private List<Comment> eachComment(List<Comment> comments) {
-        List<Comment> commentsView = new ArrayList<>();
+        /**
+         * 评论功能第一级createTime和adminComment遗留问题
+         */
+        /*List<Comment> commentsView = new ArrayList<>();
         for (Comment comment : comments) {
             Comment c = new Comment();
             BeanUtils.copyProperties(comment,c);
             commentsView.add(c);
-        }
+        }*/
         //合并评论的各层子代到第一级子代集合中
-        combineChildren(commentsView);
-        return commentsView;
+        combineChildren(comments);
+        return comments;
     }
     /**
      *

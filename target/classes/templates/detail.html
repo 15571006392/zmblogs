@@ -165,14 +165,14 @@
                             <div class="content">
                                 <a class="author">
                                     <span th:text="${comment.nickname}">Matt</span>
-                                    <!--<div class="ui mini basic blue left pointing label padding-mini"
+                                    <div class="ui mini basic blue left pointing label padding-mini"
                                          th:if="${comment.adminComment}">博主
-                                    </div>-->
+                                    </div>
                                 </a>
-                                <!--<div class="metadata">
+                                <div class="metadata">
                                     <span class="date"
                                           th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">今天下午 5:42</span>
-                                </div>-->
+                                </div>
                                 <div class="text" th:text="${comment.content}">太赞了！</div>
                                 <div class="actions">
                                     <a class="reply" data-commentid="1" data-commentnickname="Matt"
@@ -189,16 +189,16 @@
                                     <div class="content">
                                         <a class="author">
                                             <span th:text="${reply.nickname}">小红</span>
-                                            <!--<div class="ui mini basic blue left pointing label padding-mini"
+                                            <div class="ui mini basic blue left pointing label padding-mini"
                                                  th:if="${reply.adminComment}">博主
-                                            </div>-->
+                                            </div>
                                             &nbsp;<span th:text="|@ ${reply.parentComment.nickname}|"
                                                         style="color: gray;">@ 小白</span>
                                         </a>
-                                        <!--<div class="metadata">
+                                        <div class="metadata">
                                             <span class="date"
                                                   th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
-                                        </div>-->
+                                        </div>
                                         <div class="text" th:text="${reply.content}">
                                             How artistic!
                                         </div>

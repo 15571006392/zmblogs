@@ -33,13 +33,15 @@ public class Comment {
     private String avatar;
     /**
      * 创建日期
+     * private类型访问遗留问题
      */
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;
+    public Date createTime;
     /**
-     * 判断有没有头像
+     * 判断是不是博主
+     * private类型访问遗留问题
      */
-    private boolean adminComment;
+    public boolean adminComment;
 
     @ManyToOne
     private Detail detail;
