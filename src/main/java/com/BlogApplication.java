@@ -12,14 +12,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author Zm-Mmm
  */
 @SpringBootApplication
-public class BlogApplication extends SpringBootServletInitializer {
+public class BlogApplication /*extends SpringBootServletInitializer*/ {
 
     public static void main(String[] args) {
         SpringApplication.run(BlogApplication.class, args);
     }
 
-    @Override
+    /*@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(BlogApplication.class);
-    }
+    }*/
 }
