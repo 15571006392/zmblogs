@@ -97,7 +97,7 @@
                                                  th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image"
                                                  style="margin-bottom: 3px">
                                             <div class="content" style="margin-bottom: 3px">
-                                                <a href="#" th:href="@{/about}" class="header"
+                                                <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}" class="header"
                                                    th:text="${blog.user.nickname}">Zm-Mmm</a>
                                             </div>
                                         </div>

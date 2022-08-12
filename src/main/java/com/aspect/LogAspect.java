@@ -24,7 +24,6 @@ public class LogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     /**
      * 拦截所有控制器下的所有方法
      */

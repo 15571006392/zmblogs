@@ -61,7 +61,7 @@
                     <img src="https://unsplash.it/100/100?image=1005" th:src="@{${blog.user.avatar}}" alt=""
                          class="ui avatar image" style="margin-bottom: 3px">
                     <div class="content" style="margin-bottom: 3px">
-                        <a href="#" th:href="@{/about}" class="header" th:text="${blog.user.nickname}">Zm-Mmm</a>
+                        <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}" class="header" th:text="${blog.user.nickname}">Zm-Mmm</a>
                     </div>
                 </div>
                 <div class="item">
@@ -137,7 +137,7 @@
             <div class="ui middle aligned grid">
                 <div class="eleven wide column text-row-spacing text-spacing text-fine2">
                     <ui class="list">
-                        <li style="list-style: none;">作者: <a href="#" th:href="@{/about}" target="_blank"><span th:text="${blog.user.nickname}">Zm-Mmm</span> </a></li>
+                        <li style="list-style: none;">作者: <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Zm-Mmm</span> </a></li>
                         <li style="list-style: none;">更新时间: <span
                                 th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm:ss')}">2020-7-4</span></li>
                         <li style="list-style: none;">发布时间: <span
@@ -146,7 +146,7 @@
                     </ui>
                 </div>
                 <div class="five wide column">
-                    <img src="../static/img/文末声明表情包.jpg" th:src="@{/img/文末声明表情包.jpg}" alt=""
+                    <img src="../static/img/文末声明表情包.jpg" th:src="${blog.user.avatar}" alt=""
                          class="ui right floated rounded bordered image" style="width: 110px;">
                 </div>
             </div>

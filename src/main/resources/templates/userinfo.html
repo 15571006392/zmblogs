@@ -6,7 +6,7 @@
     <meta name="googlebot" content="index, follow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="format-detection" content="telphone=no, email=no"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="ZM的个人博客，这里展示了关于我和本站的资料信息。"/>
     <title>Zm个人博客-学习编程黑科技的好地方</title>
     <link rel="shortcut icon" href="../static/img/favicon.ico">
@@ -46,6 +46,60 @@
     </div>
 </nav>
 
+<!-- 中间 -->
+<div class="diy-padding-big diy-container animated bounceInUp">
+    <div class="ui container">
+        <div class="ui stackable grid">
+
+            <!-- 左侧图片 -->
+            <div class="nine wide column">
+                <img th:src="${userinfo.avatar}" alt="" class="ui rounded image">
+            </div>
+
+            <!-- 右侧说明 -->
+            <div class="five wide column">
+                <!-- UUID -->
+                <div class="ui top attached segment">
+                    <i class="home icon"></i><span class="ui text-fine2" th:text="${userinfo.id}">1</span>
+                    <div class="ui mini basic green left pointing label padding-mini">UUID</div>
+                </div>
+                <!-- 名字 -->
+                <div class="ui attached segment">
+                    <i class="user icon"></i><span class="ui text-fine2" th:text="${userinfo.nickname}">zzzzz</span>
+                    <div class="ui mini basic blue left pointing label padding-mini">创作者</div>
+                </div>
+                <!-- 邮箱 -->
+                <div class="ui attached segment">
+                    <i class="mail outline icon"></i><span class="ui text-fine2"
+                                                           th:text="${userinfo.email}">110@110</span>
+                    <div class="ui mini basic orange left pointing label padding-mini">邮箱</div>
+                </div>
+                <!-- 注册日期 -->
+                <div class="ui attached segment">
+                    <i class="sign in icon"></i><span class="ui text-fine2"
+                                                      th:text="${#dates.format(userinfo.createTime,'yyyy年MM月dd日 a')}">110@110</span>
+                    <div class="ui mini basic pink left pointing label padding-mini">注册日期</div>
+                </div>
+                <!-- 发布博客 -->
+                <div class="ui segment center aligned">
+                    <i class="browser icon"></i><span class="ui text-fine2">装修中...</span>
+                    <div class="ui mini basic teal left pointing label padding-mini">发布博客</div>
+                </div>
+                <h4 class="ui horizontal divider header diy-margin-top">社交账号</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <!-- 底部 -->
 <footer class="ui vertical segment diy-padding-big" style="background: rgba(0,0,0,0.7) !important;">
     <div class="ui container">
@@ -64,11 +118,8 @@
                         <span id="run_time" style="color:white;"></span><br>
                     </div>
                     <span style="color:white;">Copyright © 2020 Zm-Mmm All rights reserved.</span>
-
                 </h4>
-
             </div>
-
             <div class="four wide column">
 
                 <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes"
@@ -88,10 +139,8 @@
                         <i class="icon large github"></i>
                     </div>
                 </a>
-
             </div>
         </div>
-
     </div>
 </footer>
 
@@ -134,6 +183,6 @@
     setInterval(function () {
         $('#run_time').html(runTime())
     }, 1000);
-</script>
+    </script>
 </body>
 </html>
