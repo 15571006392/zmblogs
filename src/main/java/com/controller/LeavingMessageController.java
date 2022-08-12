@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * @author Zm-Mmm
@@ -48,22 +45,6 @@ public class LeavingMessageController {
         }else{
             model.addAttribute("newLeavingMessage",leavingMessages);
         }
-
-        Properties properties = new Properties();
-        Properties properties2 = new Properties();
-        try {
-            File file = new File("C:\\ip.properties");
-            File file2 = new File("C:\\visitors.properties");
-            properties.load(new FileInputStream(file));
-            properties2.load(new FileInputStream(file2));
-            int count = Integer.parseInt(properties2.getProperty("count"));
-            int num = properties.size();
-            model.addAttribute("count",count);
-            model.addAttribute("mannum",num);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
         return "leavingmessage";
     }
 

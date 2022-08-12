@@ -181,21 +181,13 @@
     <div class="ui container">
         <div class="ui inverted divided stackable grid middle aligned center aligned">
             <div class="four wide column">
-                <h4 class="ui inverted header text-spacing text-fine">提交您的宝贵意见</h4>
-                <a href="#" th:href="@{/leavingmessage}" onclick="alert('邮件服务器暂未启用，请前往留言页面')">
-                    <div class="ui blue button"><i class="mail icon"></i>发送邮件</div>
+                <a href="#" th:href="@{/leavingmessage}">
+                    <div class="ui blue button"><i class="comment icon"></i>提交留言</div>
                 </a>
             </div>
 
             <div class="eight wide column">
                 <h4 class="ui inverted header text-spacing text-fine text-opacity2" style="margin-bottom: 1em">
-                    <img src="../static/img/点赞.png" th:src="@{/img/点赞.png}" class="ui image padding-mini"
-                         style="margin-bottom: 0.7em !important;" onclick="countNumber()">
-                    <span id="countspan"></span><br>
-                    总访问人数
-                    <span th:text="${count}" style="color:#11fff8;"></span>
-                    今日访客数
-                    <span th:text="${mannum}" style="color: #11fff8;"></span>
                     <br>
                     <div class="diy-margin-small">
                         网站已苟活了
@@ -204,11 +196,8 @@
                     <span style="color:white;">Copyright © 2020 Zm-Mmm All rights reserved.</span>
 
                 </h4>
-
             </div>
-
             <div class="four wide column">
-
                 <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes"
                    target="_blank">
                     <div class="circular ui icon button blue">
@@ -226,10 +215,8 @@
                         <i class="icon large github"></i>
                     </div>
                 </a>
-
             </div>
         </div>
-
     </div>
 </footer>
 
@@ -239,7 +226,6 @@
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <script src="../static/js/qrcode.min.js" th:src="@{/js/qrcode.min.js}"></script>
-<!--<script src="js/h5background.js" th:src="@{/js/h5background.js}"></script>-->
 <script>
     // 手机端菜单折叠
     $('.index').click(function () {
@@ -288,20 +274,6 @@
     setInterval(function () {
         $('#run_time').html(runTime())
     }, 1000);
-
-    /**
-     * 点赞计数
-     */
-    if (!localStorage.countAll) {
-
-        localStorage.countAll = 0;
-    }
-    document.getElementById('countspan').innerHTML = localStorage.countAll;
-
-    function countNumber() {
-        localStorage.countAll++;
-        document.getElementById('countspan').innerHTML = localStorage.countAll;
-    }
 </script>
 </body>
 </html>
