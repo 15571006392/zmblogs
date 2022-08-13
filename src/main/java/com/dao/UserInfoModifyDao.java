@@ -10,5 +10,5 @@ public interface UserInfoModifyDao {
 
     void modifyAvatar(int id,String avatar);
 
-    void modifyInfo(int id,String nickname,String email);
+    void modifyInfo(int id, String nickname, String email, String updateTime);
 }

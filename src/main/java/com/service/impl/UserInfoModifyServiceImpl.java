@@ -23,7 +23,7 @@ public class UserInfoModifyServiceImpl implements UserInfoModifyService {
     }
 
     @Override
-    public void modifyInfo(int id,String nickname,String email) {
-        userInfoModifyDao.modifyInfo(id,nickname,email);
+    public void modifyInfo(int id, String nickname, String email, String updateTime) {
+        userInfoModifyDao.modifyInfo(id,nickname,email,updateTime);
     }
 }
