@@ -53,7 +53,9 @@
 
             <!-- 左侧图片 -->
             <div class="nine wide column">
-                <img th:src="${userinfo.avatar}" alt="" class="ui rounded image">
+                <div class="ui top attached segment">
+                    <img th:src="${userinfo.avatar}" alt="" class="ui rounded image">
+                </div>
             </div>
 
             <!-- 右侧说明 -->
@@ -77,7 +79,7 @@
                 <!-- 注册日期 -->
                 <div class="ui attached segment">
                     <i class="sign in icon"></i><span class="ui text-fine2"
-                                                      th:text="${#dates.format(userinfo.createTime,'yyyy年MM月dd日 a')}">110@110</span>
+                                                      th:text="${#dates.format(userinfo.createTime,'yyyy年MM月dd日 a')}">2000-0-0</span>
                     <div class="ui mini basic pink left pointing label padding-mini">注册日期</div>
                 </div>
                 <!-- 发布博客 -->
@@ -191,6 +193,6 @@
     setInterval(function () {
         $('#run_time').html(runTime())
     }, 1000);
-    </script>
+</script>
 </body>
 </html>

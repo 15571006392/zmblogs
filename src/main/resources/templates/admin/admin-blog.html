@@ -25,6 +25,7 @@
 							</div>
 							<i class="dropdown icon"></i>
 							<div class="menu">
+								<a href="#" th:href="@{/admin/userinfoModify/{id}(id=${session.user.id})}" class="item">个人资料</a>
 								<a href="#" th:href="@{/admin/logout}" class="item">注销</a>
 							</div>
 						</div>
@@ -135,7 +136,6 @@
 						<p th:text="${message}">操作成功</p>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
