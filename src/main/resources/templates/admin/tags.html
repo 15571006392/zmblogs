@@ -12,7 +12,7 @@
 		<nav class="ui inverted attached segment parent-left-style diy-shadow">
 			<div class="ui container">
 				<div class="ui inverted secondary menu stackable">
-					<h2 class="ui teal header item">标签管理</h2>
+					<h2 class="ui blue header item">标签管理</h2>
 					<a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="home icon"></i>博客</a>
 					<a href="#" th:href="@{/admin/types}" class="flag item diy-mobile"><i class="idea icon"></i>分类</a>
 					<a href="#" th:href="@{/admin/tags}" class="active flag item diy-mobile"><i class="tags icon"></i>标签</a>
@@ -41,7 +41,7 @@
 			<div class="ui container">
 				<div class="right menu">
 					<a href="#" th:href="@{/admin/tags/input}" class="item">新增</a>
-					<a href="#" th:href="@{/admin/tags}" class="active item teal">列表</a>
+					<a href="#" th:href="@{/admin/tags}" class="active item blue">列表</a>
 				</div>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 				</div>
 
 				<!-- 表格 -->
-				<table class="ui table compact teal">
+				<table class="ui table compact blue">
 					<thead>
 						<tr>
 							<th></th>
@@ -70,7 +70,7 @@
 							<td th:text="${iterStat.count}"></td>
 							<td th:text="${tag.name}"></td>
 							<td>
-								<a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui teal basic button">编辑</a>
+								<a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui blue basic button">编辑</a>
 								<a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui red basic button">删除</a>
 							</td>
 						</tr>
@@ -82,7 +82,7 @@
 									<a href="#" th:href="@{/admin/tags(page=${page.number}-1)}" class="item" th:unless="${page.first}">上一页</a>
 									<a href="#" th:href="@{/admin/tags(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
 								</div>
-								<a href="#" th:href="@{/admin/tags/input}" class="ui right floated teal basic button">新增</a>
+								<a href="#" th:href="@{/admin/tags/input}" class="ui right floated blue basic button">新增</a>
 							</th>
 						</tr>
 					</tfoot>

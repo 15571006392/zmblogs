@@ -2,6 +2,7 @@ package com.service;
 
 import com.bean.BlogQuery;
 import com.bean.Detail;
+import com.bean.UserDetail;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,6 +19,8 @@ public interface BlogService {
      * @return
      */
     Detail getBlog(Long id);
+
+    List<UserDetail> selectDetailFromUserIdLimit(Long id);
 
     /**
      * 根据id查找博客

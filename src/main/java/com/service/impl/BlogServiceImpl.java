@@ -3,7 +3,9 @@ package com.service.impl;
 import com.bean.BlogQuery;
 import com.bean.Detail;
 import com.bean.Type;
+import com.bean.UserDetail;
 import com.dao.BlogRepository;
+import com.dao.DetailDao;
 import com.service.BlogService;
 import com.util.Markdown;
 import com.util.NullBeanProperties;
@@ -19,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -31,6 +32,9 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     private BlogRepository blogRepository;
 
+    @Autowired
+    private DetailDao detailDao;
+
     /**
      * 根据id获取博客
      * @param id
@@ -41,6 +45,11 @@ public class BlogServiceImpl implements BlogService {
         Optional<Detail> byId = blogRepository.findById(id);
         Detail detail = byId.get();
         return detail;
+    }
+
+    @Override
+    public List<UserDetail> selectDetailFromUserIdLimit(Long id) {
+        return detailDao.selectDetailFromUserIdLimit(id);
     }
 
     /**

@@ -7,4 +7,5 @@
     <select id="findUserById" resultType="UserInfo">
         select id,avatar,create_time,email,nickname from t_user where id = #{id}
     </select>
+
 </mapper>

@@ -18,26 +18,26 @@
 	<div class="diy-container diy-padding-very" style="max-width: 30em !important;">
 		<div class="ui container">
 			<div class="column">
-				<h2 class="ui blue header center aligned">
+				<!--<h2 class="ui blue header center aligned">
 					<div class="content">
-						z-blogs
+						后台登录
 					</div>
-				</h2>
+				</h2>-->
 				<form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
 					<div class="ui segment">
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="user icon"></i>
-								<input type="text" name="username" placeholder="Username">
+								<input type="text" name="username" placeholder="用户名">
 							</div>
 						</div>
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="lock icon"></i>
-								<input type="password" name="password" placeholder="Password">
+								<input type="password" name="password" placeholder="密码">
 							</div>
 						</div>
-						<button class="ui fluid large blue submit button">login</button>
+						<button class="ui fluid large blue submit button">登录</button>
 					</div>
 
 					<div class="ui error mini message"></div>

@@ -12,7 +12,7 @@
 		<nav class="ui inverted attached segment parent-left-style diy-shadow">
 			<div class="ui container">
 				<div class="ui inverted secondary menu stackable">
-					<h2 class="ui teal header item">博客管理</h2>
+					<h2 class="ui blue header item">博客管理</h2>
 					<a href="#" th:href="@{/admin/blogs}" class="active flag item diy-mobile"><i class="home icon"></i>博客</a>
 					<a href="#" th:href="@{/admin/types}" class="flag item diy-mobile"><i class="idea icon"></i>分类</a>
 					<a href="#" th:href="@{/admin/tags}" class="flag item diy-mobile"><i class="tags icon"></i>标签</a>
@@ -41,7 +41,7 @@
 			<div class="ui container">
 				<div class="right menu">
 					<a href="#" th:href="@{/admin/blogs/input}" class="item">发布</a>
-					<a href="#" th:href="@{/admin/blogs}" class="active item teal">列表</a>
+					<a href="#" th:href="@{/admin/blogs}" class="active item blue">列表</a>
 				</div>
 			</div>
 		</div>
@@ -49,15 +49,15 @@
 		<!-- 中间 -->
 		<div class="diy-padding-big" style="max-width: 150em !important;">
 			<div class="ui container">
-				<!-- 动态提交刷新数据 -->
+				<!--&lt;!&ndash; 动态提交刷新数据 &ndash;&gt;
 				<div class="ui secondary segment form">
 					<input type="hidden" name="page">
 					<div class="inline fields">
-						<!-- 标题 -->
+						&lt;!&ndash; 标题 &ndash;&gt;
 						<div class="field">
 							<input type="text" name="title" placeholder="标题" />
 						</div>
-						<!-- 分类 -->
+						&lt;!&ndash; 分类 &ndash;&gt;
 						<div class="field">
 							<div class="ui labeled action input">
 								<div class="ui type selection dropdown">
@@ -71,23 +71,23 @@
 								<button class="ui button blue basic pa" id="clear"><i class="eraser icon"></i>清空</button>
 							</div>
 						</div>
-						<!-- 推荐 -->
+						&lt;!&ndash; 推荐 &ndash;&gt;
 						<div class="field">
 							<div class="ui checkbox">
 								<input type="checkbox" name="recommend" id="recommend" />
 								<label for="recommend">推荐</label>
 							</div>
 						</div>
-						<!-- 搜索 -->
+						&lt;!&ndash; 搜索 &ndash;&gt;
 						<div class="field">
-							<button type="button" id="search-btn" class="ui teal basic button"><i class="search icon"></i>搜索</button>
+							<button type="button" id="search-btn" class="ui blue basic button"><i class="search icon"></i>搜索</button>
 						</div>
 					</div>
-				</div>
+				</div>-->
 
 				<div id="table-container">
 					<!-- 表格 -->
-					<table class="ui table compact teal" th:fragment="blogList">
+					<table class="ui table compact blue" th:fragment="blogList">
 						<thead>
 						<tr>
 							<th></th>
@@ -102,17 +102,17 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr th:each="detail,iterStat : ${page.content}">
+						<tr th:each="detail,iterStat : ${page}">
 							<td th:text="${iterStat.count}"></td>
 							<td th:text="${detail.title}"></td>
-							<td th:text="${detail.type.name}">Java</td>
+							<td th:text="${detail.name}" >Java</td>
 							<td th:text="${detail.recommend} ? '是' : '否'"></td>
 							<td th:text="${detail.published} ? '已发布' : '草稿'"></td>
-							<td th:text="${detail.createTime}"></td>
-							<td th:text="${detail.updateTime}"></td>
+							<td th:text="${#dates.format(detail.createTime,'yyyy:MM:dd HH:mm:ss')}"></td>
+							<td th:text="${#dates.format(detail.updateTime,'yyyy:MM:dd HH:mm:ss')}"></td>
 							<td th:text="${detail.views}"></td>
 							<td>
-								<a href="#" th:href="@{/admin/blogs/{id}/input(id=${detail.id})}" class="ui teal basic button">编辑</a>
+								<a href="#" th:href="@{/admin/blogs/{id}/input(id=${detail.id})}" class="ui blue basic button">编辑</a>
 								<a href="#" th:href="@{/admin/blogs/{id}/delete(id=${detail.id})}" class="ui red basic button">删除</a>
 							</td>
 						</tr>
@@ -120,11 +120,11 @@
 						<tfoot>
 						<tr>
 							<th colspan="9">
-								<div class="ui pagination mini menu" th:if="${page.totalPages}>1">
+								<!--<div class="ui pagination mini menu" th:if="${page.totalPages}>1">
 									<a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
 									<a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
-								</div>
-								<a href="#" th:href="@{/admin/blogs/input}" class="ui right floated teal basic button">新增</a>
+								</div>-->
+								<a href="#" th:href="@{/admin/blogs/input}" class="ui right floated blue basic button">新增</a>
 							</th>
 						</tr>
 						</tfoot>

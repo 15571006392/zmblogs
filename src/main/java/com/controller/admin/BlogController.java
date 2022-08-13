@@ -1,15 +1,11 @@
 package com.controller.admin;
 
-import com.bean.BlogQuery;
 import com.bean.Detail;
 import com.bean.User;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -39,16 +36,16 @@ public class BlogController {
     /**
      * 博客页面跳转
      * @param model
-     * @param detail
-     * @param pageable
      * @return
      */
     @GetMapping("/blogs")
-    public String list(Model model, BlogQuery detail, @PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable){
+    public String list(Model model,HttpServletRequest request){
         // 所有分类
         model.addAttribute("types",typeService.listType());
         // 分页查询，所有博客
-        model.addAttribute("page",blogService.listBlog(pageable, detail));
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("page",blogService.selectDetailFromUserIdLimit(user.getId()));
         return "admin/admin-blog";
     }
 
@@ -59,11 +56,11 @@ public class BlogController {
      * @param pageable
      * @return
      */
-    @PostMapping("/blogs/search")
+    /*@PostMapping("/blogs/search")
     public String search(Model model, BlogQuery detail,@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("page",blogService.listBlog(pageable, detail));
         return "admin/admin-blog :: blogList";
-    }
+    }*/
 
     /**
      * 提交新博客页面跳转
