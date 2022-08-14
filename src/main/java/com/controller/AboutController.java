@@ -17,6 +17,6 @@ public class AboutController {
      */
     @GetMapping("/about")
     public String about(Model model){
-        return "aboutme";
+        return "about";
     }
 }
