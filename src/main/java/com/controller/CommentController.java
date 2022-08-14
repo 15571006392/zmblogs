@@ -3,6 +3,7 @@ package com.controller;
 import com.bean.Comment;
 import com.bean.User;
 import com.service.BlogService;
+import com.service.CommentDeleteService;
 import com.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,9 @@ public class CommentController {
     private CommentService commentService;
 
     @Autowired
+    private CommentDeleteService commentDeleteService;
+
+    @Autowired
     private BlogService blogService;
 
     /**
@@ -43,6 +47,17 @@ public class CommentController {
         model.addAttribute("comments",commentService.listCommentByBlogId(blogId));
         model.addAttribute("blog", blogService.getAndConvert(blogId));
         return "detail :: commentList";
+    }
+
+    /**
+     * 删除评论
+     * @param id
+     * @return
+     */
+    @GetMapping("/comments/delete/{id}/{blogId}")
+    public String deleteComments(@PathVariable int id, @PathVariable String blogId){
+        commentDeleteService.deleteComment(id);
+        return "redirect:/blog/{blogId}";
     }
 
     /**
