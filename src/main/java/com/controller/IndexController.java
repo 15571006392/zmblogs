@@ -9,10 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Zm-Mmm
@@ -36,15 +33,15 @@ public class IndexController {
      * @return
      */
     @GetMapping("/")
-    public String index(@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,Model model){
+    public String index(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
         // 分页查询所有博客
-        model.addAttribute("page",blogService.listBlog(pageable));
+        model.addAttribute("page", blogService.listBlog(pageable));
         // 查找前6个分类
-        model.addAttribute("types",typeService.listTypeTop(6));
+        model.addAttribute("types", typeService.listTypeTop(6));
         // 查找前10个标签
-        model.addAttribute("tags",tagService.listTagTop(10));
+        model.addAttribute("tags", tagService.listTagTop(10));
         // 查找前8个推荐的博客
-        model.addAttribute("recommendBlogs",blogService.listRecommendBlogTop(8));
+        model.addAttribute("recommendBlogs", blogService.listRecommendBlogTop(8));
         return "index";
     }
 
@@ -56,11 +53,11 @@ public class IndexController {
      * @return
      */
     @PostMapping("/search")
-    public String search(@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable,Model model,@RequestParam String query){
+    public String search(@PageableDefault(size = 100, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @RequestParam String query) {
         // 分页查询，按标题和内容关键字查询
-        model.addAttribute("page",blogService.listBlog("%"+query+"%", pageable));
+        model.addAttribute("page", blogService.listBlog("%" + query + "%", pageable));
         // 用户输入的内容
-        model.addAttribute("query",query);
+        model.addAttribute("query", query);
         return "search";
     }
 
@@ -71,9 +68,9 @@ public class IndexController {
      * @return
      */
     @GetMapping("/blog/{id}")
-    public String blog(@PathVariable Long id,Model model) {
+    public String blog(@PathVariable Long id, Model model) {
         // markdown格式转换
-        model.addAttribute("blog",blogService.getAndConvert(id));
+        model.addAttribute("blog", blogService.getAndConvert(id));
         return "detail";
     }
 }
