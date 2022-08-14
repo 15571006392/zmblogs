@@ -60,6 +60,7 @@
 
             <!-- 右侧说明 -->
             <div class="five wide column">
+                <h4 class="ui horizontal divider header" style="padding-top: 1em;padding-bottom: 0.5em;">用户资料</h4>
                 <!-- UUID -->
                 <div class="ui top attached segment">
                     <i class="home icon"></i><span class="ui text-fine2" th:text="${userinfo.id}">1</span>
@@ -83,15 +84,14 @@
                     <div class="ui mini basic pink left pointing label padding-mini">注册日期</div>
                 </div>
                 <!-- 发布博客 -->
-                <h4 class="ui horizontal divider header diy-padding-small">热门博客</h4>
-                <div th:each="details:${userDetail}">
-                    <div class="ui attached segment">
-                        <a href="#" th:href="@{/blog/{id}(id=${details.id})}" target="_blank"
-                           class="ui text-fine1 color-black"
-                           th:text="${details.title}"></a>
+                <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">热门博客</h4>
+                <div class="ui fluid vertical menu">
+                    <a href="#" th:href="@{/blog/{id}(id=${details.id})}" target="_blank"
+                       class="ui text-fine1 color-black item" th:each="details:${userDetail}">
+                        <span th:text="${details.title}">Java</span>
                         <span class="ui text-fine2" th:text="${details.views}" style="float: right"></span><i
                             class="eye icon" style="float: right"></i>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
