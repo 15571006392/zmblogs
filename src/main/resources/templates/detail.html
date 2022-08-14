@@ -169,7 +169,7 @@
                                 </a>
                                 <div class="metadata">
                                     <span class="date"
-                                          th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">今天下午 5:42</span>
+                                          th:text="${#dates.format(comment.createTime,'yyyy-MM-dd a HH:mm:ss')}">今天下午 5:42</span>
                                 </div>
                                 <div class="text" th:text="${comment.content}">太赞了！</div>
                                 <div class="actions">
@@ -196,7 +196,7 @@
                                         </a>
                                         <div class="metadata">
                                             <span class="date"
-                                                  th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                                  th:text="${#dates.format(reply.createTime,'yyyy-MM-dd a HH:mm:ss')}">Today at 5:42PM</span>
                                         </div>
                                         <div class="text" th:text="${reply.content}">
                                             How artistic!
