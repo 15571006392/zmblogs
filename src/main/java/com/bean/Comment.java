@@ -126,20 +126,4 @@ public class Comment {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", nickname='" + nickname + '\'' +
-                ", email='" + email + '\'' +
-                ", content='" + content + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", createTime=" + createTime +
-                ", adminComment=" + adminComment +
-                ", detail=" + detail +
-                ", replyComments=" + replyComments +
-                ", parentComment=" + parentComment +
-                '}';
-    }
 }
