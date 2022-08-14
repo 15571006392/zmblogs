@@ -54,7 +54,7 @@
             <!-- 左侧图片 -->
             <div class="nine wide column">
                 <div class="ui top attached segment">
-                    <img th:src="${userinfo.avatar}" alt="" class="ui rounded image">
+                    <img th:src="${userinfo.avatar}" style="width: 500px;height: 500px" alt="" class="ui rounded image">
                 </div>
             </div>
 
@@ -83,33 +83,28 @@
                     <div class="ui mini basic pink left pointing label padding-mini">注册日期</div>
                 </div>
                 <!-- 发布博客 -->
-                <div class="ui segment center aligned">
-                    <i class="browser icon"></i><span class="ui text-fine2">装修中...</span>
-                    <div class="ui mini basic teal left pointing label padding-mini">发布博客</div>
+                <h4 class="ui horizontal divider header diy-padding-small">热门博客</h4>
+                <div th:each="details:${userDetail}">
+                    <div class="ui attached segment">
+                        <a href="#" th:href="@{/blog/{id}(id=${details.id})}" target="_blank"
+                           class="ui text-fine1 color-black"
+                           th:text="${details.title}"></a>
+                        <span class="ui text-fine2" th:text="${details.views}" style="float: right"></span><i
+                            class="eye icon" style="float: right"></i>
+                    </div>
                 </div>
-                <h4 class="ui horizontal divider header diy-margin-top">社交账号</h4>
             </div>
         </div>
     </div>
 </div>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <!-- 底部 -->
 <footer class="ui vertical segment diy-padding-big" style="background: rgba(0,0,0,0.7) !important;">
     <div class="ui container">
@@ -136,12 +131,6 @@
                    target="_blank">
                     <div class="circular ui icon button blue">
                         <i class="icon large qq"></i>
-                    </div>
-                </a>
-                <a href="./img/wechat.png" target="_blank"
-                   onclick="window.open(this.href,'','width=255,height=255,top=400,left=788');return false">
-                    <div class="circular ui icon button green">
-                        <i class="icon large wechat"></i>
                     </div>
                 </a>
                 <a href="https://gitee.com/zm_mmm" target="_blank">

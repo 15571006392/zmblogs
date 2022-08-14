@@ -8,4 +8,8 @@
         select id,avatar,create_time,email,nickname from t_user where id = #{id}
     </select>
 
+    <select id="findUserDetail" resultType="Detail">
+        select id,title,views from t_detail where user_id = #{id} order by views desc limit 5
+    </select>
+
 </mapper>
