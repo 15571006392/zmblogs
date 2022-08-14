@@ -176,7 +176,8 @@
                                     <a class="reply" data-commentid="1" data-commentnickname="Matt"
                                        th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}"
                                        onclick="reply(this)">回复</a>
-                                    <a th:href="@{/comments/delete/{id}/{blogId}(id=${comment.id},blogId=${blog.id})}" th:if="${session.user != null && session.user.nickname == blog.user.nickname}">删除</a>
+                                    <a th:href="@{/comments/delete/{id}/{blogId}(id=${comment.id},blogId=${blog.id})}"
+                                       th:if="${session.user != null && session.user.nickname == blog.user.nickname}">删除</a>
                                 </div>
                             </div>
                             <!--第一级的子级-->
@@ -205,7 +206,8 @@
                                             <a class="reply" data-commentid="1" data-commentnickname="Matt"
                                                th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}"
                                                onclick="reply(this)">回复</a>
-                                            <a th:href="@{/comments/delete/{id}/{blogId}(id=${reply.id},blogId=${blog.id})}" th:if="${session.user != null && session.user.nickname == blog.user.nickname}">删除</a>
+                                            <a th:href="@{/comments/delete/{id}/{blogId}(id=${reply.id},blogId=${blog.id})}"
+                                               th:if="${session.user != null && session.user.nickname == blog.user.nickname}">删除</a>
                                         </div>
                                     </div>
                                 </div>
@@ -225,7 +227,7 @@
                     <div class="field diy-margin-bottom diy-mobile-wide">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" placeholder="姓名" name="nickname"
+                            <input type="text" placeholder="姓名/访客不能与博主相同" name="nickname"
                                    th:value="${session.user}!=null ? ${session.user.nickname}"/>
                         </div>
                     </div>
@@ -242,6 +244,8 @@
                         </button>
                     </div>
                 </div>
+                <!-- 错误信息提示 -->
+                <div class="ui error message"> </div>
             </div>
         </div>
     </div>
@@ -371,21 +375,21 @@
                 identifier: 'content',
                 rules: [{
                     type: 'empty',
-                    prompt: ''
+                    prompt: '评论不能为空'
                 }]
             },
             nickname: {
                 identifier: 'nickname',
                 rules: [{
                     type: 'empty',
-                    prompt: ''
+                    prompt: '姓名不能为空/访客不能与博主相同'
                 }]
             },
             email: {
                 identifier: 'email',
                 rules: [{
                     type: 'email',
-                    prompt: ''
+                    prompt: '邮箱不能为空'
                 }]
             }
         }
@@ -398,12 +402,7 @@
 
     $('#commentpost-btn').click(function () {
         var boo = $('.ui.form').form('validate form');
-        if (boo) {
-            console.log('校验成功');
-            postData();
-        } else {
-            console.log('校验失败');
-        }
+        if (boo) postData();
     });
 
     function postData() {

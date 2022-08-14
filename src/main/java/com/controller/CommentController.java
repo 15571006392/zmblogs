@@ -66,7 +66,7 @@ public class CommentController {
      * @return
      */
     @PostMapping("/comments")
-    public String post(Comment comment, HttpSession session){
+    public String post(Comment comment, HttpSession session) {
         // 获取该评论关联的博客的id
         Long blogId = comment.getDetail().getId();
         // 保存博客的其他信息
@@ -78,7 +78,18 @@ public class CommentController {
             comment.setAvatar(user.getAvatar());
             // 设置为有头像
             comment.setAdminComment(true);
+            // 校验登录的用户评论姓名与博主名字是否相同,避免博主无法发送评论
+            if(!user.getNickname().equals(comment.getDetail().getUser().getNickname())){
+                // 二次校验
+                if(comment.getNickname().equals(comment.getDetail().getUser().getNickname())){
+                    return "redirect:/blog/" + blogId;
+                }
+            }
         }else{
+            // 校验评论姓名与博主名字是否相同
+            if(comment.getNickname().equals(comment.getDetail().getUser().getNickname())){
+                return "redirect:/blog/" + blogId;
+            }
             // 设置为默认头像
             comment.setAvatar(avatar);
         }
