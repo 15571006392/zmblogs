@@ -42,7 +42,7 @@ public class BlogController {
     public String list(Model model,HttpServletRequest request){
         // 所有分类
         model.addAttribute("types",typeService.listType());
-        // 分页查询，所有博客
+        // 所有博客
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         model.addAttribute("page",blogService.selectDetailFromUserIdLimit(user.getId()));

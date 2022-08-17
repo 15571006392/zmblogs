@@ -72,7 +72,7 @@
 							<td th:text="${type.name}"></td>
 							<td>
 								<a href="#" th:href="@{/admin/types/{id}/input(id=${type.id})}" class="ui blue basic button">编辑</a>
-								<a href="#" th:href="@{/admin/types/{id}/delete(id=${type.id})}" class="ui red basic button">删除</a>
+								<a href="#" th:href="@{/admin/types/{id}/delete(id=${type.id})}" class="ui red basic button" onclick="javascript:return del();">删除</a>
 							</td>
 						</tr>
 					</tbody>
@@ -102,6 +102,16 @@
 			$('.ui.dropdown').dropdown({
 				on: 'hover'
 			});
+
+			// 删除确认
+			function del(){
+				if(confirm('重要：删除此分类后正在使用该分类的博客将会自动删除！！！')){
+					return true;
+				}else
+				{
+					return false;
+				}
+			}
 		</script>
 	</body>
 </html>

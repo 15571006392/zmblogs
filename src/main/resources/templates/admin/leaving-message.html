@@ -66,7 +66,7 @@
                 <td th:text="${msg.ct}"></td>
                 <td>
                     <a href="#" th:href="@{/admin/leavingmessage/{id}/input(id=${msg.id})}" class="ui blue basic button">查看</a>
-                    <a href="#" th:href="@{/admin/leavingmessage/{id}/delete(id=${msg.id})}" class="ui red basic button">删除</a>
+                    <a href="#" th:href="@{/admin/leavingmessage/{id}/delete(id=${msg.id})}" class="ui red basic button" onclick="javascript:return del();">删除</a>
                 </td>
             </tr>
             </tbody>
@@ -97,6 +97,15 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+    // 删除确认
+    function del(){
+        if(confirm('确定要删除？')){
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
 </script>
 </body>
 </html>

@@ -72,7 +72,7 @@
 							<td th:text="${tag.name}"></td>
 							<td>
 								<a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui blue basic button">编辑</a>
-								<a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui red basic button">删除</a>
+								<a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui red basic button" onclick="javascript:return del();">删除</a>
 							</td>
 						</tr>
 					</tbody>
@@ -102,6 +102,15 @@
 			$('.ui.dropdown').dropdown({
 				on: 'hover'
 			});
+			// 删除确认
+			function del(){
+				if(confirm('确定要删除？')){
+					return true;
+				}else
+				{
+					return false;
+				}
+			}
 		</script>
 	</body>
 </html>
