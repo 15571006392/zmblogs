@@ -114,7 +114,7 @@
 							<td th:text="${detail.views}"></td>
 							<td>
 								<a href="#" th:href="@{/admin/blogs/{id}/input(id=${detail.id})}" class="ui blue basic button">编辑</a>
-								<a href="#" th:href="@{/admin/blogs/{id}/delete(id=${detail.id})}" class="ui red basic button">删除</a>
+								<a href="#" th:href="@{/admin/blogs/{id}/delete(id=${detail.id})}" class="ui red basic button" onclick="javascript:return del();">删除</a>
 							</td>
 						</tr>
 						</tbody>
@@ -150,30 +150,14 @@
 				on: 'hover'
 			});
 
-			// 自定义数据传输
-			function page(object){
-				$("[name='page']").val($(object).data("page"));
-				loaddata();
-			}
-
-			$("#search-btn").click(function () {
-				$("[name='page']").val(0);
-				loaddata();
-			});
-
-			// 清除已选分类
-			$('#clear').on('click',function () {
-				$('.type.ui.dropdown').dropdown('clear');
-			})
-
-			// ajax + thymeleaf实现动态搜索
-			function loaddata() {
-				$("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
-					title : $("[name='title']").val(),
-					typeId : $("[name='typeId']").val(),
-					recommend : $("[name='recommend']").prop('checked'),
-					page : $("[name='page']").val()
-				});
+			// 删除确认
+			function del(){
+				if(confirm('确定要删除？')){
+					return true;
+				}else
+				{
+					return false;
+				}
 			}
 		</script>
 	</body>
