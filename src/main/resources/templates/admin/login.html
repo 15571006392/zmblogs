@@ -1,74 +1,99 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>后台登录</title>
-		<link rel="shortcut icon" href="../static/img/favicon.ico">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-		<link href="../../static/css/nav-left.css" rel="stylesheet" th:href="@{/css/nav-left.css}">
-	</head>
-	<body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="diy-container diy-padding-very" style="max-width: 30em !important;">
-		<div class="ui container">
-			<div class="column">
-				<!--<h2 class="ui blue header center aligned">
-					<div class="content">
-						后台登录
-					</div>
-				</h2>-->
-				<form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
-					<div class="ui segment">
-						<div class="field">
-							<div class="ui left icon input">
-								<i class="user icon"></i>
-								<input type="text" name="username" placeholder="用户名">
-							</div>
-						</div>
-						<div class="field">
-							<div class="ui left icon input">
-								<i class="lock icon"></i>
-								<input type="password" name="password" placeholder="密码">
-							</div>
-						</div>
-						<button class="ui fluid large blue submit button">登录</button>
-					</div>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>后台登录</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link href="../../static/css/nav-left.css" rel="stylesheet" th:href="@{/css/nav-left.css}">
+</head>
+<body>
+<!-- 头部 -->
+<nav class="ui attached diy-shadow">
+    <div class="ui container">
+        <div class="ui huge secondary menu stackable">
+            <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile black"><i class="map signs icon"></i>分类</a>
+            <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile black"><i class="tags icon"></i>标签</a>
+            <a href="#" th:href="@{/archives}" class="flag item diy-mobile black"><i class="thumbtack icon"></i>归档</a>
+            <a href="#" th:href="@{/leavingmessage}" class="flag item diy-mobile black"><i class="envelope icon"></i>留言</a>
+            <a href="#" th:href="@{/about}" class="flag item diy-mobile black"><i class="info icon"></i>统计</a>
+            <a href="#" th:href="@{/admin}" class="active flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
+            <div class="right flag item diy-mobile">
+                <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
+                    <div class="ui icon input transparent">
+                        <input type="text" name="query" placeholder="搜索博客" th:value="${query}"/>
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
+            </div>
+            <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
+                <i class="sidebar icon"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="diy-container diy-padding-very" style="max-width: 30em !important;">
+    <div class="ui container">
+        <div class="column">
+            <h2 class="ui blue header center aligned">
+                <div class="content">
+                    后台登录
+                </div>
+            </h2>
+            <form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
+                <div class="ui segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <button class="ui fluid large blue submit button">登录</button>
+                </div>
 
-					<div class="ui error mini message"></div>
-					<div class="ui message mini negative" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>
+                <div class="ui error mini message"></div>
+                <div class="ui message mini negative" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>
 
-				</form>
-			</div>
-		</div>
-	</div>
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-		<script>
-			// 标题非空验证
-			$('.ui.form').form({
-				fields: {
-					username: {
-						identifier: 'username',
-						rules: [{
-							type: 'empty',
-							prompt: '请输入用户名'
-						}]
-					},
-					password: {
-						identifier: 'password',
-						rules: [{
-							type: 'empty',
-							prompt: '请输入密码'
-						}]
-					}
-				}
-			});
-		</script>
-	</body>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    // 标题非空验证
+    $('.ui.form').form({
+        fields: {
+            username: {
+                identifier: 'username',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入用户名'
+                }]
+            },
+            password: {
+                identifier: 'password',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入密码'
+                }]
+            }
+        }
+    });
+</script>
+</body>
 </html>

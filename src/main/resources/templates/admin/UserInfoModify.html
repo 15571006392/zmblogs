@@ -13,15 +13,15 @@
 </style>
 <body>
 <!-- 头部 -->
-<nav class="ui inverted attached segment parent-left-style diy-shadow">
+<nav class="diy-shadow">
     <div class="ui container">
-        <div class="ui inverted secondary menu stackable">
-            <h2 class="ui blue header item">后台管理</h2>
-            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="home icon"></i>博客</a>
-            <a href="#" th:href="@{/admin/types}" class="flag item diy-mobile"><i class="idea icon"></i>分类</a>
-            <a href="#" th:href="@{/admin/tags}" class="flag item diy-mobile"><i class="tags icon"></i>标签</a>
+        <div class="ui huge secondary menu stackable">
+            <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
+            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="home icon"></i>博客编辑</a>
+            <a href="#" th:href="@{/admin/types}" class="flag item diy-mobile"><i class="map signs icon"></i>分类管理</a>
+            <a href="#" th:href="@{/admin/tags}" class="flag item diy-mobile"><i class="tags icon"></i>标签管理</a>
             <a href="#" th:href="@{/admin/leavingmessage}" class="flag item diy-mobile"><i
-                    class="edit outline icon"></i>留言</a>
+                    class="envelope icon"></i>留言管理</a>
             <div class="right flag diy-mobile menu">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -52,7 +52,8 @@
                     <div class="six wide column">
                         <div class="ui top attached segment">
                             <span valign="middle" align="left">
-                                <img th:src="${user.avatar}" alt="" class="ui rounded image" style="width: 500px;height: 500px">
+                                <img th:src="${user.avatar}" alt="" class="ui rounded image"
+                                     style="width: 500px;height: 500px">
                                 <input type="hidden" name="photo" th:value="${user.avatar}">
                             </span>
                         </div>
@@ -152,13 +153,13 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
-    $(function(){
-        $("#show_detail").click(function(){
+    $(function () {
+        $("#show_detail").click(function () {
             $('.ui.modal').modal('show');
         })
     });
-    $(function(){
-        $("#show_detail2").click(function(){
+    $(function () {
+        $("#show_detail2").click(function () {
             $('.ui.modal').modal('show');
         })
     })

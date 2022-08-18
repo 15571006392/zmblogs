@@ -1,125 +1,118 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>标签管理</title>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-		<link href="../../static/css/nav-left.css" rel="stylesheet" th:href="@{/css/nav-left.css}">
-	</head>
-	<body>
-		<!-- 头部 -->
-		<nav class="ui inverted attached segment parent-left-style diy-shadow">
-			<div class="ui container">
-				<div class="ui inverted secondary menu stackable">
-					<h2 class="ui blue header item">标签管理</h2>
-					<a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="home icon"></i>博客</a>
-					<a href="#" th:href="@{/admin/types}" class="flag item diy-mobile"><i class="idea icon"></i>分类</a>
-					<a href="#" th:href="@{/admin/tags}" class="active flag item diy-mobile"><i class="tags icon"></i>标签</a>
-					<a href="#" th:href="@{/admin/leavingmessage}" class="flag item diy-mobile"><i class="edit outline icon"></i>留言</a>
-					<div class="right flag diy-mobile menu">
-						<div class="ui dropdown item">
-							<div class="text">
-								<img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt="" class="ui avatar image">
-								<span th:text="${session.user.nickname}"></span>
-							</div>
-							<i class="dropdown icon"></i>
-							<div class="menu">
-								<a href="#" th:href="@{/admin/userinfoModify/{id}(id=${session.user.id})}" class="item">个人资料</a>
-								<a href="#" th:href="@{/admin/logout}" class="item">注销</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a href="#" class="ui index menu black icon button diy-button-top-right diy-button-show">
-				<i class="sidebar icon"></i>
-			</a>
-		</nav>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>标签管理</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link href="../../static/css/nav-left.css" rel="stylesheet" th:href="@{/css/nav-left.css}">
+</head>
+<body>
+<!-- 头部 -->
+<nav class="diy-shadow">
+    <div class="ui container">
+        <div class="ui huge secondary menu stackable">
+            <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
+            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="home icon"></i>博客编辑</a>
+            <a href="#" th:href="@{/admin/types}" class="flag item diy-mobile"><i class="map signs icon"></i>分类管理</a>
+            <a href="#" th:href="@{/admin/tags}" class="active flag item diy-mobile"><i class="tags icon"></i>标签管理</a>
+            <a href="#" th:href="@{/admin/leavingmessage}" class="flag item diy-mobile"><i
+                    class="envelope icon"></i>留言管理</a>
+            <div class="right flag diy-mobile menu">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
+                             class="ui avatar image">
+                        <span th:text="${session.user.nickname}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/userinfoModify/{id}(id=${session.user.id})}" class="item">个人资料</a>
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui index menu black icon button diy-button-top-right diy-button-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
 
-		<!-- 二级导航菜单 -->
-		<div class="ui attached pointing menu">
-			<div class="ui container">
-				<div class="right menu">
-					<a href="#" th:href="@{/admin/tags/input}" class="active blue item">新增</a>
-					<a href="#" th:href="@{/admin/tags}" class="item blue">列表</a>
-				</div>
-			</div>
-		</div>
+<!-- 中间 -->
+<div class="diy-padding-big diy-container">
+    <div class="ui container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!--信息提示-->
+        <div class="ui error message" th:unless="${#strings.isEmpty(cfmsg)}">
+            <div class="header">提示</div>
+            <p th:text="${cfmsg}"></p>
+        </div>
 
-		<!-- 中间 -->
-		<div class="diy-padding-big diy-container">
-			<div class="ui container">
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<!--信息提示-->
-				<div class="ui error message" th:unless="${#strings.isEmpty(cfmsg)}">
-					<div class="header">提示</div>
-					<p th:text="${cfmsg}"></p>
-				</div>
+        <!-- 表单 -->
+        <form action="#" method="post" th:object="${tag}"
+              th:action="*{id}==null ? @{/admin/tags-create} : @{/admin/tags-create/{id}(id=*{id})}" class="ui form">
 
-				<!-- 表单 -->
-				<form action="#" method="post" th:object="${tag}" th:action="*{id}==null ? @{/admin/tags-create} : @{/admin/tags-create/{id}(id=*{id})}" class="ui form">
+            <!-- 标签 -->
+            <div class="field required">
+                <div class="ui left labeled input">
+                    <label class="ui label">名称</label>
+                    <input type="text" name="name" placeholder="标签名称" th:value="*{name}"/>
+                </div>
+            </div>
 
-					<!-- 标签 -->
-					<div class="field required">
-						<div class="ui left labeled input">
-							<label class="ui label">名称</label>
-							<input type="text" name="name" placeholder="标签名称" th:value="*{name}"/>
-						</div>
-					</div>
+            <!-- 错误信息提示 -->
+            <div class="ui error message"></div>
 
-					<!-- 错误信息提示 -->
-					<div class="ui error message"></div>
+            <!-- 提交按钮 -->
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui blue button">提交</button>
+            </div>
 
-					<!-- 提交按钮 -->
-					<div class="ui right aligned container">
-						<button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-						<button class="ui blue button">提交</button>
-					</div>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
 
-				</form>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-			</div>
-		</div>
-
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-		<script type="text/javascript">
-			// 手机端菜单折叠
-			$('.index').click(function() {
-				$('.flag').toggleClass('diy-mobile');
-			});
-			// 注销下拉菜单
-			$('.ui.dropdown').dropdown({
-				on: 'hover'
-			});
-			// 标题非空验证
-			$('.ui.form').form({
-				fields: {
-					title: {
-						identifier: 'name',
-						rules: [{
-							type: 'empty',
-							prompt: '请输入标签名称'
-						}]
-					}
-				}
-			});
-		</script>
-	</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script type="text/javascript">
+    // 手机端菜单折叠
+    $('.index').click(function () {
+        $('.flag').toggleClass('diy-mobile');
+    });
+    // 注销下拉菜单
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+    // 标题非空验证
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'name',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入标签名称'
+                }]
+            }
+        }
+    });
+</script>
+</body>
 </html>

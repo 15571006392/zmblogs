@@ -21,30 +21,29 @@
 </head>
 <body>
 <!-- 头部 -->
-<nav class="ui attached segment parent-left-style diy-shadow" style="background: rgba(0,0,0,0.7) !important;">
+<nav class="ui attached diy-shadow">
     <div class="ui container">
-        <div class="ui inverted secondary menu stackable">
-            <h3 class="ui olive header item">Zm-Mmm</h3>
-            <a href="#" th:href="@{/}" class="flag item diy-mobile blue">首页</a>
-            <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile blue">分类</a>
-            <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile blue">标签</a>
-            <a href="#" th:href="@{/archives}" class="flag item diy-mobile blue">归档</a>
-            <a href="#" th:href="@{/leavingmessage}" class="flag item diy-mobile blue">留言</a>
-            <a href="#" th:href="@{/about}" class="active flag item diy-mobile blue">关于我</a>
+        <div class="ui huge secondary menu stackable">
+            <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile black"><i class="map signs icon"></i>分类</a>
+            <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile black"><i class="tags icon"></i>标签</a>
+            <a href="#" th:href="@{/archives}" class="flag item diy-mobile black"><i class="thumbtack icon"></i>归档</a>
+            <a href="#" th:href="@{/leavingmessage}" class="flag item diy-mobile black"><i class="envelope icon"></i>留言</a>
+            <a href="#" th:href="@{/about}" class="active flag item diy-mobile black"><i class="info icon"></i>统计</a>
+            <a href="#" th:href="@{/admin}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
             <div class="right flag item diy-mobile">
                 <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
-                    <div class="ui icon inverted input transparent">
+                    <div class="ui icon input transparent">
                         <input type="text" name="query" placeholder="搜索博客" th:value="${query}"/>
                         <i onclick="document.forms['search'].submit()" class="search link icon"></i>
                     </div>
                 </form>
             </div>
-            <a href="#" class="ui index menu black icon button diy-button-top-right diy-button-show item">
+            <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
                 <i class="sidebar icon"></i>
             </a>
         </div>
     </div>
-
 </nav>
 
 

@@ -22,30 +22,29 @@
 </head>
 <body>
 <!-- 头部 -->
-<nav class="ui attached segment parent-left-style diy-shadow" style="background: rgba(0,0,0,0.7) !important;">
+<nav class="ui attached diy-shadow">
     <div class="ui container">
-        <div class="ui inverted secondary menu stackable">
-            <h3 class="ui olive header item">Zm-Mmm</h3>
-            <a href="#" th:href="@{/}" class="active flag item diy-mobile blue">首页</a>
-            <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile blue">分类</a>
-            <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile blue">标签</a>
-            <a href="#" th:href="@{/archives}" class="flag item diy-mobile blue">归档</a>
-            <a href="#" th:href="@{/leavingmessage}" class="flag item diy-mobile blue">留言</a>
-            <a href="#" th:href="@{/about}" class="flag item diy-mobile blue">关于我</a>
+        <div class="ui huge secondary menu stackable">
+            <a href="#" th:href="@{/}" class="active flag item diy-mobile"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile black"><i class="map signs icon"></i>分类</a>
+            <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile black"><i class="tags icon"></i>标签</a>
+            <a href="#" th:href="@{/archives}" class="flag item diy-mobile black"><i class="thumbtack icon"></i>归档</a>
+            <a href="#" th:href="@{/leavingmessage}" class="flag item diy-mobile black"><i class="envelope icon"></i>留言</a>
+            <a href="#" th:href="@{/about}" class="flag item diy-mobile black"><i class="info icon"></i>统计</a>
+            <a href="#" th:href="@{/admin}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
             <div class="right flag item diy-mobile">
                 <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
-                    <div class="ui icon inverted input transparent">
+                    <div class="ui icon input transparent">
                         <input type="text" name="query" placeholder="搜索博客" th:value="${query}"/>
                         <i onclick="document.forms['search'].submit()" class="search link icon"></i>
                     </div>
                 </form>
             </div>
-            <a href="#" class="ui index menu black icon button diy-button-top-right diy-button-show item">
+            <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
                 <i class="sidebar icon"></i>
             </a>
         </div>
     </div>
-
 </nav>
 <!-- 中间 -->
 <div class="diy-padding-big diy-container animated bounceInUp">
@@ -74,13 +73,15 @@
 
                             <!-- 左 -->
                             <div class="eleven wide column">
-                                <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank"
-                                                         class="color-black" th:text="${blog.title}">JUC并发编程</a></h3>
+                                <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}"
+                                                         target="_blank"
+                                                         class="color-black" th:text="${blog.title}">JUC并发编程</a>
+                                </h3>
                                 <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                                <p class="diy-text color-black" th:text="${blog.description}">在 Java 5.0 提供了
-                                    java.util.concurrent(简称JUC)包,在此包中增加了在并发编程中很常用的工具类,
-                                    用于定义类似于线程的自定义子系统,包括线程池,异步 IO 和轻量级任务框架;还提供了设计用于多线程上下文中
-                                    的 Collection 实现等;</p>
+                                    <p class="diy-text color-black" th:text="${blog.description}">在 Java 5.0 提供了
+                                        java.util.concurrent(简称JUC)包,在此包中增加了在并发编程中很常用的工具类,
+                                        用于定义类似于线程的自定义子系统,包括线程池,异步 IO 和轻量级任务框架;还提供了设计用于多线程上下文中
+                                        的 Collection 实现等;</p>
                                 </a>
                                 <div class="ui stackable grid">
 
@@ -92,7 +93,8 @@
                                                      th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image"
                                                      style="margin-bottom: 3px">
                                                 <div class="content" style="margin-bottom: 3px">
-                                                    <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}" class="header"
+                                                    <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}"
+                                                       class="header"
                                                        th:text="${blog.user.nickname}">Zm-Mmm</a>
                                                 </div>
                                             </div>
@@ -122,7 +124,8 @@
                             <!-- 右 -->
                             <div class="five wide column">
                                 <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}"
+                                    <img src="https://unsplash.it/800/450?image=1005"
+                                         th:src="@{${blog.firstPicture}}"
                                          alt="" class="ui rounded image">
                                 </a>
                             </div>
@@ -232,39 +235,14 @@
 
 <!-- 二维码弹出框 -->
 <div id="ewm" class="ui qrcodes flowing popup transition hidden" style="width: 128px !important;"></div>
-
 <!-- 底部 -->
-<footer class="ui vertical segment diy-padding-big" style="background: rgba(0,0,0,0.7) !important;">
+<footer class="ui attached">
     <div class="ui container">
-        <div class="ui inverted divided stackable grid middle aligned center aligned">
-            <div class="four wide column">
-                <a href="#" th:href="@{/leavingmessage}">
-                    <div class="ui blue button"><i class="comment icon"></i>提交留言</div>
-                </a>
-            </div>
-
-            <div class="eight wide column">
-                <h4 class="ui inverted header text-spacing text-fine text-opacity2" style="margin-bottom: 1em">
-                    <br>
-                    <div class="diy-margin-small">
-                        网站已苟活了
-                        <span id="run_time" style="color:white;"></span><br>
-                    </div>
-                    <span style="color:white;">Copyright © 2020 Zm-Mmm All rights reserved.</span>
+        <div class="ui grid center aligned">
+            <div class="wide column">
+                <h4 class="text-fine text-opacity" style="padding-top: 5em;">
+                    <span>Copyright © 2020 Zm-Mmm All rights reserved.</span>
                 </h4>
-            </div>
-            <div class="four wide column">
-                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes"
-                   target="_blank">
-                    <div class="circular ui icon button blue">
-                        <i class="icon large qq"></i>
-                    </div>
-                </a>
-                <a href="https://gitee.com/zm_mmm" target="_blank">
-                    <div class="circular ui icon button red">
-                        <i class="icon large github"></i>
-                    </div>
-                </a>
             </div>
         </div>
     </div>

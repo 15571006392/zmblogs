@@ -3,8 +3,8 @@
 }
 
 .parent-left-style {
-	padding-top: 0.2em !important;
-	padding-bottom: 0.2em !important;;
+	padding-top: 0.8em !important;
+	padding-bottom: 0.8em !important;;
 }
 .cool-background {
 	height: 100%;
@@ -85,8 +85,8 @@
 }
 /* 下边框阴影 */
 .diy-shadow {
-	-webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
 }
 /* 自定义导航工具 */
 .diy-fixed {
@@ -95,6 +95,11 @@
 	position: fixed !important;
 	z-index: 1 !important;
 }
+.diy-fixedTop {
+	position: fixed !important;
+	z-index: 1 !important;
+}
+
 
 /* 行内样式 */
 .inline-block {
