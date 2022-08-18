@@ -50,7 +50,6 @@
 <div class="diy-padding-big diy-container animated bounceInUp">
     <div class="ui container">
         <div class="ui stackable grid">
-
             <!-- 左侧图片 -->
             <div class="nine wide column">
                 <div class="ui top attached segment">
@@ -66,6 +65,12 @@
                     <i class="home icon"></i><span class="ui text-fine2" th:text="${userinfo.id}">1</span>
                     <div class="ui mini basic green left pointing label padding-mini">UUID</div>
                 </div>
+                <!-- 博客数量 -->
+                <div class="ui attached segment">
+                    <i class="bar chart icon"></i><span class="ui text-fine2"
+                                                      th:text="${userinfo.blogCount}">20</span>
+                    <div class="ui mini basic teal left pointing label padding-mini">博客数量</div>
+                </div>
                 <!-- 名字 -->
                 <div class="ui attached segment">
                     <i class="user icon"></i><span class="ui text-fine2" th:text="${userinfo.nickname}">zzzzz</span>
@@ -77,12 +82,19 @@
                                                            th:text="${userinfo.email}">110@110</span>
                     <div class="ui mini basic orange left pointing label padding-mini">邮箱</div>
                 </div>
-                <!-- 注册日期 -->
+                <!-- 注册时间 -->
                 <div class="ui attached segment">
                     <i class="sign in icon"></i><span class="ui text-fine2"
-                                                      th:text="${#dates.format(userinfo.createTime,'yyyy年MM月dd日 a')}">2000-0-0</span>
-                    <div class="ui mini basic pink left pointing label padding-mini">注册日期</div>
+                                                      th:text="${#dates.format(userinfo.createTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
+                    <div class="ui mini basic pink left pointing label padding-mini">注册时间</div>
                 </div>
+                <!-- 上次在线日期 -->
+                <div class="ui attached segment">
+                    <i class="plug icon"></i><span class="ui text-fine2"
+                                                      th:text="${#dates.format(userinfo.updateTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
+                    <div class="ui mini basic red left pointing label padding-mini">上次在线</div>
+                </div>
+
                 <!-- 发布博客 -->
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">热门博客</h4>
                 <div class="ui fluid vertical menu">

@@ -1,6 +1,7 @@
 package com.controller.admin;
 
 import com.bean.User;
+import com.service.UserInfoService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * @author Zm-Mmm
@@ -21,6 +23,9 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserInfoService userInfoService;
 
     @GetMapping
     public String loginPage(){
@@ -44,6 +49,7 @@ public class LoginController {
             // 防止密码返回到前端
             user.setPassword(null);
             session.setAttribute("user",user);
+            userInfoService.updateUserUpdateTime(new Date(),user.getId());
             return "admin/index";
         }else {
             // 验证失败

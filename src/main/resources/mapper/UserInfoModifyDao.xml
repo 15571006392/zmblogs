@@ -10,7 +10,7 @@
     </select>
 
     <update id="modifyInfo">
-        update t_user set nickname = #{nickname},email = #{email},update_time=#{updateTime} where id = #{id}
+        update t_user set nickname = #{nickname},email = #{email} where id = #{id}
     </update>
 
     <update id="modifyAvatar">

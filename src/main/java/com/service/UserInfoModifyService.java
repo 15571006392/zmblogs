@@ -8,5 +8,5 @@ public interface UserInfoModifyService {
 
     void modifyAvatar(int id,String avatar);
 
-    void modifyInfo(int id, String nickname, String email,String updateTime);
+    void modifyInfo(int id, String nickname, String email);
 }
