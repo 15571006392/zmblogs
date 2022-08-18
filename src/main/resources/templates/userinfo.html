@@ -50,8 +50,9 @@
 <div class="diy-padding-big diy-container animated bounceInUp">
     <div class="ui container">
         <div class="ui stackable grid">
-            <!-- 左侧图片 -->
+            <!-- 左 -->
             <div class="nine wide column">
+                <!--头像图片-->
                 <div class="ui top attached segment">
                     <img th:src="${userinfo.avatar}" style="width: 500px;height: 500px" alt="" class="ui rounded image">
                 </div>
@@ -84,7 +85,7 @@
                                                      style="margin-bottom: 3px">
                                                 <div class="content" style="margin-bottom: 3px">
                                                     <span class="header"
-                                                       th:text="${userinfo.nickname}">Zm-Mmm</span>
+                                                          th:text="${userinfo.nickname}">Zm-Mmm</span>
                                                 </div>
                                             </div>
                                             <div class="item">
@@ -108,7 +109,7 @@
                 </div>
             </div>
 
-            <!-- 右侧说明 -->
+            <!-- 右 -->
             <div class="five wide column">
                 <h4 class="ui horizontal divider header" style="padding-top: 1em;padding-bottom: 0.5em;">用户资料</h4>
                 <!-- UUID -->
@@ -119,7 +120,7 @@
                 <!-- 博客数量 -->
                 <div class="ui attached segment">
                     <i class="bar chart icon"></i><span class="ui text-fine2"
-                                                      th:text="${userinfo.blogCount}">20</span>
+                                                        th:text="${userinfo.blogCount}">20</span>
                     <div class="ui mini basic teal left pointing label padding-mini">博客数量</div>
                 </div>
                 <!-- 名字 -->
@@ -142,11 +143,11 @@
                 <!-- 上次在线日期 -->
                 <div class="ui attached segment">
                     <i class="plug icon"></i><span class="ui text-fine2"
-                                                      th:text="${#dates.format(userinfo.updateTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
+                                                   th:text="${#dates.format(userinfo.updateTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
                     <div class="ui mini basic red left pointing label padding-mini">上次在线</div>
                 </div>
 
-                <!-- 发布博客 -->
+                <!-- 热门博客 -->
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">热门博客</h4>
                 <div class="ui fluid vertical menu">
                     <a href="#" th:href="@{/blog/{id}(id=${details.id})}" target="_blank"
@@ -154,6 +155,14 @@
                         <span th:text="${details.title}">Java</span>
                         <span class="ui text-fine2" th:text="${details.views}" style="float: right"></span><i
                             class="eye icon" style="float: right"></i>
+                    </a>
+                </div>
+                <!-- 用户推荐博客 -->
+                <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户推荐博客</h4>
+                <div class="ui fluid vertical menu">
+                    <a href="#" th:href="@{/blog/{id}(id=${userRecommendDetails.id})}" target="_blank"
+                       class="ui text-fine1 color-black item" th:each="userRecommendDetails:${userRecommendDetail}">
+                        <span th:text="${userRecommendDetails.title}">Java</span>
                     </a>
                 </div>
             </div>

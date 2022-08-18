@@ -31,9 +31,12 @@ public class UserInfoController {
         List<Detail> userDetail = userInfoService.findUserDetail(id);
         // 查询最近更新的博客
         List<UserDetail> userLateDetail = userInfoService.findUserLateDetail(id);
+        // 查询用户推荐的博客
+        List<UserDetail> userRecommendDetail = userInfoService.findUserRecommendDetail(id);
         model.addAttribute("userinfo",userInfo);
         model.addAttribute("userDetail",userDetail);
         model.addAttribute("userLateDetail",userLateDetail);
+        model.addAttribute("userRecommendDetail",userRecommendDetail);
         return "userinfo";
     }
 }

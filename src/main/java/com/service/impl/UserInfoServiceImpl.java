@@ -36,5 +36,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     public List<UserDetail> findUserLateDetail(Integer id) {
         return userInfoDao.findUserLateDetail(id);
     }
+
+    @Override
+    public List<UserDetail> findUserRecommendDetail(Integer id) {
+        return userInfoDao.findUserRecommendDetail(id);
+    }
 }
 

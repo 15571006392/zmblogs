@@ -18,4 +18,6 @@ public interface UserInfoDao {
     void updateUserUpdateTime(Date updateTime,Long id);
 
     List<UserDetail> findUserLateDetail(Integer id);
+
+    List<UserDetail> findUserRecommendDetail(Integer id);
 }
