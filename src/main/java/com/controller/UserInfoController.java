@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.bean.Detail;
+import com.bean.UserDetail;
 import com.bean.UserInfo;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,15 @@ public class UserInfoController {
      */
     @GetMapping("/user/{id}")
     public String info(@PathVariable(name = "id") int id, Model model) {
+        // 查询用户信息
         UserInfo userInfo = userInfoService.findUserById(id);
+        // 查询热门博客
         List<Detail> userDetail = userInfoService.findUserDetail(id);
+        // 查询最近更新的博客
+        List<UserDetail> userLateDetail = userInfoService.findUserLateDetail(id);
         model.addAttribute("userinfo",userInfo);
         model.addAttribute("userDetail",userDetail);
+        model.addAttribute("userLateDetail",userLateDetail);
         return "userinfo";
     }
 }

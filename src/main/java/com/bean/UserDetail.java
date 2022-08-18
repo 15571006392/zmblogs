@@ -11,11 +11,24 @@ public class UserDetail {
      * 标题
      */
     private String title;
+    /**
+     * 分类
+     */
     private String name;
+    /**
+     * 分类的ID
+     */
+    private Integer nameId;
     /**
      * 是否推荐
      */
     private boolean recommend;
+
+    /**
+     * 描述
+     */
+    private String description;
+
     /**
      * 是否发布
      */
@@ -94,20 +107,35 @@ public class UserDetail {
         this.updateTime = updateTime;
     }
 
+    public Integer getNameId() {
+        return nameId;
+    }
+
+    public void setNameId(Integer nameId) {
+        this.nameId = nameId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public UserDetail() {
     }
 
-    @Override
-    public String toString() {
-        return "UserDetail{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", name='" + name + '\'' +
-                ", recommend=" + recommend +
-                ", published=" + published +
-                ", views=" + views +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
+    public UserDetail(Long id, String title, String name, Integer nameId, boolean recommend, String description, boolean published, Integer views, Date createTime, Date updateTime) {
+        this.id = id;
+        this.title = title;
+        this.name = name;
+        this.nameId = nameId;
+        this.recommend = recommend;
+        this.description = description;
+        this.published = published;
+        this.views = views;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
     }
 }

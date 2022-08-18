@@ -5,15 +5,46 @@
 <mapper namespace="com.dao.UserInfoDao">
 
     <select id="findUserById" resultType="UserInfo">
-        select u.id,u.avatar,u.create_time,u.update_time,u.email,u.nickname,count(d.id) as blog_count from t_user u join t_detail d on u.id = d.user_id where u.id = #{id}
+        select u.id, u.avatar, u.create_time, u.update_time, u.email, u.nickname, count(d.id) as blog_count
+        from t_user u
+                 join t_detail d on u.id = d.user_id
+        where u.id = #{id}
     </select>
 
     <select id="findUserDetail" resultType="Detail">
-        select id,title,views from t_detail where user_id = #{id} order by views desc limit 8
+        select id, title, views
+        from t_detail
+        where user_id = #{id}
+        order by views desc limit 8
     </select>
 
     <update id="updateUserUpdateTime">
-        update t_user set update_time = #{updateTime} where id = #{id}
+        update t_user
+        set update_time = #{updateTime}
+        where id = #{id}
     </update>
+
+    <select id="findUserLateDetail" resultType="UserDetail">
+        select d.id,
+               d.title,
+               d.update_time,
+               d.description,
+               u.avatar,
+               u.nickname,
+               t.name,
+               t.id as name_id
+        from t_detail d
+                 join
+             t_user u
+             on
+                 d.user_id = u.id
+                 join
+             t_type t
+             on
+                 d.type_id = t.id
+        where d.user_id = #{id}
+        order by update_time desc limit
+	3
+    </select>
 
 </mapper>

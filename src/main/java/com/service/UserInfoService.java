@@ -1,7 +1,7 @@
 package com.service;
 
 import com.bean.Detail;
-import com.bean.User;
+import com.bean.UserDetail;
 import com.bean.UserInfo;
 
 import java.util.Date;
@@ -14,4 +14,6 @@ public interface UserInfoService {
     List<Detail> findUserDetail(Integer id);
 
     void updateUserUpdateTime(Date updateTime, Long id);
+
+    List<UserDetail> findUserLateDetail(Integer id);
 }

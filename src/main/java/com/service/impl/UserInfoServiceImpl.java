@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.bean.Detail;
+import com.bean.UserDetail;
 import com.bean.UserInfo;
 import com.dao.UserInfoDao;
 import com.service.UserInfoService;
@@ -29,6 +30,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public void updateUserUpdateTime(Date updateTime, Long id) {
         userInfoDao.updateUserUpdateTime(updateTime,id);
+    }
+
+    @Override
+    public List<UserDetail> findUserLateDetail(Integer id) {
+        return userInfoDao.findUserLateDetail(id);
     }
 }
 
