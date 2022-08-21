@@ -115,7 +115,7 @@
                                     <!-- 右 -->
                                     <div class="right aligned four wide column middle aligned">
                                         <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}"
-                                           class="ui blue basic label padding-mini" target="_blank"
+                                           class="ui blue basic label padding-mini"
                                            th:text="${blog.type.name}">Java</a>
                                     </div>
                                 </div>
@@ -157,10 +157,10 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column">
-                                <i class="idea icon"></i>分类
+                                <i class="map signs icon"></i>分类
                             </div>
                             <div class="right aligned column">
-                                <a href="#" th:href="@{types/-1}" target="_blank">更多 <i
+                                <a href="#" th:href="@{types/-1}">更多 <i
                                         class="angle double right icon"></i></a>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                     <!-- 主体 -->
                     <div class="ui blue segment">
                         <div class="ui fluid vertical menu">
-                            <a href="#" class="item" th:href="@{/types/{id}(id=${type.id})}" target="_blank"
+                            <a href="#" class="item" th:href="@{/types/{id}(id=${type.id})}"
                                th:each="type : ${types}">
                                 <span th:text="${type.name}">Java</span>
                                 <div class="ui blue basic left pointing label"
@@ -188,14 +188,14 @@
                                 <i class="tags icon"></i>标签
                             </div>
                             <div class="right aligned column">
-                                <a href="#" th:href="@{tags/-1}" target="_blank">更多 <i
+                                <a href="#" th:href="@{tags/-1}">更多 <i
                                         class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <!-- 主体 -->
                     <div class="ui blue segment">
-                        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank"
+                        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"
                            class="ui blue basic label diy-margin-small left pointing" th:each="tag : ${tags}">
                             <span th:text="${tag.name}">SpringBoot</span>
                             <div class="detail" th:text="${#arrays.length(tag.details)}">23</div>
@@ -235,12 +235,51 @@
 
 <!-- 二维码弹出框 -->
 <div id="ewm" class="ui qrcodes flowing popup transition hidden" style="width: 128px !important;"></div>
+
+<!--旧底部页脚-->
+<!--<footer class="ui vertical segment diy-padding-big" style="background: rgba(0,0,0,0.7) !important;">
+    <div class="ui container">
+        <div class="ui inverted divided stackable grid middle aligned center aligned">
+            <div class="four wide column">
+                <a href="#" th:href="@{/leavingmessage}">
+                    <div class="ui blue button"><i class="comment icon"></i>提交留言</div>
+                </a>
+            </div>
+
+            <div class="eight wide column">
+                <h4 class="ui inverted header text-spacing text-fine text-opacity2" style="margin-bottom: 1em">
+                    <br>
+                    <div class="diy-margin-small">
+                        网站已苟活了
+                        <span id="run_time" style="color:white;"></span><br>
+                    </div>
+                    <span style="color:white;">Copyright © 2020 Zm-Mmm All rights reserved.</span>
+                </h4>
+            </div>
+            <div class="four wide column">
+
+                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes"
+                   target="_blank">
+                    <div class="circular ui icon button blue">
+                        <i class="icon large qq"></i>
+                    </div>
+                </a>
+                <a href="https://gitee.com/zm_mmm" target="_blank">
+                    <div class="circular ui icon button red">
+                        <i class="icon large github"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>-->
+
 <!-- 底部 -->
-<footer class="ui attached">
+<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">
-                <h4 class="text-fine text-opacity" style="padding-top: 5em;">
+                <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2020 Zm-Mmm All rights reserved.</span>
                 </h4>
             </div>

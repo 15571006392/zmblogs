@@ -28,7 +28,7 @@
 <nav class="ui attached diy-shadow">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
-            <a href="#" th:href="@{/}" class="active flag item diy-mobile"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
             <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile black"><i class="map signs icon"></i>分类</a>
             <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile black"><i class="tags icon"></i>标签</a>
             <a href="#" th:href="@{/archives}" class="flag item diy-mobile black"><i class="thumbtack icon"></i>归档</a>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="item">
                     <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}" class="ui blue basic label padding-mini"
-                       target="_blank" th:text="${blog.type.name}">Java</a>
+                       th:text="${blog.type.name}">Java</a>
                 </div>
             </div>
         </div>
@@ -101,9 +101,9 @@
 
             <!-- 底部标签 -->
             <div class="diy-padding-left-right">
-                <div class="ui basic blue up pointing label " th:each="tag : ${blog.tags}" th:text="${tag.name}">
+                <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic blue up pointing label " th:each="tag : ${blog.tags}" th:text="${tag.name}">
                     Java
-                </div>
+                </a>
             </div>
 
             <!-- 打赏 -->
@@ -133,8 +133,8 @@
             <div class="ui middle aligned grid">
                 <div class="eleven wide column text-row-spacing text-spacing text-fine2">
                     <ui class="list">
-                        <li style="list-style: none;">作者: <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}"
-                                                             target="_blank"><span th:text="${blog.user.nickname}">Zm-Mmm</span>
+                        <li style="list-style: none;">作者: <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}"><span
+                                th:text="${blog.user.nickname}">Zm-Mmm</span>
                         </a></li>
                         <li style="list-style: none;">更新时间: <span
                                 th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm:ss')}">2020-7-4</span></li>
@@ -245,7 +245,7 @@
                     </div>
                 </div>
                 <!-- 错误信息提示 -->
-                <div class="ui error message"> </div>
+                <div class="ui error message"></div>
             </div>
         </div>
     </div>
@@ -269,38 +269,13 @@
 <div id="ewm" class="ui qrcodes flowing popup transition hidden" style="width: 128px !important;"></div>
 
 <!-- 底部 -->
-<footer class="ui vertical segment diy-padding-big" style="background: rgba(0,0,0,0.7) !important;">
+<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
     <div class="ui container">
-        <div class="ui inverted divided stackable grid middle aligned center aligned">
-            <div class="four wide column">
-                <a href="#" th:href="@{/leavingmessage}">
-                    <div class="ui blue button"><i class="comment icon"></i>提交留言</div>
-                </a>
-            </div>
-
-            <div class="eight wide column">
-                <h4 class="ui inverted header text-spacing text-fine text-opacity2" style="margin-bottom: 1em">
-                    <br>
-                    <div class="diy-margin-small">
-                        网站已苟活了
-                        <span id="run_time" style="color:white;"></span><br>
-                    </div>
-                    <span style="color:white;">Copyright © 2020 Zm-Mmm All rights reserved.</span>
+        <div class="ui grid center aligned">
+            <div class="wide column">
+                <h4 class="text-fine text-opacity2">
+                    <span>Copyright © 2020 Zm-Mmm All rights reserved.</span>
                 </h4>
-            </div>
-
-            <div class="four wide column">
-                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes"
-                   target="_blank">
-                    <div class="circular ui icon button blue">
-                        <i class="icon large qq"></i>
-                    </div>
-                </a>
-                <a href="https://gitee.com/zm_mmm" target="_blank">
-                    <div class="circular ui icon button red">
-                        <i class="icon large github"></i>
-                    </div>
-                </a>
             </div>
         </div>
     </div>
