@@ -14,6 +14,7 @@ public class LeavingMessage {
     private String name;
     private String mail;
     private String message;
+    private String avatar;
     /**
      * 留言日期
      */
@@ -53,6 +54,14 @@ public class LeavingMessage {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public void setMessage(String message) {

@@ -17,8 +17,7 @@ public interface MessageService {
      * @param message
      * @return
      */
-    int updateLeavingMessage(String name,String mail,String message);
-
+    int updateLeavingMessage(String name,String mail,String message,String avatar);
     /**
      * 获取所有留言信息
      * @return

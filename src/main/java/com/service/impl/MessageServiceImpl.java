@@ -30,7 +30,7 @@ public class MessageServiceImpl implements MessageService {
      * @return
      */
     @Override
-    public int updateLeavingMessage(String name, String mail, String message) {
+    public int updateLeavingMessage(String name, String mail, String message, String avatar) {
         // 线程安全
         LocalDateTime rightNow = LocalDateTime.now();
         String rightNow2 = rightNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -40,13 +40,13 @@ public class MessageServiceImpl implements MessageService {
         leavingMessage.setMail(mail);
         leavingMessage.setName(name);
         leavingMessage.setCt(rightNow2);
+        leavingMessage.setAvatar(avatar);
         if(messageRepository.save(leavingMessage) != null){
             return 1;
         }else{
             return 0;
         }
     }
-
     /**
      * 查询全部留言
      * @return

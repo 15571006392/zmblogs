@@ -28,7 +28,8 @@
             <a href="#" th:href="@{/types/-1}" class="flag item diy-mobile black"><i class="map signs icon"></i>分类</a>
             <a href="#" th:href="@{/tags/-1}" class="flag item diy-mobile black"><i class="tags icon"></i>标签</a>
             <a href="#" th:href="@{/archives}" class="flag item diy-mobile black"><i class="thumbtack icon"></i>归档</a>
-            <a href="#" th:href="@{/leavingmessage}" class="active flag item diy-mobile black"><i class="envelope icon"></i>留言</a>
+            <a href="#" th:href="@{/leavingmessage}" class="active flag item diy-mobile black"><i
+                    class="envelope icon"></i>留言</a>
             <a href="#" th:href="@{/about}" class="flag item diy-mobile black"><i class="info icon"></i>统计</a>
             <div class="right flag item diy-mobile">
                 <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
@@ -38,8 +39,9 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}" >
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i
+                    class="sign-in icon"></i>登录</a>
+            <div class="ui dropdown item" th:if="${session.user != null}">
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
                          class="ui avatar image">
@@ -63,31 +65,28 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <!--中间-->
-<div class="diy-padding-big animated bounceInUp">
+<div class="animated bounceInUp">
     <div class="ui container">
         <div class="ui stackable grid">
             <!-- 左 -->
-            <div class="ten wide column">
+            <div class="nine wide column">
                 <form class="ui form" action="#" th:action="@{/leavingmessage/getmessage}" method="post">
                     <!-- 称呼 -->
                     <div class="required field">
                         <div class="ui left labeled input">
                             <label class="ui label">称呼</label>
-                            <input type="text" name="yourName" placeholder="怎么称呼您"/>
+                            <input type="text" name="yourName" placeholder="怎么称呼您"
+                                   th:value="${session.user}!=null ? ${session.user.nickname}"/>
                         </div>
                     </div>
                     <!-- 邮箱 -->
                     <div class="required field">
                         <div class="ui left labeled input">
                             <label class="ui label">邮箱</label>
-                            <input type="text" name="email" placeholder="您正在使用的邮箱地址"/>
+                            <input type="text" name="email" placeholder="您正在使用的邮箱地址"
+                                   th:value="${session.user}!=null ? ${session.user.email}"/>
                         </div>
                     </div>
                     <!-- 留言内容 -->
@@ -114,7 +113,7 @@
                 </div>
             </div>
             <!-- 右 -->
-            <div class="six wide column">
+            <div class="seven wide column">
                 <!-- 最新留言 -->
                 <div class="ui segments">
                     <!-- 标题栏 -->
@@ -126,19 +125,16 @@
                 </div>
                 <!-- 主体 -->
                 <div class="ui blue segment">
-                    <div class="ui comments">
-                        <div class="ui comment">
-                            <div class="ui fluid vertical segment content diy-padding-small" th:each="newMessage : ${newLeavingMessage}">
-                                <a class="avatar">
-                                    <img src="../static/img/avatar.png" th:src="@{/img/avatar.png}">
-                                </a>
-                                <span class="author" th:text="${newMessage.name}">
-                                    Stevie Feliciano
-                                </span>
-                                <div class="metadata" th:text="${newMessage.ct}">2 天前</div>
-                                <div class="text" th:text="${newMessage.message}">嘿 伙計 </div>
-                            </div>
+                    <div class="ui fluid vertical segment content diy-padding-small large"
+                         th:each="newMessage : ${newLeavingMessage}">
+                        <div class="diy-padding-small">
+                            <a class="ui avatar image">
+                                <img src="../static/img/avatar.png" th:src="${newMessage.avatar}">
+                            </a>
+                            <span th:text="${newMessage.name}">名字</span>
+                            <span style="padding-left: 10px;" th:text="${newMessage.ct}">时间</span>
                         </div>
+                        <div class="diy-padding-small" th:text="${newMessage.message}">内容</div>
                     </div>
                 </div>
             </div>
@@ -155,7 +151,7 @@
 <br>
 <br>
 <br>
-<br>
+
 <!-- 底部 -->
 <footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
     <div class="ui container">
