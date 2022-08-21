@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.bean.User;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
@@ -10,6 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Zm-Mmm
@@ -33,7 +36,7 @@ public class IndexController {
      * @return
      */
     @GetMapping("/")
-    public String index(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+    public String index(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, HttpSession session) {
         // 分页查询所有博客
         model.addAttribute("page", blogService.listBlog(pageable));
         // 查找前6个分类
@@ -42,6 +45,8 @@ public class IndexController {
         model.addAttribute("tags", tagService.listTagTop(10));
         // 查找前8个推荐的博客
         model.addAttribute("recommendBlogs", blogService.listRecommendBlogTop(8));
+        // 返回session
+        User user = (User)session.getAttribute("user");
         return "index";
     }
 

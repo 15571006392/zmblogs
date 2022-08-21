@@ -18,4 +18,3 @@ logging:
     root: warn
     com: info
   file: log/blog-pro.log
-

@@ -29,7 +29,6 @@
             <a href="#" th:href="@{/archives}" class="flag item diy-mobile black"><i class="thumbtack icon"></i>归档</a>
             <a href="#" th:href="@{/leavingmessage}" class="flag item diy-mobile black"><i class="envelope icon"></i>留言</a>
             <a href="#" th:href="@{/about}" class="flag item diy-mobile black"><i class="info icon"></i>统计</a>
-            <a href="#" th:href="@{/admin}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
             <div class="right flag item diy-mobile">
                 <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
                     <div class="ui icon input transparent">
@@ -37,6 +36,20 @@
                         <i onclick="document.forms['search'].submit()" class="search link icon"></i>
                     </div>
                 </form>
+            </div>
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
+            <div class="ui dropdown item" th:if="${session.user != null}" >
+                <div class="text">
+                    <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
+                         class="ui avatar image">
+                    <span th:text="${session.user.nickname}"></span>
+                </div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
+                    <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
+                    <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                </div>
             </div>
             <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
                 <i class="sidebar icon"></i>
@@ -220,6 +233,10 @@
 
     $('#top-button').click(function () {
         $(window).scrollTo(0, 500);
+    });
+    // 注销下拉菜单
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
     });
 </script>
 </body>

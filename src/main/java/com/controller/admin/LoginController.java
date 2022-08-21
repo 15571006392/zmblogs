@@ -28,8 +28,13 @@ public class LoginController {
     private UserInfoService userInfoService;
 
     @GetMapping
-    public String loginPage(){
-        return "admin/login";
+    public String loginPage(HttpSession session){
+        User user = (User) session.getAttribute("user");
+        if(user == null){
+            return "admin/login";
+        }else{
+            return "admin/index";
+        }
     }
 
     /**
@@ -66,6 +71,6 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.removeAttribute("user");
-        return "redirect:/admin";
+        return "redirect:/";
     }
 }
