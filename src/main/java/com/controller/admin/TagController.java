@@ -1,7 +1,6 @@
 package com.controller.admin;
 
 import com.bean.Tag;
-import com.bean.Type;
 import com.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
