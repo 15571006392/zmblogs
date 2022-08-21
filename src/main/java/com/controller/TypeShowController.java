@@ -28,7 +28,7 @@ public class TypeShowController {
     private BlogService blogService;
 
     @GetMapping("/types/{id}")
-    public String types(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @PathVariable Long id) {
+    public String types(@PageableDefault(size = 100, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @PathVariable Long id) {
         // 2333代指所有分类数据
         List<Type> list = typeService.listTypeTop(2333);
         /*
