@@ -83,11 +83,21 @@
                 </div>
                 <!-- 相关链接 -->
                 <div class="ui bottom attached segment center aligned">
-                    <a href="https://gitee.com/zm_mmm" target="_blank" class="ui circular icon button"><i
-                            class="github large icon"></i></a>
-                    <a href="#" class="ui wechatshow circular icon button"><i class="weixin large icon"></i></a>
-                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes"
-                       class="ui circular icon button" target="_blank"><i class="qq large icon"></i></a>
+                    <a href="https://gitee.com/zm_mmm" target="_blank">
+                        <div class="circular ui icon button red">
+                            <i class="icon large github"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="circular ui icon button green wechatshow">
+                            <i class="weixin large icon"></i>
+                        </div>
+                    </a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1456133139&amp;site=qq&amp;menu=yes" target="_blank">
+                        <div class="circular ui icon button blue">
+                            <i class="qq large icon"></i>
+                        </div>
+                    </a>
                 </div>
                 <div class="ui vx flowing popup transition hidden">
                     <img src="../static/img/wechat.png" th:src="@{/img/wechat.png}" alt="" class="ui rounded image"
