@@ -92,7 +92,7 @@
                     <!-- 留言内容 -->
                     <div class="required field">
                     <textarea name="yourMessage" placeholder="请输入您要留言的内容"
-                              maxlength="200"></textarea>
+                              maxlength="400"></textarea>
                     </div>
                     <!-- 提交按钮 -->
                     <div class="ui container">
@@ -129,7 +129,7 @@
                                 <img src="../static/img/avatar.png" th:src="${newMessage.avatar}">
                             </a>
                             <span th:text="${newMessage.name}">名字</span>
-                            <span style="float: right;padding-top: 5px;" th:text="${newMessage.ct}">时间</span>
+                            <span style="float: right;padding-top: 5px;" th:text="${newMessage.ct}" class="text-opacity2">时间</span>
                         </div>
                         <div class="diy-padding-small" th:text="${newMessage.message}">内容</div>
                     </div>
@@ -139,6 +139,8 @@
     </div>
 </div>
 
+<br>
+<br>
 <br>
 <br>
 <br>
