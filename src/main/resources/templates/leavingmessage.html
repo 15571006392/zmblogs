@@ -95,9 +95,8 @@
                               maxlength="200"></textarea>
                     </div>
                     <!-- 提交按钮 -->
-                    <div class="ui right aligned container">
-                        <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-                        <button type="submit" class="ui blue button">提交</button>
+                    <div class="ui container">
+                        <button type="submit" class="ui blue button" style="width: 100%;">提交</button>
                     </div>
 
                     <!-- 错误信息提示 -->
@@ -117,22 +116,20 @@
                 <!-- 最新留言 -->
                 <div class="ui segments">
                     <!-- 标题栏 -->
-                    <div class="ui secondary segment center aligned">
+                    <div class="ui secondary segment center aligned large">
                         <div class="column">
-                            <i class="edit outline icon"></i>最新留言
+                            <h3><i class="envelope icon"></i>最新留言</h3>
                         </div>
                     </div>
-                </div>
-                <!-- 主体 -->
-                <div class="ui blue segment">
-                    <div class="ui fluid vertical segment content diy-padding-small large"
+                    <!-- 主体 -->
+                    <div class="ui fluid segment content diy-padding-small large"
                          th:each="newMessage : ${newLeavingMessage}">
                         <div class="diy-padding-small">
                             <a class="ui avatar image">
                                 <img src="../static/img/avatar.png" th:src="${newMessage.avatar}">
                             </a>
                             <span th:text="${newMessage.name}">名字</span>
-                            <span style="padding-left: 10px;" th:text="${newMessage.ct}">时间</span>
+                            <span style="float: right;padding-top: 5px;" th:text="${newMessage.ct}">时间</span>
                         </div>
                         <div class="diy-padding-small" th:text="${newMessage.message}">内容</div>
                     </div>
