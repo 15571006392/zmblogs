@@ -8,4 +8,21 @@
         select d.*,t.name from t_detail d,t_type t where user_id = #{id} and t.id=d.type_id order by update_time desc
     </select>
 
+    <select id="findAllBlogs" resultType="BlogEntity">
+        SELECT
+            d.id,d.title,d.update_time,d.views,d.first_picture,d.description,u.avatar as BlogUserAvatar,u.nickname as BlogUsername,t.id as typeId,t.name as typeName,u.id as userId
+        FROM
+            t_detail d
+                JOIN
+            t_user u
+            ON
+                d.user_id = u.id
+                JOIN
+            t_type t
+            ON
+                d.type_id = t.id
+        ORDER BY
+            d.update_time DESC
+    </select>
+
 </mapper>

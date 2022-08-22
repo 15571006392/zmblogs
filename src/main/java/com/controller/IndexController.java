@@ -1,5 +1,9 @@
 package com.controller;
 
+import com.bean.BlogEntity;
+import com.bean.UserDetail;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
@@ -10,6 +14,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Zm-Mmm
@@ -28,14 +34,19 @@ public class IndexController {
 
     /**
      * 主页跳转
-     * @param pageable
      * @param model
+     * @param pageNum
      * @return
      */
     @GetMapping("/")
-    public String index(@PageableDefault(size = 15, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+    public String index(Model model,@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum) {
         // 分页查询所有博客
-        model.addAttribute("page", blogService.listBlog(pageable));
+        PageHelper.startPage(pageNum,10);
+        List<BlogEntity> blogEntities = blogService.findAllBlogs();
+        // 得到分页结果对象
+        PageInfo<BlogEntity> pageInfo = new PageInfo<>(blogEntities);
+
+        model.addAttribute("page", pageInfo);
         // 查找前6个分类
         model.addAttribute("types", typeService.listTypeTop(6));
         // 查找前10个标签

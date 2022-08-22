@@ -1,9 +1,6 @@
 package com.service.impl;
 
-import com.bean.BlogQuery;
-import com.bean.Detail;
-import com.bean.Type;
-import com.bean.UserDetail;
+import com.bean.*;
 import com.dao.BlogRepository;
 import com.dao.DetailDao;
 import com.service.BlogService;
@@ -34,6 +31,11 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private DetailDao detailDao;
+
+    @Override
+    public List<BlogEntity> findAllBlogs() {
+        return detailDao.findAllBlogs();
+    }
 
     /**
      * 根据id获取博客

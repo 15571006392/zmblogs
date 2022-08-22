@@ -1,5 +1,6 @@
 package com.service;
 
+import com.bean.BlogEntity;
 import com.bean.BlogQuery;
 import com.bean.Detail;
 import com.bean.UserDetail;
@@ -13,6 +14,9 @@ import java.util.Map;
  * @author Zm-Mmm
  */
 public interface BlogService {
+
+    List<BlogEntity> findAllBlogs();
+
     /**
      * 根据主键获取指定博客
      * @param id
