@@ -11,6 +11,8 @@ import java.util.List;
 @Mapper
 public interface UserInfoDao {
 
+    Integer findUserCount();
+
     UserInfo findUserById(Integer id);
 
     List<Detail> findUserDetail(Integer id);

@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface UserInfoService {
 
+    Integer findUserCount();
+
     UserInfo findUserById(Integer id);
 
     List<Detail> findUserDetail(Integer id);

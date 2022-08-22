@@ -33,7 +33,7 @@ public class IndexController {
      * @return
      */
     @GetMapping("/")
-    public String index(@PageableDefault(size = 10, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+    public String index(@PageableDefault(size = 15, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
         // 分页查询所有博客
         model.addAttribute("page", blogService.listBlog(pageable));
         // 查找前6个分类

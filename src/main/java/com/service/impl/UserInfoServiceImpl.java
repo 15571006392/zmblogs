@@ -18,6 +18,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoDao userInfoDao;
 
     @Override
+    public Integer findUserCount() {
+        return userInfoDao.findUserCount();
+    }
+
+    @Override
     public UserInfo findUserById(Integer id) {
         return userInfoDao.findUserById(id);
     }
