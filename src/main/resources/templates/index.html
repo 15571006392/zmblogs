@@ -40,8 +40,9 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}" >
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
+               class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
+            <div class="ui dropdown item" th:if="${session.user != null}">
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
                          class="ui avatar image">
@@ -146,34 +147,35 @@
                         </div>
                     </div>
                 </div>
-                <!-- 头部 -->
+                <!-- 分页 -->
                 <div class="ui attached segment diy-shadow">
                     <div class="ui middle aligned two column grid">
+                        <!-- 按钮 -->
                         <div class="column">
-                            <!-- 分页 -->
-                            <div class="ui pagination mini menu">
+                            <div class="ui pagination menu diy-shadow">
                                 <div class="item">
-                                    <a th:href="@{/}">首页</a>
+                                    <a class="color-black" th:href="@{/}">首页</a>
                                 </div>
                                 <div class="item">
-                                    <a th:href="@{/(pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+                                    <a class="color-black" th:href="@{/(pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
                                 </div>
                                 <div class="item">
-                                    <a th:href="@{/(pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+                                    <a class="color-black" th:href="@{/(pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
                                 </div>
                                 <div class="item">
-                                    <a th:href="@{/(pageNum=${page.pages})}">尾页</a>
+                                    <a class="color-black" th:href="@{/(pageNum=${page.pages})}">尾页</a>
                                 </div>
                             </div>
                         </div>
+                        <!-- 文本 -->
                         <div class="right aligned column">
-                            <h4>
+                            <h3>
                                 当前第
                                 <span class="ui orange header" th:text="${page.pageNum}"></span>
                                 页，总共
                                 <span class="ui orange header" th:text="${page.pages}"></span>
                                 页
-                            </h4>
+                            </h3>
                         </div>
                     </div>
                 </div>
