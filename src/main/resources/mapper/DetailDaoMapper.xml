@@ -21,6 +21,27 @@
             t_type t
             ON
                 d.type_id = t.id
+        where
+            d.published = 1
+        ORDER BY
+            d.update_time DESC
+    </select>
+
+    <select id="findAllBlogsByType" resultType="BlogEntity">
+        SELECT
+            d.title,d.description,d.id,d.update_time,d.views,d.first_picture,u.id as userId,u.nickname as BlogUsername,t.id as typeId,t.name as typeName,u.avatar as BlogUserAvatar
+        FROM
+            t_detail d
+                JOIN
+            t_user u
+            ON
+                d.user_id = u.id
+                JOIN
+            t_type t
+            ON
+                d.type_id = t.id
+        WHERE
+            d.published = 1 and t.id = #{id}
         ORDER BY
             d.update_time DESC
     </select>

@@ -12,4 +12,6 @@ public interface DetailDao {
     List<UserDetail> selectDetailFromUserIdLimit(Long id);
 
     List<BlogEntity> findAllBlogs();
+
+    List<BlogEntity> findAllBlogsByType(Long id);
 }

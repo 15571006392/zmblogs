@@ -41,7 +41,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model,@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum) {
         // 分页查询所有博客
-        PageHelper.startPage(pageNum,10);
+        PageHelper.startPage(pageNum,15);
         List<BlogEntity> blogEntities = blogService.findAllBlogs();
         // 得到分页结果对象
         PageInfo<BlogEntity> pageInfo = new PageInfo<>(blogEntities);

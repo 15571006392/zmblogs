@@ -85,7 +85,7 @@
         </div>
         <!-- 内容 -->
         <div class="ui top attached blue segment diy-shadow">
-            <div class="ui padded vertical segment diy-padding diy-padding-left-right" th:each="blog : ${page.content}">
+            <div class="ui padded vertical segment diy-padding diy-padding-left-right" th:each="blog : ${page.list}">
                 <div class="ui middle aligned mobile reversed stackable grid">
 
                     <!-- 左 -->
@@ -105,11 +105,11 @@
                                 <div class="ui horizontal link list">
                                     <div class="item">
                                         <img src="https://unsplash.it/100/100?image=1005"
-                                             th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image"
+                                             th:src="@{${blog.BlogUserAvatar}}" alt="" class="ui avatar image"
                                              style="margin-bottom: 3px">
                                         <div class="content" style="margin-bottom: 3px">
-                                            <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}" class="header"
-                                               th:text="${blog.user.nickname}">Zm-Mmm</a>
+                                            <a href="#" th:href="@{/user/{id}(id=${blog.userId})}" class="header"
+                                               th:text="${blog.BlogUsername}">Zm-Mmm</a>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -129,7 +129,7 @@
                             <!-- 右 -->
                             <div class="right aligned five wide column middle aligned">
                                 <span href="#" class="ui blue basic label padding-mini"
-                                   th:text="${blog.type.name}">Java</span>
+                                   th:text="${blog.typeName}">Java</span>
                             </div>
                         </div>
                     </div>
@@ -142,21 +142,41 @@
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
-        <!-- 底部分页 -->
-        <!--<div class="ui bottom attached segment" th:if="${page.totalPages}>1">
+        <!-- 分页 -->
+        <div class="ui attached segment diy-shadow" th:if="${page.total > 10}">
             <div class="ui middle aligned two column grid">
+                <!-- 按钮 -->
                 <div class="column">
-                    <a href="#" class="ui blue basic button" th:href="@{/(page=${page.number}-1)}"
-                       th:unless="${page.first}">上一页</a>
+                    <div class="ui pagination menu diy-shadow">
+                        <div class="item">
+                            <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId})}">首页</a>
+                        </div>
+                        <div class="item">
+                            <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId},pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+                        </div>
+                        <div class="item">
+                            <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId},pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+                        </div>
+                        <div class="item">
+                            <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId},pageNum=${page.pages})}">尾页</a>
+                        </div>
+                    </div>
                 </div>
+                <!-- 文本 -->
                 <div class="right aligned column">
-                    <a href="#" class="ui blue basic button" th:href="@{/(page=${page.number}+1)}"
-                       th:unless="${page.last}">下一页</a>
+                    <h3>
+                        当前第
+                        <span class="ui orange header" th:text="${page.pageNum}"></span>
+                        页，总共
+                        <span class="ui orange header" th:text="${page.pages}"></span>
+                        页
+                    </h3>
                 </div>
             </div>
-        </div>-->
+        </div>
     </div>
 </div>
 

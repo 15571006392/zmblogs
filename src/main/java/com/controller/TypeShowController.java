@@ -1,7 +1,10 @@
 package com.controller;
 
+import com.bean.BlogEntity;
 import com.bean.BlogQuery;
 import com.bean.Type;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
 import com.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -28,7 +32,7 @@ public class TypeShowController {
     private BlogService blogService;
 
     @GetMapping("/types/{id}")
-    public String types(@PageableDefault(size = 100, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @PathVariable Long id) {
+    public String types(@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum, Model model, @PathVariable Long id) {
         // 2333代指所有分类数据
         List<Type> list = typeService.listTypeTop(2333);
         /*
@@ -43,7 +47,11 @@ public class TypeShowController {
         blogQuery.setTypeId(id);
         model.addAttribute("types",list);
         // 分页查询
-        model.addAttribute("page",blogService.listBlog(pageable,blogQuery));
+        PageHelper.startPage(pageNum,10);
+        List<BlogEntity> allBlogsByType = blogService.findAllBlogsByType(id);
+        // 得到分页结果对象
+        PageInfo<BlogEntity> pageInfo = new PageInfo<>(allBlogsByType);
+        model.addAttribute("page",pageInfo);
         // 当前活跃的id
         model.addAttribute("activeTypeId",id);
 

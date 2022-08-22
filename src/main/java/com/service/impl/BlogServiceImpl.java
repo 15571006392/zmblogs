@@ -37,6 +37,11 @@ public class BlogServiceImpl implements BlogService {
         return detailDao.findAllBlogs();
     }
 
+    @Override
+    public List<BlogEntity> findAllBlogsByType(Long id) {
+        return detailDao.findAllBlogsByType(id);
+    }
+
     /**
      * 根据id获取博客
      * @param id

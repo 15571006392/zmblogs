@@ -17,6 +17,8 @@ public interface BlogService {
 
     List<BlogEntity> findAllBlogs();
 
+    List<BlogEntity> findAllBlogsByType(Long id);
+
     /**
      * 根据主键获取指定博客
      * @param id
