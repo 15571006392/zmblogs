@@ -8,12 +8,21 @@ public class UserInfoModify {
     private String nickname;
     private String password;
     private String email;
+    private Integer type;
     /**
      * 头像
      */
     private String avatar;
     private Date createTime;
     private Date updateTime;
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;
@@ -74,13 +83,14 @@ public class UserInfoModify {
     public UserInfoModify() {
     }
 
-    public UserInfoModify(Integer id, String nickname, String password, String email, String avatar, Date createTime, Date updateTime) {
+    public UserInfoModify(Integer id, String nickname, String password, String email, Integer type, String avatar, Date createTime, Date updateTime) {
         this.id = id;
         this.nickname = nickname;
         this.password = password;
         this.email = email;
+        this.type = type;
         this.avatar = avatar;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
-}
+    }
