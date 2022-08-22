@@ -91,7 +91,7 @@
 /* 自定义导航工具 */
 .diy-fixed {
 	bottom: 390px !important;
-	right: 15px !important;
+	right: 0px !important;
 	position: fixed !important;
 	z-index: 1 !important;
 }
@@ -154,8 +154,8 @@
 		padding-right: 0 !important;
 	}
 	.diy-fixed {
-		bottom: 15px !important;
-		right: 15px !important;
+		bottom: 50px !important;
+		right: 14px !important;
 		position: fixed !important;
 		z-index: 1 !important;
 	}

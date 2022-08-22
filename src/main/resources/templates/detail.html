@@ -42,8 +42,9 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}" >
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
+               class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
+            <div class="ui dropdown item" th:if="${session.user != null}">
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
                          class="ui avatar image">
@@ -114,7 +115,8 @@
 
             <!-- 底部标签 -->
             <div class="diy-padding-left-right">
-                <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic blue up pointing label " th:each="tag : ${blog.tags}" th:text="${tag.name}">
+                <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic blue up pointing label "
+                   th:each="tag : ${blog.tags}" th:text="${tag.name}">
                     Java
                 </a>
             </div>
@@ -252,7 +254,7 @@
                         </div>
                     </div>
                     <div class="field diy-mobile-wide">
-                        <button class="ui green button diy-mobile-wide" type="button" id="commentpost-btn"><i
+                        <button class="ui green button diy-mobile-wide diy-shadow" type="button" id="commentpost-btn"><i
                                 class="edit icon"></i>发布
                         </button>
                     </div>
@@ -265,8 +267,8 @@
 </div>
 
 <!-- 右侧滚动工具栏 -->
-<div class="ui vertical icon buttons diy-fixed">
-    <button type="button" class="ui blue rightmenu button diy-mobile">目录</button>
+<div class="ui vertical icon buttons diy-fixed diy-shadow">
+    <button type="button" class="ui rightmenu blue button">目录</button>
     <div id="ly-button" class="ui blue button" th:if="${blog.comment}">评论</div>
     <button class="ui mobileBrowsing icon button diy-mobile"><i class="large mobile alternate icon"></i></button>
     <div id="top-button" class="ui button"><i class="large chevron up icon"></i></div>
@@ -420,6 +422,7 @@
         $("[name='parentComment.id']").val(commentId);
         $(window).scrollTo($('#comment-form'), 500);
     }
+
     // 注销下拉菜单
     $('.ui.dropdown').dropdown({
         on: 'hover'
