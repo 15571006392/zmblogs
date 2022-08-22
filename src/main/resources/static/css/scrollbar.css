@@ -1,0 +1,25 @@
+* {
+    scrollbar-color: #7D7D7F transparent; /* 滑块颜色  滚动条背景颜色 */
+    scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 8px;
+    background-color: #7D7D7F;
+    /* -webkit-border-radius: 6px; */
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 8px;
+    background-color: #7D7D7F;
+    /* -webkit-border-radius: 6px; */
+}
