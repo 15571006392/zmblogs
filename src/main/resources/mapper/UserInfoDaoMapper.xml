@@ -5,7 +5,7 @@
 <mapper namespace="com.dao.UserInfoDao">
 
     <select id="findUserById" resultType="UserInfo">
-        select u.id, u.avatar, u.create_time, u.update_time, u.email, u.nickname, count(d.id) as blog_count
+        select u.id, u.avatar, u.create_time, u.update_time, u.email, u.nickname, u.type, count(d.id) as blog_count
         from t_user u
                  join t_detail d on u.id = d.user_id
         where u.id = #{id}

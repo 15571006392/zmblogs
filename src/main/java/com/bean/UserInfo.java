@@ -15,11 +15,12 @@ public class UserInfo {
     @JsonFormat(pattern = "yyyy年MM月dd日 a")
     private Date updateTime;
     private Integer blogCount;
+    private Integer type;
 
     public UserInfo() {
     }
 
-    public UserInfo(Integer id, String avatar, Date createTime, String email, String nickname, Date updateTime, Integer blogCount) {
+    public UserInfo(Integer id, String avatar, Date createTime, String email, String nickname, Date updateTime, Integer blogCount, Integer type) {
         this.id = id;
         this.avatar = avatar;
         this.createTime = createTime;
@@ -27,6 +28,15 @@ public class UserInfo {
         this.nickname = nickname;
         this.updateTime = updateTime;
         this.blogCount = blogCount;
+        this.type = type;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Integer getBlogCount() {

@@ -137,6 +137,13 @@
                                                         th:text="${userinfo.blogCount}">20</span>
                     <div class="ui mini basic teal left pointing label padding-mini">博客数量</div>
                 </div>
+                <!-- 用户分类 -->
+                <div class="ui attached segment diy-shadow">
+                    <i class="key icon"></i>
+                    <span class="ui text-fine2" th:if="${userinfo.type == 2}">管理员</span>
+                    <span class="ui text-fine2" th:if="${userinfo.type == 1}">普通用户</span>
+                    <div class="ui mini basic violet left pointing label padding-mini">用户分类</div>
+                </div>
                 <!-- 名字 -->
                 <div class="ui attached segment diy-shadow">
                     <i class="user icon"></i><span class="ui text-fine2" th:text="${userinfo.nickname}">zzzzz</span>
