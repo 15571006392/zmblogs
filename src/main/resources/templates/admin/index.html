@@ -14,7 +14,7 @@
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
-            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="home icon"></i>博客编辑</a>
+            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="edit icon"></i>博客编辑</a>
             <a href="#" th:href="@{/admin/types}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="map signs icon"></i>分类管理</a>
             <a href="#" th:href="@{/admin/tags}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="tags icon"></i>标签管理</a>
             <a href="#" th:href="@{/admin/leavingmessage}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i
@@ -45,6 +45,8 @@
     <div class="ui container">
         <div class="ui message success large">
             <h2>欢迎登录： <span th:text="${session.user.nickname}"></span></h2>
+        </div>
+        <div class="ui message info large">
             <h2>您的身份是：
                 <span th:if="${session.user.type == 2}">管理员</span>
                 <span th:if="${session.user.type == 1}">普通用户</span>
