@@ -85,7 +85,7 @@
                     <!-- 用户身份 -->
                     <div class="ui attached segment">
                         <span class="text-fine2">用户身份：</span>
-                        <span th:if="${user.type == 2}">管理员</span>
+                        <span th:if="${user.type == 2}" style="color: darkred">管理员</span>
                         <span th:if="${user.type == 1}">普通用户</span>
                     </div>
                     <!--用户名-->

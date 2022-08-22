@@ -140,9 +140,9 @@
                 <!-- 用户身份 -->
                 <div class="ui attached segment diy-shadow">
                     <i class="key icon"></i>
-                    <span class="ui text-fine2" th:if="${userinfo.type == 2}">管理员</span>
+                    <span class="ui text-fine2" th:if="${userinfo.type == 2}" style="color: darkred">管理员</span>
                     <span class="ui text-fine2" th:if="${userinfo.type == 1}">普通用户</span>
-                    <div class="ui mini basic violet left pointing label padding-mini">用户身份</div>
+                    <div class="ui mini basic red left pointing label padding-mini">用户身份</div>
                 </div>
                 <!-- 名字 -->
                 <div class="ui attached segment diy-shadow">
@@ -165,7 +165,7 @@
                 <div class="ui attached segment diy-shadow">
                     <i class="plug icon"></i><span class="ui text-fine2"
                                                    th:text="${#dates.format(userinfo.updateTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
-                    <div class="ui mini basic red left pointing label padding-mini">上次登录</div>
+                    <div class="ui mini basic violet left pointing label padding-mini">上次登录</div>
                 </div>
 
                 <!-- 热门博客 -->
