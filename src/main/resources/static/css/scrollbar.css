@@ -23,3 +23,5 @@
     background-color: #7D7D7F;
     /* -webkit-border-radius: 6px; */
 }
+
+/* ::-webkit-scrollbar {display:none} /* 隐藏滚动条 */

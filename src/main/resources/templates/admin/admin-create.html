@@ -13,7 +13,7 @@
 </head>
 <body style="background-color: rgba(0,0,0,0.05)">
 <!-- 头部 -->
-<nav class="diy-shadow" style="background-color: white">
+<nav class="diy-shadow diy-menu">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
@@ -44,7 +44,7 @@
 </nav>
 
 <!-- 中间 -->
-<div class="diy-padding-big" style="max-width: 150em !important;">
+<div class="diy-padding-very" style="max-width: 150em !important;">
     <div class="ui container">
         <!-- 表单 -->
         <form id="blog-form" action="#" method="post" th:object="${blog}" th:action="@{/admin/blogs}" class="ui form">
