@@ -15,7 +15,7 @@
         select id, title, views
         from t_detail
         where user_id = #{id}
-        order by views desc limit 8
+        order by views desc limit 6
     </select>
 
     <update id="updateUserUpdateTime">
