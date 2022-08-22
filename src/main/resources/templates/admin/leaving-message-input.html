@@ -61,6 +61,8 @@
                 </div>
                 <div class="ui right aligned container">
                     <button type="button" class="ui button blue" onclick="window.history.go(-1)">返回</button>
+                    <a th:href="@{/admin/leavingmessage/{id}/delete(id=${leavingmessage.id})}" class="ui red button"
+                       onclick="javascript:return del();">删除</a>
                 </div>
             </div>
         </div>
@@ -79,6 +81,14 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+    // 删除确认
+    function del() {
+        if (confirm('确定要删除？')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 </body>
 </html>
