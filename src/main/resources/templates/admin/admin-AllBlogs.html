@@ -15,8 +15,8 @@
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
-            <a href="#" th:href="@{/admin/blogs}" class="active flag item diy-mobile"><i class="edit icon"></i>博客编辑</a>
-            <a href="#" th:href="@{/admin/allBlogs}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="edit outline icon"></i>全站博客编辑</a>
+            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="edit icon"></i>博客编辑</a>
+            <a href="#" th:href="@{/admin/allBlogs}" th:if="${session.user.type == 2}" class="active flag item diy-mobile"><i class="edit outline icon"></i>全站博客编辑</a>
             <a href="#" th:href="@{/admin/types}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="map signs icon"></i>分类管理</a>
             <a href="#" th:href="@{/admin/tags}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="tags icon"></i>标签管理</a>
             <a href="#" th:href="@{/admin/leavingmessage}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="envelope icon"></i>留言管理</a>
@@ -40,56 +40,9 @@
         </div>
     </div>
 </nav>
-
-<!-- 二级导航菜单 -->
-<!--<div class="ui attached pointing menu">
-    <div class="ui container">
-        <div class="right menu">
-            <a href="#" th:href="@{/admin/types/input}" class="active blue item">新增</a>
-            <a href="#" th:href="@{/admin/types}" class="item blue">列表</a>
-        </div>
-    </div>
-</div>-->
-
 <!-- 中间 -->
 <div class="diy-padding-very" style="max-width: 150em !important;">
     <div class="ui container">
-        <!--&lt;!&ndash; 动态提交刷新数据 &ndash;&gt;
-        <div class="ui secondary segment form">
-            <input type="hidden" name="page">
-            <div class="inline fields">
-                &lt;!&ndash; 标题 &ndash;&gt;
-                <div class="field">
-                    <input type="text" name="title" placeholder="标题" />
-                </div>
-                &lt;!&ndash; 分类 &ndash;&gt;
-                <div class="field">
-                    <div class="ui labeled action input">
-                        <div class="ui type selection dropdown">
-                            <input type="hidden" name="typeId" />
-                            <i class="dropdown icon"></i>
-                            <div class="default text">分类</div>
-                            <div class="menu">
-                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}"></div>
-                            </div>
-                        </div>
-                        <button class="ui button blue basic pa" id="clear"><i class="eraser icon"></i>清空</button>
-                    </div>
-                </div>
-                &lt;!&ndash; 推荐 &ndash;&gt;
-                <div class="field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="recommend" id="recommend" />
-                        <label for="recommend">推荐</label>
-                    </div>
-                </div>
-                &lt;!&ndash; 搜索 &ndash;&gt;
-                <div class="field">
-                    <button type="button" id="search-btn" class="ui blue basic button"><i class="search icon"></i>搜索</button>
-                </div>
-            </div>
-        </div>-->
-
         <div id="table-container">
             <!-- 表格 -->
             <table class="ui table compact blue" th:fragment="blogList">
@@ -103,11 +56,12 @@
                     <th>发布时间</th>
                     <th>更新时间</th>
                     <th>浏览量</th>
+                    <th>作者</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="detail,iterStat : ${page}">
+                <tr th:each="detail,iterStat : ${allBlogs}">
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${detail.title}"></td>
                     <td th:text="${detail.name}">Java</td>
@@ -116,24 +70,14 @@
                     <td th:text="${#dates.format(detail.createTime,'yyyy:MM:dd HH:mm:ss')}"></td>
                     <td th:text="${#dates.format(detail.updateTime,'yyyy:MM:dd HH:mm:ss')}"></td>
                     <td th:text="${detail.views}"></td>
+                    <td th:text="${detail.BlogUserName}"></td>
                     <td>
-                        <a href="#" th:href="@{/admin/blogs/{id}/input(id=${detail.id})}" class="ui blue basic button">编辑</a>
-                        <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${detail.id})}" class="ui red basic button"
+                        <a href="#" th:href="@{/admin/allBlogs/{id}/modifyState(id=${detail.id})}" class="ui yellow basic button">下架</a>
+                        <a href="#" th:href="@{/admin/allBlogs/{id}/delete(id=${detail.id})}" class="ui red basic button"
                            onclick="javascript:return del();">删除</a>
                     </td>
                 </tr>
                 </tbody>
-                <tfoot>
-                <tr>
-                    <th colspan="9">
-                        <!--<div class="ui pagination mini menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
-                            <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
-                        </div>-->
-                        <a href="#" th:href="@{/admin/blogs/input}" class="ui right floated blue basic button">新增</a>
-                    </th>
-                </tr>
-                </tfoot>
             </table>
             <!--消息提示-->
             <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
