@@ -16,10 +16,14 @@
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
             <a href="#" th:href="@{/admin/blogs}" class="active flag item diy-mobile"><i class="edit icon"></i>博客编辑</a>
-            <a href="#" th:href="@{/admin/allBlogs}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="edit outline icon"></i>全站博客编辑</a>
-            <a href="#" th:href="@{/admin/types}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="map signs icon"></i>分类管理</a>
-            <a href="#" th:href="@{/admin/tags}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="tags icon"></i>标签管理</a>
-            <a href="#" th:href="@{/admin/leavingmessage}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i class="envelope icon"></i>留言管理</a>
+            <a href="#" th:href="@{/admin/allBlogs}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i
+                    class="edit outline icon"></i>全站博客编辑</a>
+            <a href="#" th:href="@{/admin/types}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i
+                    class="map signs icon"></i>分类管理</a>
+            <a href="#" th:href="@{/admin/tags}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i
+                    class="tags icon"></i>标签管理</a>
+            <a href="#" th:href="@{/admin/leavingmessage}" th:if="${session.user.type == 2}"
+               class="flag item diy-mobile"><i class="envelope icon"></i>留言管理</a>
             <div class="right flag diy-mobile menu">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -29,7 +33,8 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="#" th:href="@{/admin/userinfoModify/{id}(id=${session.user.id})}" class="item">修改个人资料</a>
+                        <a href="#" th:href="@{/admin/userinfoModify/{id}(id=${session.user.id})}"
+                           class="item">修改个人资料</a>
                         <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
                     </div>
                 </div>
@@ -107,7 +112,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="detail,iterStat : ${page}">
+                <tr th:each="detail,iterStat : ${page.list}">
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${detail.title}"></td>
                     <td th:text="${detail.name}">Java</td>
@@ -126,15 +131,33 @@
                 <tfoot>
                 <tr>
                     <th colspan="9">
-                        <!--<div class="ui pagination mini menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
-                            <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
-                        </div>-->
+                        <div class="ui pagination mini menu">
+                            <div class="item"><a th:href="@{/admin/blogs}">首页</a></div>
+                            <div class="item"><a
+                                    th:href="@{/admin/blogs(pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+                            </div>
+                            <div class="item"><a
+                                    th:href="@{/admin/blogs(pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+                            </div>
+                            <div class="item"><a th:href="@{/admin/blogs(pageNum=${page.pages})}">尾页</a></div>
+                        </div>
                         <a href="#" th:href="@{/admin/blogs/input}" class="ui right floated blue basic button">新增</a>
                     </th>
                 </tr>
                 </tfoot>
             </table>
+            <!--分页-->
+            <div class="ui info message">
+                <h3>
+                    当前第
+                    <span th:text="${page.pageNum}"></span>
+                    页，总共
+                    <span th:text="${page.pages}"></span>
+                    页，共
+                    <span th:text="${page.total}"></span>
+                    条记录
+                </h3>
+            </div>
             <!--消息提示-->
             <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
                 <div class="header">提示:</div>
