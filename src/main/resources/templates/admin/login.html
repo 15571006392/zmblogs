@@ -43,9 +43,9 @@
 <div class="diy-container diy-padding-very" style="max-width: 30em !important;">
     <div class="ui container">
         <div class="column">
-            <h2 class="ui blue header center aligned">
+            <h2 class="ui black header center aligned">
                 <div class="content">
-                    后台登录
+                    登录账户
                 </div>
             </h2>
             <form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
@@ -63,11 +63,11 @@
                         </div>
                     </div>
                     <button class="ui fluid large blue submit button">登录</button>
+                    <br>
+                    <button class="ui fluid large disabled button">注册-暂未开放</button>
                 </div>
-
                 <div class="ui error mini message"></div>
                 <div class="ui message mini negative" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>
-
             </form>
         </div>
     </div>
