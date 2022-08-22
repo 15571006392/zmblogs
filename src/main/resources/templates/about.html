@@ -19,9 +19,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: rgba(0,0,0,0.05)">
 <!-- 头部 -->
-<nav class="ui attached diy-shadow">
+<nav class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
@@ -38,7 +38,7 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
             <div class="ui dropdown item" th:if="${session.user != null}" >
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
@@ -66,36 +66,36 @@
         <div class="ui stackable grid">
             <div class="wide column">
                 <!-- 顶部 -->
-                <div class="ui top attached segment center aligned">
+                <div class="ui top attached segment center aligned diy-shadow">
                     <div class="ui header">网站统计信息</div>
                 </div>
                 <!-- 今日访客 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     今日访客：统计中...
                 </div>
                 <!-- 总访问量 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     总访问量：统计中...
                 </div>
                 <!-- 在线用户 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     当前在线用户：统计中...
                 </div>
                 <!-- 注册用户 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     注册用户数量：统计中...
                 </div>
                 <!-- 网站信息 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     网站已苟活了：
                     <span id="run_time"></span>
                 </div>
                 <!--开源地址与联系方式-->
-                <div class="ui attached segment center aligned">
+                <div class="ui attached segment center aligned diy-shadow">
                     <div class="ui header">网站开源地址与联系方式</div>
                 </div>
                 <!-- 相关链接 -->
-                <div class="ui bottom attached segment center aligned">
+                <div class="ui bottom attached segment center aligned diy-shadow">
                     <a href="https://gitee.com/zm_mmm" target="_blank">
                         <div class="circular ui icon button red">
                             <i class="icon large github"></i>
@@ -112,7 +112,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="ui vx flowing popup transition hidden">
+                <div class="ui vx flowing popup transition hidden diy-shadow">
                     <img src="../static/img/wechat.png" th:src="@{/img/wechat.png}" alt="" class="ui rounded image"
                          style="width: 150px;">
                 </div>
@@ -140,7 +140,7 @@
 <br>
 <br>
 <!-- 底部 -->
-<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
+<footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">

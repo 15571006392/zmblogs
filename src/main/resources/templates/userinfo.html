@@ -19,9 +19,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: rgba(0,0,0,0.05)">
 <!-- 头部 -->
-<nav class="ui attached diy-shadow">
+<nav class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
@@ -38,7 +38,7 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
             <div class="ui dropdown item" th:if="${session.user != null}" >
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
@@ -66,15 +66,15 @@
             <!-- 左 -->
             <div class="nine wide column">
                 <!--头像图片-->
-                <div class="ui top attached segment">
+                <div class="ui top attached segment diy-shadow">
                     <img th:src="${userinfo.avatar}" style="width: 500px;height: 500px" alt="" class="ui rounded image">
                 </div>
 
                 <!-- 最近更新博客 -->
-                <div class="ui top attached segment">
+                <div class="ui top attached segment diy-shadow">
                     <h3 class="ui header center aligned">最近更新</h3>
                 </div>
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     <div class="ui padded vertical segment diy-padding diy-padding-left-right"
                          th:each="blog : ${userLateDetail}">
                         <div class="ui middle aligned mobile reversed stackable grid">
@@ -126,35 +126,35 @@
             <div class="five wide column">
                 <h4 class="ui horizontal divider header" style="padding-top: 1em;padding-bottom: 0.5em;">用户资料</h4>
                 <!-- UUID -->
-                <div class="ui top attached segment">
+                <div class="ui top attached segment diy-shadow">
                     <i class="home icon"></i><span class="ui text-fine2" th:text="${userinfo.id}">1</span>
                     <div class="ui mini basic green left pointing label padding-mini">UUID</div>
                 </div>
                 <!-- 博客数量 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     <i class="bar chart icon"></i><span class="ui text-fine2"
                                                         th:text="${userinfo.blogCount}">20</span>
                     <div class="ui mini basic teal left pointing label padding-mini">博客数量</div>
                 </div>
                 <!-- 名字 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     <i class="user icon"></i><span class="ui text-fine2" th:text="${userinfo.nickname}">zzzzz</span>
                     <div class="ui mini basic blue left pointing label padding-mini">用户名</div>
                 </div>
                 <!-- 邮箱 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     <i class="mail outline icon"></i><span class="ui text-fine2"
                                                            th:text="${userinfo.email}">110@110</span>
                     <div class="ui mini basic orange left pointing label padding-mini">邮箱</div>
                 </div>
                 <!-- 注册时间 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     <i class="sign in icon"></i><span class="ui text-fine2"
                                                       th:text="${#dates.format(userinfo.createTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
                     <div class="ui mini basic pink left pointing label padding-mini">注册时间</div>
                 </div>
                 <!-- 上次在线日期 -->
-                <div class="ui attached segment">
+                <div class="ui attached segment diy-shadow">
                     <i class="plug icon"></i><span class="ui text-fine2"
                                                    th:text="${#dates.format(userinfo.updateTime,'yyyy年MM月dd日 HH:mm:ss')}">2000-0-0</span>
                     <div class="ui mini basic red left pointing label padding-mini">上次在线</div>
@@ -162,7 +162,7 @@
 
                 <!-- 热门博客 -->
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">热门博客</h4>
-                <div class="ui fluid vertical menu">
+                <div class="ui fluid vertical menu diy-shadow">
                     <a href="#" th:href="@{/blog/{id}(id=${details.id})}" target="_blank"
                        class="ui text-fine1 color-black item" th:each="details:${userDetail}">
                         <span th:text="${details.title}">Java</span>
@@ -172,7 +172,7 @@
                 </div>
                 <!-- 用户推荐博客 -->
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户推荐博客</h4>
-                <div class="ui fluid vertical menu">
+                <div class="ui fluid vertical menu diy-shadow">
                     <a href="#" th:href="@{/blog/{id}(id=${userRecommendDetails.id})}" target="_blank"
                        class="ui text-fine1 color-black item" th:each="userRecommendDetails:${userRecommendDetail}">
                         <span th:text="${userRecommendDetails.title}">Java</span>
@@ -191,7 +191,7 @@
 <br>
 
 <!-- 底部 -->
-<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
+<footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">

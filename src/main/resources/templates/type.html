@@ -19,9 +19,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: rgba(0,0,0,0.05)">
 <!-- 头部 -->
-<nav class="ui attached diy-shadow">
+<nav class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
@@ -38,7 +38,7 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
             <div class="ui dropdown item" th:if="${session.user != null}" >
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
@@ -62,7 +62,7 @@
 <div class="diy-padding-big diy-container animated bounceInUp">
     <div class="ui container">
         <!-- 标题 -->
-        <div class="ui top attached segment">
+        <div class="ui top attached segment diy-shadow">
             <div class="ui middle aligned two column grid">
                 <div class="column">
                     <h3 class="ui blue header"><i class="map signs icon"></i>博客分类</h3>
@@ -73,7 +73,7 @@
             </div>
         </div>
         <!-- 标签 -->
-        <div class="ui attached segment diy-padding-large">
+        <div class="ui attached segment diy-padding-large diy-shadow">
             <div class="ui labeled button diy-margin-small" th:each="type : ${types}">
                 <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="ui basic button"
                    th:classappend="${type.id==activeTypeId} ? 'blue'" th:text="${type.name}">2333</a>
@@ -83,7 +83,7 @@
             </div>
         </div>
         <!-- 内容 -->
-        <div class="ui top attached blue segment">
+        <div class="ui top attached blue segment diy-shadow">
             <div class="ui padded vertical segment diy-padding diy-padding-left-right" th:each="blog : ${page.content}">
                 <div class="ui middle aligned mobile reversed stackable grid">
 
@@ -187,7 +187,7 @@
 <br>
 
 <!-- 底部 -->
-<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
+<footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">

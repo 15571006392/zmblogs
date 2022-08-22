@@ -19,9 +19,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: rgba(0,0,0,0.05)">
 <!-- 头部 -->
-<nav class="ui attached diy-shadow">
+<nav class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
@@ -39,7 +39,7 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i
                     class="sign-in icon"></i>登录</a>
             <div class="ui dropdown item" th:if="${session.user != null}">
                 <div class="text">
@@ -74,7 +74,7 @@
             <div class="nine wide column">
                 <form class="ui form" action="#" th:action="@{/leavingmessage/getmessage}" method="post">
                     <!-- 称呼 -->
-                    <div class="required field">
+                    <div class="required field diy-shadow">
                         <div class="ui left labeled input">
                             <label class="ui label">称呼</label>
                             <input type="text" name="yourName" placeholder="怎么称呼您"
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <!-- 邮箱 -->
-                    <div class="required field">
+                    <div class="required field diy-shadow">
                         <div class="ui left labeled input">
                             <label class="ui label">邮箱</label>
                             <input type="text" name="email" placeholder="您正在使用的邮箱地址"
@@ -90,17 +90,17 @@
                         </div>
                     </div>
                     <!-- 留言内容 -->
-                    <div class="required field">
+                    <div class="required field diy-shadow">
                     <textarea name="yourMessage" placeholder="请输入您要留言的内容"
                               maxlength="400"></textarea>
                     </div>
                     <!-- 提交按钮 -->
-                    <div class="ui container">
+                    <div class="ui container diy-shadow">
                         <button type="submit" class="ui blue button" style="width: 100%;">提交</button>
                     </div>
 
                     <!-- 错误信息提示 -->
-                    <div class="ui error message"></div>
+                    <div class="ui error message diy-shadow"></div>
                 </form>
                 <!--信息提示-->
                 <div class="ui success message" th:unless="${#strings.isEmpty(success)}">
@@ -114,7 +114,7 @@
             <!-- 右 -->
             <div class="seven wide column">
                 <!-- 最新留言 -->
-                <div class="ui segments">
+                <div class="ui segments diy-shadow">
                     <!-- 标题栏 -->
                     <div class="ui secondary segment center aligned large">
                         <div class="column">
@@ -152,7 +152,7 @@
 <br>
 
 <!-- 底部 -->
-<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
+<footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">

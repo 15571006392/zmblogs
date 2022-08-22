@@ -23,9 +23,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: rgba(0,0,0,0.05)">
 <!-- 头部 -->
-<nav class="ui attached diy-shadow">
+<nav class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>首页</a>
@@ -42,7 +42,7 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile black"><i class="sign-in icon"></i>登录</a>
+            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
             <div class="ui dropdown item" th:if="${session.user != null}" >
                 <div class="text">
                     <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
@@ -64,7 +64,7 @@
 </nav>
 <!-- 中间 -->
 <div class="diy-padding-big diy-container animated bounceInUp">
-    <div class="ui container">
+    <div class="ui container diy-shadow">
         <!-- 头部 -->
         <div class="ui top attached segment center aligned">
 
@@ -158,7 +158,7 @@
                 </div>
                 <div class="five wide column">
                     <img src="../static/img/文末声明表情包.jpg" th:src="${blog.user.avatar}" alt=""
-                         class="ui right floated rounded bordered image" style="width: 110px;">
+                         class="ui right floated rounded bordered image diy-shadow" style="width: 110px;">
                 </div>
             </div>
         </div>
@@ -282,7 +282,7 @@
 <div id="ewm" class="ui qrcodes flowing popup transition hidden" style="width: 128px !important;"></div>
 
 <!-- 底部 -->
-<footer class="ui attached" style="background-color: rgba(0,0,0,0.05)">
+<footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">
