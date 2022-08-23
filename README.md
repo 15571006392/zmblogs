@@ -1,39 +1,51 @@
-# blog
+# v2.6.1 更新日志
 
-#### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+> **v2.6.1 以前的更新日志均在Git仓库提交统计中**
 
-#### 软件架构
-软件架构说明
+# 更新内容
 
+## 功能更新
 
-#### 安装教程
+1. **首页所有博客查询功能改用Mybatis实现，增加SQL条件，草稿状态博客不查询。**
+   
+2. 新增BlogEntity实体类，用来存储Mybatis查询结果对象。
+   
+3. 首页底部添加翻页功能，使用PageHelper插件。每页结果为15条
+   
+4. **博客分类页查询指定分类的博客功能改用Mybatis实现，增加SQL条件，草稿状态博客不查询。**
+   
+5. 底部增加PageHelper插件翻页功能。每页结果为10条
+   
+6. **新增权限管理系统。默认用户为普通用户，最高权限为管理员。**
+    1. 新增权限拦截器
+    
+7. **博客管理后台新增全站博客编辑页，显示除登录用户外所有其他用户的博客。**
+    1. 非管理员用户无法访问
+    2. 全站博客编辑页支持下架(修改博客状态为草稿)、删除博客
+    
+## 页面优化
+    
+1. 修改后台博客编辑按钮的icon图表
+   
+2. 修改欢迎页提示文本，显示登录的用户名和权限等级
+   
+3. 增加个人资料页与个人资料修改页新增权限等级展示
+    1. 普通用户为黑色，管理员用户为红色
+    
+4. 增加显示网站统计信息页注册用户数量
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+5. 优化部分前端代码
 
-#### 使用说明
+# 项目架构
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- Spring Boot
+    - Hibernate
+        - JPA
+    - Mybatis
+        - alibaba druid
+    - Thymeleaf
+    
 
-#### 参与贡献
+# 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1.  Zm_Mmm
