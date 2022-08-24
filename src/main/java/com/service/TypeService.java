@@ -1,6 +1,7 @@
 package com.service;
 
 import com.bean.Type;
+import com.bean.TypeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,6 +11,10 @@ import java.util.List;
  * @author Zm-Mmm
  */
 public interface TypeService {
+
+     // Mybatis
+     List<TypeEntity> findType();
+
     /**
      * 新增分类
      * @param type

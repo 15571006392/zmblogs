@@ -13,5 +13,5 @@ public interface DetailDao {
 
     List<BlogEntity> findAllBlogs();
 
-    List<BlogEntity> findAllBlogsByType(Long id);
+    List<BlogEntity> findAllBlogsByType(int id);
 }

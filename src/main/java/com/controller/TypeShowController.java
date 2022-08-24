@@ -3,6 +3,8 @@ package com.controller;
 import com.bean.BlogEntity;
 import com.bean.BlogQuery;
 import com.bean.Type;
+import com.bean.TypeEntity;
+import com.dao.TypeDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
@@ -26,15 +28,16 @@ import java.util.List;
 public class TypeShowController {
 
     @Autowired
-    private TypeService typeService;
+    private TypeDao typeDao;
 
     @Autowired
     private BlogService blogService;
 
     @GetMapping("/types/{id}")
-    public String types(@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum, Model model, @PathVariable Long id) {
-        // 2333代指所有分类数据
-        List<Type> list = typeService.listTypeTop(2333);
+    public String types(@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum, Model model, @PathVariable int id) {
+        // 查询所有分类，按照分类ID，分类name进行分组
+        List<TypeEntity> list = typeDao.findType();
+
         /*
         如果是通过导航栏跳转
         id默认为-1
@@ -43,9 +46,8 @@ public class TypeShowController {
         if(id == -1){
             id = list.get(0).getId();
         }
-        BlogQuery blogQuery = new BlogQuery();
-        blogQuery.setTypeId(id);
         model.addAttribute("types",list);
+
         // 分页查询
         PageHelper.startPage(pageNum,10);
         List<BlogEntity> allBlogsByType = blogService.findAllBlogsByType(id);
@@ -54,7 +56,6 @@ public class TypeShowController {
         model.addAttribute("page",pageInfo);
         // 当前活跃的id
         model.addAttribute("activeTypeId",id);
-
         return "type";
     }
 }

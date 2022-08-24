@@ -2,6 +2,8 @@ package com.service.impl;
 
 import com.NotFoundException;
 import com.bean.Type;
+import com.bean.TypeEntity;
+import com.dao.TypeDao;
 import com.dao.TypeRepository;
 import com.service.TypeService;
 import org.springframework.beans.BeanUtils;
@@ -24,6 +26,14 @@ public class TypeServiceImpl implements TypeService {
 
     @Autowired
     private TypeRepository typeRepository;
+
+    @Autowired
+    private TypeDao typeDao;
+
+    @Override
+    public List<TypeEntity> findType() {
+        return typeDao.findType();
+    }
 
     /**
      * 保存分类

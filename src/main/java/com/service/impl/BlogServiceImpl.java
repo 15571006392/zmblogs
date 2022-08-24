@@ -38,7 +38,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogEntity> findAllBlogsByType(Long id) {
+    public List<BlogEntity> findAllBlogsByType(int id) {
         return detailDao.findAllBlogsByType(id);
     }
 
