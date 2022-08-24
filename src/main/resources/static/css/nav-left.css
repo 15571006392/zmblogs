@@ -13,6 +13,13 @@
 	background-size: cover;
 }
 
+.body-background{
+	height: 100%;
+	width: 100%;
+	background: url(../img/indexBackGround.png) fixed repeat-x;
+	background-size: cover;
+}
+
 /* 常用边距预设 */
 .diy-padding-very {
 	padding-top: 5em !important;
@@ -91,6 +98,7 @@
 /* 菜单栏固定与颜色 */
 .diy-menu {
 	background-color: white !important;
+	/*background-color: rgba(255,255,255,0.9);*/
 	position: fixed !important;
 	top: 0 !important;
 	z-index: 1 !important;
