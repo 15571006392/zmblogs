@@ -131,7 +131,7 @@
                 <tfoot>
                 <tr>
                     <th colspan="9">
-                        <div class="ui pagination menu diy-shadow">
+                        <div class="ui pagination menu diy-shadow" th:if="${page.total > 10}">
                             <div class="item" th:if="${page.pageNum != 1}">
                                 <a class="color-black" th:href="@{/admin/blogs}">首页</a>
                             </div>
@@ -163,7 +163,7 @@
                 </tfoot>
             </table>
             <!--分页-->
-            <div class="ui info message">
+            <div class="ui info message" th:if="${page.total > 10}">
                 <h3>
                     当前第
                     <span th:text="${page.pageNum}"></span>
