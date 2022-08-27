@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.bean.BlogEntity;
-import com.bean.UserDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
@@ -41,7 +40,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model,@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum) {
         // 分页查询所有博客
-        PageHelper.startPage(pageNum,15);
+        PageHelper.startPage(pageNum,10);
         List<BlogEntity> blogEntities = blogService.findAllBlogs();
         // 得到分页结果对象
         PageInfo<BlogEntity> pageInfo = new PageInfo<>(blogEntities);
