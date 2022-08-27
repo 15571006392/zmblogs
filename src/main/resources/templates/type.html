@@ -150,17 +150,29 @@
                 <!-- 按钮 -->
                 <div class="column">
                     <div class="ui pagination menu diy-shadow">
-                        <div class="item">
+                        <div class="item" th:if="${page.pageNum != 1}">
                             <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId})}">首页</a>
                         </div>
-                        <div class="item">
+                        <div class="disabled item" th:if="${page.pageNum == 1}">
+                            首页
+                        </div>
+                        <div class="item" th:if="${page.pageNum != 1}">
                             <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId},pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
                         </div>
-                        <div class="item">
+                        <div class="disabled item" th:if="${page.pageNum == 1}">
+                            上一页
+                        </div>
+                        <div class="item" th:if="${page.pageNum != page.pages}">
                             <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId},pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
                         </div>
-                        <div class="item">
+                        <div class="disabled item" th:if="${page.pageNum == page.pages}">
+                            下一页
+                        </div>
+                        <div class="item" th:if="${page.pageNum != page.pages}">
                             <a class="color-black" th:href="@{/types/{id}(id=${activeTypeId},pageNum=${page.pages})}">尾页</a>
+                        </div>
+                        <div class="disabled item" th:if="${page.pageNum == page.pages}">
+                            尾页
                         </div>
                     </div>
                 </div>
