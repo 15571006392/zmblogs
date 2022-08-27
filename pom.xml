@@ -22,6 +22,12 @@
 
     <dependencies>
 
+        <!--Redis依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!-- 分页依赖 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
