@@ -34,22 +34,24 @@ public class AboutController {
     public String about(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         int count = userInfoService.findUserCount();
+        // 每日访客数量
         int visitorCount = stringRedisTemplate.opsForHash().keys("visitorIP").size();
-        if(stringRedisTemplate.opsForValue().get("countViews") == null){
-            stringRedisTemplate.opsForValue().set("countViews",String.valueOf(0));
+        // 总访客数量
+        if (stringRedisTemplate.opsForValue().get("countViews") == null) {
+            stringRedisTemplate.opsForValue().set("countViews", String.valueOf(0));
         }
         int countViews = Integer.parseInt(Objects.requireNonNull(stringRedisTemplate.opsForValue().get("countViews")));
-        // 如果有人登录了
-        if(user != null){
+
+        // 当前在线用户
+        if (user != null) {
             // 如果该用户已过期则放入redis
             stringRedisTemplate.opsForHash().putIfAbsent("currentUser", user.getNickname(), user.toString());
             // 设置超时时间 30分钟
-            stringRedisTemplate.expire("currentUser",30*60, TimeUnit.SECONDS);
-            int currentUser = stringRedisTemplate.opsForHash().keys("currentUser").size();
-            model.addAttribute("currentUserCount",currentUser);
-        }else{
-            model.addAttribute("currentUserCount",0);
+            stringRedisTemplate.expire("currentUser", 30 * 60, TimeUnit.SECONDS);
         }
+        int currentUser = stringRedisTemplate.opsForHash().keys("currentUser").size();
+
+        model.addAttribute("currentUserCount", currentUser);
         model.addAttribute("count", count);
         model.addAttribute("visitorCount", visitorCount);
         model.addAttribute("countViews", countViews);
