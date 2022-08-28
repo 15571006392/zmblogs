@@ -122,24 +122,10 @@
                 </a>
             </div>
 
-            <!-- 打赏 -->
+            <!-- Mark -->
             <div th:if="${blog.appreciation}">
                 <div class="ui center aligned basic segment">
-                    <button class="ui orange basic circular button" id="clickButton">赞赏</button>
-                </div>
-                <div class="ui clickShow flowing popup transition hidden">
-                    <div class="ui images" style="font-size: inherit !important;">
-                        <div class="image">
-                            <img src="../static/img/支付宝收款码.png" th:src="@{/img/支付宝收款码.png}" alt=""
-                                 class="ui rounded bordered image" style="width: 150px;">
-                            <div>支付宝</div>
-                        </div>
-                        <div class="image">
-                            <img src="../static/img/微信收款码.png" th:src="@{/img/微信收款码.png}" alt=""
-                                 class="ui rounded bordered image" style="width: 150px;">
-                            <div>微信</div>
-                        </div>
-                    </div>
+                    <button class="ui pink basic circular button mouseClick" id="clickButton">Mark</button>
                 </div>
             </div>
         </div>
@@ -307,18 +293,42 @@
 <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
 <script src="../static/js/qrcode.min.js" th:src="@{/js/qrcode.min.js}"></script>
 <script th:inline="javascript">
+
+    /* 鼠标特效 */
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $('.mouseClick').click(function(e) {
+            var a = new Array("666","233","牛逼","我的宝贝儿","6666666666","\\(^o^)/~","XD","这么牛哇","动物朋友","好好好","❥(^_-)","笑拉了家人们");
+            var $i = $("<span></span>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({
+                "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,
+                    "opacity": 0
+                },
+                1500,
+                function() {
+                    $i.remove();
+                });
+        });
+    });
+
+
     // pre追加代码行号显示与自动换行
     $('pre').addClass("line-numbers").css("white-space", "pre-wrap");
     // 手机端菜单折叠
     $('.index').click(function () {
         $('.flag').toggleClass('diy-mobile');
-    });
-
-    // 打赏按钮
-    $('#clickButton').popup({
-        popup: $('.clickShow.popup'),
-        on: 'click',
-        position: 'bottom center'
     });
 
     // 初始化tocbot目录
