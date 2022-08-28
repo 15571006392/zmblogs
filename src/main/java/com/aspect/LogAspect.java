@@ -6,14 +6,20 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * 日志切面
+ *
  * @author Zm-Mmm
  */
 
@@ -22,13 +28,17 @@ import javax.servlet.http.HttpServletRequest;
 @Configuration
 public class LogAspect {
 
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * 拦截所有控制器下的所有方法
      */
     @Pointcut("execution(* com.controller.*.*(..))&&!execution(* com.controller.CommentController.*(..))")
-    public void log(){}
+    public void log() {
+    }
 
     @Before("log()")
     public void Before(JoinPoint joinPoint) {
@@ -44,12 +54,18 @@ public class LogAspect {
         // 请求的参数
         Object[] args = joinPoint.getArgs();
         // 存入对象
-        LogBean logBean = new LogBean(url,ip,method,args);
-        logger.info("[新请求]：" + logBean);
+        LogBean logBean = new LogBean(url, ip, method, args);
+        logger.info("[new request]:" + logBean);
+
+        String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        // 如果已经存在当前ip，不存储
+        if (stringRedisTemplate.opsForHash().putIfAbsent("visitorIP", ip, rightNow)) {
+            logger.info("[new visitor]");
+        }
     }
 
-    @AfterReturning(returning = "o",pointcut = "log()")
-    public void Return(Object o){
+    @AfterReturning(returning = "o", pointcut = "log()")
+    public void Return(Object o) {
         logger.info("return values:" + o);
     }
 }

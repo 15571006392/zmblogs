@@ -148,27 +148,39 @@
                     </div>
                 </div>
                 <!-- 分页 -->
-                <div class="ui attached segment diy-shadow">
-                    <div class="ui middle aligned two column grid">
+                <div class="ui attached segment diy-shadow" th:if="${page.total > 10}">
+                    <div class="ui middle aligned stackable grid">
                         <!-- 按钮 -->
-                        <div class="column">
+                        <div class="ten wide column">
                             <div class="ui pagination menu diy-shadow">
-                                <div class="item">
+                                <div class="item" th:if="${page.pageNum != 1}">
                                     <a class="color-black" th:href="@{/}">首页</a>
                                 </div>
-                                <div class="item">
+                                <div class="disabled item" th:if="${page.pageNum == 1}">
+                                    首页
+                                </div>
+                                <div class="item" th:if="${page.pageNum != 1}">
                                     <a class="color-black" th:href="@{/(pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
                                 </div>
-                                <div class="item">
+                                <div class="disabled item" th:if="${page.pageNum == 1}">
+                                    上一页
+                                </div>
+                                <div class="item" th:if="${page.pageNum != page.pages}">
                                     <a class="color-black" th:href="@{/(pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
                                 </div>
-                                <div class="item">
+                                <div class="disabled item" th:if="${page.pageNum == page.pages}">
+                                    下一页
+                                </div>
+                                <div class="item" th:if="${page.pageNum != page.pages}">
                                     <a class="color-black" th:href="@{/(pageNum=${page.pages})}">尾页</a>
+                                </div>
+                                <div class="disabled item" th:if="${page.pageNum == page.pages}">
+                                   尾页
                                 </div>
                             </div>
                         </div>
                         <!-- 文本 -->
-                        <div class="right aligned column">
+                        <div class="center aligned six wide column">
                             <h3>
                                 当前第
                                 <span class="ui orange header" th:text="${page.pageNum}"></span>
@@ -312,7 +324,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.2</span>
+                    <span>Version2.6.3</span>
                 </h4>
             </div>
         </div>

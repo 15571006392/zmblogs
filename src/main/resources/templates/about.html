@@ -71,15 +71,15 @@
                 </div>
                 <!-- 今日访客 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    今日访客：<span>统计中...</span>
+                    今日访客：<span th:text="${visitorCount}"></span>
                 </div>
                 <!-- 总访问量 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    总访问量：<span>统计中...</span>
+                    总访问量：<span th:text="${countViews}"></span>
                 </div>
                 <!-- 在线用户 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    当前在线用户：<span>统计中...</span>
+                    当前在线用户：<span th:text="${currentUserCount}"></span>
                 </div>
                 <!-- 注册用户 -->
                 <div class="ui attached segment diy-shadow text-fine2">
@@ -87,8 +87,10 @@
                 </div>
                 <!-- 网站信息 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    网站已苟活了：
-                    <span id="run_time"></span>
+                    网站首次上线：<span>2020年7月8日</span>
+                </div>
+                <div class="ui attached segment diy-shadow text-fine2">
+                    网站已苟活了：<span id="run_time"></span>
                 </div>
                 <!--开源地址与联系方式-->
                 <div class="ui attached segment center aligned diy-shadow">
@@ -146,7 +148,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.2</span>
+                    <span>Version2.6.3</span>
                 </h4>
             </div>
         </div>
