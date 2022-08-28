@@ -149,9 +149,9 @@
                 </div>
                 <!-- 分页 -->
                 <div class="ui attached segment diy-shadow" th:if="${page.total > 10}">
-                    <div class="ui middle aligned two column grid">
+                    <div class="ui middle aligned stackable grid">
                         <!-- 按钮 -->
-                        <div class="column">
+                        <div class="ten wide column">
                             <div class="ui pagination menu diy-shadow">
                                 <div class="item" th:if="${page.pageNum != 1}">
                                     <a class="color-black" th:href="@{/}">首页</a>
@@ -180,7 +180,7 @@
                             </div>
                         </div>
                         <!-- 文本 -->
-                        <div class="right aligned column">
+                        <div class="center aligned six wide column">
                             <h3>
                                 当前第
                                 <span class="ui orange header" th:text="${page.pageNum}"></span>
