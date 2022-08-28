@@ -12,6 +12,12 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: true
+  # redis和redis session
+  redis:
+    port: 6379
+    database: 0
+    host: 121.37.208.86
+    password: redis2022
 
 logging:
   level:

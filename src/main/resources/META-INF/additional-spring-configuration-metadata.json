@@ -4,5 +4,10 @@
       "name": "profiles",
       "type": "java.lang.String",
       "description": "Description for profiles."
-  }
-] }
+    },
+    {
+      "name": "logging.redis.port",
+      "type": "java.lang.String",
+      "description": "Description for logging.redis.port."
+    }
+  ] }

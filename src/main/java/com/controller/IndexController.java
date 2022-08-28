@@ -38,7 +38,7 @@ public class IndexController {
      * @return
      */
     @GetMapping("/")
-    public String index(Model model,@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum) {
+    public String index(Model model, @RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum) {
         // 分页查询所有博客
         PageHelper.startPage(pageNum,10);
         List<BlogEntity> blogEntities = blogService.findAllBlogs();
