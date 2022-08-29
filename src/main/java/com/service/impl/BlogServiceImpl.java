@@ -50,8 +50,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Detail getBlog(Long id) {
         Optional<Detail> byId = blogRepository.findById(id);
-        Detail detail = byId.get();
-        return detail;
+        return  byId.get();
     }
 
     @Override
@@ -77,8 +76,8 @@ public class BlogServiceImpl implements BlogService {
         String content = b.getContent();
         b.setContent( Markdown.markdownToHtmlExtensions(content));
 
-        /**
-         * 访问次数磊加
+        /*
+          访问次数磊加
          */
         blogRepository.updateViews(id);
         return b;
@@ -92,25 +91,22 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public Page<Detail> listBlog(Pageable pageable, BlogQuery detail) {
-        return blogRepository.findAll(new Specification<Detail>() {
-            @Override
-            public Predicate toPredicate(Root<Detail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                // Root<Detail> : 查什么
-                // CriteriaQuery : 容器
-                // CriteriaBuilder : 表达式
-                List<Predicate> predicates = new ArrayList<>();
-                if(!"".equals(detail.getTitle()) && detail.getTitle() != null){
-                    predicates.add(criteriaBuilder.like(root.<String>get("title"),"%"+detail.getTitle()+"%"));
-                }
-                if(detail.getTypeId() != null){
-                    predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"),detail.getTypeId()));
-                }
-                if(detail.isRecommend()){
-                    predicates.add(criteriaBuilder.equal(root.get("recommend"),detail.isRecommend()));
-                }
-                criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
-                return null;
+        return blogRepository.findAll((Specification<Detail>) (root, criteriaQuery, criteriaBuilder) -> {
+            // Root<Detail> : 查什么
+            // CriteriaQuery : 容器
+            // CriteriaBuilder : 表达式
+            List<Predicate> predicates = new ArrayList<>();
+            if(!"".equals(detail.getTitle()) && detail.getTitle() != null){
+                predicates.add(criteriaBuilder.like(root.get("title"),"%"+detail.getTitle()+"%"));
             }
+            if(detail.getTypeId() != null){
+                predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"),detail.getTypeId()));
+            }
+            if(detail.isRecommend()){
+                predicates.add(criteriaBuilder.equal(root.get("recommend"),detail.isRecommend()));
+            }
+            criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+            return null;
         },pageable);
     }
 

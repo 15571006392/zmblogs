@@ -55,8 +55,7 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     public Type getType(Long id) {
         Optional<Type> optional =  typeRepository.findById(id);
-        Type type = optional.get();
-        return type;
+        return optional.get();
     }
 
     /**

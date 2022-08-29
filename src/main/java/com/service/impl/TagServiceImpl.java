@@ -46,8 +46,7 @@ public class TagServiceImpl implements TagService {
     @Transactional
     public Tag getTag(Long id) {
         Optional<Tag> byId = tagRepository.findById(id);
-        Tag tag = byId.get();
-        return tag;
+        return byId.get();
     }
 
     /**

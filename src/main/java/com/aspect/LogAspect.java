@@ -15,7 +15,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 /**
  * 日志切面
@@ -28,8 +27,12 @@ import java.util.Date;
 @Configuration
 public class LogAspect {
 
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    public LogAspect(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

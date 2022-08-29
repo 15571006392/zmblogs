@@ -3,7 +3,6 @@ package com.service.impl;
 import com.bean.Comment;
 import com.dao.CommentRepository;
 import com.service.CommentService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -51,8 +50,8 @@ public class CommentServiceImpl implements CommentService {
      * @return
      */
     private List<Comment> eachComment(List<Comment> comments) {
-        /**
-         * 评论功能第一级createTime和adminComment遗留问题
+        /*
+          评论功能第一级createTime和adminComment遗留问题
          */
         /*List<Comment> commentsView = new ArrayList<>();
         for (Comment comment : comments) {

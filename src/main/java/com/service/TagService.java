@@ -1,7 +1,6 @@
 package com.service;
 
 import com.bean.Tag;
-import com.bean.Type;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -74,8 +74,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public LeavingMessage getLeavingMessage(Long id) {
         Optional<LeavingMessage> byId = messageRepository.findById(id);
-        LeavingMessage message = byId.get();
-        return message;
+        return byId.get();
     }
 
     /**
