@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://121.37.208.86:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
     username: root
     password: db2022
@@ -23,4 +23,5 @@ logging:
   level:
     root: warn
     com: info
-  file: log/blog-pro.log
+  file:
+    name: log/blog-pro.log

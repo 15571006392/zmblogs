@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 @Controller
 @RequestMapping("/admin")
 public class UserInfoModifyController {
@@ -25,7 +27,7 @@ public class UserInfoModifyController {
     public String modifyAvatar(@PathVariable(name = "id") int id, @RequestParam("avatar") String avatar) {
         try {
             userInfoModifyService.modifyAvatar(id, avatar);
-            Thread.sleep(1000);//毫秒数
+            TimeUnit.SECONDS.sleep(1); // 1
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
