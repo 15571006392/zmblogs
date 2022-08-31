@@ -10,7 +10,7 @@
     <meta name="keywords" th:content="${blog.type.name}"/>
     <meta name="description" th:content="${blog.description}"/>
     <title th:text="${blog.title}">博客详情</title>
-    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}"/>
     <link rel="stylesheet" href="../static/css/animate.min.css" th:href="@{/css/animate.min.css}"/>
