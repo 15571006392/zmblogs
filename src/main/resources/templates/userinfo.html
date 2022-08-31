@@ -126,8 +126,11 @@
             <!-- 右 -->
             <div class="five wide column">
                 <!-- 签到 -->
-                <a th:if="${!signByDate.today}" class="ui blue circular button diy-shadow" th:href="@{/sign}" style="width: 100%;margin-top: 1em;">每日签到</a>
-                <a th:if="${signByDate.today}" class="ui blue circular disabled button diy-shadow" th:href="@{/sign}" style="width: 100%;margin-top: 1em;">今天已经签到了</a>
+                <h4 class="ui horizontal divider header" th:if="${session.user == null}" style="padding-bottom: 0.5em;margin-top: 1em;">签到记录</h4>
+                <a th:if="${!signByDate.today and session.user != null and session.user.id == userinfo.id}" class="ui blue circular button diy-shadow" th:href="@{/sign/{id}(id=${userinfo.id})}" style="width: 100%;margin-top: 1em;">每日签到</a>
+                <a th:if="${signByDate.today and session.user != null and session.user.id == userinfo.id}" class="ui blue circular disabled button diy-shadow" th:href="@{/sign}" style="width: 100%;margin-top: 1em;">今天已经签到了</a>
+                <a th:if="${!signByDate.today and session.user != null and session.user.id != userinfo.id}" class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日未签到</a>
+                <a th:if="${signByDate.today and session.user != null and session.user.id != userinfo.id}" class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日已签到</a>
                 <div class="ui top attached segment diy-shadow">
                     <i class="bookmark icon"></i><span class="ui text-fine2" th:text="${signByDate.count}">1</span>
                     <div class="ui mini basic blue left pointing label padding-mini">签到总次数</div>
@@ -137,11 +140,6 @@
                     <div class="ui mini basic yellow left pointing label padding-mini">连续签到天数</div>
                 </div>
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户资料</h4>
-                <!-- UUID -->
-                <div class="ui top attached segment diy-shadow">
-                    <i class="home icon"></i><span class="ui text-fine2" th:text="${userinfo.id}">1</span>
-                    <div class="ui mini basic green left pointing label padding-mini">UUID</div>
-                </div>
                 <!-- 博客数量 -->
                 <div class="ui attached segment diy-shadow">
                     <i class="bar chart icon"></i><span class="ui text-fine2"

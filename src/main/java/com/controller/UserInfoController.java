@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.bean.Detail;
-import com.bean.User;
 import com.bean.UserDetail;
 import com.bean.UserInfo;
 import com.service.SignService;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -27,9 +25,6 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @Autowired
-    private HttpSession session;
-
     /**
      * 根据ID查询用户信息
      *
@@ -38,7 +33,6 @@ public class UserInfoController {
     @GetMapping("/user/{id}")
     public String info(@PathVariable(name = "id") int id, Model model) {
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        User user = (User) session.getAttribute("user");
         // 查询用户信息
         UserInfo userInfo = userInfoService.findUserById(id);
         // 查询热门博客
@@ -52,20 +46,20 @@ public class UserInfoController {
         model.addAttribute("userLateDetail", userLateDetail);
         model.addAttribute("userRecommendDetail", userRecommendDetail);
         // 签到信息查询
-        Map<String, Object> signByDate = signService.getSignByDate(user.getId(), rightNow);
+        Map<String, Object> signByDate = signService.getSignByDate(id, rightNow);
         model.addAttribute("signByDate", signByDate);
         return "userinfo";
     }
 
     /**
      * 签到
+     *
      * @return
      */
-    @GetMapping("/sign")
-    public String sign() {
+    @GetMapping("/sign/{id}")
+    public String sign(@PathVariable("id") int id) {
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        User user = (User) session.getAttribute("user");
-        signService.doSign(user.getId(), rightNow);
-        return "redirect:/user/" + user.getId();
+        signService.doSign(id, rightNow);
+        return "redirect:/user/" + id;
     }
 }

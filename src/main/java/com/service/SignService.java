@@ -19,7 +19,7 @@ public class SignService {
     /**
      * 签到，可以补签
      */
-    public Map<String, Object> doSign(Long userId, String dateStr) {
+    public Map<String, Object> doSign(int userId, String dateStr) {
         Map<String, Object> result = new HashMap<>();
         // 获得日期
         Date date = getDate(dateStr);
@@ -55,7 +55,7 @@ public class SignService {
      * @param dateStr
      * @return
      */
-    public Map<String, Object> getSignByDate(Long userId, String dateStr) {
+    public Map<String, Object> getSignByDate(int userId, String dateStr) {
         Map<String, Object> result = new HashMap<>();
         // 获取日期
         Date date = getDate(dateStr);
@@ -130,7 +130,7 @@ public class SignService {
      * @param today
      * @return
      */
-    private Long getSumSignCount(Long userId, Date today) {
+    private Long getSumSignCount(int userId, Date today) {
         String signKey = buildSignKey(userId, today);
         return (Long) redisTemplate.execute((RedisCallback<Long>) con -> con.bitCount(signKey.getBytes()));
     }
@@ -142,7 +142,7 @@ public class SignService {
      * @param date
      * @return
      */
-    private int getContinuousSignCount(Long userId, Date date) {
+    private int getContinuousSignCount(int userId, Date date) {
         // 获取日期对应的天数，默认31
         int dayOfMonth = DateUtil.dayOfMonth(date);
         // key
@@ -183,7 +183,7 @@ public class SignService {
      * @param date
      * @return
      */
-    private String buildSignKey(Long userId, Date date) {
+    private String buildSignKey(int userId, Date date) {
         return String.format("user:sign:%d:%s", userId,DateUtil.format(date, "yyyyMM"));
     }
 
