@@ -1,9 +1,12 @@
 package com.controller;
 
+import com.NotFoundException;
+import com.bean.Detail;
 import com.bean.Tag;
 import com.service.BlogService;
 import com.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -40,10 +43,14 @@ public class TagShowController {
         }
         model.addAttribute("tags",list);
         // 分页查询
-        model.addAttribute("page",blogService.listBlog(id,pageable));
+        Page<Detail> details = blogService.listBlog(id, pageable);
+        // 没查到数据
+        if(details.getTotalPages() == 0){
+            throw new NotFoundException("标签不存在");
+        }
+        model.addAttribute("page",details);
         // 当前活跃的id
         model.addAttribute("activeTagId",id);
-
         return "tags";
     }
 }

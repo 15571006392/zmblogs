@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.NotFoundException;
 import com.bean.Detail;
 import com.bean.UserDetail;
 import com.bean.UserInfo;
@@ -35,6 +36,9 @@ public class UserInfoController {
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         // 查询用户信息
         UserInfo userInfo = userInfoService.findUserById(id);
+        if(userInfo.getId() == null){
+            throw new NotFoundException("用户不存在");
+        }
         // 查询热门博客
         List<Detail> userDetail = userInfoService.findUserDetail(id);
         // 查询最近更新的博客
