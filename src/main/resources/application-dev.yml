@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
-    username: root
-    password: ZMMMMMMM191010
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/${blogServer.databaseName}?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
+    username: ${blogServer.username}
+    password: ${blogServer.password}
   jpa:
     show-sql: true
     hibernate:
@@ -24,4 +24,11 @@ logging:
   level:
     root: info
     com: debug
-  file: log/blog-dev.log
+  file:
+    name: log/blog-dev.log
+
+# jasypt加密
+blogServer:
+  databaseName: ENC(Lmp4gbxUltJQjVw7rCAWAGk3odvEgssF)
+  username: ENC(8F9lACcnQAbBeaY33mfWK1Yu8d0Dzs6Y)
+  password: ENC(2YBlechQBISr3v8Kolls3PhIghIYGmzjkSwGNvkvLjA=)

@@ -1,12 +1,12 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://121.37.208.86:3306/zmblog?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
-    username: root
-    password: db2022
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${blogServer.url}/${blogServer.databaseName}?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=UTF8
+    username: ${blogServer.username}
+    password: ${blogServer.password}
   jpa:
     show-sql: false
     hibernate:
@@ -14,13 +14,25 @@ spring:
     open-in-view: true
   # redis和redis session
   redis:
-    port: 6379
+    port: ${blogServer.redis.port}
     database: 0
-    host: 121.37.208.86
-    password: redis2022
+    host: ${blogServer.redis.host}
+    password: ${blogServer.redis.password}
 
 logging:
   level:
     root: warn
     com: info
-  file: log/blog-pro.log
+  file:
+    name: log/blog-pro.log
+
+# jasypt加密
+blogServer:
+  url: ENC(y+kZTlO1VRMPh5LF7OTH/2dhE4I+Rtme86V2/DdKBGorvn1jp8pEZQ==)
+  databaseName: ENC(Lmp4gbxUltJQjVw7rCAWAGk3odvEgssF)
+  username: ENC(8F9lACcnQAbBeaY33mfWK1Yu8d0Dzs6Y)
+  password: ENC(P0/2L1bFL7fs2pbOTwB/E7YdGLRIFG+s)
+  redis:
+    port: ENC(nvXQFSz/55kZN5SYPnXkpcnlWi8aPw/D)
+    host: ENC(RoUbseA5eqli5gyzlFOTg41CXlb67JkFIc44O2LUc0U=)
+    password: ENC(4MwMY9xztpoMQotHk2xNHFNJf/txrjQgAQAaIdsPJRY=)

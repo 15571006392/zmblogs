@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 public class GetIp {
 
     public static String getIpAddr(HttpServletRequest request) {
-        String ipAddress = null;
+        String ipAddress;
         try {
             ipAddress = request.getHeader("x-forwarded-for");
             if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
@@ -29,7 +29,9 @@ public class GetIp {
                     } catch (UnknownHostException e) {
                         e.printStackTrace();
                     }
-                    ipAddress = inet.getHostAddress();
+                    if (inet != null) {
+                        ipAddress = inet.getHostAddress();
+                    }
                 }
             }
             // 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
@@ -43,7 +45,6 @@ public class GetIp {
             ipAddress="";
         }
         // ipAddress = this.getRequest().getRemoteAddr();
-
         return ipAddress;
     }
 }

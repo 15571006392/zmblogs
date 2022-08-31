@@ -55,8 +55,7 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     public Type getType(Long id) {
         Optional<Type> optional =  typeRepository.findById(id);
-        Type type = optional.get();
-        return type;
+        return optional.get();
     }
 
     /**
@@ -77,7 +76,7 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public List<Type> listTypeTop(Integer size) {
-        Sort sort = new Sort(Sort.Direction.DESC,"details.size");
+        Sort sort = Sort.by(Sort.Direction.DESC,"details.size");
         Pageable pageable = PageRequest.of(0,size,sort);
         return typeRepository.findTop(pageable);
     }
