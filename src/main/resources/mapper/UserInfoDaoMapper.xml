@@ -46,7 +46,7 @@
             d.user_id = #{id}
         order by
             update_time desc
-        limit 3
+        limit 4
     </select>
 
     <select id="findUserRecommendDetail" resultType="UserDetail">

@@ -21,14 +21,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    @Autowired
-    private CommentDeleteService commentDeleteService;
+    private final CommentDeleteService commentDeleteService;
 
-    @Autowired
-    private BlogService blogService;
+    private final BlogService blogService;
 
     /**
      * 头像
@@ -36,11 +33,18 @@ public class CommentController {
     @Value("${comment.avatar}")
     private String avatar;
 
+    @Autowired
+    public CommentController(CommentService commentService, CommentDeleteService commentDeleteService, BlogService blogService) {
+        this.commentService = commentService;
+        this.commentDeleteService = commentDeleteService;
+        this.blogService = blogService;
+    }
+
     /**
-     * 查找指定博客的所有评论
-     * @param blogId
-     * @param model
-     * @return
+     *
+     * @param blogId 博客ID
+     * @param model 容器
+     * @return 查找指定博客的所有评论
      */
     @GetMapping("/comments/{blogId}")
     public String comments(@PathVariable Long blogId, Model model){
@@ -51,8 +55,8 @@ public class CommentController {
 
     /**
      * 删除评论
-     * @param id
-     * @return
+     * @param id 评论ID
+     * @return 博客查询页
      */
     @GetMapping("/comments/delete/{id}/{blogId}")
     public String deleteComments(@PathVariable int id, @PathVariable String blogId){
@@ -62,8 +66,8 @@ public class CommentController {
 
     /**
      * 发送，回复评论
-     * @param comment
-     * @return
+     * @param comment 评论对象
+     * @return 博客页
      */
     @PostMapping("/comments")
     public String post(Comment comment, HttpSession session) {

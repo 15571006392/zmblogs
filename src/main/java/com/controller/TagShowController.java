@@ -23,11 +23,15 @@ import java.util.List;
 @Controller
 public class TagShowController {
 
-    @Autowired
-    private TagService tagService;
+    private final TagService tagService;
+
+    private final BlogService blogService;
 
     @Autowired
-    private BlogService blogService;
+    public TagShowController(TagService tagService, BlogService blogService) {
+        this.tagService = tagService;
+        this.blogService = blogService;
+    }
 
     @GetMapping("/tags/{id}")
     public String tags(@PageableDefault(size = 100, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @PathVariable Long id) {

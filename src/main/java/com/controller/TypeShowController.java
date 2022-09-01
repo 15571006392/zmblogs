@@ -2,18 +2,12 @@ package com.controller;
 
 import com.NotFoundException;
 import com.bean.BlogEntity;
-import com.bean.BlogQuery;
-import com.bean.Type;
 import com.bean.TypeEntity;
 import com.dao.TypeDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
-import com.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +22,15 @@ import java.util.List;
 @Controller
 public class TypeShowController {
 
-    @Autowired
-    private TypeDao typeDao;
+    private final TypeDao typeDao;
+
+    private final BlogService blogService;
 
     @Autowired
-    private BlogService blogService;
+    public TypeShowController(TypeDao typeDao, BlogService blogService) {
+        this.typeDao = typeDao;
+        this.blogService = blogService;
+    }
 
     @GetMapping("/types/{id}")
     public String types(@RequestParam(required = false, defaultValue = "1", value = "pageNum") int pageNum, Model model, @PathVariable int id) {

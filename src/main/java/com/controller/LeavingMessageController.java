@@ -22,8 +22,12 @@ import java.util.List;
 @Controller
 public class LeavingMessageController {
 
+    private final MessageService messageService;
+
     @Autowired
-    private MessageService messageService;
+    public LeavingMessageController(MessageService messageService) {
+        this.messageService = messageService;
+    }
 
     /**
      * 留言页面跳转

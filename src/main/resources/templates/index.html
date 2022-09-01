@@ -72,10 +72,10 @@
                 <div class="ui top attached segment diy-shadow">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <h3 class="ui blue header"><i class="home icon"></i>所有博客</h3>
+                            <h3 class="ui blue header ribbon label diy-shadow">所有博客</h3>
                         </div>
                         <div class="right aligned column">
-                            共 <h2 class="ui orange header inline-block" th:text="${page.total}">8</h2> 篇
+                            <h3>共 <div class="ui orange header inline-block" th:text="${page.total}">8</div> 篇</h3>
                         </div>
                     </div>
                 </div>
@@ -214,7 +214,7 @@
                             <a href="#" class="item" th:href="@{/types/{id}(id=${type.id})}"
                                th:each="type : ${types}">
                                 <span th:text="${type.name}">Java</span>
-                                <div class="ui blue basic left pointing label"
+                                <div class="ui blue basic label"
                                      th:text="${#arrays.length(type.details)}">8
                                 </div>
                             </a>
@@ -239,7 +239,7 @@
                     <!-- 主体 -->
                     <div class="ui blue segment">
                         <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"
-                           class="ui blue basic label diy-margin-small left pointing" th:each="tag : ${tags}">
+                           class="ui blue basic label diy-margin-small" th:each="tag : ${tags}">
                             <span th:text="${tag.name}">SpringBoot</span>
                             <div class="detail" th:text="${#arrays.length(tag.details)}">23</div>
                         </a>
@@ -286,7 +286,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.4</span>
+                    <span>Version2.6.5</span>
                 </h4>
             </div>
         </div>

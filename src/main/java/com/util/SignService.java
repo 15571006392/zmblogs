@@ -1,4 +1,4 @@
-package com.service;
+package com.util;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
@@ -10,17 +10,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * @author Zm-Mmm
+ */
 @Service
 public class SignService {
 
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    private RedisTemplate redisTemplate;
+    public SignService(RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
-     * 签到，可以补签
+     * @param userId  用户id
+     * @param dateStr 日期
+     * @return 签到结果
      */
     public Map<String, Object> doSign(int userId, String dateStr) {
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>(2);
         // 获得日期
         Date date = getDate(dateStr);
         // 获取日期对应的天数
@@ -36,54 +45,99 @@ public class SignService {
         }
         // 签到
         redisTemplate.opsForValue().setBit(signKey, day, true);
-        // 根据当前日期统计签到次数
-        Date today = new Date();
-        // 连续签到次数
-        int continuous = getContinuousSignCount(userId, today);
-        // 总签到次数
-        Long count = getSumSignCount(userId, today);
-        result.put("message","签到成功");
-        result.put("code",200);
-        result.put("continuous",continuous);
-        result.put("count",count);
+        // 计入总签到次数
+        allSignCountByUser(userId);
+        // 计入连续签到记录
+        continuousSignHistory(userId);
+        result.put("message", "签到成功");
+        result.put("code", 200);
         return result;
     }
 
     /**
-     * 当天签到情况
-     * @param userId
-     * @param dateStr
-     * @return
+     * 统计总签到次数
+     * @param userId 用户id
+     */
+    public void allSignCountByUser(int userId) {
+        // 获取总签到次数
+        String key = "allSignCountByUser";
+        long allSignCountByUser = 0;
+        if (redisTemplate.opsForHash().get(key, String.valueOf(userId)) != null) {
+            allSignCountByUser = Long.valueOf((String) redisTemplate.opsForHash().get(key, String.valueOf(userId)));
+        }
+        allSignCountByUser += 1;
+        /*
+        放入redis
+        map的key是allSignCountByUser
+        value的key是用户id
+        用户id的value为签到总次数
+         */
+        redisTemplate.opsForHash().put(key, String.valueOf(userId), String.valueOf(allSignCountByUser));
+    }
+
+    /**
+     * 统计连续签到记录
+     * @param userId 用户id
+     */
+    public void continuousSignHistory(int userId) {
+        // 连续签到记录
+        String key = "continuousSignHistoryCount";
+        long continuousSignHistoryCount = 0;
+        if (redisTemplate.opsForHash().get(key, String.valueOf(userId)) != null) {
+            continuousSignHistoryCount = Long.valueOf((String) redisTemplate.opsForHash().get(key, String.valueOf(userId)));
+        }
+        continuousSignHistoryCount += 1;
+        /*
+        放入redis
+        map的key是continuousSignHistoryCount
+        value的key是用户id
+        用户id的value为连续签到记录
+         */
+        redisTemplate.opsForHash().put(key, String.valueOf(userId), String.valueOf(continuousSignHistoryCount));
+    }
+
+    /**
+     * @param userId  用户id
+     * @param dateStr 日期
+     * @return 当天签到情况和月签到情况
      */
     public Map<String, Object> getSignByDate(int userId, String dateStr) {
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>(5);
         // 获取日期
         Date date = getDate(dateStr);
         // 获取日期对应的天数，多少号
-        int day = DateUtil.dayOfMonth(date) - 1; // 从 0 开始
+        int day = DateUtil.dayOfMonth(date) - 1;
         // 构建 Redis Key
         String signKey = buildSignKey(userId, date);
-        // 查看是否已签到
+        // 查看今日是否已签到
         boolean isSigned = redisTemplate.opsForValue().getBit(signKey, day);
         // 根据当前日期统计签到次数
         Date today = new Date();
-        // 统计连续签到次数
+        // 统计当月连续签到次数
         int continuous = getContinuousSignCount(userId, today);
-        // 统计总签到次数
+        // 统计当月总签到次数
         long count = getSumSignCount(userId, today);
+        // 获取总签到次数
+        long allSignCountByUser = 0;
+        if (redisTemplate.opsForHash().get("allSignCountByUser", String.valueOf(userId)) != null) {
+            allSignCountByUser = Long.valueOf((String) redisTemplate.opsForHash().get("allSignCountByUser", String.valueOf(userId)));
+        }
+        // 获取连续签到记录
+        long continuousSignHistoryCount = 0;
+        if (redisTemplate.opsForHash().get("continuousSignHistoryCount", String.valueOf(userId)) != null) {
+            continuousSignHistoryCount = Long.valueOf((String) redisTemplate.opsForHash().get("continuousSignHistoryCount", String.valueOf(userId)));
+        }
         result.put("today", isSigned);
         result.put("continuous", continuous);
         result.put("count", count);
+        result.put("allSignCountByUser", allSignCountByUser);
+        result.put("continuousSignHistoryCount", continuousSignHistoryCount);
         return result;
     }
 
-    /**
-     * 当月签到情况
-     * @param userId
-     * @param dateStr
-     * @return
-     */
-    /*public Map<String, Object> getSignInfo(Long userId, String dateStr) {
+    /*
+    // 废弃方法
+    public Map<String, Object> getSignInfo(Long userId, String dateStr) {
         // 获取日期
         Date date = getDate(dateStr);
         // 构建 Redis Key
@@ -105,11 +159,11 @@ public class SignService {
         long v = list.get(0) == null ? 0 : list.get(0);
         // 从低位到高位进行遍历，为 0 表示未签到，为 1 表示已签到
         for (int i = dayOfMonth; i > 0; i--) {
-        *//*
+
             Map 存储格式：
                 签到：  yyyy-MM-01 "✅"
                 未签到：yyyy-MM-02 不做任何处理
-         *//*
+
             // 获取日期
             LocalDateTime localDateTime = LocalDateTimeUtil.of(date).withDayOfMonth(i);
             // 右移再左移，如果不等于自己说明最低位是 1，表示已签到
@@ -122,13 +176,13 @@ public class SignService {
             v >>= 1;
         }
         return signInfo;
-    }*/
+    }
+    */
 
     /**
-     * 总签到次数
-     * @param userId
-     * @param today
-     * @return
+     * @param userId 用户id
+     * @param today  日期
+     * @return 当月总签到次数
      */
     private Long getSumSignCount(int userId, Date today) {
         String signKey = buildSignKey(userId, today);
@@ -136,11 +190,9 @@ public class SignService {
     }
 
     /**
-     * 连续签到次数
-     *
-     * @param userId
-     * @param date
-     * @return
+     * @param userId 用户id
+     * @param date   日期
+     * @return 当月连续签到次数
      */
     private int getContinuousSignCount(int userId, Date date) {
         // 获取日期对应的天数，默认31
@@ -159,12 +211,14 @@ public class SignService {
         int signCount = 0;
         long v = list.get(0) == null ? 0 : list.get(0);
         // 位移计算连续签到次数
-        for (int i = dayOfMonth; i > 0; i--) {// i 表示位移操作次数
+        for (int i = dayOfMonth; i > 0; i--) {
             // 右移再左移，如果等于自己说明最低位是 0，表示未签到
             if (v >> 1 << 1 == v) {
                 // 用户可能当前还未签到，所以要排除是否是当天的可能性
                 // 低位 0 且非当天说明连续签到中断了
-                if (i != dayOfMonth) break;
+                if (i != dayOfMonth) {
+                    break;
+                }
             } else {
                 // 右移再左移，如果不等于自己说明最低位是 1，表示签到
                 signCount++;
@@ -176,22 +230,19 @@ public class SignService {
     }
 
     /**
-     * 构建key
      * user:sign:userId:yyyyMM
      *
-     * @param userId
-     * @param date
-     * @return
+     * @param userId 用户id
+     * @param date   日期
+     * @return 构建key
      */
     private String buildSignKey(int userId, Date date) {
-        return String.format("user:sign:%d:%s", userId,DateUtil.format(date, "yyyyMM"));
+        return String.format("user:sign:%d:%s", userId, DateUtil.format(date, "yyyyMM"));
     }
 
     /**
-     * 获取日期
-     *
-     * @param dateStr
-     * @return
+     * @param dateStr 日期
+     * @return 获取格式化日期
      */
     private Date getDate(String dateStr) {
         return StrUtil.isBlank(dateStr) ? new Date() : DateUtil.parseDate(dateStr);

@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Zm-Mmm
+ */
 public class PowerInterceptor implements HandlerInterceptor {
 
     @Override

@@ -126,18 +126,36 @@
             <!-- 右 -->
             <div class="five wide column">
                 <!-- 签到 -->
-                <h4 class="ui horizontal divider header" th:if="${session.user == null}" style="padding-bottom: 0.5em;margin-top: 1em;">签到记录</h4>
-                <a th:if="${!signByDate.today and session.user != null and session.user.id == userinfo.id}" class="ui blue circular button diy-shadow" th:href="@{/sign/{id}(id=${userinfo.id})}" style="width: 100%;margin-top: 1em;">每日签到</a>
-                <a th:if="${signByDate.today and session.user != null and session.user.id == userinfo.id}" class="ui blue circular disabled button diy-shadow" th:href="@{/sign}" style="width: 100%;margin-top: 1em;">今天已经签到了</a>
-                <a th:if="${!signByDate.today and session.user != null and session.user.id != userinfo.id}" class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日未签到</a>
-                <a th:if="${signByDate.today and session.user != null and session.user.id != userinfo.id}" class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日已签到</a>
+                <h4 class="ui horizontal divider header" th:if="${session.user == null}"
+                    style="padding-bottom: 0.5em;margin-top: 1em;">签到记录</h4>
+                <a th:if="${!signByDate.today and session.user != null and session.user.id == userinfo.id}"
+                   class="ui blue circular button diy-shadow" th:href="@{/sign/{id}(id=${userinfo.id})}"
+                   style="width: 100%;margin-top: 1em;">每日签到</a>
+                <a th:if="${signByDate.today and session.user != null and session.user.id == userinfo.id}"
+                   class="ui blue circular disabled button diy-shadow" th:href="@{/sign}"
+                   style="width: 100%;margin-top: 1em;">今天已经签到了</a>
+                <a th:if="${!signByDate.today and session.user != null and session.user.id != userinfo.id}"
+                   class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日未签到</a>
+                <a th:if="${signByDate.today and session.user != null and session.user.id != userinfo.id}"
+                   class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日已签到</a>
                 <div class="ui top attached segment diy-shadow">
-                    <i class="bookmark icon"></i><span class="ui text-fine2" th:text="${signByDate.count}">1</span>
-                    <div class="ui mini basic blue left pointing label padding-mini">签到总次数</div>
+                    <i class="thumbtack icon"></i><span class="ui text-fine2 text-size"
+                                                        th:text="${signByDate.count}">0</span>
+                    <div class="ui mini teal basic left pointing label">本月签到次数</div>
                 </div>
                 <div class="ui attached segment diy-shadow">
-                    <i class="trophy icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">1</span>
-                    <div class="ui mini basic yellow left pointing label padding-mini">连续签到天数</div>
+                    <i class="bookmark outline icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">0</span>
+                    <div class="ui mini orange basic left pointing label">本月连续签到</div>
+                </div>
+                <div class="ui attached segment diy-shadow">
+                    <i class="trophy icon"></i><span class="ui text-fine2"
+                                                     th:text="${signByDate.allSignCountByUser}">0</span>
+                    <div class="ui mini blue basic left pointing label">签到总次数</div>
+                </div>
+                <div class="ui attached segment diy-shadow">
+                    <i class="calendar check outline icon"></i><span class="ui text-fine2"
+                                                                     th:text="${signByDate.continuousSignHistoryCount}">0</span>
+                    <div class="ui mini black basic left pointing label">连续签到记录</div>
                 </div>
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户资料</h4>
                 <!-- 博客数量 -->
@@ -202,14 +220,6 @@
     </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <!-- 底部 -->
 <footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
@@ -217,7 +227,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.4</span>
+                    <span>Version2.6.5</span>
                 </h4>
             </div>
         </div>

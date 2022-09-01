@@ -18,13 +18,19 @@ import java.util.Objects;
 @EnableScheduling
 public class TimeTasks {
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+    private final StringRedisTemplate stringRedisTemplate;
 
     private static final Logger logger = LoggerFactory.getLogger(TimeTasks.class);
 
-     //@Scheduled(cron = "0 0/1 * * * ?") // 测试代码，每分钟执行一次
-    // 每天晚上12点执行
+    @Autowired
+    public TimeTasks(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
+
+    /**
+     * 每天晚上12点执行
+     * // @Scheduled(cron = "0 0/1 * * * ?") 测试代码，每分钟执行一次
+     */
     @Scheduled(cron = "00 00 00 * * ?")
     private void clearIpProperties() {
         logger.info("[定时任务启动]");

@@ -18,17 +18,21 @@ import java.util.concurrent.TimeUnit;
 @Controller
 public class AboutController {
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+    private final StringRedisTemplate stringRedisTemplate;
+
+    private final UserInfoService userInfoService;
 
     @Autowired
-    private UserInfoService userInfoService;
+    public AboutController(StringRedisTemplate stringRedisTemplate, UserInfoService userInfoService) {
+        this.stringRedisTemplate = stringRedisTemplate;
+        this.userInfoService = userInfoService;
+    }
 
     /**
-     * 返回关于我页面
      *
-     * @param model
-     * @return
+     * @param model 容器
+     * @param session session
+     * @return 关于我页面
      */
     @GetMapping("/about")
     public String about(Model model, HttpSession session) {

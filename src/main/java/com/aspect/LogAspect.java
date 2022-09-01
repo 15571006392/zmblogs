@@ -6,33 +6,27 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * 日志切面
- *
+ * 日志处理、每日访客IP记录
  * @author Zm-Mmm
  */
-
 
 @Aspect
 @Configuration
 public class LogAspect {
 
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
-
-    @Autowired
-    public LogAspect(StringRedisTemplate stringRedisTemplate) {
-        this.stringRedisTemplate = stringRedisTemplate;
-    }
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -44,12 +38,18 @@ public class LogAspect {
     }
 
     @Before("log()")
-    public void Before(JoinPoint joinPoint) {
+    public void before(JoinPoint joinPoint) {
         // 获取Request对象
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = servletRequestAttributes.getRequest();
+        HttpServletRequest request = null;
+        if (servletRequestAttributes != null) {
+            request = servletRequestAttributes.getRequest();
+        }
         // 获取URL链接
-        String url = request.getRequestURL().toString();
+        String url = null;
+        if (request != null) {
+            url = request.getRequestURL().toString();
+        }
         // 获取IP地址
         String ip = GetIp.getIpAddr(request);
         // 获取调用的类名+方法名
@@ -62,13 +62,14 @@ public class LogAspect {
 
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         // 如果已经存在当前ip，不存储
-        if (stringRedisTemplate.opsForHash().putIfAbsent("visitorIP", ip, rightNow)) {
+        String key = "visitorIP";
+        if (stringRedisTemplate.opsForHash().putIfAbsent(key, ip, rightNow)) {
             logger.info("[new visitor]");
         }
     }
 
     @AfterReturning(returning = "o", pointcut = "log()")
-    public void Return(Object o) {
+    public void returnValues(Object o) {
         logger.info("return values:" + o);
     }
 }
