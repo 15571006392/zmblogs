@@ -58,7 +58,7 @@ public class LogAspect {
         Object[] args = joinPoint.getArgs();
         // 存入对象
         LogBean logBean = new LogBean(url, ip, method, args);
-        logger.info("[new request]:" + logBean);
+        logger.info("[request]:" + logBean);
 
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         // 如果已经存在当前ip，不存储

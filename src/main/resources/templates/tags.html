@@ -66,17 +66,17 @@
         <div class="ui top attached segment diy-shadow">
             <div class="ui middle aligned two column grid">
                 <div class="column">
-                    <h3 class="ui blue header"><i class="tags icon"></i>博客标签</h3>
+                    <h3 class="ui blue header ribbon label diy-shadow">博客标签</h3>
                 </div>
                 <div class="right aligned column">
-                    共 <h2 class="ui orange header inline-block" th:text="${#arrays.length(tags)}">8</h2> 个
+                    <h3>共 <div class="ui orange header inline-block" th:text="${#arrays.length(tags)}">8</div> 个</h3>
                 </div>
             </div>
         </div>
         <!-- 标签 -->
         <div class="ui attached segment diy-padding-large diy-shadow">
             <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"
-               class="ui large basic label diy-margin-small left pointing"
+               class="ui large basic label diy-margin-small"
                th:classappend="${tag.id==activeTagId} ? 'blue'" th:each="tag : ${tags}">
                 <span th:text="${tag.name}">SpringBoot</span>
                 <div class="detail" th:text="${#arrays.length(tag.details)}">23</div>
@@ -131,7 +131,7 @@
                                 <!-- 右 -->
                                 <div class="right aligned five wide column middle aligned">
                                     <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}"
-                                       class="ui blue basic label padding-mini"
+                                       class="ui blue basic label"
                                        th:text="${blog.type.name}">Java</a>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                             <div class="row">
                                 <div class="column">
                                     <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"
-                                       class="ui basic left pointing label padding-mini"
+                                       class="ui basic top pointing label"
                                        th:classappend="${tag.id==activeTagId} ? 'blue'" th:each="tag : ${blog.tags}"
                                        th:text="${tag.name}">SpringBoot</a>
                                 </div>

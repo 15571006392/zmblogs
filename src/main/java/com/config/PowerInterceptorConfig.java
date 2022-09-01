@@ -20,6 +20,7 @@ public class PowerInterceptorConfig implements WebMvcConfigurer {
                     .excludePathPatterns("/admin/logout")
                     .excludePathPatterns("/admin/blogs")
                     .excludePathPatterns("/admin/blogs/**")
-                    .excludePathPatterns("/admin/userinfoModify/**");
+                    .excludePathPatterns("/admin/userinfoModify/**")
+                    .excludePathPatterns("/admin/blogComments");
     }
 }
