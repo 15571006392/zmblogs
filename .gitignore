@@ -23,8 +23,8 @@
 hs_err_pid*
 
 .mvn/
-.idea/
+.idea
+blog.iml
 log/
 target/
-*.iml
 src/test/
