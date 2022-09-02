@@ -4,7 +4,7 @@ import com.NotFoundException;
 import com.bean.Detail;
 import com.bean.UserDetail;
 import com.bean.UserInfo;
-import com.service.SignService;
+import com.util.SignService;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,19 +17,27 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller
 public class UserInfoController {
 
-    @Autowired
-    private SignService signService;
+    private final SignService signService;
+
+    private final UserInfoService userInfoService;
 
     @Autowired
-    private UserInfoService userInfoService;
+    public UserInfoController(SignService signService, UserInfoService userInfoService) {
+        this.signService = signService;
+        this.userInfoService = userInfoService;
+    }
 
     /**
-     * 根据ID查询用户信息
      *
-     * @return
+     * @param id 用户ID
+     * @param model 容器
+     * @return userinfo页面
      */
     @GetMapping("/user/{id}")
     public String info(@PathVariable(name = "id") int id, Model model) {
@@ -57,8 +65,8 @@ public class UserInfoController {
 
     /**
      * 签到
-     *
-     * @return
+     * @param id 用户ID
+     * @return 重定向到上面的方法
      */
     @GetMapping("/sign/{id}")
     public String sign(@PathVariable("id") int id) {

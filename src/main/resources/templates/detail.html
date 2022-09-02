@@ -43,19 +43,21 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
-               class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}">
-                <div class="text">
-                    <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
-                         class="ui avatar image">
-                    <span th:text="${session.user.nickname}"></span>
-                </div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
-                    <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
-                    <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+            <div class="flag diy-mobile menu">
+                <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
+                   class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
+                <div class="ui dropdown item" th:if="${session.user != null}">
+                    <div class="text">
+                        <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
+                             class="ui avatar image">
+                        <span th:text="${session.user.nickname}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
+                        <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
                 </div>
             </div>
             <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
@@ -277,7 +279,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.4</span>
+                    <span>Version2.6.5</span>
                 </h4>
             </div>
         </div>
@@ -296,14 +298,14 @@
 
     /* 鼠标特效 */
     var a_idx = 0;
-    jQuery(document).ready(function($) {
-        $('.mouseClick').click(function(e) {
+    jQuery(document).ready(function ($) {
+        $('.mouseClick').click(function (e) {
             var a = new Array(
-                "666","233","牛逼","我的宝贝儿","6666666666","\\(^o^)/~","niubility","这么牛哇","动物朋友","好好好","❥(^_-)","笑拉了家人们",
-                "别急","我知道你很急","23333333","Salute","∠(°ゝ°)","牛","XD","行行行行行行","好好好","牛逼","别急","23333","^_^","ლ(′◉❥◉｀ლ)",
-                "**,我***","急急急","笑","66666","芝士雪豹","别吧","好！","我真服了","(#^.^#)","wow","S*","臭，真臭","嗨害嗨","牛","行！","来啦",
-                "说点藏话","Sony嘛呢","急急国王","哇","小黑子","：）","(ﾉ\"◑ ◑)ﾉ\"(｡•́︿•̀｡)","别叫了","寄","只能说，8行","❤❤❤❤❤❤❤","？","你别急",
-                "???????????????","干什么干什么干什么！","露出黑脚了吧小鸡子！","冲","(#`O′)","???","让我康康","♂","醉了","相位猛冲","_(:3」∠❀)_菊花碎了一地"
+                "666", "233", "牛逼", "我的宝贝儿", "6666666666", "\\(^o^)/~", "niubility", "这么牛哇", "动物朋友", "好好好", "❥(^_-)", "笑拉了家人们",
+                "别急", "我知道你很急", "23333333", "Salute", "∠(°ゝ°)", "牛", "XD", "行行行行行行", "好好好", "牛逼", "别急", "23333", "^_^", "ლ(′◉❥◉｀ლ)",
+                "**,我***", "急急急", "笑", "66666", "芝士雪豹", "别吧", "好！", "我真服了", "(#^.^#)", "wow", "S*", "臭，真臭", "嗨害嗨", "牛", "行！", "来啦",
+                "说点藏话", "Sony嘛呢", "急急国王", "哇", "小黑子", "：）", "(ﾉ\"◑ ◑)ﾉ\"(｡•́︿•̀｡)", "别叫了", "寄", "只能说，8行", "❤❤❤❤❤❤❤", "？", "你别急",
+                "???????????????", "干什么干什么干什么！", "露出黑脚了吧小鸡子！", "冲", "(#`O′)", "???", "让我康康", "♂", "醉了", "相位猛冲", "_(:3」∠❀)_菊花碎了一地"
             );
             var $i = $("<span></span>").text(a[a_idx]);
             a_idx = (a_idx + 1) % a.length;
@@ -315,7 +317,7 @@
                 "left": x,
                 "position": "absolute",
                 "font-weight": "bold",
-                "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
+                "color": "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
             });
             $("body").append($i);
             $i.animate({
@@ -323,7 +325,7 @@
                     "opacity": 0
                 },
                 1500,
-                function() {
+                function () {
                     $i.remove();
                 });
         });

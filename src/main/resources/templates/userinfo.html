@@ -39,19 +39,21 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
-               class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}">
-                <div class="text">
-                    <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
-                         class="ui avatar image">
-                    <span th:text="${session.user.nickname}"></span>
-                </div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
-                    <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
-                    <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+            <div class="flag diy-mobile menu">
+                <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
+                   class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
+                <div class="ui dropdown item" th:if="${session.user != null}">
+                    <div class="text">
+                        <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
+                             class="ui avatar image">
+                        <span th:text="${session.user.nickname}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
+                        <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
                 </div>
             </div>
             <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
@@ -126,18 +128,36 @@
             <!-- 右 -->
             <div class="five wide column">
                 <!-- 签到 -->
-                <h4 class="ui horizontal divider header" th:if="${session.user == null}" style="padding-bottom: 0.5em;margin-top: 1em;">签到记录</h4>
-                <a th:if="${!signByDate.today and session.user != null and session.user.id == userinfo.id}" class="ui blue circular button diy-shadow" th:href="@{/sign/{id}(id=${userinfo.id})}" style="width: 100%;margin-top: 1em;">每日签到</a>
-                <a th:if="${signByDate.today and session.user != null and session.user.id == userinfo.id}" class="ui blue circular disabled button diy-shadow" th:href="@{/sign}" style="width: 100%;margin-top: 1em;">今天已经签到了</a>
-                <a th:if="${!signByDate.today and session.user != null and session.user.id != userinfo.id}" class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日未签到</a>
-                <a th:if="${signByDate.today and session.user != null and session.user.id != userinfo.id}" class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日已签到</a>
+                <h4 class="ui horizontal divider header" th:if="${session.user == null}"
+                    style="padding-bottom: 0.5em;margin-top: 1em;">签到记录</h4>
+                <a th:if="${!signByDate.today and session.user != null and session.user.id == userinfo.id}"
+                   class="ui blue circular button diy-shadow" th:href="@{/sign/{id}(id=${userinfo.id})}"
+                   style="width: 100%;margin-top: 1em;">每日签到</a>
+                <a th:if="${signByDate.today and session.user != null and session.user.id == userinfo.id}"
+                   class="ui blue circular disabled button diy-shadow" th:href="@{/sign}"
+                   style="width: 100%;margin-top: 1em;">今天已经签到了</a>
+                <a th:if="${!signByDate.today and session.user != null and session.user.id != userinfo.id}"
+                   class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日未签到</a>
+                <a th:if="${signByDate.today and session.user != null and session.user.id != userinfo.id}"
+                   class="ui blue circular disabled button diy-shadow" style="width: 100%;margin-top: 1em;">对方今日已签到</a>
                 <div class="ui top attached segment diy-shadow">
-                    <i class="bookmark icon"></i><span class="ui text-fine2" th:text="${signByDate.count}">1</span>
-                    <div class="ui mini basic blue left pointing label padding-mini">签到总次数</div>
+                    <i class="thumbtack icon"></i><span class="ui text-fine2 text-size"
+                                                        th:text="${signByDate.count}">0</span>
+                    <div class="ui mini teal basic left pointing label">本月签到次数</div>
                 </div>
                 <div class="ui attached segment diy-shadow">
-                    <i class="trophy icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">1</span>
-                    <div class="ui mini basic yellow left pointing label padding-mini">连续签到天数</div>
+                    <i class="bookmark outline icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">0</span>
+                    <div class="ui mini orange basic left pointing label">本月连续签到</div>
+                </div>
+                <div class="ui attached segment diy-shadow">
+                    <i class="trophy icon"></i><span class="ui text-fine2"
+                                                     th:text="${signByDate.allSignCountByUser}">0</span>
+                    <div class="ui mini blue basic left pointing label">签到总次数</div>
+                </div>
+                <div class="ui attached segment diy-shadow">
+                    <i class="calendar check outline icon"></i><span class="ui text-fine2"
+                                                                     th:text="${signByDate.continuousSignHistoryCount}">0</span>
+                    <div class="ui mini black basic left pointing label">连续签到记录</div>
                 </div>
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户资料</h4>
                 <!-- 博客数量 -->
@@ -160,8 +180,8 @@
                 </div>
                 <!-- 邮箱 -->
                 <div class="ui attached segment diy-shadow">
-                    <i class="mail outline icon"></i><span class="ui text-fine2"
-                                                           th:text="${userinfo.email}">110@110</span>
+                    <i class="mail icon"></i><span class="ui text-fine2"
+                                                   th:text="${userinfo.email}">110@110</span>
                     <div class="ui mini basic orange left pointing label padding-mini">邮箱</div>
                 </div>
                 <!-- 注册时间 -->
@@ -202,14 +222,6 @@
     </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <!-- 底部 -->
 <footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
@@ -217,7 +229,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.4</span>
+                    <span>Version2.6.5</span>
                 </h4>
             </div>
         </div>

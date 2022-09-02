@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * @author Zm-Mmm
+ */
 @Configuration
 public class PowerInterceptorConfig implements WebMvcConfigurer {
 
@@ -17,6 +20,7 @@ public class PowerInterceptorConfig implements WebMvcConfigurer {
                     .excludePathPatterns("/admin/logout")
                     .excludePathPatterns("/admin/blogs")
                     .excludePathPatterns("/admin/blogs/**")
-                    .excludePathPatterns("/admin/userinfoModify/**");
+                    .excludePathPatterns("/admin/userinfoModify/**")
+                    .excludePathPatterns("/admin/blogComments");
     }
 }

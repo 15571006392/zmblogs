@@ -23,6 +23,6 @@ public class NullBeanProperties {
                 nullPropertyNames.add(propertyName);
             }
         }
-        return nullPropertyNames.toArray(new String[nullPropertyNames.size()]);
+        return nullPropertyNames.toArray(new String[0]);
     }
 }

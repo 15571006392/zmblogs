@@ -22,20 +22,24 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    @Autowired
-    private BlogService blogService;
+    private final BlogService blogService;
+
+    private final TypeService typeService;
+
+    private final TagService tagService;
 
     @Autowired
-    private TypeService typeService;
-
-    @Autowired
-    private TagService tagService;
+    public IndexController(BlogService blogService, TypeService typeService, TagService tagService) {
+        this.blogService = blogService;
+        this.typeService = typeService;
+        this.tagService = tagService;
+    }
 
     /**
      * 主页跳转
-     * @param model
-     * @param pageNum
-     * @return
+     * @param model 容器
+     * @param pageNum 分页
+     * @return index页
      */
     @GetMapping("/")
     public String index(Model model, @RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum) {
@@ -57,10 +61,10 @@ public class IndexController {
 
     /**
      * 搜索功能
-     * @param pageable
-     * @param model
-     * @param query
-     * @return
+     * @param pageable 分页
+     * @param model 容器
+     * @param query 博客对象
+     * @return search页面
      */
     @PostMapping("/search")
     public String search(@PageableDefault(size = 100, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @RequestParam String query) {
@@ -73,9 +77,9 @@ public class IndexController {
 
     /**
      * 根据id查找指定博客
-     * @param id
-     * @param model
-     * @return
+     * @param id 博客id
+     * @param model 容器
+     * @return detail博客页
      */
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id, Model model) {

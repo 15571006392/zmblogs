@@ -6,7 +6,7 @@
     <meta name="googlebot" content="index, follow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="format-detection" content="telphone=no, email=no"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="摆烂人博客"/>
     <title>摆烂人博客</title>
     <link rel="icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
@@ -39,18 +39,21 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}" class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}" >
-                <div class="text">
-                    <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
-                         class="ui avatar image">
-                    <span th:text="${session.user.nickname}"></span>
-                </div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
-                    <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
-                    <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+            <div class="flag diy-mobile menu">
+                <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
+                   class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
+                <div class="ui dropdown item" th:if="${session.user != null}">
+                    <div class="text">
+                        <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
+                             class="ui avatar image">
+                        <span th:text="${session.user.nickname}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
+                        <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
                 </div>
             </div>
             <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
@@ -67,17 +70,28 @@
         <div class="ui top attached segment diy-shadow">
             <div class="ui middle aligned two column grid">
                 <div class="column">
-                    <h3 class="ui blue header"><i class="thumbtack icon"></i>博客归档</h3>
+                    <h3 class="ui blue header ribbon label diy-shadow">博客归档</h3>
                 </div>
                 <div class="right aligned column">
-                    共 <h2 class="ui orange header inline-block" th:text="${blogCount}"> 233333 </h2> 篇
+                    <h3>共
+                        <div class="ui orange header inline-block" th:text="${blogCount}">8</div>
+                        篇
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- 副标题 -->
+        <div class="ui attached segment diy-shadow">
+            <div class="ui middle aligned column grid">
+                <div class="center aligned column">
+                    <h2>按照博客发布年份与时间统计</h2>
                 </div>
             </div>
         </div>
 
         <!-- 内容 -->
         <th:block th:each="item : ${archiveMap}">
-            <h3 class="ui center aligned header" th:text="${item.key}">2020</h3>
+            <h2 class="ui center aligned header" th:text="${item.key}">2020</h2>
             <div class="ui fluid vertical menu diy-shadow">
                 <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item"
                    th:each="blog : ${item.value}">
@@ -100,7 +114,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.4</span>
+                    <span>Version2.6.5</span>
                 </h4>
             </div>
         </div>

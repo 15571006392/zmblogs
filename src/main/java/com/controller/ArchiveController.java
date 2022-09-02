@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ArchiveController {
 
+    private final BlogService blogService;
+
     @Autowired
-    private BlogService blogService;
+    public ArchiveController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
     /**
-     * 返回归档页面
-     * @param model
-     * @return
+     *
+     * @param model 容器
+     * @return 返回归档页面
      */
     @GetMapping("/archives")
     public String archives(Model model){

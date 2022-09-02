@@ -19,7 +19,7 @@
         select id, title, views
         from t_detail
         where user_id = #{id}
-        order by views desc limit 6
+        order by views desc limit 5
     </select>
 
     <update id="updateUserUpdateTime">
@@ -46,7 +46,7 @@
             d.user_id = #{id}
         order by
             update_time desc
-        limit 3
+        limit 4
     </select>
 
     <select id="findUserRecommendDetail" resultType="UserDetail">

@@ -40,19 +40,21 @@
                     </div>
                 </form>
             </div>
-            <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
-               class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
-            <div class="ui dropdown item" th:if="${session.user != null}">
-                <div class="text">
-                    <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
-                         class="ui avatar image">
-                    <span th:text="${session.user.nickname}"></span>
-                </div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
-                    <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
-                    <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+            <div class="flag diy-mobile menu">
+                <a href="#" th:href="@{/admin}" th:if="${session.user == null}"
+                   class="flag item diy-mobile ui green basic button"><i class="sign-in icon"></i>登录</a>
+                <div class="ui dropdown item" th:if="${session.user != null}">
+                    <div class="text">
+                        <img src="../../static/img/touxiang.jpg" th:src="@{${session.user.avatar}}" alt=""
+                             class="ui avatar image">
+                        <span th:text="${session.user.nickname}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/blogs}" class="item">管理博客</a>
+                        <a href="#" th:href="@{/user/{id}(id=${session.user.id})}" class="item">个人资料</a>
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
                 </div>
             </div>
             <a href="#" class="ui index menu icon button diy-button-top-right diy-button-show item">
@@ -72,10 +74,13 @@
                 <div class="ui top attached segment diy-shadow">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <h3 class="ui blue header"><i class="home icon"></i>所有博客</h3>
+                            <h3 class="ui blue header ribbon label diy-shadow">所有博客</h3>
                         </div>
                         <div class="right aligned column">
-                            共 <h2 class="ui orange header inline-block" th:text="${page.total}">8</h2> 篇
+                            <h3>共
+                                <div class="ui orange header inline-block" th:text="${page.total}">8</div>
+                                篇
+                            </h3>
                         </div>
                     </div>
                 </div>
@@ -160,13 +165,15 @@
                                     首页
                                 </div>
                                 <div class="item" th:if="${page.pageNum != 1}">
-                                    <a class="color-black" th:href="@{/(pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+                                    <a class="color-black"
+                                       th:href="@{/(pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
                                 </div>
                                 <div class="disabled item" th:if="${page.pageNum == 1}">
                                     上一页
                                 </div>
                                 <div class="item" th:if="${page.pageNum != page.pages}">
-                                    <a class="color-black" th:href="@{/(pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+                                    <a class="color-black"
+                                       th:href="@{/(pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
                                 </div>
                                 <div class="disabled item" th:if="${page.pageNum == page.pages}">
                                     下一页
@@ -175,7 +182,7 @@
                                     <a class="color-black" th:href="@{/(pageNum=${page.pages})}">尾页</a>
                                 </div>
                                 <div class="disabled item" th:if="${page.pageNum == page.pages}">
-                                   尾页
+                                    尾页
                                 </div>
                             </div>
                         </div>
@@ -200,7 +207,7 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column">
-                                <i class="map signs icon"></i>分类
+                                <i class="map signs icon"></i>热门分类
                             </div>
                             <div class="right aligned column">
                                 <a href="#" th:href="@{types/-1}">更多 <i
@@ -214,7 +221,7 @@
                             <a href="#" class="item" th:href="@{/types/{id}(id=${type.id})}"
                                th:each="type : ${types}">
                                 <span th:text="${type.name}">Java</span>
-                                <div class="ui blue basic left pointing label"
+                                <div class="ui blue basic label"
                                      th:text="${#arrays.length(type.details)}">8
                                 </div>
                             </a>
@@ -228,7 +235,7 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column">
-                                <i class="tags icon"></i>标签
+                                <i class="tags icon"></i>热门标签
                             </div>
                             <div class="right aligned column">
                                 <a href="#" th:href="@{tags/-1}">更多 <i
@@ -239,7 +246,7 @@
                     <!-- 主体 -->
                     <div class="ui blue segment">
                         <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"
-                           class="ui blue basic label diy-margin-small left pointing" th:each="tag : ${tags}">
+                           class="ui blue basic label diy-margin-small" th:each="tag : ${tags}">
                             <span th:text="${tag.name}">SpringBoot</span>
                             <div class="detail" th:text="${#arrays.length(tag.details)}">23</div>
                         </a>
@@ -286,7 +293,7 @@
             <div class="wide column">
                 <h4 class="text-fine text-opacity2">
                     <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.4</span>
+                    <span>Version2.6.5</span>
                 </h4>
             </div>
         </div>

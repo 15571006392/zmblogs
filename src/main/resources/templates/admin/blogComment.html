@@ -15,8 +15,8 @@
     <div class="ui container">
         <div class="ui huge secondary menu stackable">
             <a href="#" th:href="@{/}" class="flag item diy-mobile"><i class="home icon"></i>回到首页</a>
-            <a href="#" th:href="@{/admin/blogs}" class="active flag item diy-mobile"><i class="edit icon"></i>博客编辑</a>
-            <a href="#" th:href="@{/admin/blogComments}" class="flag item diy-mobile"><i class="comment icon"></i>评论管理</a>
+            <a href="#" th:href="@{/admin/blogs}" class="flag item diy-mobile"><i class="edit icon"></i>博客编辑</a>
+            <a href="#" th:href="@{/admin/blogComments}" class="active flag item diy-mobile"><i class="comment icon"></i>评论管理</a>
             <a href="#" th:href="@{/admin/allBlogs}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i
                     class="server icon"></i>全站博客编辑</a>
             <a href="#" th:href="@{/admin/types}" th:if="${session.user.type == 2}" class="flag item diy-mobile"><i
@@ -47,57 +47,13 @@
     </div>
 </nav>
 
-<!-- 二级导航菜单 -->
-<!--<div class="ui attached pointing menu">
-    <div class="ui container">
-        <div class="right menu">
-            <a href="#" th:href="@{/admin/types/input}" class="active blue item">新增</a>
-            <a href="#" th:href="@{/admin/types}" class="item blue">列表</a>
-        </div>
-    </div>
-</div>-->
-
 <!-- 中间 -->
+<!--
 <div class="diy-padding-very" style="max-width: 150em !important;">
     <div class="ui container">
-        <!--&lt;!&ndash; 动态提交刷新数据 &ndash;&gt;
-        <div class="ui secondary segment form">
-            <input type="hidden" name="page">
-            <div class="inline fields">
-                &lt;!&ndash; 标题 &ndash;&gt;
-                <div class="field">
-                    <input type="text" name="title" placeholder="标题" />
-                </div>
-                &lt;!&ndash; 分类 &ndash;&gt;
-                <div class="field">
-                    <div class="ui labeled action input">
-                        <div class="ui type selection dropdown">
-                            <input type="hidden" name="typeId" />
-                            <i class="dropdown icon"></i>
-                            <div class="default text">分类</div>
-                            <div class="menu">
-                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}"></div>
-                            </div>
-                        </div>
-                        <button class="ui button blue basic pa" id="clear"><i class="eraser icon"></i>清空</button>
-                    </div>
-                </div>
-                &lt;!&ndash; 推荐 &ndash;&gt;
-                <div class="field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="recommend" id="recommend" />
-                        <label for="recommend">推荐</label>
-                    </div>
-                </div>
-                &lt;!&ndash; 搜索 &ndash;&gt;
-                <div class="field">
-                    <button type="button" id="search-btn" class="ui blue basic button"><i class="search icon"></i>搜索</button>
-                </div>
-            </div>
-        </div>-->
 
         <div id="table-container">
-            <!-- 表格 -->
+            &lt;!&ndash; 表格 &ndash;&gt;
             <table class="ui table compact blue" th:fragment="blogList">
                 <thead>
                 <tr>
@@ -163,7 +119,7 @@
                 </tr>
                 </tfoot>
             </table>
-            <!--分页-->
+            &lt;!&ndash;分页&ndash;&gt;
             <div class="ui info message" th:if="${page.total > 10}">
                 <h3>
                     当前第
@@ -175,7 +131,7 @@
                     条记录
                 </h3>
             </div>
-            <!--消息提示-->
+            &lt;!&ndash;消息提示&ndash;&gt;
             <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
                 <div class="header">提示:</div>
                 <p th:text="${message}">操作成功</p>
@@ -183,6 +139,8 @@
         </div>
     </div>
 </div>
+-->
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script>

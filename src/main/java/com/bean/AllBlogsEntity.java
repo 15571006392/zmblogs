@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+/**
+ * @author Zm-Mmm
+ */
 public class AllBlogsEntity {
 
     private String BlogUserName;

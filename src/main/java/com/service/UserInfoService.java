@@ -7,6 +7,9 @@ import com.bean.UserInfo;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 public interface UserInfoService {
 
     Integer findUserCount();
