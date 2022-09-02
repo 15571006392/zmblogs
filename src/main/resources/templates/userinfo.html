@@ -146,18 +146,13 @@
                     <div class="ui mini teal basic left pointing label">本月签到次数</div>
                 </div>
                 <div class="ui attached segment diy-shadow">
-                    <i class="bookmark outline icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">0</span>
+                    <i class="calendar check icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">0</span>
                     <div class="ui mini orange basic left pointing label">本月连续签到</div>
                 </div>
                 <div class="ui attached segment diy-shadow">
                     <i class="trophy icon"></i><span class="ui text-fine2"
                                                      th:text="${signByDate.allSignCountByUser}">0</span>
                     <div class="ui mini blue basic left pointing label">签到总次数</div>
-                </div>
-                <div class="ui attached segment diy-shadow">
-                    <i class="calendar check outline icon"></i><span class="ui text-fine2"
-                                                                     th:text="${signByDate.continuousSignHistoryCount}">0</span>
-                    <div class="ui mini black basic left pointing label">连续签到记录</div>
                 </div>
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户资料</h4>
                 <!-- 博客数量 -->
