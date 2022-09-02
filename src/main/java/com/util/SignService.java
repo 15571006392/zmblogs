@@ -24,6 +24,25 @@ public class SignService {
     }
 
     /**
+     * 判断用户当日是否签到
+     * @param userId 用户id
+     * @param dateStr 日期
+     * @return 是否签到
+     */
+    public boolean currentDaySign(int userId,String dateStr){
+        // 获得日期
+        Date date = getDate(dateStr);
+        // 获取日期对应的天数
+        int day = DateUtil.dayOfMonth(date) - 1;
+        // 创建key
+        String signKey = buildSignKey(userId, date);
+        // 查看指定日期是否已经签到
+        boolean isSigned = redisTemplate.opsForValue().getBit(signKey, day);
+        return isSigned;
+    }
+
+
+    /**
      * @param userId  用户id
      * @param dateStr 日期
      * @return 签到结果
@@ -37,7 +56,7 @@ public class SignService {
         // 创建key
         String signKey = buildSignKey(userId, date);
         // 查看指定日期是否已经签到
-        boolean isSigned = redisTemplate.opsForValue().getBit(signKey, day);
+        boolean isSigned = currentDaySign(userId, dateStr);
         if (isSigned) {
             result.put("message", "今天已经签到了");
             result.put("code", 400);
@@ -110,7 +129,7 @@ public class SignService {
         // 构建 Redis Key
         String signKey = buildSignKey(userId, date);
         // 查看今日是否已签到
-        boolean isSigned = redisTemplate.opsForValue().getBit(signKey, day);
+        boolean isSigned = currentDaySign(userId, dateStr);
         // 根据当前日期统计签到次数
         Date today = new Date();
         // 统计当月连续签到次数

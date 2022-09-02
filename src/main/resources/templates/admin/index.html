@@ -45,13 +45,23 @@
 <!-- 中间 -->
 <div class="diy-padding-very diy-container">
     <div class="ui container">
-        <div class="ui message success large">
+        <div class="ui message violet large">
             <h2>欢迎登录： <span th:text="${session.user.nickname}"></span></h2>
         </div>
         <div class="ui message info large">
             <h2>您的身份是：
                 <span th:if="${session.user.type == 2}">管理员</span>
                 <span th:if="${session.user.type == 1}">普通用户</span>
+            </h2>
+        </div>
+        <div class="ui message orange large" th:if="${!isSign}">
+            <h2>
+                <span>今天还没有签到哦，</span><a href="#" th:href="@{/user/{id}(id=${session.user.id})}">点击前去签到</a>
+            </h2>
+        </div>
+        <div class="ui message success large" th:if="${isSign}">
+            <h2>
+                <span>今天已经签过到啦</span>
             </h2>
         </div>
         <img src="../../static/img/beijing.jpg" th:src="${session.user.avatar}" alt=""
