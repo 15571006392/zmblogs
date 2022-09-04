@@ -42,6 +42,7 @@
 <br>
 <br>
 <br>
+<br>
 <div class="diy-container diy-padding-very animated fadeInDown" style="max-width: 30em !important;">
     <div class="ui container">
         <div class="column">
@@ -62,13 +63,45 @@
                     <button class="ui fluid large blue submit button diy-shadow">登录</button>
                     <br>
                     <button class="ui fluid large disabled button">注册-暂未开放</button>
+                    <div class="ui error mini message"></div>
+                    <div class="ui message mini negative" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>
                 </div>
-                <div class="ui error mini message"></div>
-                <div class="ui message mini negative" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>
             </form>
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- 底部 -->
+<footer class="ui attached diy-shadow" style="background-color: white">
+    <div class="ui container">
+        <div class="ui grid center aligned">
+            <div class="wide column">
+                <h4 class="text-fine text-opacity2">
+                    <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
+                    <span>Version2.6.6</span>
+                </h4>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script>

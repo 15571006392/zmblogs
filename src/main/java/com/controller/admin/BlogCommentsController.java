@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller()
 @RequestMapping("/admin")
-public class BlogComments {
+public class BlogCommentsController {
 
     @GetMapping("/blogComments")
     public String index(){
