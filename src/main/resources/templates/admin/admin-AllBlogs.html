@@ -52,12 +52,10 @@
                     <th></th>
                     <th>标题</th>
                     <th>类型</th>
-                    <th>推荐</th>
-                    <th>博客状态</th>
                     <th>发布时间</th>
                     <th>更新时间</th>
-                    <th>浏览量</th>
                     <th>作者</th>
+                    <th>博客状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -66,12 +64,10 @@
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${detail.title}"></td>
                     <td th:text="${detail.name}">Java</td>
-                    <td th:text="${detail.recommend} ? '是' : '否'"></td>
-                    <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
-                    <td th:text="${#dates.format(detail.createTime,'yyyy:MM:dd HH:mm:ss')}"></td>
-                    <td th:text="${#dates.format(detail.updateTime,'yyyy:MM:dd HH:mm:ss')}"></td>
-                    <td th:text="${detail.views}"></td>
+                    <td th:text="${#dates.format(detail.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(detail.updateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td th:text="${detail.BlogUserName}"></td>
+                    <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
                     <td>
                         <a href="#" th:href="@{/admin/allBlogs/{id}/modifyState(id=${detail.id})}" class="ui yellow basic button">下架</a>
                         <a href="#" th:href="@{/admin/allBlogs/{id}/delete(id=${detail.id})}" class="ui red basic button"

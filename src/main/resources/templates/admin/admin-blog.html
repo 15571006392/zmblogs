@@ -119,8 +119,8 @@
                     <td th:text="${detail.name}">Java</td>
                     <td th:text="${detail.recommend} ? '是' : '否'"></td>
                     <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
-                    <td th:text="${#dates.format(detail.createTime,'yyyy:MM:dd HH:mm:ss')}"></td>
-                    <td th:text="${#dates.format(detail.updateTime,'yyyy:MM:dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(detail.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(detail.updateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td th:text="${detail.views}"></td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/input(id=${detail.id})}" class="ui blue basic button">编辑</a>
