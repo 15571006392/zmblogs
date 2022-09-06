@@ -74,26 +74,32 @@
                 </div>
                 <!-- 今日访客 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    今日访客：<span th:text="${visitorCount}"></span>
+                    <div class="ui red horizontal label large diy-text">今日访客</div>
+                    <span th:text="${visitorCount}"></span>
                 </div>
                 <!-- 总访问量 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    总访问量：<span th:text="${countViews}"></span>
+                    <div class="ui orange horizontal label large diy-text">总访问量</div>
+                    <span th:text="${countViews}"></span>
                 </div>
                 <!-- 在线用户 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    当前在线用户：<span th:text="${currentUserCount}"></span>
+                    <div class="ui brown horizontal label large diy-text">当前在线用户</div>
+                    <span th:text="${currentUserCount}"></span>
                 </div>
                 <!-- 注册用户 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    注册用户数量：<span th:text="${count}"></span>
+                    <div class="ui violet horizontal label large diy-text">注册用户数量</div>
+                    <span th:text="${count}"></span>
                 </div>
                 <!-- 网站信息 -->
                 <div class="ui attached segment diy-shadow text-fine2">
-                    网站首次上线：<span>2020年7月8日</span>
+                    <div class="ui green horizontal label large diy-text">网站首次上线</div>
+                    <span>2020年7月8日</span>
                 </div>
                 <div class="ui attached segment diy-shadow text-fine2">
-                    网站已苟活了：<span id="run_time"></span>
+                    <div class="ui teal horizontal label large diy-text">网站已苟活了</div>
+                    <span id="run_time"></span>
                 </div>
                 <!--开源地址与联系方式-->
                 <div class="ui attached segment center aligned diy-shadow">

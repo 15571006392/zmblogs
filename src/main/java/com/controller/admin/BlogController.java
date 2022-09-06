@@ -1,5 +1,7 @@
 package com.controller.admin;
 
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONObject;
 import com.bean.Detail;
 import com.bean.User;
 import com.bean.UserDetail;
@@ -8,15 +10,23 @@ import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Zm-Mmm
@@ -25,6 +35,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class BlogController {
 
+    private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
     @Autowired
     private BlogService blogService;
 
@@ -53,6 +64,42 @@ public class BlogController {
         PageInfo<UserDetail> pageInfo = new PageInfo<>(userDetails);
         model.addAttribute("page",pageInfo);
         return "admin/admin-blog";
+    }
+
+    /**
+     * 博客图片上传方法
+     * @param file 图片
+     * @param guid 上传的图片的名字
+     * @return 上传成功或失败的json
+     * @throws IOException
+     */
+    @PostMapping("/blogsImage")
+    @ResponseBody
+    public Map fileUpload(@RequestParam("editormd-image-file") MultipartFile file, String guid) throws IOException {
+        Map<String, Object> hashMap = new LinkedHashMap<>();
+
+        // 获得后缀类型
+        String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."), file.getOriginalFilename().length());
+        // 获得文件上传路径
+        String path = System.getProperty("user.dir")+"/src/main/resources/static/BlogInputImages/";
+        // 将路径传给 File 对象
+        File realPath = new File(path);
+        // 判断路径上的文件夹是否存在，不存在就创建
+        if (!realPath.exists()){
+            realPath.mkdir();
+        }
+        // 设置上传的文件名字
+        String filename = guid + type;
+        //通过CommonsMultipartFile的方法直接写文件
+        file.transferTo(new File(realPath +"/"+ filename));
+
+        // 返回上传路径
+        hashMap.put("url","/BlogInputImages/" + filename);
+        // 返回是否成功
+        hashMap.put("success", 1);
+        // 返回信息提示
+        hashMap.put("message", "upload success!");
+        return hashMap;
     }
 
     /**

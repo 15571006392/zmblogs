@@ -46,12 +46,12 @@
                     action += "&callback=" + settings.uploadCallbackURL + "&dialog_id=editormd-image-dialog-" + guid;
                 }
 
-                var dialogContent = ( (settings.imageUpload) ? "<form action=\"" + action +"\" target=\"" + iframeName + "\" method=\"post\" enctype=\"multipart/form-data\" class=\"" + classPrefix + "form\">" : "<div class=\"" + classPrefix + "form\">" ) +
+                /*var dialogContent = ( (settings.imageUpload) ? "<form action=\"" + action +"\" target=\"" + iframeName + "\" method=\"post\" enctype=\"multipart/form-data\" class=\"" + classPrefix + "form\">" : "<div class=\"" + classPrefix + "form\">" ) +
                                         ( (settings.imageUpload) ? "<iframe name=\"" + iframeName + "\" id=\"" + iframeName + "\" guid=\"" + guid + "\"></iframe>" : "" ) +
                                         "<label>" + imageLang.url + "</label>" +
                                         "<input type=\"text\" data-url />" + (function(){
                                             return (settings.imageUpload) ? "<div class=\"" + classPrefix + "file-input\">" +
-                                                                                "<input type=\"file\" name=\"" + classPrefix + "image-file\" accept=\"image/*\" />" +
+                                                                                "<input type=\"file\" name=\"" + classPrefix + "image-file\" accept=\"image/!*\" />" +
                                                                                 "<input type=\"submit\" value=\"" + imageLang.uploadButton + "\" />" +
                                                                             "</div>" : "";
                                         })() +
@@ -62,7 +62,28 @@
                                         "<label>" + imageLang.link + "</label>" +
                                         "<input type=\"text\" value=\"http://\" data-link />" +
                                         "<br/>" +
-                                    ( (settings.imageUpload) ? "</form>" : "</div>");
+                                    ( (settings.imageUpload) ? "</form>" : "</div>");*/
+
+
+                //这是我个人写法
+                var dialogContent = ( (settings.imageUpload) ? "<form action=\"#\" target=\"" + iframeName + "\" method=\"post\" enctype=\"multipart/form-data\" class=\"" + classPrefix + "form\">" : "<div class=\"" + classPrefix + "form\">" ) +
+                    ( (settings.imageUpload) ? "<iframe name=\"" + iframeName + "\" id=\"" + iframeName + "\" guid=\"" + guid + "\"></iframe>" : "" ) +
+                    "<label>" + imageLang.url + "</label>" +
+                    "<input type=\"text\" data-url />" + (function(){
+                        return (settings.imageUpload) ? "<div class=\"" + classPrefix + "file-input\">" +
+                            "<input type=\"file\" name=\"" + classPrefix + "image-file\" id=\"" + classPrefix + "image-file\" accept=\"image/*\" />" +
+                            "<input type=\"submit\" value=\"" + imageLang.uploadButton + "\" />" +
+                            "</div>" : "";
+                    })() +
+                    "<br/>" +
+                    "<label>" + imageLang.alt + "</label>" +
+                    "<input type=\"text\" value=\"" + selection + "\" data-alt />" +
+                    "<br/>" +
+                    "<label>" + imageLang.link + "</label>" +
+                    "<input type=\"text\" value=\"http://\" data-link />" +
+                    "<br/>" +
+                    ( (settings.imageUpload) ? "</form>" : "</div>");
+
 
                 //var imageFooterHTML = "<button class=\"" + classPrefix + "btn " + classPrefix + "image-manager-btn\" style=\"float:left;\">" + imageLang.managerButton + "</button>";
 
@@ -160,7 +181,7 @@
                         uploadIframe.onload = function() {
 
                             loading(false);
-
+/*
                             var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
                             var json = (body.innerText) ? body.innerText : ( (body.textContent) ? body.textContent : null);
 
@@ -177,6 +198,33 @@
                                   alert(json.message);
                               }
                             }
+
+                            return false;*/
+
+                            //这是我个人写法
+                            var formData = new FormData();
+                            formData.append("editormd-image-file",$("#editormd-image-file")[0].files[0]);
+                            var action = settings.imageUploadURL + (settings.imageUploadURL.indexOf("?") >= 0 ? "&" : "?") + "guid=" + guid;
+
+                            $.ajax({
+                                type:"post",
+                                url:action,
+                                data:formData,
+                                dataType:"json",
+                                async:false,
+                                processData : false, // 使数据不做处理
+                                contentType : false, // 不要设置Content-Type请求头
+                                success:function(data){
+                                    // 成功拿到结果放到这个函数 data就是拿到的结果
+                                    console.log(data);
+                                    if(data.success == 1){
+                                        console.log(data.message);
+                                        dialog.find("[data-url]").val(data.url);
+                                    }else{
+                                        alert(data.message);
+                                    }
+                                },
+                            });
 
                             return false;
                         };
