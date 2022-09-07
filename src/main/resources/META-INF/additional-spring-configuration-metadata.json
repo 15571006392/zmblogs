@@ -9,5 +9,10 @@
       "name": "logging.redis.port",
       "type": "java.lang.String",
       "description": "Description for logging.redis.port."
+    },
+    {
+      "name": "blogServer.databaseName",
+      "type": "java.lang.String",
+      "description": "Description for blogServer.databaseName."
     }
   ] }

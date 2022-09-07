@@ -6,8 +6,6 @@ function initPasteDragImg(Editor){
 
         var items = (event.clipboardData || window.clipboardData).items;
         var file = null;
-        console.log(items)
-        console.log(items.length)
         if (items && items.length) {
 
             // 搜索剪切板items
@@ -75,7 +73,7 @@ function uploadImg(file,Editor){
                     Editor.insertValue("![]("+msg["url"]+")");
                 }else{
 
-                    Editor.insertValue("[下载附件]("+msg["url"]+")");
+                    Editor.insertValue("![]("+msg["url"]+")");
                 }
             }else{
 

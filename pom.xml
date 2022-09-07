@@ -21,6 +21,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.huaweicloud</groupId>
+            <artifactId>esdk-obs-java</artifactId>
+            <version>3.21.11</version>
+        </dependency>
         <!-- jasypt加密 -->
         <dependency>
             <groupId>com.github.ulisesbocchio</groupId>
