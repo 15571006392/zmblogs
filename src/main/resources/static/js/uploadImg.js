@@ -1,13 +1,10 @@
 // 粘贴和拖拽图片上传
 function initPasteDragImg(Editor){
-
     var doc = document.getElementById(Editor.id)
     doc.addEventListener('paste', function (event) {
-
         var items = (event.clipboardData || window.clipboardData).items;
         var file = null;
         if (items && items.length) {
-
             // 搜索剪切板items
             for (var i = 0; i < items.length; i++) {
 
@@ -19,12 +16,10 @@ function initPasteDragImg(Editor){
             }
         }
         else {
-
             console.log("当前浏览器不支持");
             return;
         }
         if (!file) {
-
             console.log("粘贴内容非图片");
             return;
         }
@@ -32,17 +27,14 @@ function initPasteDragImg(Editor){
     });
     var dashboard = document.getElementById(Editor.id)
     dashboard.addEventListener("dragover", function (e) {
-
         e.preventDefault()
         e.stopPropagation()
     })
     dashboard.addEventListener("dragenter", function (e) {
-
         e.preventDefault()
         e.stopPropagation()
     })
     dashboard.addEventListener("drop", function (e) {
-
         e.preventDefault()
         e.stopPropagation()
         var files = this.files || e.dataTransfer.files;
@@ -50,12 +42,10 @@ function initPasteDragImg(Editor){
     })
 }
 function uploadImg(file,Editor){
-
     var formData = new FormData();
     var fileName=new Date().getTime()+"."+file.name.split(".").pop();
     formData.append('editormd-image-file', file, fileName);
     $.ajax({
-
         url: Editor.settings.imageUploadURL,
         type: 'post',
         data: formData,
@@ -63,20 +53,10 @@ function uploadImg(file,Editor){
         contentType: false,
         dataType: 'json',
         success: function (msg) {
-
             var success=msg['success'];
             if(success==1){
-
-                var url=msg["url"];
-                if(/\.(png|jpg|jpeg|gif|bmp|ico)$/.test(url)){
-
-                    Editor.insertValue("![]("+msg["url"]+")");
-                }else{
-
-                    Editor.insertValue("![]("+msg["url"]+")");
-                }
+                Editor.insertValue("![]("+msg["url"]+")");
             }else{
-
                 console.log(msg);
                 alert("上传失败");
             }
