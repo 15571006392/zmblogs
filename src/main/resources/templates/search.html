@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telphone=no, email=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="摆烂人博客"/>
-    <title>摆烂人博客</title>
+    <title th:text="${query} + -博客搜索">摆烂人博客</title>
     <link rel="icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link href="../static/css/nav-left.css" rel="stylesheet" th:href="@{/css/nav-left.css}">
@@ -83,7 +83,7 @@
 
                     <!-- 左 -->
                     <div class="eleven wide column">
-                        <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank"
+                        <h3 class="ui header diy-margin-top-mini"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank"
                                                  class="color-black" th:text="${blog.title}">JUC并发编程</a></h3>
                         <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
                             <p class="diy-text color-black" th:text="${blog.description}">在 Java 5.0 提供了
@@ -91,7 +91,7 @@
                                 用于定义类似于线程的自定义子系统,包括线程池,异步 IO 和轻量级任务框架;还提供了设计用于多线程上下文中
                                 的 Collection 实现等;</p>
                         </a>
-                        <div class="ui stackable grid">
+                        <div class="ui stackable grid diy-margin-top">
 
                             <!-- 左 -->
                             <div class="eleven wide column ">
@@ -195,17 +195,16 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 
 <!-- 底部 -->
 <footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">
-                <h4 class="text-fine text-opacity2">
-                    <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.5</span>
+                <h4 class="text-fine2 text-opacity2">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" class="color-black">鄂ICP备2022014800号-1</a>
+                    <br>
+                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.6</span>
                 </h4>
             </div>
         </div>

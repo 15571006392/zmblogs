@@ -5,18 +5,25 @@ import com.bean.User;
 import com.bean.UserDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.obs.services.ObsClient;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 /**
  * @author Zm-Mmm
@@ -25,34 +32,86 @@ import java.util.List;
 @RequestMapping("/admin")
 public class BlogController {
 
-    @Autowired
-    private BlogService blogService;
+    private final BlogService blogService;
+
+    private final TypeService typeService;
+
+    private final TagService tagService;
+
+    private static String blogTitle;
+    @Value("${huawei.obs.ak}")
+    private String ak;
+
+    @Value("${huawei.obs.sk}")
+    private String sk;
+
+    @Value("${huawei.obs.endPoint}")
+    private String endPoint;
+    @Value("${huawei.obs.bucketName}")
+    private String bucketName;
 
     @Autowired
-    private TypeService typeService;
-
-    @Autowired
-    private TagService tagService;
+    public BlogController(BlogService blogService, TypeService typeService, TagService tagService) {
+        this.blogService = blogService;
+        this.typeService = typeService;
+        this.tagService = tagService;
+    }
 
     /**
      * 博客页面跳转
+     *
      * @param model
      * @return
      */
     @GetMapping("/blogs")
-    public String list(Model model, HttpServletRequest request, @RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum){
+    public String list(Model model, HttpServletRequest request, @RequestParam(required = false, defaultValue = "1", value = "pageNum") int pageNum) {
         // 所有分类
-        model.addAttribute("types",typeService.listType());
+        model.addAttribute("types", typeService.listType());
         // 所有博客
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         // 分页查询
-        PageHelper.startPage(pageNum,10);
+        PageHelper.startPage(pageNum, 10);
         List<UserDetail> userDetails = blogService.selectDetailFromUserIdLimit(user.getId());
         // 得到分页结果对象
         PageInfo<UserDetail> pageInfo = new PageInfo<>(userDetails);
-        model.addAttribute("page",pageInfo);
+        model.addAttribute("page", pageInfo);
         return "admin/admin-blog";
+    }
+
+    /**
+     * 上传博客图片到华为云obs
+     *
+     * @param file 文件名
+     * @return 成功或失败的json
+     * @throws IOException
+     */
+    @PostMapping("/blogsImage")
+    @ResponseBody
+    public Map fileUpload(@RequestParam("editormd-image-file") MultipartFile file) throws IOException {
+        Map<String, Object> hashMap = new LinkedHashMap<>();
+        // 创建obs对象
+        ObsClient obsClient = new ObsClient(ak, sk, endPoint);
+        // 获得后缀类型
+        String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
+        // 设置上传的文件名字
+        String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));
+        String filename = blogTitle + rightNow + type;
+        // 获取上传流
+        InputStream inputStream = file.getInputStream();
+        // 上传
+        obsClient.putObject(bucketName, filename, inputStream);
+        // 拼接url
+        String url = "https://" + bucketName + "." + endPoint + "/" + filename;
+        // 返回上传路径
+        hashMap.put("url", url);
+        // 返回是否成功
+        hashMap.put("success", 1);
+        // 返回信息提示
+        hashMap.put("message", "upload success!");
+        obsClient.close();
+        inputStream.close();
+        return hashMap;
     }
 
     /**
@@ -70,75 +129,80 @@ public class BlogController {
 
     /**
      * 提交新博客页面跳转
+     *
      * @param model
      * @return
      */
     @GetMapping("/blogs/input")
-    public String input(Model model){
-        model.addAttribute("types",typeService.listType());
-        model.addAttribute("tags",tagService.listTag());
-        model.addAttribute("blog",new Detail());
+    public String input(Model model) {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("tags", tagService.listTag());
+        model.addAttribute("blog", new Detail());
         return "admin/admin-create";
     }
 
     /**
      * 修改博客功能
+     *
      * @param id
      * @param model
      * @return
      */
     @GetMapping("/blogs/{id}/input")
-    public String editInput(@PathVariable Long id, Model model){
-        model.addAttribute("types",typeService.listType());
-        model.addAttribute("tags",tagService.listTag());
+    public String editInput(@PathVariable Long id, Model model) {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("tags", tagService.listTag());
         Detail blog = blogService.getBlog(id);
         blog.init();
-        model.addAttribute("blog",blog);
+        blogTitle = blog.getTitle();
+        model.addAttribute("blog", blog);
         return "admin/admin-create";
     }
 
     /**
      * 发布-编辑功能公用
+     *
      * @param detail
      * @param session
      * @param attributes
      * @return
      */
     @PostMapping("/blogs")
-    public String post(Detail detail, HttpSession session, RedirectAttributes attributes){
+    public String post(Detail detail, HttpSession session, RedirectAttributes attributes) {
         detail.setUser((User) session.getAttribute("user"));
         detail.setType(typeService.getType(detail.getType().getId()));
         detail.setTags(tagService.listTag(detail.getTagIds()));
         Detail detail1;
         // 发布，编辑判断
         // 过滤创建时间，浏览量，防止属性重复覆盖
-        if(detail.getId() == null){
+        if (detail.getId() == null) {
             // 发布博客
             detail1 = blogService.saveBlog(detail);
-        }else{
+        } else {
             // 编辑博客
-            detail1 = blogService.updateBlog(detail.getId(),detail);
+            detail1 = blogService.updateBlog(detail.getId(), detail);
         }
-        if(detail1 == null){
+        if (detail1 == null) {
             // 保存失败
-            attributes.addFlashAttribute("message","操作失败");
-        }else{
+            attributes.addFlashAttribute("message", "操作失败");
+        } else {
             // 保存成功
-            attributes.addFlashAttribute("message","操作成功");
+            attributes.addFlashAttribute("message", "操作成功");
         }
         return "redirect:/admin/blogs";
     }
 
     /**
      * 删除博客
+     *
      * @param id
      * @param attributes
      * @return
      */
     @GetMapping("/blogs/{id}/delete")
-    public String delete(@PathVariable Long id,RedirectAttributes attributes){
+    public String delete(@PathVariable Long id, RedirectAttributes attributes) {
         blogService.deleteBlog(id);
-        attributes.addFlashAttribute("message","删除成功");
+        attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/blogs";
     }
 }

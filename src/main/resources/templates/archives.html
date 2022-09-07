@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telphone=no, email=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="摆烂人博客"/>
-    <title>摆烂人博客</title>
+    <title>摆烂人博客-归档</title>
     <link rel="icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../static/css/animate.min.css" th:href="@{/css/animate.min.css}">
@@ -107,14 +107,25 @@
     </div>
 </div>
 
+<!-- 右侧滚动工具栏 -->
+<div class="ui vertical icon buttons diy-fixed diy-shadow">
+    <button class="ui mobileBrowsing icon button diy-mobile"><i class="large mobile alternate icon"></i></button>
+    <div id="top-button" class="ui button"><i class="large chevron up icon"></i></div>
+</div>
+
+<!-- 二维码弹出框 -->
+<div id="ewm" class="ui qrcodes flowing popup transition hidden" style="width: 128px !important;"></div>
+
+
 <!-- 底部 -->
 <footer class="ui attached diy-shadow" style="background-color: white">
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">
-                <h4 class="text-fine text-opacity2">
-                    <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.5</span>
+                <h4 class="text-fine2 text-opacity2">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" class="color-black">鄂ICP备2022014800号-1</a>
+                    <br>
+                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.6</span>
                 </h4>
             </div>
         </div>
@@ -125,6 +136,8 @@
 <script src="../static/js/kbn.js" th:src="@{/js/kbn.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+<script src="../static/js/qrcode.min.js" th:src="@{/js/qrcode.min.js}"></script>
 <script>
     // 手机端菜单折叠
     $('.index').click(function () {
@@ -133,6 +146,23 @@
     // 注销下拉菜单
     $('.ui.dropdown').dropdown({
         on: 'hover'
+    });
+    // 初始化二维码生成器
+    var qrcode = new QRCode("ewm", {
+        text: window.location.href,
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    $('.mobileBrowsing').popup({
+        popup: $('.qrcodes'),
+        position: 'left center'
+    });
+
+    $('#top-button').click(function () {
+        $(window).scrollTo(0, 500);
     });
 </script>
 </body>

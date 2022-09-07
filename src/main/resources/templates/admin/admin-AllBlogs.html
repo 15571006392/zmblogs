@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>博客管理</title>
+    <title>全站博客编辑</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/nav-left.css" th:href="@{/css/nav-left.css}">
     <link rel="shortcut icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
@@ -52,12 +52,10 @@
                     <th></th>
                     <th>标题</th>
                     <th>类型</th>
-                    <th>推荐</th>
-                    <th>博客状态</th>
                     <th>发布时间</th>
                     <th>更新时间</th>
-                    <th>浏览量</th>
                     <th>作者</th>
+                    <th>博客状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -66,12 +64,10 @@
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${detail.title}"></td>
                     <td th:text="${detail.name}">Java</td>
-                    <td th:text="${detail.recommend} ? '是' : '否'"></td>
-                    <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
-                    <td th:text="${#dates.format(detail.createTime,'yyyy:MM:dd HH:mm:ss')}"></td>
-                    <td th:text="${#dates.format(detail.updateTime,'yyyy:MM:dd HH:mm:ss')}"></td>
-                    <td th:text="${detail.views}"></td>
+                    <td th:text="${#dates.format(detail.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(detail.updateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td th:text="${detail.BlogUserName}"></td>
+                    <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
                     <td>
                         <a href="#" th:href="@{/admin/allBlogs/{id}/modifyState(id=${detail.id})}" class="ui yellow basic button">下架</a>
                         <a href="#" th:href="@{/admin/allBlogs/{id}/delete(id=${detail.id})}" class="ui red basic button"

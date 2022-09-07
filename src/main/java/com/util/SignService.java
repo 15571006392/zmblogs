@@ -66,8 +66,6 @@ public class SignService {
         redisTemplate.opsForValue().setBit(signKey, day, true);
         // 计入总签到次数
         allSignCountByUser(userId);
-        // 计入连续签到记录
-        continuousSignHistory(userId);
         result.put("message", "签到成功");
         result.put("code", 200);
         return result;
@@ -95,33 +93,12 @@ public class SignService {
     }
 
     /**
-     * 统计连续签到记录
-     * @param userId 用户id
-     */
-    public void continuousSignHistory(int userId) {
-        // 连续签到记录
-        String key = "continuousSignHistoryCount";
-        long continuousSignHistoryCount = 0;
-        if (redisTemplate.opsForHash().get(key, String.valueOf(userId)) != null) {
-            continuousSignHistoryCount = Long.valueOf((String) redisTemplate.opsForHash().get(key, String.valueOf(userId)));
-        }
-        continuousSignHistoryCount += 1;
-        /*
-        放入redis
-        map的key是continuousSignHistoryCount
-        value的key是用户id
-        用户id的value为连续签到记录
-         */
-        redisTemplate.opsForHash().put(key, String.valueOf(userId), String.valueOf(continuousSignHistoryCount));
-    }
-
-    /**
      * @param userId  用户id
      * @param dateStr 日期
      * @return 当天签到情况和月签到情况
      */
     public Map<String, Object> getSignByDate(int userId, String dateStr) {
-        Map<String, Object> result = new HashMap<>(5);
+        Map<String, Object> result = new HashMap<>(4);
         // 获取日期
         Date date = getDate(dateStr);
         // 获取日期对应的天数，多少号
@@ -141,16 +118,10 @@ public class SignService {
         if (redisTemplate.opsForHash().get("allSignCountByUser", String.valueOf(userId)) != null) {
             allSignCountByUser = Long.valueOf((String) redisTemplate.opsForHash().get("allSignCountByUser", String.valueOf(userId)));
         }
-        // 获取连续签到记录
-        long continuousSignHistoryCount = 0;
-        if (redisTemplate.opsForHash().get("continuousSignHistoryCount", String.valueOf(userId)) != null) {
-            continuousSignHistoryCount = Long.valueOf((String) redisTemplate.opsForHash().get("continuousSignHistoryCount", String.valueOf(userId)));
-        }
         result.put("today", isSigned);
         result.put("continuous", continuous);
         result.put("count", count);
         result.put("allSignCountByUser", allSignCountByUser);
-        result.put("continuousSignHistoryCount", continuousSignHistoryCount);
         return result;
     }
 

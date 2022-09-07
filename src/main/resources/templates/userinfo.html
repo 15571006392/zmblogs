@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telphone=no, email=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="摆烂人博客"/>
-    <title>摆烂人博客</title>
+    <title th:text="${userinfo.nickname} + 个人资料">摆烂人博客</title>
     <link rel="icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../static/css/animate.min.css" th:href="@{/css/animate.min.css}">
@@ -146,18 +146,13 @@
                     <div class="ui mini teal basic left pointing label">本月签到次数</div>
                 </div>
                 <div class="ui attached segment diy-shadow">
-                    <i class="bookmark outline icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">0</span>
+                    <i class="calendar check icon"></i><span class="ui text-fine2" th:text="${signByDate.continuous}">0</span>
                     <div class="ui mini orange basic left pointing label">本月连续签到</div>
                 </div>
                 <div class="ui attached segment diy-shadow">
                     <i class="trophy icon"></i><span class="ui text-fine2"
                                                      th:text="${signByDate.allSignCountByUser}">0</span>
                     <div class="ui mini blue basic left pointing label">签到总次数</div>
-                </div>
-                <div class="ui attached segment diy-shadow">
-                    <i class="calendar check outline icon"></i><span class="ui text-fine2"
-                                                                     th:text="${signByDate.continuousSignHistoryCount}">0</span>
-                    <div class="ui mini black basic left pointing label">连续签到记录</div>
                 </div>
                 <h4 class="ui horizontal divider header" style="padding-bottom: 0.5em;">用户资料</h4>
                 <!-- 博客数量 -->
@@ -227,9 +222,10 @@
     <div class="ui container">
         <div class="ui grid center aligned">
             <div class="wide column">
-                <h4 class="text-fine text-opacity2">
-                    <span>Copyright © 2022 Zm-Mmm All rights reserved.</span>
-                    <span>Version2.6.5</span>
+                <h4 class="text-fine2 text-opacity2">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" class="color-black">鄂ICP备2022014800号-1</a>
+                    <br>
+                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.6</span>
                 </h4>
             </div>
         </div>
