@@ -1,7 +1,8 @@
 package com.controller;
 
 import com.NotFoundException;
-import com.bean.*;
+import com.bean.BlogTagQuery;
+import com.bean.TagEntity;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
