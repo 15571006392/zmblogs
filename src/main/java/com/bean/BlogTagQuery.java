@@ -5,15 +5,15 @@ import java.util.Date;
 /**
  * @author Zm-Mmm
  */
-public class BlogEntity {
+public class BlogTagQuery {
 
+    private Integer id;
+    private Detail detail;
     private Integer userId;
     private String BlogUsername;
     private String BlogUserAvatar;
     private String typeName;
     private Integer typeId;
-
-    private Integer id;
     /**
      * 标题
      */
@@ -67,52 +67,8 @@ public class BlogEntity {
      */
     private Date updateTime;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getBlogUsername() {
-        return BlogUsername;
-    }
-
-    public void setBlogUsername(String blogUsername) {
-        BlogUsername = blogUsername;
-    }
-
-    public String getBlogUserAvatar() {
-        return BlogUserAvatar;
-    }
-
-    public void setBlogUserAvatar(String blogUserAvatar) {
-        BlogUserAvatar = blogUserAvatar;
-    }
-
     public String getTypeName() {
         return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -219,13 +175,69 @@ public class BlogEntity {
         this.updateTime = updateTime;
     }
 
-    public BlogEntity(String blogUsername, String blogUserAvatar, String typeName, Integer typeId, Integer userId, Integer id, String title, String content, String firstPicture, String flag, Integer views, boolean appreciation, boolean shareStatement, boolean comment, boolean published, boolean recommend, String description, Date createTime, Date updateTime) {
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getBlogUsername() {
+        return BlogUsername;
+    }
+
+    public void setBlogUsername(String blogUsername) {
+        BlogUsername = blogUsername;
+    }
+
+    public String getBlogUserAvatar() {
+        return BlogUserAvatar;
+    }
+
+    public void setBlogUserAvatar(String blogUserAvatar) {
+        BlogUserAvatar = blogUserAvatar;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Detail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Detail detail) {
+        this.detail = detail;
+    }
+
+    public BlogTagQuery() {
+    }
+
+    public BlogTagQuery(Integer id, Detail detail, Integer userId, String blogUsername, String blogUserAvatar, String typeName, Integer typeId, String title, String content, String firstPicture, String flag, Integer views, boolean appreciation, boolean shareStatement, boolean comment, boolean published, boolean recommend, String description, Date createTime, Date updateTime) {
+        this.id = id;
+        this.detail = detail;
+        this.userId = userId;
         BlogUsername = blogUsername;
         BlogUserAvatar = blogUserAvatar;
         this.typeName = typeName;
         this.typeId = typeId;
-        this.userId = userId;
-        this.id = id;
         this.title = title;
         this.content = content;
         this.firstPicture = firstPicture;
@@ -239,8 +251,5 @@ public class BlogEntity {
         this.description = description;
         this.createTime = createTime;
         this.updateTime = updateTime;
-    }
-
-    public BlogEntity() {
     }
 }

@@ -12,7 +12,11 @@ import java.util.List;
  */
 public interface TypeService {
 
-     // Mybatis
+    /**
+     * mybatis重构
+     * 查询所有分类
+     * @return 分类的list集合
+     */
      List<TypeEntity> findType();
 
     /**

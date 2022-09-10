@@ -1,6 +1,7 @@
 package com.service;
 
 import com.bean.Tag;
+import com.bean.TagEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,6 +11,13 @@ import java.util.List;
  * @author Zm-Mmm
  */
 public interface TagService {
+
+    /**
+     * 查询所有标签
+     * @return 所有标签的list集合
+     */
+    List<TagEntity> findTag();
+
     /**
      * 新增标签
      * @param tag

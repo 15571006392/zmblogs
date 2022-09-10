@@ -26,11 +26,15 @@ import java.util.*;
 @Service
 public class BlogServiceImpl implements BlogService {
 
-    @Autowired
-    private BlogRepository blogRepository;
+    private final BlogRepository blogRepository;
+
+    private final DetailDao detailDao;
 
     @Autowired
-    private DetailDao detailDao;
+    public BlogServiceImpl(BlogRepository blogRepository, DetailDao detailDao) {
+        this.blogRepository = blogRepository;
+        this.detailDao = detailDao;
+    }
 
     @Override
     public List<BlogEntity> findAllBlogs() {
@@ -40,6 +44,11 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<BlogEntity> findAllBlogsByType(int id) {
         return detailDao.findAllBlogsByType(id);
+    }
+
+    @Override
+    public List<BlogTagQuery> findAllBlogsByTag(int id) {
+        return detailDao.findAllBlogsByTag(id);
     }
 
     /**

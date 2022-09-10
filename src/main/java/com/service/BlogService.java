@@ -1,9 +1,6 @@
 package com.service;
 
-import com.bean.BlogEntity;
-import com.bean.BlogQuery;
-import com.bean.Detail;
-import com.bean.UserDetail;
+import com.bean.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,9 +12,28 @@ import java.util.Map;
  */
 public interface BlogService {
 
+    /**
+     * 查询全部博客
+     * 过滤博客状态为草稿的博客
+     * @return 装有博客信息的list集合
+     */
     List<BlogEntity> findAllBlogs();
 
+    /**
+     * 查询指定分类下的所有博客
+     * 过滤博客状态为草稿的博客
+     * @param id 分类id
+     * @return 装有博客信息的list集合
+     */
     List<BlogEntity> findAllBlogsByType(int id);
+
+    /**
+     * 查询指定标签下的所有博客
+     * 过滤博客状态为草稿的博客
+     * @param id 标签的id
+     * @return 装有博客信息的list集合
+     */
+    List<BlogTagQuery> findAllBlogsByTag(int id);
 
     /**
      * 根据主键获取指定博客
@@ -26,6 +42,12 @@ public interface BlogService {
      */
     Detail getBlog(Long id);
 
+    /**
+     *  通过用户id查询博客信息并分页
+     *  过滤博客状态为草稿的博客
+     * @param id 用户id
+     * @return 装有用户的博客的list集合
+     */
     List<UserDetail> selectDetailFromUserIdLimit(Long id);
 
     /**

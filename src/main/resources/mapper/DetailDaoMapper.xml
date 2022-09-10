@@ -46,4 +46,27 @@
             d.update_time DESC
     </select>
 
+    <select id="findAllBlogsByTag" resultType="BlogTagQuery">
+        SELECT
+            d.title,d.description,d.id,d.update_time,d.views,d.first_picture,u.id as userId,u.nickname as BlogUsername,u.avatar as BlogUserAvatar,ty.id as typeId,ty.name as typeName
+        FROM
+            t_detail d
+                JOIN
+            t_user u
+            ON
+                d.user_id = u.id
+                JOIN
+            t_detail_tags dt
+            ON
+                d.id = dt.details_id
+                JOIN
+            t_type ty
+            ON
+                ty.id = d.type_id
+        WHERE
+            d.published = 1 and dt.tags_id = #{id}
+        ORDER BY
+            d.update_time DESC
+    </select>
+
 </mapper>
