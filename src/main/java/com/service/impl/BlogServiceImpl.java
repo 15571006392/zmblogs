@@ -94,9 +94,14 @@ public class BlogServiceImpl implements BlogService {
         return b;
     }
 
+    /**
+     * 搜索博客
+     * @param query 用户输入
+     * @return 博客列表
+     */
     @Override
-    public Page<Detail> listBlog(String query, Pageable pageable) {
-        return blogRepository.findByQuery(query, pageable);
+    public List<BlogEntity> searchBlogs(String query) {
+        return detailDao.searchBlogs(query);
     }
 
     @Override

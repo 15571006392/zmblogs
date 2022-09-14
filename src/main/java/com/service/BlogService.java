@@ -59,13 +59,11 @@ public interface BlogService {
     Detail getAndConvert(Long id);
 
     /**
-     * search搜索
-     * 通过用户输入的内容分页查询博客
-     * @param query 输入内容
-     * @param pageable 分页
-     * @return 结果
+     * 搜索博客
+     * @param query 用户输入
+     * @return 博客列表
      */
-    Page<Detail> listBlog(String query,Pageable pageable);
+    List<BlogEntity> searchBlogs(String query);
 
     /**
      * 根据指定的数量

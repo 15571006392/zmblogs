@@ -2,7 +2,6 @@ package com.controller;
 
 import com.NotFoundException;
 import com.bean.BlogEntity;
-import com.bean.Detail;
 import com.bean.UserEntity;
 import com.util.SignService;
 import com.service.UserInfoService;

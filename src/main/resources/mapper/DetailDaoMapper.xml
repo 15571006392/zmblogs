@@ -18,7 +18,14 @@
     </resultMap>
 
     <select id="selectDetailFromUserIdLimit" resultMap="selectDetailFromUserIdLimitMap">
-        select d.id,d.title,d.recommend,d.published,d.create_time,d.update_time,d.views,t.name
+        select d.id,
+               d.title,
+               d.recommend,
+               d.published,
+               d.create_time,
+               d.update_time,
+               d.views,
+               t.name
         from t_detail d
                  left join t_type t on d.type_id = t.id
         where user_id = #{id}
@@ -170,4 +177,52 @@
         ORDER BY d.update_time DESC
     </select>
 
+    <resultMap id="searchBlogsMap" type="BlogEntity">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="first_picture" property="firstPicture"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="views" property="views"/>
+        <association property="user" javaType="UserEntity">
+            <id column="uid" property="id"/>
+            <result column="nickname" property="nickname"/>
+            <result column="avatar" property="avatar"/>
+        </association>
+        <association property="type" javaType="TypeEntity">
+            <id column="tid" property="id"/>
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+
+    <!--  搜索博客  -->
+    <select id="searchBlogs" resultMap="searchBlogsMap" parameterType="String">
+        select d.id,
+               d.title,
+               d.description,
+               d.first_picture,
+               d.update_time,
+               d.views,
+               u.id uid,
+               u.nickname,
+               u.avatar,
+               t.id tid,
+               t.name
+        FROM t_detail d
+                 LEFT JOIN
+             t_user u
+             ON
+                 u.id = d.user_id
+                 LEFT JOIN
+             t_type t
+             ON
+                 d.type_id = t.id
+        where d.published = 1
+            AND
+              d.title like concat('%',#{query},'%') and d.published = 1
+           OR d.description like concat('%',#{query},'%') and d.published = 1
+           or d.content like concat('%',#{query},'%') and d.published = 1
+        order by
+            d.update_time desc
+    </select>
 </mapper>

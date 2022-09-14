@@ -3,7 +3,6 @@ package com.controller.admin;
 import com.bean.BlogEntity;
 import com.bean.Detail;
 import com.bean.User;
-import com.bean.UserEntity;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.obs.services.ObsClient;

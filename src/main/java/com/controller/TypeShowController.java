@@ -3,7 +3,6 @@ package com.controller;
 import com.NotFoundException;
 import com.bean.BlogEntity;
 import com.bean.TypeEntity;
-import com.dao.TypeDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;

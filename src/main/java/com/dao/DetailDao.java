@@ -20,6 +20,13 @@ public interface DetailDao {
     List<BlogEntity> selectDetailFromUserIdLimit(Long id);
 
     /**
+     * 搜索博客功能
+     * @param query
+     * @return
+     */
+    List<BlogEntity> searchBlogs(String query);
+
+    /**
      * 查询所有博客
      * 过滤草稿状态博客
      * @return

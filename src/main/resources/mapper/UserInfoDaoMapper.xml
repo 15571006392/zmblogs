@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserInfoDao">
 
+    <!--  查询注册用户数量  -->
     <select id="findUserCount" resultType="Integer">
         select count(id)
         from t_user
@@ -22,6 +23,7 @@
         </collection>
     </resultMap>
 
+    <!--  根据id查询用户  -->
     <select id="findUserById" resultMap="findUserByIdMap">
         select u.id,
                u.avatar,
@@ -40,10 +42,12 @@
         select id, title, views
         from t_detail
         where user_id = #{id}
+          and published = 1
         order by views desc
         limit 5
     </select>
 
+    <!--  更新用户上次在线时间  -->
     <update id="updateUserUpdateTime">
         update t_user
         set update_time = #{updateTime}
@@ -75,6 +79,7 @@
              on
                  d.type_id = t.id
         where d.user_id = #{id}
+          and d.published = 1
         order by update_time desc
         limit 4
     </select>
@@ -85,6 +90,7 @@
         from t_detail
         where recommend = 1
           and user_id = #{id}
+          and published = 1
         order by create_time desc
         limit 5
     </select>
