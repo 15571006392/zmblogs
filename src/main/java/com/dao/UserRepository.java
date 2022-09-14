@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.bean.User;
+import com.bean.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -15,5 +16,5 @@ public interface UserRepository extends JpaRepository<User,Long> {
      * @param password
      * @return
      */
-    User findByUsernameAndPassword(String username,String password);
+    User findByUsernameAndPassword(String username, String password);
 }

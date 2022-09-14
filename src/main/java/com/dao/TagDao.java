@@ -16,4 +16,11 @@ public interface TagDao {
      * @return 所有标签的list集合
      */
     List<TagEntity> findTag();
+
+    /**
+     * 查找指定博客的所有标签
+     * @param id 博客id
+     * @return 标签集合
+     */
+    List<TagEntity> findTagByDetail(Integer id);
 }

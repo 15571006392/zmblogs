@@ -1,6 +1,7 @@
 package com.controller.admin;
 
 import com.bean.User;
+import com.bean.UserEntity;
 import com.service.UserInfoService;
 import com.service.UserService;
 import com.util.SignService;

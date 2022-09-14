@@ -5,24 +5,32 @@
 <mapper namespace="com.dao.TagDao">
 
     <select id="findTag" resultType="TagEntity">
-        SELECT
-            t.id,t.name,COUNT(dt.details_id) as BlogCount
+        SELECT t.id,
+               t.name,
+               COUNT(dt.details_id) as BlogCount
+        FROM t_tag t
+                 JOIN
+             t_detail_tags dt
+             ON
+                 t.id = dt.tags_id
+                 JOIN
+             t_detail d
+             ON
+                 d.id = dt.details_id
+        WHERE d.published = 1
+        GROUP BY t.id, t.name
+        ORDER BY BlogCount desc
+    </select>
+
+    <select id="findTagByDetail" resultType="TagEntity">
+        select t.name,dt.tags_id as id
         FROM
             t_tag t
-                JOIN
+                left JOIN
             t_detail_tags dt
             ON
-                t.id = dt.tags_id
-                JOIN
-            t_detail d
-            ON
-                d.id = dt.details_id
-        WHERE
-            d.published = 1
-        GROUP BY
-            t.id,t.name
-        ORDER BY
-            BlogCount desc
+                dt.tags_id = t.id
+        where dt.details_id = #{id}
     </select>
 
 </mapper>

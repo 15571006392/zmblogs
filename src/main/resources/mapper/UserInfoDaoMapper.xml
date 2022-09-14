@@ -5,21 +5,43 @@
 <mapper namespace="com.dao.UserInfoDao">
 
     <select id="findUserCount" resultType="Integer">
-        select count(id) from t_user
+        select count(id)
+        from t_user
     </select>
 
-    <select id="findUserById" resultType="UserInfo">
-        select u.id, u.avatar, u.create_time, u.update_time, u.email, u.nickname, u.type, count(d.id) as blog_count
+    <resultMap id="findUserByIdMap" type="userEntity">
+        <id column="id" property="id"/>
+        <result column="avatar" property="avatar"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="email" property="email"/>
+        <result column="nickname" property="nickname"/>
+        <result column="type" property="type"/>
+        <collection property="blogEntities" javaType="list" ofType="BlogEntity">
+            <id column="did" property="id"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUserById" resultMap="findUserByIdMap">
+        select u.id,
+               u.avatar,
+               u.create_time,
+               u.update_time,
+               u.email,
+               u.nickname,
+               u.type,
+               d.id did
         from t_user u
                  join t_detail d on u.id = d.user_id
         where u.id = #{id}
     </select>
-
-    <select id="findUserDetail" resultType="Detail">
+    <!--热门博客-->
+    <select id="findUserDetail" resultType="BlogEntity">
         select id, title, views
         from t_detail
         where user_id = #{id}
-        order by views desc limit 5
+        order by views desc
+        limit 5
     </select>
 
     <update id="updateUserUpdateTime">
@@ -28,29 +50,43 @@
         where id = #{id}
     </update>
 
-    <select id="findUserLateDetail" resultType="UserDetail">
-        select
-            d.id,
-            d.title,
-            d.update_time,
-            d.description,
-            t.name,
-            t.id as name_id
-        from
-            t_detail d
-        join
-            t_type t
-        on
-            d.type_id = t.id
-        where
-            d.user_id = #{id}
-        order by
-            update_time desc
+    <resultMap id="findUserLateDetailMap" type="BlogEntity">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="description" property="description"/>
+        <association property="type" javaType="TypeEntity">
+            <id column="tid" property="id"/>
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+
+    <!--  用户最近更新  -->
+    <select id="findUserLateDetail" resultMap="findUserLateDetailMap">
+        select d.id,
+               d.title,
+               d.update_time,
+               d.description,
+               t.name,
+               t.id tid
+        from t_detail d
+                 join
+             t_type t
+             on
+                 d.type_id = t.id
+        where d.user_id = #{id}
+        order by update_time desc
         limit 4
     </select>
 
-    <select id="findUserRecommendDetail" resultType="UserDetail">
-        select id,title from t_detail where recommend = 1 and user_id = #{id} order by create_time desc limit 5
+    <!--  用户推荐博客  -->
+    <select id="findUserRecommendDetail" resultType="BlogEntity">
+        select id, title
+        from t_detail
+        where recommend = 1
+          and user_id = #{id}
+        order by create_time desc
+        limit 5
     </select>
 
 </mapper>

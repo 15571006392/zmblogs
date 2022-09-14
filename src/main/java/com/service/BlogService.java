@@ -33,12 +33,12 @@ public interface BlogService {
      * @param id 标签的id
      * @return 装有博客信息的list集合
      */
-    List<BlogTagQuery> findAllBlogsByTag(int id);
+    List<BlogEntity> findAllBlogsByTag(int id);
 
     /**
      * 根据主键获取指定博客
-     * @param id
-     * @return
+     * @param id 主键
+     * @return 博客
      */
     Detail getBlog(Long id);
 
@@ -48,54 +48,30 @@ public interface BlogService {
      * @param id 用户id
      * @return 装有用户的博客的list集合
      */
-    List<UserDetail> selectDetailFromUserIdLimit(Long id);
+    List<BlogEntity> selectDetailFromUserIdLimit(Long id);
 
     /**
      * 根据id查找博客
      * 用来转换markdown
-     * @param id
-     * @return
+     * @param id id
+     * @return 博客
      */
     Detail getAndConvert(Long id);
 
     /**
-     * 分页查找博客
-     * 通过BlogQuery类查找
-     * @param pageable
-     * @param detail
-     * @return
-     */
-    Page<Detail> listBlog(Pageable pageable, BlogQuery detail);
-
-    /**
-     * 分页查询博客
-     * @param pageable
-     * @return
-     */
-    Page<Detail> listBlog(Pageable pageable);
-
-    /**
-     * 根据标签的ID分页查询博客
-     * @param tagId
-     * @param pageable
-     * @return
-     */
-    Page<Detail> listBlog(Long tagId,Pageable pageable);
-
-    /**
      * search搜索
      * 通过用户输入的内容分页查询博客
-     * @param query
-     * @param pageable
-     * @return
+     * @param query 输入内容
+     * @param pageable 分页
+     * @return 结果
      */
     Page<Detail> listBlog(String query,Pageable pageable);
 
     /**
      * 根据指定的数量
      * 查找指定数量的推荐的博客
-     * @param size
-     * @return
+     * @param size 指定大小
+     * @return 结果
      */
     List<Detail> listRecommendBlogTop(Integer size);
 
@@ -103,34 +79,34 @@ public interface BlogService {
      * 归档功能
      * 查询博客，String为年份
      * 以年份为key，对应创建时间的博客为value
-     * @return
+     * @return 结果
      */
     Map<String,List<Detail>> archiveBlog();
 
     /**
      * 博客数量
-     * @return
+     * @return 博客数量
      */
     Long countBlog();
 
     /**
      * 保存博客
-     * @param detail
-     * @return
+     * @param detail 博客
+     * @return 博客
      */
     Detail saveBlog(Detail detail);
 
     /**
      * 根据id更新博客
-     * @param id
-     * @param detail
-     * @return
+     * @param id id
+     * @param detail 博客
+     * @return 博客
      */
     Detail updateBlog(Long id,Detail detail);
 
     /**
      * 根据id删除博客
-     * @param id
+     * @param id id
      */
     void deleteBlog(Long id);
 }

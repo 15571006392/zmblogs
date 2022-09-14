@@ -45,6 +45,16 @@ public class TagServiceImpl implements TagService {
     }
 
     /**
+     * 查找指定博客的所有标签
+     * @param id 博客id
+     * @return 标签集合
+     */
+    @Override
+    public List<TagEntity> findTagByDetail(Integer id) {
+        return tagDao.findTagByDetail(id);
+    }
+
+    /**
      * 保存标签
      * @param tag
      * @return

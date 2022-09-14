@@ -4,9 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.AllBlogsDao">
 
-    <select id="findAllBlogsNotCurrentUser" resultType="AllBlogsEntity">
+    <resultMap id="findAllBlogsNotCurrentUserMap" type="BlogEntity">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="recommend" property="recommend"/>
+        <result column="published" property="published"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="views" property="views"/>
+        <association property="user" javaType="UserEntity">
+            <result column="nickname" property="nickname"/>
+        </association>
+        <association property="type" javaType="TypeEntity">
+            <result column="tname" property="name"/>
+        </association>
+    </resultMap>
+
+    <select id="findAllBlogsNotCurrentUser" resultMap="findAllBlogsNotCurrentUserMap">
         SELECT
-            d.id,d.title,t.name as name,d.recommend,d.published,d.create_time,d.update_time,d.views,u.nickname as BlogUserName
+            d.id,d.title,d.recommend,d.published,d.create_time,d.update_time,d.views,u.nickname,t.name tname
         FROM
             t_detail d
                 JOIN

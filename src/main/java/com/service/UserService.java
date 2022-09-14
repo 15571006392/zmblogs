@@ -13,5 +13,5 @@ public interface UserService {
      * @param password
      * @return
      */
-    User checkUser(String username,String password);
+    User checkUser(String username, String password);
 }

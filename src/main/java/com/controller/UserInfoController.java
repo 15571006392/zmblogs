@@ -1,9 +1,9 @@
 package com.controller;
 
 import com.NotFoundException;
+import com.bean.BlogEntity;
 import com.bean.Detail;
-import com.bean.UserDetail;
-import com.bean.UserInfo;
+import com.bean.UserEntity;
 import com.util.SignService;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,17 +43,17 @@ public class UserInfoController {
     public String info(@PathVariable(name = "id") int id, Model model) {
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         // 查询用户信息
-        UserInfo userInfo = userInfoService.findUserById(id);
-        if(userInfo.getId() == null){
+        UserEntity userEntity = userInfoService.findUserById(id);
+        if(userEntity.getId() == null){
             throw new NotFoundException("用户不存在");
         }
         // 查询热门博客
-        List<Detail> userDetail = userInfoService.findUserDetail(id);
+        List<BlogEntity> userDetail = userInfoService.findUserDetail(id);
         // 查询最近更新的博客
-        List<UserDetail> userLateDetail = userInfoService.findUserLateDetail(id);
+        List<BlogEntity> userLateDetail = userInfoService.findUserLateDetail(id);
         // 查询用户推荐的博客
-        List<UserDetail> userRecommendDetail = userInfoService.findUserRecommendDetail(id);
-        model.addAttribute("userinfo", userInfo);
+        List<BlogEntity> userRecommendDetail = userInfoService.findUserRecommendDetail(id);
+        model.addAttribute("userinfo", userEntity);
         model.addAttribute("userDetail", userDetail);
         model.addAttribute("userLateDetail", userLateDetail);
         model.addAttribute("userRecommendDetail", userRecommendDetail);

@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.NotFoundException;
-import com.bean.BlogTagQuery;
+import com.bean.BlogEntity;
 import com.bean.TagEntity;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -47,12 +47,17 @@ public class TagShowController {
         model.addAttribute("tags", list);
         // 分页查询
         PageHelper.startPage(pageNum, 10);
-        List<BlogTagQuery> allBlogsByTag = blogService.findAllBlogsByTag(id);
+        List<BlogEntity> allBlogsByTag = blogService.findAllBlogsByTag(id);
+        // 查询指定博客的所有标签并替换到分页结果对象
+        allBlogsByTag.forEach(values ->{
+            List<TagEntity> tagByDetail = tagService.findTagByDetail(values.getId());
+            values.setTags(tagByDetail);
+        });
         if (allBlogsByTag.size() == 0) {
             throw new NotFoundException("标签不存在");
         }
         // 得到分页结果对象
-        PageInfo<BlogTagQuery> pageInfo = new PageInfo<>(allBlogsByTag);
+        PageInfo<BlogEntity> pageInfo = new PageInfo<>(allBlogsByTag);
         model.addAttribute("page", pageInfo);
         // 当前活跃的id
         model.addAttribute("activeTagId", id);

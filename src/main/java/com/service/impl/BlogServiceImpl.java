@@ -47,7 +47,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogTagQuery> findAllBlogsByTag(int id) {
+    public List<BlogEntity> findAllBlogsByTag(int id) {
         return detailDao.findAllBlogsByTag(id);
     }
 
@@ -64,7 +64,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<UserDetail> selectDetailFromUserIdLimit(Long id) {
+    public List<BlogEntity> selectDetailFromUserIdLimit(Long id) {
         return detailDao.selectDetailFromUserIdLimit(id);
     }
 
@@ -92,70 +92,6 @@ public class BlogServiceImpl implements BlogService {
          */
         blogRepository.updateViews(id);
         return b;
-    }
-
-    /**
-     * 分页动态查询
-     *
-     * @param pageable
-     * @param detail
-     * @return
-     */
-    @Override
-    public Page<Detail> listBlog(Pageable pageable, BlogQuery detail) {
-        return blogRepository.findAll((Specification<Detail>) (root, criteriaQuery, criteriaBuilder) -> {
-            // Root<Detail> : 查什么
-            // CriteriaQuery : 容器
-            // CriteriaBuilder : 表达式
-            List<Predicate> predicates = new ArrayList<>();
-            if (!"".equals(detail.getTitle()) && detail.getTitle() != null) {
-                predicates.add(criteriaBuilder.like(root.get("title"), "%" + detail.getTitle() + "%"));
-            }
-            if (detail.getTypeId() != null) {
-                predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"), detail.getTypeId()));
-            }
-            if (detail.isRecommend()) {
-                predicates.add(criteriaBuilder.equal(root.get("recommend"), detail.isRecommend()));
-            }
-            criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
-            return null;
-        }, pageable);
-    }
-
-    /**
-     * 分页查找全部博客
-     *
-     * @param pageable
-     * @return
-     */
-    @Override
-    public Page<Detail> listBlog(Pageable pageable) {
-        return blogRepository.findAll(pageable);
-    }
-
-    /**
-     * 分页查询关联的标签
-     *
-     * @param tagId
-     * @param pageable
-     * @return
-     */
-    @Override
-    public Page<Detail> listBlog(Long tagId, Pageable pageable) {
-        return blogRepository.findAll(new Specification<Detail>() {
-            /**
-             * 关联查询
-             * @param root
-             * @param criteriaQuery
-             * @param criteriaBuilder
-             * @return
-             */
-            @Override
-            public Predicate toPredicate(Root<Detail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                Join join = root.join("tags");
-                return criteriaBuilder.equal(join.get("id"), tagId);
-            }
-        }, pageable);
     }
 
     @Override

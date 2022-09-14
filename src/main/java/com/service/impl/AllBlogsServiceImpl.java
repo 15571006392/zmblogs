@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.bean.AllBlogsEntity;
+import com.bean.BlogEntity;
 import com.dao.AllBlogsDao;
 import com.service.AllBlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +8,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Service
 public class AllBlogsServiceImpl implements AllBlogsService {
 
+    private final AllBlogsDao allBlogsDao;
+
     @Autowired
-    private AllBlogsDao allBlogsDao;
+    public AllBlogsServiceImpl(AllBlogsDao allBlogsDao) {
+        this.allBlogsDao = allBlogsDao;
+    }
 
     @Override
-    public List<AllBlogsEntity> findAllBlogsNotCurrentUser(Long id) {
+    public List<BlogEntity> findAllBlogsNotCurrentUser(Long id) {
         return allBlogsDao.findAllBlogsNotCurrentUser(id);
     }
 

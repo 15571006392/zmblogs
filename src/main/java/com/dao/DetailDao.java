@@ -1,12 +1,13 @@
 package com.dao;
 
 import com.bean.BlogEntity;
-import com.bean.BlogTagQuery;
-import com.bean.UserDetail;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Mapper
 public interface DetailDao {
 
@@ -16,7 +17,7 @@ public interface DetailDao {
      * @param id
      * @return
      */
-    List<UserDetail> selectDetailFromUserIdLimit(Long id);
+    List<BlogEntity> selectDetailFromUserIdLimit(Long id);
 
     /**
      * 查询所有博客
@@ -39,5 +40,5 @@ public interface DetailDao {
      * @param id 标签id
      * @return 博客列表
      */
-    List<BlogTagQuery> findAllBlogsByTag(int id);
+    List<BlogEntity> findAllBlogsByTag(int id);
 }
