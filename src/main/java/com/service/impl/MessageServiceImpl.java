@@ -19,8 +19,12 @@ import java.util.Optional;
 @Service
 public class MessageServiceImpl implements MessageService {
 
+    private final MessageRepository messageRepository;
+
     @Autowired
-    private MessageRepository messageRepository;
+    public MessageServiceImpl(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
 
     /**
      * 保存留言

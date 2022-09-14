@@ -10,12 +10,14 @@ import java.util.List;
  * @author Zm-Mmm
  */
 public interface MessageService {
+
     /**
-     * 留言信息提交
-     * @param name
-     * @param mail
-     * @param message
-     * @return
+     *  提交留言
+     * @param name 名称
+     * @param mail 邮箱
+     * @param message 内容
+     * @param avatar 头像
+     * @return 成功
      */
     int updateLeavingMessage(String name,String mail,String message,String avatar);
     /**

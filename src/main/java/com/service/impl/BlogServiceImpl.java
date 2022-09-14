@@ -1,6 +1,7 @@
 package com.service.impl;
 
-import com.bean.*;
+import com.bean.BlogEntity;
+import com.bean.Detail;
 import com.dao.BlogRepository;
 import com.dao.DetailDao;
 import com.service.BlogService;
@@ -9,16 +10,14 @@ import com.util.NullBeanProperties;
 import com.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.*;
 import java.util.*;
+
 
 /**
  * @author Zm-Mmm

@@ -19,8 +19,12 @@ import java.util.Optional;
 @Service
 public class CommentServiceImpl implements CommentService {
 
+    private final CommentRepository commentRepository;
+
     @Autowired
-    private CommentRepository commentRepository;
+    public CommentServiceImpl(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
 
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {

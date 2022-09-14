@@ -14,22 +14,22 @@ public interface DetailDao {
     /**
      * 查询指定用户的博客并分页
      * 过滤草稿状态博客
-     * @param id
-     * @return
+     * @param id 用户id
+     * @return 博客
      */
     List<BlogEntity> selectDetailFromUserIdLimit(Long id);
 
     /**
      * 搜索博客功能
-     * @param query
-     * @return
+     * @param query 用户输入
+     * @return 博客
      */
     List<BlogEntity> searchBlogs(String query);
 
     /**
      * 查询所有博客
      * 过滤草稿状态博客
-     * @return
+     * @return 博客
      */
     List<BlogEntity> findAllBlogs();
 
