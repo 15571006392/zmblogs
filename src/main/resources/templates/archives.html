@@ -93,15 +93,27 @@
         <th:block th:each="item : ${archiveMap}">
             <h2 class="ui center aligned header" th:text="${item.key}">2020</h2>
             <div class="ui fluid vertical menu diy-shadow">
-                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item"
-                   th:each="blog : ${item.value}">
+                <a href="#" th:each="blog : ${item.value}">
+                    <a href="#" th:if="${blog.published}" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item">
 						<span>
 							<i class="blue circle icon"></i><span th:text="${blog.title}">JUC并发编程</span>
 							<div class="ui blue basic left pointing label padding-mini diy-mobile"
                                  th:text="${#dates.format(blog.updateTime,'MM月dd日 a')}">7月4日</div>
 						</span>
-                    <div class="ui orange basic label padding-mini diy-mobile" th:text="${blog.flag}">原创</div>
+                        <div class="ui orange basic label padding-mini diy-mobile" th:text="${blog.flag}">原创</div>
+                        <div class="ui green basic label padding-mini diy-mobile">已发布</div>
+                    </a>
+                    <a th:if="${!blog.published}" class="item disabled">
+						<span>
+							<i class="gray circle icon"></i><span th:text="${blog.title}">JUC并发编程</span>
+							<div class="ui blue disabled basic left pointing label padding-mini diy-mobile"
+                                 th:text="${#dates.format(blog.updateTime,'MM月dd日 a')}">7月4日</div>
+						</span>
+                        <div class="ui orange basic label padding-mini diy-mobile disabled" th:text="${blog.flag}">原创</div>
+                        <div class="ui gray label padding-mini diy-mobile disabled">草稿</div>
+                    </a>
                 </a>
+
             </div>
         </th:block>
     </div>
