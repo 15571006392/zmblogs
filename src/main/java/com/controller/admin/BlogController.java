@@ -1,8 +1,8 @@
 package com.controller.admin;
 
+import com.bean.BlogEntity;
 import com.bean.Detail;
 import com.bean.User;
-import com.bean.UserDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.obs.services.ObsClient;
@@ -60,8 +60,8 @@ public class BlogController {
     /**
      * 博客页面跳转
      *
-     * @param model
-     * @return
+     * @param model 容器
+     * @return 页面
      */
     @GetMapping("/blogs")
     public String list(Model model, HttpServletRequest request, @RequestParam(required = false, defaultValue = "1", value = "pageNum") int pageNum) {
@@ -72,9 +72,9 @@ public class BlogController {
         User user = (User) session.getAttribute("user");
         // 分页查询
         PageHelper.startPage(pageNum, 10);
-        List<UserDetail> userDetails = blogService.selectDetailFromUserIdLimit(user.getId());
+        List<BlogEntity> blogEntities = blogService.selectDetailFromUserIdLimit(user.getId());
         // 得到分页结果对象
-        PageInfo<UserDetail> pageInfo = new PageInfo<>(userDetails);
+        PageInfo<BlogEntity> pageInfo = new PageInfo<>(blogEntities);
         model.addAttribute("page", pageInfo);
         return "admin/admin-blog";
     }
@@ -84,7 +84,7 @@ public class BlogController {
      *
      * @param file 文件名
      * @return 成功或失败的json
-     * @throws IOException
+     * @throws IOException io异常
      */
     @PostMapping("/blogsImage")
     @ResponseBody
@@ -93,7 +93,7 @@ public class BlogController {
         // 创建obs对象
         ObsClient obsClient = new ObsClient(ak, sk, endPoint);
         // 获得后缀类型
-        String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
+        String type = Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().indexOf("."));
         // 设置上传的文件名字
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));
         String filename = blogTitle + rightNow + type;
@@ -115,23 +115,10 @@ public class BlogController {
     }
 
     /**
-     * 分页搜索博客
-     * @param model
-     * @param detail
-     * @param pageable
-     * @return
-     */
-    /*@PostMapping("/blogs/search")
-    public String search(Model model, BlogQuery detail,@PageableDefault(size = 10,sort = {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable){
-        model.addAttribute("page",blogService.listBlog(pageable, detail));
-        return "admin/admin-blog :: blogList";
-    }*/
-
-    /**
      * 提交新博客页面跳转
      *
-     * @param model
-     * @return
+     * @param model 容器
+     * @return 页面
      */
     @GetMapping("/blogs/input")
     public String input(Model model) {
@@ -144,9 +131,9 @@ public class BlogController {
     /**
      * 修改博客功能
      *
-     * @param id
-     * @param model
-     * @return
+     * @param id 博客id
+     * @param model 容器
+     * @return 页面
      */
     @GetMapping("/blogs/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
@@ -162,10 +149,10 @@ public class BlogController {
     /**
      * 发布-编辑功能公用
      *
-     * @param detail
-     * @param session
-     * @param attributes
-     * @return
+     * @param detail 博客
+     * @param session session
+     * @param attributes 重定向容器
+     * @return 重定向页面
      */
     @PostMapping("/blogs")
     public String post(Detail detail, HttpSession session, RedirectAttributes attributes) {
@@ -195,9 +182,9 @@ public class BlogController {
     /**
      * 删除博客
      *
-     * @param id
-     * @param attributes
-     * @return
+     * @param id 博客id
+     * @param attributes 重定向容器
+     * @return 重定向
      */
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes) {

@@ -13,14 +13,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     /**
      * 登录验证
-     * @param username
-     * @param password
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @return 用户对象
      */
     @Override
     public User checkUser(String username, String password) {

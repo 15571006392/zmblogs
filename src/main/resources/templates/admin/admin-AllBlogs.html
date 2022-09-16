@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.themeleaf.org" lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -55,7 +55,7 @@
                     <th>发布时间</th>
                     <th>更新时间</th>
                     <th>作者</th>
-                    <th>博客状态</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -63,10 +63,10 @@
                 <tr th:each="detail,iterStat : ${allBlogs}">
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${detail.title}"></td>
-                    <td th:text="${detail.name}">Java</td>
+                    <td th:text="${detail.type.name}">Java</td>
                     <td th:text="${#dates.format(detail.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td th:text="${#dates.format(detail.updateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
-                    <td th:text="${detail.BlogUserName}"></td>
+                    <td th:text="${detail.user.nickname}"></td>
                     <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
                     <td>
                         <a href="#" th:href="@{/admin/allBlogs/{id}/modifyState(id=${detail.id})}" class="ui yellow basic button">下架</a>

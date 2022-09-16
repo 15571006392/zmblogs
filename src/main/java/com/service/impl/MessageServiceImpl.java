@@ -19,15 +19,19 @@ import java.util.Optional;
 @Service
 public class MessageServiceImpl implements MessageService {
 
+    private final MessageRepository messageRepository;
+
     @Autowired
-    private MessageRepository messageRepository;
+    public MessageServiceImpl(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
 
     /**
      * 保存留言
-     * @param name
-     * @param mail
-     * @param message
-     * @return
+     * @param name 名称
+     * @param mail 邮箱
+     * @param message 信息
+     * @return 是否成功
      */
     @Override
     public int updateLeavingMessage(String name, String mail, String message, String avatar) {
@@ -41,15 +45,12 @@ public class MessageServiceImpl implements MessageService {
         leavingMessage.setName(name);
         leavingMessage.setCt(rightNow2);
         leavingMessage.setAvatar(avatar);
-        if(messageRepository.save(leavingMessage) != null){
-            return 1;
-        }else{
-            return 0;
-        }
+        messageRepository.save(leavingMessage);
+        return 1;
     }
     /**
      * 查询全部留言
-     * @return
+     * @return 全部留言
      */
     @Override
     public List<LeavingMessage> getLeavingMessage() {
@@ -58,8 +59,8 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * 分页查询
-     * @param pageable
-     * @return
+     * @param pageable 分页
+     * @return 全部留言
      */
     @Override
     public Page<LeavingMessage> listLeavingMessage(Pageable pageable) {
@@ -68,8 +69,8 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * 根据id查询留言
-     * @param id
-     * @return
+     * @param id 留言id
+     * @return 留言
      */
     @Override
     public LeavingMessage getLeavingMessage(Long id) {
@@ -79,7 +80,7 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * 删除留言
-     * @param id
+     * @param id 留言id
      */
     @Override
     public void deleteLeavingMessage(Long id) {

@@ -71,14 +71,14 @@
                     <h3 class="ui blue header">搜索结果</h3>
                 </div>
                 <div class="right aligned column">
-                    共 <h2 class="ui orange header inline-block" th:text="${page.totalElements}">8</h2> 个
+                    共 <h2 class="ui orange header inline-block" th:text="${page.total}">8</h2> 个
                 </div>
             </div>
         </div>
 
         <!-- 内容 -->
         <div class="ui attached segment">
-            <div class="ui padded vertical segment diy-padding diy-padding-left-right" th:each="blog : ${page.content}">
+            <div class="ui padded vertical segment diy-padding diy-padding-left-right" th:each="blog : ${page.list}">
                 <div class="ui middle aligned mobile reversed stackable grid">
 
                     <!-- 左 -->
@@ -138,19 +138,53 @@
                 </div>
             </div>
         </div>
-        <!--&lt;!&ndash; 底部分页 &ndash;&gt;
-        <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
+        <!-- 分页 -->
+        <div class="ui attached segment diy-shadow" th:if="${page.total > 10}">
             <div class="ui middle aligned two column grid">
+                <!-- 按钮 -->
                 <div class="column">
-                    <a href="#" class="ui blue basic button" th:href="@{/(page=${page.number}-1)}"
-                       th:unless="${page.first}">上一页</a>
+                    <div class="ui pagination menu diy-shadow">
+                        <div class="item" th:if="${page.pageNum != 1}">
+                            <a class="color-black" th:href="@{/search/(query=${query})}">首页</a>
+                        </div>
+                        <div class="disabled item" th:if="${page.pageNum == 1}">
+                            首页
+                        </div>
+                        <div class="item" th:if="${page.pageNum != 1}">
+                            <a class="color-black"
+                               th:href="@{/search/(query=${query},pageNum=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+                        </div>
+                        <div class="disabled item" th:if="${page.pageNum == 1}">
+                            上一页
+                        </div>
+                        <div class="item" th:if="${page.pageNum != page.pages}">
+                            <a class="color-black"
+                               th:href="@{/search/(query=${query},pageNum=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+                        </div>
+                        <div class="disabled item" th:if="${page.pageNum == page.pages}">
+                            下一页
+                        </div>
+                        <div class="item" th:if="${page.pageNum != page.pages}">
+                            <a class="color-black"
+                               th:href="@{/search(query=${query},pageNum=${page.pages})}">尾页</a>
+                        </div>
+                        <div class="disabled item" th:if="${page.pageNum == page.pages}">
+                            尾页
+                        </div>
+                    </div>
                 </div>
+                <!-- 文本 -->
                 <div class="right aligned column">
-                    <a href="#" class="ui blue basic button" th:href="@{/(page=${page.number}+1)}"
-                       th:unless="${page.last}">下一页</a>
+                    <h3>
+                        当前第
+                        <span class="ui orange header" th:text="${page.pageNum}"></span>
+                        页，总共
+                        <span class="ui orange header" th:text="${page.pages}"></span>
+                        页
+                    </h3>
                 </div>
             </div>
-        </div>-->
+        </div>
     </div>
 </div>
 
@@ -204,7 +238,7 @@
                 <h4 class="text-fine2 text-opacity2">
                     <a href="https://beian.miit.gov.cn/" target="_blank" class="color-black">鄂ICP备2022014800号-1</a>
                     <br>
-                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.6</span>
+                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.7</span>
                 </h4>
             </div>
         </div>

@@ -13,21 +13,28 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Zm-Mmm
+ */
 @Controller()
 @RequestMapping("/admin")
 public class AllBlogsController {
 
-    @Autowired
-    private AllBlogsService allBlogsService;
+    private final AllBlogsService allBlogsService;
+
+    private final BlogService blogService;
 
     @Autowired
-    private BlogService blogService;
+    public AllBlogsController(AllBlogsService allBlogsService, BlogService blogService) {
+        this.allBlogsService = allBlogsService;
+        this.blogService = blogService;
+    }
 
     /**
      * 查询非当前登录用户的其他人的博客
-     * @param model
-     * @param session
-     * @return
+     * @param model 容器
+     * @param session session
+     * @return 页面
      */
     @GetMapping("/allBlogs")
     public String list(Model model, HttpSession session){
@@ -38,9 +45,9 @@ public class AllBlogsController {
 
     /**
      * 删除博客
-     * @param id
-     * @param attributes
-     * @return
+     * @param id 博客id
+     * @param attributes 重定向容器
+     * @return 重定向
      */
     @GetMapping("/allBlogs/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes){
@@ -51,9 +58,9 @@ public class AllBlogsController {
 
     /**
      * 修改博客发布状态
-     * @param id
-     * @param attributes
-     * @return
+     * @param id 博客id
+     * @param attributes 重定向容器
+     * @return 重定向
      */
     @GetMapping("/allBlogs/{id}/modifyState")
     public String modifyState(@PathVariable Long id, RedirectAttributes attributes){

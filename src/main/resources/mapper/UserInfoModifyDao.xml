@@ -4,16 +4,31 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserInfoModifyDao">
 
-
-    <select id="findAllInfo" resultType="UserInfoModify">
-        select * from t_user where id=#{id}
+    <!-- 查找用户信息 -->
+    <select id="findAllInfo" resultType="UserEntity">
+        select *
+        from t_user
+        where id = #{id}
     </select>
 
+    <!--  修改用户信息  -->
     <update id="modifyInfo">
-        update t_user set nickname = #{nickname},email = #{email} where id = #{id}
+        update t_user
+        <set>
+            <if test="nickname != null || nickname != ''">
+                nickname = #{nickname},
+            </if>
+            <if test="email != null || email != ''">
+            email    = #{email}
+            </if>
+        </set>
+        where id = #{id}
     </update>
 
+    <!--  修改用户头像  -->
     <update id="modifyAvatar">
-        update t_user set avatar = #{avatar} where id = #{id}
+        update t_user
+        set avatar = #{avatar}
+        where id = #{id}
     </update>
 </mapper>

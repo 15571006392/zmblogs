@@ -111,11 +111,11 @@
                                 <div class="ui horizontal link list">
                                     <div class="item">
                                         <img src="https://unsplash.it/100/100?image=1005"
-                                             th:src="@{${blog.BlogUserAvatar}}" alt="" class="ui avatar image"
+                                             th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image"
                                              style="margin-bottom: 3px">
                                         <div class="content" style="margin-bottom: 3px">
-                                            <a href="#" th:href="@{/user/{id}(id=${blog.userId})}" class="header"
-                                               th:text="${blog.BlogUsername}">Zm-Mmm</a>
+                                            <a href="#" th:href="@{/user/{id}(id=${blog.user.id})}" class="header"
+                                               th:text="${blog.user.nickname}">Zm-Mmm</a>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -135,7 +135,7 @@
                             <!-- 右 -->
                             <div class="right aligned five wide column middle aligned">
                                 <span href="#" class="ui blue basic label padding-mini"
-                                      th:text="${blog.typeName}">Java</span>
+                                      th:text="${blog.type.name}">Java</span>
                             </div>
                         </div>
                     </div>
@@ -232,7 +232,7 @@
                 <h4 class="text-fine2 text-opacity2">
                     <a href="https://beian.miit.gov.cn/" target="_blank" class="color-black">鄂ICP备2022014800号-1</a>
                     <br>
-                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.6</span>
+                    <span>© 2022 Zm-Mmm All rights reserved.</span><span> Version2.6.7</span>
                 </h4>
             </div>
         </div>

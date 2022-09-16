@@ -9,8 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BlogApplication {
 
-    /*
-    禁用Ping Method
+    /**
+     * 禁用Ping Method
+     * alibaba druid控制台频繁爆警告
      */
     static{
         System.setProperty("druid.mysql.usePingMethod","false");

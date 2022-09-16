@@ -1,7 +1,6 @@
 package com.dao;
 
 import com.bean.Detail;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -22,16 +21,6 @@ public interface BlogRepository extends JpaRepository<Detail, Long> , JpaSpecifi
      */
     @Query("select b from Detail b where b.recommend = true")
     List<Detail> findTop(Pageable pageable);
-
-    /**
-     * 分页模糊查询
-     * 查找标题或文章内容有没有指定关键字
-     * @param query
-     * @param pageable
-     * @return
-     */
-    @Query("select b from Detail b where b.title like ?1 or b.content like ?1")
-    Page<Detail> findByQuery(String query,Pageable pageable);
 
     /**
      * 更新文章的浏览量

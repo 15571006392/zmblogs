@@ -1,8 +1,7 @@
 package com.service.impl;
 
-import com.bean.Detail;
-import com.bean.UserDetail;
-import com.bean.UserInfo;
+import com.bean.BlogEntity;
+import com.bean.UserEntity;
 import com.dao.UserInfoDao;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,18 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
 
+    private final UserInfoDao userInfoDao;
+
     @Autowired
-    private UserInfoDao userInfoDao;
+    public UserInfoServiceImpl(UserInfoDao userInfoDao) {
+        this.userInfoDao = userInfoDao;
+    }
 
     @Override
     public Integer findUserCount() {
@@ -23,12 +29,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public UserInfo findUserById(Integer id) {
+    public UserEntity findUserById(Integer id) {
         return userInfoDao.findUserById(id);
     }
 
     @Override
-    public List<Detail> findUserDetail(Integer id) {
+    public List<BlogEntity> findUserDetail(Integer id) {
         return userInfoDao.findUserDetail(id);
     }
 
@@ -38,12 +44,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public List<UserDetail> findUserLateDetail(Integer id) {
+    public List<BlogEntity> findUserLateDetail(Integer id) {
         return userInfoDao.findUserLateDetail(id);
     }
 
     @Override
-    public List<UserDetail> findUserRecommendDetail(Integer id) {
+    public List<BlogEntity> findUserRecommendDetail(Integer id) {
         return userInfoDao.findUserRecommendDetail(id);
     }
 }

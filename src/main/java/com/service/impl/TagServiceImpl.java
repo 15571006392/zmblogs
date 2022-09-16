@@ -2,6 +2,8 @@ package com.service.impl;
 
 import com.NotFoundException;
 import com.bean.Tag;
+import com.bean.TagEntity;
+import com.dao.TagDao;
 import com.dao.TagRepository;
 import com.service.TagService;
 import org.springframework.beans.BeanUtils;
@@ -23,8 +25,34 @@ import java.util.Optional;
 @Service
 public class TagServiceImpl implements TagService {
 
+    private final TagRepository tagRepository;
+
+    private final TagDao tagDao;
+
     @Autowired
-    private TagRepository tagRepository;
+    public TagServiceImpl(TagRepository tagRepository, TagDao tagDao) {
+        this.tagRepository = tagRepository;
+        this.tagDao = tagDao;
+    }
+
+    /**
+     * 查询全部标签
+     * @return 标签的list集合
+     */
+    @Override
+    public List<TagEntity> findTag() {
+        return tagDao.findTag();
+    }
+
+    /**
+     * 查找指定博客的所有标签
+     * @param id 博客id
+     * @return 标签集合
+     */
+    @Override
+    public List<TagEntity> findTagByDetail(Integer id) {
+        return tagDao.findTagByDetail(id);
+    }
 
     /**
      * 保存标签
@@ -92,8 +120,8 @@ public class TagServiceImpl implements TagService {
         List<Long> list = new ArrayList<>();
         if(!"".equals(ids) && ids != null){
             String[] array = ids.split(",");
-            for (int i = 0; i < array.length; i++) {
-                list.add(new Long(array[i]));
+            for (String s : array) {
+                list.add(new Long(s));
             }
         }
         return list;

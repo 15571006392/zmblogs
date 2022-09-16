@@ -1,11 +1,24 @@
 package com.service;
 
-import com.bean.AllBlogsEntity;
+import com.bean.BlogEntity;
 
 import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 public interface AllBlogsService {
-    List<AllBlogsEntity> findAllBlogsNotCurrentUser(Long id);
 
+    /**
+     * 查询所有用户的博客，除了登录的用户
+     * @param id 用户id
+     * @return 博客列表
+     */
+    List<BlogEntity> findAllBlogsNotCurrentUser(Long id);
+
+    /**
+     * 修改博客状态
+     * @param id 博客id
+     */
     void modifyState(Long id);
 }

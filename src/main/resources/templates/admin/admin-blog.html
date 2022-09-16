@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.themeleaf.org" lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -46,16 +46,6 @@
         </div>
     </div>
 </nav>
-
-<!-- 二级导航菜单 -->
-<!--<div class="ui attached pointing menu">
-    <div class="ui container">
-        <div class="right menu">
-            <a href="#" th:href="@{/admin/types/input}" class="active blue item">新增</a>
-            <a href="#" th:href="@{/admin/types}" class="item blue">列表</a>
-        </div>
-    </div>
-</div>-->
 
 <!-- 中间 -->
 <div class="diy-padding-very" style="max-width: 150em !important;">
@@ -116,7 +106,7 @@
                 <tr th:each="detail,iterStat : ${page.list}">
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${detail.title}"></td>
-                    <td th:text="${detail.name}">Java</td>
+                    <td th:text="${detail.type.name}">Java</td>
                     <td th:text="${detail.recommend} ? '是' : '否'"></td>
                     <td th:text="${detail.published} ? '已发布' : '草稿'"></td>
                     <td th:text="${#dates.format(detail.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>

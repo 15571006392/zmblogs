@@ -3,10 +3,10 @@ package com.controller;
 import com.NotFoundException;
 import com.bean.BlogEntity;
 import com.bean.TypeEntity;
-import com.dao.TypeDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
+import com.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,20 +22,20 @@ import java.util.List;
 @Controller
 public class TypeShowController {
 
-    private final TypeDao typeDao;
+    private final TypeService typeService;
 
     private final BlogService blogService;
 
     @Autowired
-    public TypeShowController(TypeDao typeDao, BlogService blogService) {
-        this.typeDao = typeDao;
+    public TypeShowController(TypeService typeService, BlogService blogService) {
+        this.typeService = typeService;
         this.blogService = blogService;
     }
 
     @GetMapping("/types/{id}")
     public String types(@RequestParam(required = false, defaultValue = "1", value = "pageNum") int pageNum, Model model, @PathVariable int id) {
         // 查询所有分类，按照分类ID，分类name进行分组
-        List<TypeEntity> list = typeDao.findType();
+        List<TypeEntity> list = typeService.findType();
         /*
         如果是通过导航栏跳转
         id默认为-1

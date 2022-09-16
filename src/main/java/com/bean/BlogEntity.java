@@ -1,14 +1,16 @@
 package com.bean;
 
 import java.util.Date;
+import java.util.List;
 
+/**
+ * @author Zm-Mmm
+ */
 public class BlogEntity {
 
-    private String BlogUsername;
-    private String BlogUserAvatar;
-    private String typeName;
-    private Integer typeId;
-    private Integer userId;
+    private UserEntity user;
+    private TypeEntity type;
+    private List<TagEntity> tags;
 
     private Integer id;
     /**
@@ -64,44 +66,28 @@ public class BlogEntity {
      */
     private Date updateTime;
 
-    public Integer getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
-    public String getBlogUsername() {
-        return BlogUsername;
+    public TypeEntity getType() {
+        return type;
     }
 
-    public void setBlogUsername(String blogUsername) {
-        BlogUsername = blogUsername;
+    public void setType(TypeEntity type) {
+        this.type = type;
     }
 
-    public String getBlogUserAvatar() {
-        return BlogUserAvatar;
+    public List<TagEntity> getTags() {
+        return tags;
     }
 
-    public void setBlogUserAvatar(String blogUserAvatar) {
-        BlogUserAvatar = blogUserAvatar;
-    }
-
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
     }
 
     public Integer getId() {
@@ -216,12 +202,10 @@ public class BlogEntity {
         this.updateTime = updateTime;
     }
 
-    public BlogEntity(String blogUsername, String blogUserAvatar, String typeName, Integer typeId, Integer userId, Integer id, String title, String content, String firstPicture, String flag, Integer views, boolean appreciation, boolean shareStatement, boolean comment, boolean published, boolean recommend, String description, Date createTime, Date updateTime) {
-        BlogUsername = blogUsername;
-        BlogUserAvatar = blogUserAvatar;
-        this.typeName = typeName;
-        this.typeId = typeId;
-        this.userId = userId;
+    public BlogEntity(UserEntity user, TypeEntity type, List<TagEntity> tags, Integer id, String title, String content, String firstPicture, String flag, Integer views, boolean appreciation, boolean shareStatement, boolean comment, boolean published, boolean recommend, String description, Date createTime, Date updateTime) {
+        this.user = user;
+        this.type = type;
+        this.tags = tags;
         this.id = id;
         this.title = title;
         this.content = content;

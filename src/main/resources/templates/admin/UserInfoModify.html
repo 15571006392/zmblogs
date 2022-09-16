@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.themeleaf.org">
+<html xmlns:th="http://www.themeleaf.org" lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
     <title>修改个人资料</title>
@@ -101,7 +101,6 @@
                             <input type="text" class="inputgri" name="nickname" th:value="${user.nickname}"/>
                         </span>
                     </div>
-
                     <!-- 邮箱 -->
                     <div class="ui attached segment">
                         <span class="text-fine2">邮箱：</span>
@@ -123,11 +122,6 @@
                     <div class="ui attached segment center aligned">
                         <input id="show_detail" type="submit" class="button ui blue" value="提交"/>
                     </div>
-                    <div class="ui modal">
-                        <div class="header">
-                            修改成功！
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -146,12 +140,12 @@
     });
     $(function () {
         $("#show_detail").click(function () {
-            $('.ui.modal').modal('show');
+            alert("修改成功");
         })
     });
     $(function () {
         $("#show_detail2").click(function () {
-            $('.ui.modal').modal('show');
+            alert("修改成功");
         })
     })
 </script>

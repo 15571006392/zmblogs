@@ -1,6 +1,7 @@
 package com.service.impl;
 
-import com.bean.*;
+import com.bean.BlogEntity;
+import com.bean.Detail;
 import com.dao.BlogRepository;
 import com.dao.DetailDao;
 import com.service.BlogService;
@@ -9,16 +10,14 @@ import com.util.NullBeanProperties;
 import com.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.*;
 import java.util.*;
+
 
 /**
  * @author Zm-Mmm
@@ -26,11 +25,15 @@ import java.util.*;
 @Service
 public class BlogServiceImpl implements BlogService {
 
-    @Autowired
-    private BlogRepository blogRepository;
+    private final BlogRepository blogRepository;
+
+    private final DetailDao detailDao;
 
     @Autowired
-    private DetailDao detailDao;
+    public BlogServiceImpl(BlogRepository blogRepository, DetailDao detailDao) {
+        this.blogRepository = blogRepository;
+        this.detailDao = detailDao;
+    }
 
     @Override
     public List<BlogEntity> findAllBlogs() {
@@ -40,6 +43,11 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<BlogEntity> findAllBlogsByType(int id) {
         return detailDao.findAllBlogsByType(id);
+    }
+
+    @Override
+    public List<BlogEntity> findAllBlogsByTag(int id) {
+        return detailDao.findAllBlogsByTag(id);
     }
 
     /**
@@ -55,7 +63,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<UserDetail> selectDetailFromUserIdLimit(Long id) {
+    public List<BlogEntity> selectDetailFromUserIdLimit(Long id) {
         return detailDao.selectDetailFromUserIdLimit(id);
     }
 
@@ -86,72 +94,13 @@ public class BlogServiceImpl implements BlogService {
     }
 
     /**
-     * 分页动态查询
-     *
-     * @param pageable
-     * @param detail
-     * @return
+     * 搜索博客
+     * @param query 用户输入
+     * @return 博客列表
      */
     @Override
-    public Page<Detail> listBlog(Pageable pageable, BlogQuery detail) {
-        return blogRepository.findAll((Specification<Detail>) (root, criteriaQuery, criteriaBuilder) -> {
-            // Root<Detail> : 查什么
-            // CriteriaQuery : 容器
-            // CriteriaBuilder : 表达式
-            List<Predicate> predicates = new ArrayList<>();
-            if (!"".equals(detail.getTitle()) && detail.getTitle() != null) {
-                predicates.add(criteriaBuilder.like(root.get("title"), "%" + detail.getTitle() + "%"));
-            }
-            if (detail.getTypeId() != null) {
-                predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"), detail.getTypeId()));
-            }
-            if (detail.isRecommend()) {
-                predicates.add(criteriaBuilder.equal(root.get("recommend"), detail.isRecommend()));
-            }
-            criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
-            return null;
-        }, pageable);
-    }
-
-    /**
-     * 分页查找全部博客
-     *
-     * @param pageable
-     * @return
-     */
-    @Override
-    public Page<Detail> listBlog(Pageable pageable) {
-        return blogRepository.findAll(pageable);
-    }
-
-    /**
-     * 分页查询关联的标签
-     *
-     * @param tagId
-     * @param pageable
-     * @return
-     */
-    @Override
-    public Page<Detail> listBlog(Long tagId, Pageable pageable) {
-        return blogRepository.findAll(new Specification<Detail>() {
-            /**
-             * 关联查询
-             * @param root
-             * @param criteriaQuery
-             * @param criteriaBuilder
-             * @return
-             */
-            @Override
-            public Predicate toPredicate(Root<Detail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                Join join = root.join("tags");
-                return criteriaBuilder.equal(join.get("id"), tagId);
-            }
-        }, pageable);
-    }
-
-    @Override
-    public Page<Detail> listBlog(String query, Pageable pageable) {
-        return blogRepository.findByQuery(query, pageable);
+    public List<BlogEntity> searchBlogs(String query) {
+        return detailDao.searchBlogs(query);
     }
 
     @Override

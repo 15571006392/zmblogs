@@ -1,5 +1,8 @@
 package com.bean;
 
+/**
+ * @author Zm-Mmm
+ */
 public class TypeEntity {
 
     private Integer id;

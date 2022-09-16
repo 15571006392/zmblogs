@@ -7,9 +7,6 @@ import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +45,6 @@ public class IndexController {
         List<BlogEntity> blogEntities = blogService.findAllBlogs();
         // 得到分页结果对象
         PageInfo<BlogEntity> pageInfo = new PageInfo<>(blogEntities);
-
         model.addAttribute("page", pageInfo);
         // 查找前6个分类
         model.addAttribute("types", typeService.listTypeTop(6));
@@ -61,15 +57,18 @@ public class IndexController {
 
     /**
      * 搜索功能
-     * @param pageable 分页
+     * @param pageNum 分页
      * @param model 容器
-     * @param query 博客对象
-     * @return search页面
+     * @param query 用户输入的内容
+     * @return 页面
      */
-    @PostMapping("/search")
-    public String search(@PageableDefault(size = 100, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model, @RequestParam String query) {
-        // 分页查询，按标题和内容关键字查询
-        model.addAttribute("page", blogService.listBlog("%" + query + "%", pageable));
+    @RequestMapping("/search")
+    public String search(@RequestParam(required = false,defaultValue = "1",value = "pageNum")int pageNum, Model model, @RequestParam String query) {
+        // 分页查询，从标题、内容、描述中查询，通过博客更新时间倒序排序
+        PageHelper.startPage(pageNum,10);
+        List<BlogEntity> blogEntities = blogService.searchBlogs(query);
+        PageInfo<BlogEntity> blogEntityPageInfo = new PageInfo<>(blogEntities);
+        model.addAttribute("page", blogEntityPageInfo);
         // 用户输入的内容
         model.addAttribute("query", query);
         return "search";

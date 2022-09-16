@@ -24,11 +24,15 @@ import java.util.Optional;
 @Service
 public class TypeServiceImpl implements TypeService {
 
-    @Autowired
-    private TypeRepository typeRepository;
+    private final TypeRepository typeRepository;
+
+    private final TypeDao typeDao;
 
     @Autowired
-    private TypeDao typeDao;
+    public TypeServiceImpl(TypeRepository typeRepository, TypeDao typeDao) {
+        this.typeRepository = typeRepository;
+        this.typeDao = typeDao;
+    }
 
     @Override
     public List<TypeEntity> findType() {
