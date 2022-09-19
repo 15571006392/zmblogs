@@ -13,6 +13,13 @@ import java.util.List;
 public interface TypeService {
 
     /**
+     * 首页分类查询，指定数量，按照分类下的博客数量从大到小排序，过滤草稿状态博客
+     * @param count 查询分类的数量
+     * @return 分类结果
+     */
+    List<TypeEntity> findIndexType(Integer count);
+
+    /**
      * mybatis重构
      * 查询所有分类
      * @return 分类的list集合

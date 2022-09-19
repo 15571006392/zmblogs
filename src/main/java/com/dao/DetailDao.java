@@ -12,6 +12,13 @@ import java.util.List;
 public interface DetailDao {
 
     /**
+     * 查询首页推荐博客，指定数量，按照博客更新日期排序
+     * @param count
+     * @return
+     */
+    List<BlogEntity> findIndexRecommendBlog(Integer count);
+
+    /**
      * 查询指定用户的博客并分页
      * 过滤草稿状态博客
      * @param id 用户id

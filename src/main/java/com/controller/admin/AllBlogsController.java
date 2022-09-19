@@ -4,6 +4,7 @@ import com.bean.User;
 import com.service.AllBlogsService;
 import com.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +25,13 @@ public class AllBlogsController {
 
     private final BlogService blogService;
 
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    public AllBlogsController(AllBlogsService allBlogsService, BlogService blogService) {
+    public AllBlogsController(AllBlogsService allBlogsService, BlogService blogService,RedisTemplate redisTemplate) {
         this.allBlogsService = allBlogsService;
         this.blogService = blogService;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
@@ -52,6 +56,10 @@ public class AllBlogsController {
     @GetMapping("/allBlogs/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes){
         blogService.deleteBlog(id);
+        // 清空首页分类、标签、推荐博客redis缓存
+        redisTemplate.opsForHash().delete("index", "tags");
+        redisTemplate.opsForHash().delete("index", "types");
+        redisTemplate.opsForHash().delete("index", "recommends");
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/allBlogs";
     }
@@ -65,6 +73,10 @@ public class AllBlogsController {
     @GetMapping("/allBlogs/{id}/modifyState")
     public String modifyState(@PathVariable Long id, RedirectAttributes attributes){
         allBlogsService.modifyState(id);
+        // 清空首页分类、标签、推荐博客redis缓存
+        redisTemplate.opsForHash().delete("index", "tags");
+        redisTemplate.opsForHash().delete("index", "types");
+        redisTemplate.opsForHash().delete("index", "recommends");
         attributes.addFlashAttribute("message","下架成功，已将该博客改为草稿状态");
         return "redirect:/admin/allBlogs";
     }

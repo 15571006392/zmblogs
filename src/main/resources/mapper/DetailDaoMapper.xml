@@ -219,10 +219,19 @@
                  d.type_id = t.id
         where d.published = 1
             AND
-              d.title like concat('%',#{query},'%') and d.published = 1
-           OR d.description like concat('%',#{query},'%') and d.published = 1
-           or d.content like concat('%',#{query},'%') and d.published = 1
-        order by
-            d.update_time desc
+              d.title like concat('%', #{query}, '%') and d.published = 1
+           OR d.description like concat('%', #{query}, '%') and d.published = 1
+           or d.content like concat('%', #{query}, '%') and d.published = 1
+        order by d.update_time desc
+    </select>
+
+    <!--  查询首页推荐博客，指定数量，按照博客更新日期排序  -->
+    <select id="findIndexRecommendBlog" resultType="BlogEntity" parameterType="Integer">
+        select d.title
+        FROM t_detail d
+        WHERE d.recommend = 1
+          and d.published = 1
+        order by d.update_time DESC
+        limit #{count}
     </select>
 </mapper>

@@ -35,6 +35,11 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    public List<TypeEntity> findIndexType(Integer count) {
+        return typeDao.findIndexType(count);
+    }
+
+    @Override
     public List<TypeEntity> findType() {
         return typeDao.findType();
     }

@@ -36,6 +36,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<BlogEntity> findIndexRecommendBlog(Integer count) {
+        return detailDao.findIndexRecommendBlog(count);
+    }
+
+    @Override
     public List<BlogEntity> findAllBlogs() {
         return detailDao.findAllBlogs();
     }

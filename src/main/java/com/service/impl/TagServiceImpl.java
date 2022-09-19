@@ -35,6 +35,11 @@ public class TagServiceImpl implements TagService {
         this.tagDao = tagDao;
     }
 
+    @Override
+    public List<TagEntity> findIndexTag(Integer count) {
+        return tagDao.findIndexTag(count);
+    }
+
     /**
      * 查询全部标签
      * @return 标签的list集合

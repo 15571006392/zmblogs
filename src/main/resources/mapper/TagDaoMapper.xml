@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.TagDao">
 
+    <!--查询所有标签-->
     <select id="findTag" resultType="TagEntity">
         SELECT t.id,
                t.name,
@@ -22,15 +23,33 @@
         ORDER BY BlogCount desc
     </select>
 
+    <!--查找指定博客的所有标签-->
     <select id="findTagByDetail" resultType="TagEntity">
-        select t.name,dt.tags_id as id
-        FROM
-            t_tag t
-                left JOIN
-            t_detail_tags dt
-            ON
-                dt.tags_id = t.id
+        select t.name, dt.tags_id as id
+        FROM t_tag t
+                 left JOIN
+             t_detail_tags dt
+             ON
+                 dt.tags_id = t.id
         where dt.details_id = #{id}
+    </select>
+
+    <!--查询首页标签，指定数量，按照标签的博客数量排序，过滤草稿状态博客-->
+    <select id="findIndexTag" resultType="TagEntity" parameterType="Integer">
+        select t.id, t.name, count(dt.details_id) BlogCount
+        from t_tag t
+                 left JOIN
+             t_detail_tags dt
+             ON
+                 t.id = dt.tags_id
+                 left JOIN
+             t_detail d
+             ON
+                 dt.details_id = d.id
+        where d.published = 1
+        GROUP BY t.id
+        ORDER BY BlogCount desc
+        limit #{count}
     </select>
 
 </mapper>
