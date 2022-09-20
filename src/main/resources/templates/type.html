@@ -79,13 +79,13 @@
                 </div>
             </div>
         </div>
-        <!-- 标签 -->
+        <!-- 分类 -->
         <div class="ui attached segment diy-padding-large diy-shadow">
             <div class="ui labeled button diy-margin-small" th:each="type : ${types}">
                 <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="ui basic button"
                    th:classappend="${type.id==activeTypeId} ? 'blue'" th:text="${type.name}">2333</a>
                 <div class="ui basic label" th:classappend="${type.id==activeTypeId} ? 'blue'"
-                     th:text="${type.BlogCount}">24
+                     th:text="${type.blogCount}">24
                 </div>
             </div>
         </div>

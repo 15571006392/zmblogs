@@ -7,15 +7,7 @@ public class TypeEntity {
 
     private Integer id;
     private String name;
-    private Integer BlogCount;
-
-    public Integer getBlogCount() {
-        return BlogCount;
-    }
-
-    public void setBlogCount(Integer blogCount) {
-        BlogCount = blogCount;
-    }
+    private Integer blogCount;
 
     public TypeEntity() {
     }
@@ -23,7 +15,15 @@ public class TypeEntity {
     public TypeEntity(Integer id, String name, Integer blogCount) {
         this.id = id;
         this.name = name;
-        BlogCount = blogCount;
+        this.blogCount = blogCount;
+    }
+
+    public Integer getBlogCount() {
+        return blogCount;
+    }
+
+    public void setBlogCount(Integer blogCount) {
+        this.blogCount = blogCount;
     }
 
     public Integer getId() {

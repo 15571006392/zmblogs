@@ -8,7 +8,7 @@
     <select id="findTag" resultType="TagEntity">
         SELECT t.id,
                t.name,
-               COUNT(dt.details_id) as BlogCount
+               COUNT(dt.details_id) as blogCount
         FROM t_tag t
                  JOIN
              t_detail_tags dt
@@ -20,7 +20,7 @@
                  d.id = dt.details_id
         WHERE d.published = 1
         GROUP BY t.id, t.name
-        ORDER BY BlogCount desc
+        ORDER BY blogCount desc
     </select>
 
     <!--查找指定博客的所有标签-->
@@ -36,7 +36,7 @@
 
     <!--查询首页标签，指定数量，按照标签的博客数量排序，过滤草稿状态博客-->
     <select id="findIndexTag" resultType="TagEntity" parameterType="Integer">
-        select t.id, t.name, count(dt.details_id) BlogCount
+        select t.id, t.name, count(dt.details_id) blogCount
         from t_tag t
                  left JOIN
              t_detail_tags dt
@@ -48,7 +48,7 @@
                  dt.details_id = d.id
         where d.published = 1
         GROUP BY t.id
-        ORDER BY BlogCount desc
+        ORDER BY blogCount desc
         limit #{count}
     </select>
 

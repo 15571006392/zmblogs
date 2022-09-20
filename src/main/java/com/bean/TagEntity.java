@@ -10,14 +10,14 @@ public class TagEntity {
     private Integer id;
     private String name;
     private List<BlogEntity> blogEntities;
-    private Integer BlogCount;
+    private Integer blogCount;
 
     public Integer getBlogCount() {
-        return BlogCount;
+        return blogCount;
     }
 
     public void setBlogCount(Integer blogCount) {
-        BlogCount = blogCount;
+        this.blogCount = blogCount;
     }
 
     public Integer getId() {
@@ -48,7 +48,7 @@ public class TagEntity {
         this.id = id;
         this.name = name;
         this.blogEntities = blogEntities;
-        BlogCount = blogCount;
+        this.blogCount = blogCount;
     }
 
     public TagEntity() {

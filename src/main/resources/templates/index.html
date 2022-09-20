@@ -222,7 +222,7 @@
                                th:each="type : ${types}">
                                 <span th:text="${type.name}">Java</span>
                                 <div class="ui blue basic label"
-                                     th:text="${type.BlogCount}">8
+                                     th:text="${type.blogCount}">8
                                 </div>
                             </a>
                         </div>
@@ -248,7 +248,7 @@
                         <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"
                            class="ui blue basic label diy-margin-small" th:each="tag : ${tags}">
                             <span th:text="${tag.name}">SpringBoot</span>
-                            <div class="detail" th:text="${tag.BlogCount}">23</div>
+                            <div class="detail" th:text="${tag.blogCount}">23</div>
                         </a>
                     </div>
                 </div>
