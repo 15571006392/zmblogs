@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>博客管理</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/lib/Semantic-UI-CSS-master/semantic.css" th:href="@{/lib/Semantic-UI-CSS-master/semantic.css}">
     <link rel="stylesheet" href="../../static/css/nav-left.css" th:href="@{/css/nav-left.css}">
     <link rel="shortcut icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
     <link rel="stylesheet" href="../static/css/scrollbar.css" th:href="@{/css/scrollbar.css}">
@@ -173,8 +173,8 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="../static/js/jquery-3.6.1.min.js" th:src="@{/js/jquery-3.6.1.min.js}"></script>
+<script src="../static/lib/Semantic-UI-CSS-master/semantic.js" th:src="@{/lib/Semantic-UI-CSS-master/semantic.js}"></script>
 <script>
     // 手机端菜单折叠
     $('.index').click(function () {
