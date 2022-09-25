@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.MessageDao">
+
+    <select id="findMessageByCount" resultType="MessageEntity" parameterType="Integer">
+        select id, name, mail, message, ct createTime, avatar
+        from t_leaving_message
+        order by createTime desc
+        limit #{count}
+    </select>
+
+    <insert id="insertLeavingMessage" useGeneratedKeys="true">
+        insert into t_leaving_message(name, mail, message, ct, avatar) VALUES (#{name},#{mail},#{message},#{createTime},#{avatar})
+    </insert>
+
+</mapper>

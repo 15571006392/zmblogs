@@ -12,6 +12,13 @@ import java.util.List;
 public interface TagDao {
 
     /**
+     * 查询首页标签，指定数量，按照标签的博客数量排序，过滤草稿状态博客
+     * @param count 标签数量
+     * @return 标签结果
+     */
+    List<TagEntity> findIndexTag(Integer count);
+
+    /**
      * 查询所有标签
      * @return 所有标签的list集合
      */

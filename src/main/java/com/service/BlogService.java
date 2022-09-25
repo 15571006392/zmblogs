@@ -13,6 +13,13 @@ import java.util.Map;
 public interface BlogService {
 
     /**
+     * 查询首页推荐博客，指定数量，按照博客更新日期排序
+     * @param count
+     * @return
+     */
+    List<BlogEntity> findIndexRecommendBlog(Integer count);
+
+    /**
      * 查询全部博客
      * 过滤博客状态为草稿的博客
      * @return 装有博客信息的list集合
@@ -41,6 +48,14 @@ public interface BlogService {
      * @return 博客
      */
     Detail getBlog(Long id);
+
+    /**
+     * 根据主键获取博客
+     * @param id 博客id
+     * @param userId 用户id
+     * @return 博客
+     */
+    Detail getBlog(Long id,Long userId);
 
     /**
      *  通过用户id查询博客信息并分页

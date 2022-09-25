@@ -9,8 +9,10 @@ import com.obs.services.ObsClient;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
+import com.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +40,8 @@ public class BlogController {
 
     private final TagService tagService;
 
+    private final RedisTemplate redisTemplate;
+
     private static String blogTitle;
     @Value("${huawei.obs.ak}")
     private String ak;
@@ -51,10 +55,11 @@ public class BlogController {
     private String bucketName;
 
     @Autowired
-    public BlogController(BlogService blogService, TypeService typeService, TagService tagService) {
+    public BlogController(BlogService blogService, TypeService typeService, TagService tagService, RedisTemplate redisTemplate) {
         this.blogService = blogService;
         this.typeService = typeService;
         this.tagService = tagService;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
@@ -131,16 +136,18 @@ public class BlogController {
     /**
      * 修改博客功能
      *
-     * @param id 博客id
+     * @param id    博客id
      * @param model 容器
      * @return 页面
      */
     @GetMapping("/blogs/{id}/input")
-    public String editInput(@PathVariable Long id, Model model) {
+    public String editInput(@PathVariable Long id, Model model,HttpSession session) {
+        // 校验跳转的博客是否是该用户的博客
+        User user = (User) session.getAttribute("user");
+        Detail blog = blogService.getBlog(id,user.getId());
+        blog.init();
         model.addAttribute("types", typeService.listType());
         model.addAttribute("tags", tagService.listTag());
-        Detail blog = blogService.getBlog(id);
-        blog.init();
         blogTitle = blog.getTitle();
         model.addAttribute("blog", blog);
         return "admin/admin-create";
@@ -149,8 +156,8 @@ public class BlogController {
     /**
      * 发布-编辑功能公用
      *
-     * @param detail 博客
-     * @param session session
+     * @param detail     博客
+     * @param session    session
      * @param attributes 重定向容器
      * @return 重定向页面
      */
@@ -173,7 +180,9 @@ public class BlogController {
             // 保存失败
             attributes.addFlashAttribute("message", "操作失败");
         } else {
-            // 保存成功
+            // 保存成功，清空redis缓存
+            RedisUtil.flushAllRedisMenu(redisTemplate);
+            RedisUtil.flushAllRedisIndex(redisTemplate);
             attributes.addFlashAttribute("message", "操作成功");
         }
         return "redirect:/admin/blogs";
@@ -182,13 +191,15 @@ public class BlogController {
     /**
      * 删除博客
      *
-     * @param id 博客id
+     * @param id         博客id
      * @param attributes 重定向容器
      * @return 重定向
      */
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes) {
         blogService.deleteBlog(id);
+        RedisUtil.flushAllRedisMenu(redisTemplate);
+        RedisUtil.flushAllRedisIndex(redisTemplate);
         attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/blogs";
     }

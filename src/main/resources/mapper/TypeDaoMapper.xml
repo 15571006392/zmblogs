@@ -4,21 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.TypeDao">
 
+    <!--  查询所有分类  -->
     <select id="findType" resultType="TypeEntity">
-        select
-            t.id,t.name,count(d.published) as BlogCount
-        from
-            t_type t
-                JOIN
-            t_detail d
-            ON
-                t.id = d.type_id
-        WHERE
-            d.published = 1
-        group by
-            t.id,t.name
-        ORDER BY
-            BlogCount DESC
+        select t.id,
+               t.name,
+               count(d.published) as blogCount
+        from t_type t
+                 JOIN
+             t_detail d
+             ON
+                 t.id = d.type_id
+        WHERE d.published = 1
+        group by t.id, t.name
+        ORDER BY blogCount DESC
+    </select>
+
+    <!--  首页分类查询，指定数量，按照分类下的博客数量从大到小排序，过滤草稿状态博客  -->
+    <select id="findIndexType" resultType="TypeEntity" parameterType="Integer">
+        select t.id, t.name, count(d.type_id) blogCount
+        from t_type t
+                 LEFT JOIN
+             t_detail d
+             ON
+                 t.id = d.type_id
+        where d.published = 1
+        GROUP BY d.type_id
+        ORDER BY blogCount desc
+        limit #{count}
     </select>
 
 </mapper>

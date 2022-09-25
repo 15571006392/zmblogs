@@ -43,9 +43,6 @@ public class UserInfoController {
         String rightNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         // 查询用户信息
         UserEntity userEntity = userInfoService.findUserById(id);
-        if(userEntity.getId() == null){
-            throw new NotFoundException("用户不存在");
-        }
         // 查询热门博客
         List<BlogEntity> userDetail = userInfoService.findUserDetail(id);
         // 查询最近更新的博客

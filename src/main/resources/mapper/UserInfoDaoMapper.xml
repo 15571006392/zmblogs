@@ -4,12 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserInfoDao">
 
-    <!--  查询注册用户数量  -->
-    <select id="findUserCount" resultType="Integer">
-        select count(id)
-        from t_user
-    </select>
-
     <resultMap id="findUserByIdMap" type="userEntity">
         <id column="id" property="id"/>
         <result column="avatar" property="avatar"/>
@@ -34,7 +28,7 @@
                u.type,
                d.id did
         from t_user u
-                 join t_detail d on u.id = d.user_id
+                 left join t_detail d on u.id = d.user_id
         where u.id = #{id}
     </select>
     <!--热门博客-->

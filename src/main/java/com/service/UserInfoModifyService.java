@@ -8,11 +8,12 @@ import com.bean.UserEntity;
 public interface UserInfoModifyService {
 
     /**
-     * 查询所有用户信息
+     * 查询用户信息
      * @param id 用户id
+     * @param userId 当前登录用户id，用于校验
      * @return 用户信息
      */
-    UserEntity findAllInfo(int id);
+    UserEntity findAllInfo(int id,Long userId);
 
     /**
      * 修改用户头像

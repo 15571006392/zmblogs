@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.NotFoundException;
+import com.alibaba.fastjson2.JSON;
 import com.bean.Tag;
 import com.bean.TagEntity;
 import com.dao.TagDao;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,10 +31,18 @@ public class TagServiceImpl implements TagService {
 
     private final TagDao tagDao;
 
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    public TagServiceImpl(TagRepository tagRepository, TagDao tagDao) {
+    public TagServiceImpl(TagRepository tagRepository, TagDao tagDao,RedisTemplate redisTemplate) {
         this.tagRepository = tagRepository;
         this.tagDao = tagDao;
+        this.redisTemplate = redisTemplate;
+    }
+
+    @Override
+    public List<TagEntity> findIndexTag(Integer count) {
+        return tagDao.findIndexTag(count);
     }
 
     /**
@@ -41,7 +51,18 @@ public class TagServiceImpl implements TagService {
      */
     @Override
     public List<TagEntity> findTag() {
-        return tagDao.findTag();
+        // 先从redis找
+        List<TagEntity> tagEntities = (List<TagEntity>) redisTemplate.opsForHash().get("menu", "tags");
+        if(tagEntities == null){
+            // 从mysql中找
+            List<TagEntity> tags = tagDao.findTag();
+            // 加入到redis
+            redisTemplate.opsForHash().put("menu","tags",tags);
+            return tags;
+        }
+        // 结果先转为字符串再转为list集合，避免java.util.LinkedHashMap cannot be cast to 实体类异常
+        String tags = JSON.toJSONString(tagEntities);
+        return JSON.parseArray(tags,TagEntity.class);
     }
 
     /**

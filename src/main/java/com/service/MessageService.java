@@ -1,6 +1,7 @@
 package com.service;
 
 import com.bean.LeavingMessage;
+import com.bean.MessageEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,19 +13,21 @@ import java.util.List;
 public interface MessageService {
 
     /**
-     *  提交留言
+     * 获取指定数量的留言
+     * @param count 留言数量
+     * @return 留言集合
+     */
+    List<MessageEntity> findMessageByCount(Integer count);
+
+    /**
+     * 提交留言
      * @param name 名称
      * @param mail 邮箱
      * @param message 内容
      * @param avatar 头像
-     * @return 成功
+     * @return 1成功0失败
      */
-    int updateLeavingMessage(String name,String mail,String message,String avatar);
-    /**
-     * 获取所有留言信息
-     * @return 所有留言
-     */
-    List<LeavingMessage> getLeavingMessage();
+    int insertLeavingMessage(String name,String mail,String message,String avatar);
 
     /**
      * 分页查询留言信息

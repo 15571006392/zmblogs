@@ -2,9 +2,11 @@ package com.controller.admin;
 
 import com.bean.Type;
 import com.service.TypeService;
+import com.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +23,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/admin")
 public class TypeController {
 
+    private final TypeService typeService;
+
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    private TypeService typeService;
+    public TypeController(TypeService typeService,RedisTemplate redisTemplate) {
+        this.typeService = typeService;
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 分类页面跳转
-     * @param pageable
-     * @param model
-     * @return
+     * @param pageable 分页
+     * @param model 容器
+     * @return types页面
      */
     @GetMapping("/types")
     public String list(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable, Model model){
@@ -38,8 +47,8 @@ public class TypeController {
 
     /**
      * 新增页面跳转
-     * @param model
-     * @return
+     * @param model 容器
+     * @return types-create页面
      */
     @GetMapping("/types/input")
     public String input(Model model){
@@ -49,9 +58,9 @@ public class TypeController {
 
     /**
      * 更新页面跳转
-     * @param id
-     * @param model
-     * @return
+     * @param id 分类id
+     * @param model 容器
+     * @return 更新页面
      */
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
@@ -61,10 +70,10 @@ public class TypeController {
 
     /**
      * 新增分类功能
-     * @param type
-     * @param attributes
-     * @param model
-     * @return
+     * @param type 分类
+     * @param attributes 重定向容器
+     * @param model 容器
+     * @return 页面
      */
     @PostMapping("/types-create")
     public String post(Type type, RedirectAttributes attributes,Model model){
@@ -79,7 +88,8 @@ public class TypeController {
             // 保存失败
             attributes.addFlashAttribute("message","添加失败");
         }else{
-            // 保存成功
+            // 保存成功，清空redis缓存
+            RedisUtil.flushRedisTypes(redisTemplate);
             attributes.addFlashAttribute("message","添加成功");
         }
         return "redirect:/admin/types";
@@ -87,11 +97,11 @@ public class TypeController {
 
     /**
      * 更新分类功能
-     * @param type
-     * @param id
-     * @param attributes
-     * @param model
-     * @return
+     * @param type 分类
+     * @param id 分类id
+     * @param attributes 重定向容器
+     * @param model 容器
+     * @return 页面
      */
     @PostMapping("/types-create/{id}")
     public String editPost(Type type,@PathVariable Long id, RedirectAttributes attributes,Model model){
@@ -106,7 +116,8 @@ public class TypeController {
             // 保存失败
             attributes.addFlashAttribute("message","更新失败");
         }else{
-            // 保存成功
+            // 保存成功，清空redis缓存
+            RedisUtil.flushRedisTypes(redisTemplate);
             attributes.addFlashAttribute("message","更新成功");
         }
         return "redirect:/admin/types";
@@ -114,13 +125,15 @@ public class TypeController {
 
     /**
      * 删除
-     * @param id
-     * @param attributes
-     * @return
+     * @param id 分类id
+     * @param attributes 重定向容器
+     * @return 页面
      */
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes){
         typeService.deleteType(id);
+        // 保存成功，清空redis缓存
+        RedisUtil.flushRedisTypes(redisTemplate);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/types";
     }

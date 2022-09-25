@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.NotFoundException;
+import com.alibaba.fastjson2.JSON;
 import com.bean.Type;
 import com.bean.TypeEntity;
 import com.dao.TypeDao;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,15 +30,38 @@ public class TypeServiceImpl implements TypeService {
 
     private final TypeDao typeDao;
 
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    public TypeServiceImpl(TypeRepository typeRepository, TypeDao typeDao) {
+    public TypeServiceImpl(TypeRepository typeRepository, TypeDao typeDao,RedisTemplate redisTemplate) {
         this.typeRepository = typeRepository;
         this.typeDao = typeDao;
+        this.redisTemplate = redisTemplate;
     }
 
     @Override
+    public List<TypeEntity> findIndexType(Integer count) {
+        return typeDao.findIndexType(count);
+    }
+
+    /**
+     * 查询所有分类
+     * @return 分类集合
+     */
+    @Override
     public List<TypeEntity> findType() {
-        return typeDao.findType();
+        // 先从redis找
+        List<TypeEntity> typeEntities = (List<TypeEntity>) redisTemplate.opsForHash().get("menu", "types");
+        if(typeEntities == null){
+            // 从mysql中找
+            List<TypeEntity> types = typeDao.findType();
+            // 加入到redis
+            redisTemplate.opsForHash().put("menu","types",types);
+            return types;
+        }
+        // 结果先转为字符串再转为list集合，避免java.util.LinkedHashMap cannot be cast to 实体类异常
+        String types = JSON.toJSONString(typeEntities);
+        return JSON.parseArray(types,TypeEntity.class);
     }
 
     /**

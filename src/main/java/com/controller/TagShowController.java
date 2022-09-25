@@ -45,7 +45,7 @@ public class TagShowController {
             id = list.get(0).getId();
         }
         model.addAttribute("tags", list);
-        // 分页查询
+        // 分页查询 指定标签的所有博客
         PageHelper.startPage(pageNum, 10);
         List<BlogEntity> allBlogsByTag = blogService.findAllBlogsByTag(id);
         // 查询指定博客的所有标签并替换到分页结果对象

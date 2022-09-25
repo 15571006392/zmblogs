@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AboutDao">
+
+    <!--  查询注册用户数量  -->
+    <select id="findUserCount" resultType="Integer">
+        select count(id)
+        from t_user
+    </select>
+
+    <insert id="insertAboutData">
+        update t_about set all_count = #{allCount},register_user_count = #{registerUserCount},online_date = #{onlineDate} where id = 1
+    </insert>
+
+</mapper>

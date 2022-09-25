@@ -2,9 +2,11 @@ package com.controller.admin;
 
 import com.bean.Tag;
 import com.service.TagService;
+import com.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +23,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/admin")
 public class TagController {
 
+    private final TagService tagService;
+
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    private TagService tagService;
+    public TagController(TagService tagService, RedisTemplate redisTemplate) {
+        this.tagService = tagService;
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 标签页面跳转
-     * @param pageable
-     * @param model
-     * @return
+     * @param pageable 分页
+     * @param model 容器
+     * @return 页面
      */
     @GetMapping("/tags")
     public String list(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable, Model model){
@@ -38,8 +47,8 @@ public class TagController {
 
     /**
      * 新增页面跳转
-     * @param model
-     * @return
+     * @param model 容器
+     * @return 页面
      */
     @GetMapping("/tags/input")
     public String input(Model model){
@@ -49,9 +58,9 @@ public class TagController {
 
     /**
      * 更新页面跳转
-     * @param id
-     * @param model
-     * @return
+     * @param id 标签id
+     * @param model 容器
+     * @return 页面
      */
     @GetMapping("/tags/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
@@ -61,10 +70,10 @@ public class TagController {
 
     /**
      * 新增标签功能
-     * @param tag
-     * @param attributes
-     * @param model
-     * @return
+     * @param tag 标签
+     * @param attributes 重定向容器
+     * @param model 容器
+     * @return 页面
      */
     @PostMapping("/tags-create")
     public String post(Tag tag, RedirectAttributes attributes, Model model){
@@ -79,7 +88,8 @@ public class TagController {
             // 保存失败
             attributes.addFlashAttribute("message","添加失败");
         }else{
-            // 保存成功
+            // 保存成功，清空redis缓存
+            RedisUtil.flushRedisTags(redisTemplate);
             attributes.addFlashAttribute("message","添加成功");
         }
         return "redirect:/admin/tags";
@@ -87,11 +97,11 @@ public class TagController {
 
     /**
      * 更新标签请求
-     * @param tag
-     * @param id
-     * @param attributes
-     * @param model
-     * @return
+     * @param tag 标签
+     * @param id 标签id
+     * @param attributes 重定向容器
+     * @param model 容器
+     * @return 页面
      */
     @PostMapping("/tags-create/{id}")
     public String editPost(Tag tag,@PathVariable Long id, RedirectAttributes attributes,Model model){
@@ -106,7 +116,8 @@ public class TagController {
             // 保存失败
             attributes.addFlashAttribute("message","更新失败");
         }else{
-            // 保存成功
+            // 保存成功，清空redis缓存
+            RedisUtil.flushRedisTags(redisTemplate);
             attributes.addFlashAttribute("message","更新成功");
         }
         return "redirect:/admin/tags";
@@ -114,13 +125,15 @@ public class TagController {
 
     /**
      * 删除
-     * @param id
-     * @param attributes
-     * @return
+     * @param id 标签id
+     * @param attributes 重定向容器
+     * @return 页面
      */
     @GetMapping("/tags/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes){
         tagService.deleteTag(id);
+        // 保存成功，清空redis缓存
+        RedisUtil.flushRedisTags(redisTemplate);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/tags";
     }

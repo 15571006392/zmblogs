@@ -1,8 +1,10 @@
 package com.controller;
 
 import com.bean.User;
+import com.service.AboutService;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +22,13 @@ public class AboutController {
 
     private final StringRedisTemplate stringRedisTemplate;
 
-    private final UserInfoService userInfoService;
+
+    private final AboutService aboutService;
 
     @Autowired
-    public AboutController(StringRedisTemplate stringRedisTemplate, UserInfoService userInfoService) {
+    public AboutController(StringRedisTemplate stringRedisTemplate, AboutService aboutService) {
         this.stringRedisTemplate = stringRedisTemplate;
-        this.userInfoService = userInfoService;
+        this.aboutService = aboutService;
     }
 
     /**
@@ -37,7 +40,8 @@ public class AboutController {
     @GetMapping("/about")
     public String about(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        int count = userInfoService.findUserCount();
+        // 注册用户总数
+        int count = aboutService.findUserCount();
         // 每日访客数量
         int visitorCount = stringRedisTemplate.opsForHash().keys("visitorIP").size();
         // 总访客数量

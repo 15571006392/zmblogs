@@ -34,7 +34,7 @@ public class TypeShowController {
 
     @GetMapping("/types/{id}")
     public String types(@RequestParam(required = false, defaultValue = "1", value = "pageNum") int pageNum, Model model, @PathVariable int id) {
-        // 查询所有分类，按照分类ID，分类name进行分组
+        // 查询所有分类，每个分类的博客数量不包含草稿状态，不显示博客为0的分类
         List<TypeEntity> list = typeService.findType();
         /*
         如果是通过导航栏跳转
@@ -45,7 +45,7 @@ public class TypeShowController {
             id = list.get(0).getId();
         }
         model.addAttribute("types", list);
-        // 分页查询
+        // 分页查询 指定分类的所有博客
         PageHelper.startPage(pageNum, 10);
         List<BlogEntity> allBlogsByType = blogService.findAllBlogsByType(id);
         if (allBlogsByType.size() == 0) {
