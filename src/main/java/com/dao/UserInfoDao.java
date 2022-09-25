@@ -14,12 +14,6 @@ import java.util.List;
 public interface UserInfoDao {
 
     /**
-     * 查询注册用户数量
-     * @return 用户数量
-     */
-    Integer findUserCount();
-
-    /**
      * 根据id查询用户
      * @param id 用户id
      * @return 用户信息

@@ -1,11 +1,14 @@
 package com.service.impl;
 
 import com.bean.LeavingMessage;
+import com.bean.MessageEntity;
+import com.dao.MessageDao;
 import com.dao.MessageRepository;
 import com.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,40 +24,49 @@ public class MessageServiceImpl implements MessageService {
 
     private final MessageRepository messageRepository;
 
+    private final MessageDao messageDao;
+
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    public MessageServiceImpl(MessageRepository messageRepository) {
+    public MessageServiceImpl(MessageRepository messageRepository,MessageDao messageDao,RedisTemplate redisTemplate) {
         this.messageRepository = messageRepository;
+        this.messageDao = messageDao;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
-     * 保存留言
+     * 根据留言数量查询留言
+     * @param count 留言数量
+     * @return 留言集合
+     */
+    @Override
+    public List<MessageEntity> findMessageByCount(Integer count) {
+        // 先从redis中查
+        List<MessageEntity> list = (List<MessageEntity>) redisTemplate.opsForHash().get("menu", "message");
+        if(list == null){
+            // 从mysql查
+            List<MessageEntity> messageByCount = messageDao.findMessageByCount(count);
+            // 加入redis
+            redisTemplate.opsForHash().put("menu","message",messageByCount);
+            return messageByCount;
+        }
+        return list;
+    }
+
+    /**
+     * 提交留言
      * @param name 名称
      * @param mail 邮箱
-     * @param message 信息
-     * @return 是否成功
+     * @param message 内容
+     * @param avatar 头像
+     * @return 1成功，0失败
      */
     @Override
-    public int updateLeavingMessage(String name, String mail, String message, String avatar) {
-        // 线程安全
+    public int insertLeavingMessage(String name, String mail, String message, String avatar) {
         LocalDateTime rightNow = LocalDateTime.now();
-        String rightNow2 = rightNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        LeavingMessage leavingMessage = new LeavingMessage();
-        // 初始化留言信息
-        leavingMessage.setMessage(message);
-        leavingMessage.setMail(mail);
-        leavingMessage.setName(name);
-        leavingMessage.setCt(rightNow2);
-        leavingMessage.setAvatar(avatar);
-        messageRepository.save(leavingMessage);
-        return 1;
-    }
-    /**
-     * 查询全部留言
-     * @return 全部留言
-     */
-    @Override
-    public List<LeavingMessage> getLeavingMessage() {
-        return messageRepository.findAll();
+        String createTime = rightNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return messageDao.insertLeavingMessage(name, mail, message, createTime, avatar);
     }
 
     /**

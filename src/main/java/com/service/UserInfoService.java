@@ -12,12 +12,6 @@ import java.util.List;
 public interface UserInfoService {
 
     /**
-     * 查询注册用户数量
-     * @return 用户数量
-     */
-    Integer findUserCount();
-
-    /**
      * 查询用户信息
      * @param id 用户id
      * @return 用户信息

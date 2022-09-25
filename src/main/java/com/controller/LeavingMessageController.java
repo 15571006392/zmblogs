@@ -1,10 +1,12 @@
 package com.controller;
 
-import com.bean.LeavingMessage;
+import com.bean.MessageEntity;
 import com.bean.User;
 import com.service.MessageService;
+import com.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,47 +25,37 @@ public class LeavingMessageController {
 
     private final MessageService messageService;
 
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    public LeavingMessageController(MessageService messageService) {
+    public LeavingMessageController(MessageService messageService,RedisTemplate redisTemplate) {
         this.messageService = messageService;
+        this.redisTemplate = redisTemplate;
     }
 
     /**
      * 留言页面跳转
      *
-     * @param model
-     * @return
+     * @param model 容器
+     * @return 留言页面
      */
     @GetMapping("/leavingmessage")
     public String show(Model model) {
-        // 获取所有留言
-        List<LeavingMessage> leavingMessages = messageService.getLeavingMessage();
-        List<LeavingMessage> end = new ArrayList<>();
-        // 指定展示的留言条数
-        int size = 5;
-        // 按留言提交时间展示最新的5条
-        if (leavingMessages.size() > size) {
-            end.add(leavingMessages.get(leavingMessages.size() - 1));
-            end.add(leavingMessages.get(leavingMessages.size() - 2));
-            end.add(leavingMessages.get(leavingMessages.size() - 3));
-            end.add(leavingMessages.get(leavingMessages.size() - 4));
-            end.add(leavingMessages.get(leavingMessages.size() - 5));
-            model.addAttribute("newLeavingMessage", end);
-        } else {
-            model.addAttribute("newLeavingMessage", leavingMessages);
-        }
+        // 获取指定的留言数量
+        List<MessageEntity> messageByCount = messageService.findMessageByCount(5);
+        model.addAttribute("newLeavingMessage", messageByCount);
         return "leavingmessage";
     }
 
     /**
      * 提交留言
-     * @param yourName
-     * @param email
-     * @param yourMessage
-     * @param avatar
-     * @param attributes
-     * @param session
-     * @return
+     * @param yourName 名称
+     * @param email 邮箱
+     * @param yourMessage 留言内容
+     * @param avatar 头像
+     * @param attributes 容器
+     * @param session session
+     * @return 重定向到留言页面
      */
     @PostMapping("/leavingmessage/getmessage")
     public String getMessage(@RequestParam String yourName, @RequestParam String email, @RequestParam String yourMessage, @Value("${comment.avatar}") String avatar, RedirectAttributes attributes, HttpSession session) {
@@ -74,8 +65,10 @@ public class LeavingMessageController {
             email = user.getEmail();
             avatar = user.getAvatar();
         }
-        if (messageService.updateLeavingMessage(yourName, email, yourMessage, avatar) == 1) {
+        if (messageService.insertLeavingMessage(yourName,email,yourMessage,avatar) == 1) {
             attributes.addFlashAttribute("avatar",avatar);
+            // 清空留言缓存
+            RedisUtil.flushRedisLeavingMessage(redisTemplate);
             attributes.addFlashAttribute("success", "提交成功，感谢反馈！");
         } else {
             attributes.addFlashAttribute("fail", "提交失败，服务器出错！");

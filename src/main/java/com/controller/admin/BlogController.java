@@ -9,6 +9,7 @@ import com.obs.services.ObsClient;
 import com.service.BlogService;
 import com.service.TagService;
 import com.service.TypeService;
+import com.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -179,14 +180,9 @@ public class BlogController {
             // 保存失败
             attributes.addFlashAttribute("message", "操作失败");
         } else {
-            // 保存成功
-            // 清空首页分类、标签、推荐博客redis缓存
-            redisTemplate.opsForHash().delete("index", "tags");
-            redisTemplate.opsForHash().delete("index", "types");
-            redisTemplate.opsForHash().delete("index", "recommends");
-            // 清空所有分类、标签redis缓存
-            redisTemplate.opsForHash().delete("menu","types");
-            redisTemplate.opsForHash().delete("menu","tags");
+            // 保存成功，清空redis缓存
+            RedisUtil.flushAllRedisMenu(redisTemplate);
+            RedisUtil.flushAllRedisIndex(redisTemplate);
             attributes.addFlashAttribute("message", "操作成功");
         }
         return "redirect:/admin/blogs";
@@ -202,13 +198,8 @@ public class BlogController {
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes) {
         blogService.deleteBlog(id);
-        // 清空首页分类、标签、推荐博客redis缓存
-        redisTemplate.opsForHash().delete("index", "tags");
-        redisTemplate.opsForHash().delete("index", "types");
-        redisTemplate.opsForHash().delete("index", "recommends");
-        // 清空所有分类、标签redis缓存
-        redisTemplate.opsForHash().delete("menu","types");
-        redisTemplate.opsForHash().delete("menu","tags");
+        RedisUtil.flushAllRedisMenu(redisTemplate);
+        RedisUtil.flushAllRedisIndex(redisTemplate);
         attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/blogs";
     }

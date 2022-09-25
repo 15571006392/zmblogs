@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.NotFoundException;
 import com.bean.BlogEntity;
 import com.bean.UserEntity;
 import com.dao.UserInfoDao;
@@ -24,13 +25,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public Integer findUserCount() {
-        return userInfoDao.findUserCount();
-    }
-
-    @Override
     public UserEntity findUserById(Integer id) {
-        return userInfoDao.findUserById(id);
+        UserEntity userById = userInfoDao.findUserById(id);
+        if(userById == null){
+            throw new NotFoundException("用户不存在");
+        }
+        return userById;
     }
 
     @Override

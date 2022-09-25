@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,10 +30,13 @@ public class BlogServiceImpl implements BlogService {
 
     private final DetailDao detailDao;
 
+    private final RedisTemplate redisTemplate;
+
     @Autowired
-    public BlogServiceImpl(BlogRepository blogRepository, DetailDao detailDao) {
+    public BlogServiceImpl(BlogRepository blogRepository, DetailDao detailDao, RedisTemplate redisTemplate) {
         this.blogRepository = blogRepository;
         this.detailDao = detailDao;
+        this.redisTemplate = redisTemplate;
     }
 
     @Override
@@ -108,7 +112,7 @@ public class BlogServiceImpl implements BlogService {
         if (!byId.isPresent()) {
             throw new NotFoundException("该博客不存在");
         }
-        if(!byId.get().isPublished()){
+        if (!byId.get().isPublished()) {
             throw new NotFoundException("该博客已下架");
         }
         Detail detail = byId.get();
@@ -144,12 +148,30 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Map<String, List<Detail>> archiveBlog() {
-        List<String> years = blogRepository.findGroupYear();
-        Map<String, List<Detail>> map = new HashMap<>();
-        for (String year : years) {
-            map.put(year, blogRepository.findByYear(year));
+        // 先从redis中找
+        Map<String, List<Detail>> archiveBlogs  = (Map<String, List<Detail>>) redisTemplate.opsForHash().get("menu", "archiveBlogs");
+        if(archiveBlogs == null){
+            // 查找博客年份
+            List<String> years = blogRepository.findGroupYear();
+            // 存放博客的map容器，key为博客年份
+            Map<String, List<Detail>> map = new HashMap<>(countBlog().intValue());
+            for (String year : years) {
+                List<Detail> byYear = blogRepository.findByYear(year);
+                // 把有关联关系的字段置为null
+                byYear.forEach(values ->{
+                    values.setTags(null);
+                    values.setType(null);
+                    values.setUser(null);
+                    values.setContent(null);
+                    values.setComments(null);
+                });
+                map.put(year, byYear);
+            }
+            // 存入redis
+            redisTemplate.opsForHash().put("menu","archiveBlogs",map);
+            return map;
         }
-        return map;
+        return archiveBlogs;
     }
 
     /**
@@ -159,7 +181,16 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public Long countBlog() {
-        return blogRepository.count();
+        // 先从redis中找博客总数
+        Integer archiveCount = (Integer) redisTemplate.opsForHash().get("menu", "archiveCount");
+        if (archiveCount == null) {
+            // 从mysql中查询
+            long count = blogRepository.count();
+            // 加入redis
+            redisTemplate.opsForHash().put("menu", "archiveCount", count);
+            return count;
+        }
+        return archiveCount.longValue();
     }
 
     /**

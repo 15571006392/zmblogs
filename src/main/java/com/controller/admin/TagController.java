@@ -2,6 +2,7 @@ package com.controller.admin;
 
 import com.bean.Tag;
 import com.service.TagService;
+import com.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -87,11 +88,8 @@ public class TagController {
             // 保存失败
             attributes.addFlashAttribute("message","添加失败");
         }else{
-            // 保存成功
-            // 清空首页标签redis缓存
-            redisTemplate.opsForHash().delete("index","tags");
-            // 清空所有标签redis缓存
-            redisTemplate.opsForHash().delete("menu","tags");
+            // 保存成功，清空redis缓存
+            RedisUtil.flushRedisTags(redisTemplate);
             attributes.addFlashAttribute("message","添加成功");
         }
         return "redirect:/admin/tags";
@@ -118,11 +116,8 @@ public class TagController {
             // 保存失败
             attributes.addFlashAttribute("message","更新失败");
         }else{
-            // 保存成功
-            // 清空首页标签redis缓存
-            redisTemplate.opsForHash().delete("index","tags");
-            // 清空所有标签redis缓存
-            redisTemplate.opsForHash().delete("menu","tags");
+            // 保存成功，清空redis缓存
+            RedisUtil.flushRedisTags(redisTemplate);
             attributes.addFlashAttribute("message","更新成功");
         }
         return "redirect:/admin/tags";
@@ -137,10 +132,8 @@ public class TagController {
     @GetMapping("/tags/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes){
         tagService.deleteTag(id);
-        // 清空首页标签redis缓存
-        redisTemplate.opsForHash().delete("index","tags");
-        // 清空所有标签redis缓存
-        redisTemplate.opsForHash().delete("menu","tags");
+        // 保存成功，清空redis缓存
+        RedisUtil.flushRedisTags(redisTemplate);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/tags";
     }
