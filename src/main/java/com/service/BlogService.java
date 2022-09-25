@@ -50,6 +50,14 @@ public interface BlogService {
     Detail getBlog(Long id);
 
     /**
+     * 根据主键获取博客
+     * @param id 博客id
+     * @param userId 用户id
+     * @return 博客
+     */
+    Detail getBlog(Long id,Long userId);
+
+    /**
      *  通过用户id查询博客信息并分页
      *  过滤博客状态为草稿的博客
      * @param id 用户id

@@ -21,6 +21,12 @@
     </properties>
 
     <dependencies>
+        <!--json对象处理-->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.14</version>
+        </dependency>
         <!-- HuaweiCloud-OBS -->
         <dependency>
             <groupId>com.huaweicloud</groupId>

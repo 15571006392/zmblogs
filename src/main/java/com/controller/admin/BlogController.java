@@ -140,11 +140,13 @@ public class BlogController {
      * @return 页面
      */
     @GetMapping("/blogs/{id}/input")
-    public String editInput(@PathVariable Long id, Model model) {
+    public String editInput(@PathVariable Long id, Model model,HttpSession session) {
+        // 校验跳转的博客是否是该用户的博客
+        User user = (User) session.getAttribute("user");
+        Detail blog = blogService.getBlog(id,user.getId());
+        blog.init();
         model.addAttribute("types", typeService.listType());
         model.addAttribute("tags", tagService.listTag());
-        Detail blog = blogService.getBlog(id);
-        blog.init();
         blogTitle = blog.getTitle();
         model.addAttribute("blog", blog);
         return "admin/admin-create";
@@ -182,6 +184,9 @@ public class BlogController {
             redisTemplate.opsForHash().delete("index", "tags");
             redisTemplate.opsForHash().delete("index", "types");
             redisTemplate.opsForHash().delete("index", "recommends");
+            // 清空所有分类、标签redis缓存
+            redisTemplate.opsForHash().delete("menu","types");
+            redisTemplate.opsForHash().delete("menu","tags");
             attributes.addFlashAttribute("message", "操作成功");
         }
         return "redirect:/admin/blogs";
@@ -201,6 +206,9 @@ public class BlogController {
         redisTemplate.opsForHash().delete("index", "tags");
         redisTemplate.opsForHash().delete("index", "types");
         redisTemplate.opsForHash().delete("index", "recommends");
+        // 清空所有分类、标签redis缓存
+        redisTemplate.opsForHash().delete("menu","types");
+        redisTemplate.opsForHash().delete("menu","tags");
         attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/blogs";
     }

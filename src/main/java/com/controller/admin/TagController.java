@@ -90,6 +90,8 @@ public class TagController {
             // 保存成功
             // 清空首页标签redis缓存
             redisTemplate.opsForHash().delete("index","tags");
+            // 清空所有标签redis缓存
+            redisTemplate.opsForHash().delete("menu","tags");
             attributes.addFlashAttribute("message","添加成功");
         }
         return "redirect:/admin/tags";
@@ -119,6 +121,8 @@ public class TagController {
             // 保存成功
             // 清空首页标签redis缓存
             redisTemplate.opsForHash().delete("index","tags");
+            // 清空所有标签redis缓存
+            redisTemplate.opsForHash().delete("menu","tags");
             attributes.addFlashAttribute("message","更新成功");
         }
         return "redirect:/admin/tags";
@@ -135,6 +139,8 @@ public class TagController {
         tagService.deleteTag(id);
         // 清空首页标签redis缓存
         redisTemplate.opsForHash().delete("index","tags");
+        // 清空所有标签redis缓存
+        redisTemplate.opsForHash().delete("menu","tags");
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/tags";
     }

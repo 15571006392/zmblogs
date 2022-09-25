@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.NotFoundException;
 import com.bean.UserEntity;
 import com.dao.UserInfoModifyDao;
 import com.service.UserInfoModifyService;
@@ -19,8 +20,18 @@ public class UserInfoModifyServiceImpl implements UserInfoModifyService {
         this.userInfoModifyDao = userInfoModifyDao;
     }
 
+    /**
+     * 用户信息查询
+     * @param id 用户id
+     * @param userId 当前登录用户id，用于校验
+     * @return 用户信息
+     */
     @Override
-    public UserEntity findAllInfo(int id) {
+    public UserEntity findAllInfo(int id,Long userId) {
+        // 校验是否是登录用户访问，避免查不到或者越级
+        if (id != userId){
+            throw new NotFoundException("用户不存在或者无权限访问");
+        }
         return userInfoModifyDao.findAllInfo(id);
     }
 

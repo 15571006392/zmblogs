@@ -58,12 +58,35 @@ public class BlogServiceImpl implements BlogService {
     /**
      * 根据id获取博客
      *
-     * @param id
-     * @return
+     * @param id 博客id
+     * @return 博客详情
      */
     @Override
     public Detail getBlog(Long id) {
         Optional<Detail> byId = blogRepository.findById(id);
+        if (!byId.isPresent()) {
+            throw new NotFoundException("不存在博客");
+        }
+        return byId.get();
+    }
+
+    /**
+     * 根据id获取博客
+     * 校验该博客是不是当前用户的博客
+     *
+     * @param id     博客id
+     * @param userId 用户id
+     * @return 博客详情
+     */
+    @Override
+    public Detail getBlog(Long id, Long userId) {
+        Optional<Detail> byId = blogRepository.findById(id);
+        if (!byId.isPresent()) {
+            throw new NotFoundException("博客不存在");
+        }
+        if (!byId.get().getUser().getId().equals(userId)) {
+            throw new NotFoundException("权限不够");
+        }
         return byId.get();
     }
 
@@ -75,8 +98,8 @@ public class BlogServiceImpl implements BlogService {
     /**
      * markdown转html
      *
-     * @param id
-     * @return
+     * @param id 博客id
+     * @return 博客详情
      */
     @Override
     @Transactional
@@ -84,6 +107,9 @@ public class BlogServiceImpl implements BlogService {
         Optional<Detail> byId = blogRepository.findById(id);
         if (!byId.isPresent()) {
             throw new NotFoundException("该博客不存在");
+        }
+        if(!byId.get().isPublished()){
+            throw new NotFoundException("该博客已下架");
         }
         Detail detail = byId.get();
         Detail b = new Detail();
@@ -100,6 +126,7 @@ public class BlogServiceImpl implements BlogService {
 
     /**
      * 搜索博客
+     *
      * @param query 用户输入
      * @return 博客列表
      */
@@ -128,7 +155,7 @@ public class BlogServiceImpl implements BlogService {
     /**
      * 总数
      *
-     * @return
+     * @return 博客总数
      */
     @Override
     public Long countBlog() {
@@ -138,8 +165,8 @@ public class BlogServiceImpl implements BlogService {
     /**
      * 保存博客
      *
-     * @param detail
-     * @return
+     * @param detail 博客
+     * @return 博客对象
      */
     @Override
     @Transactional
@@ -158,9 +185,9 @@ public class BlogServiceImpl implements BlogService {
     /**
      * 新增博客
      *
-     * @param id
-     * @param detail
-     * @return
+     * @param id     博客id
+     * @param detail 博客
+     * @return 新增博客对象
      */
     @Override
     @Transactional

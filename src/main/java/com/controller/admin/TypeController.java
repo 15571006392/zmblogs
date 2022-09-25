@@ -90,6 +90,8 @@ public class TypeController {
             // 保存成功
             // 清空首页分类redis缓存
             redisTemplate.opsForHash().delete("index","types");
+            // 清空所有分类redis缓存
+            redisTemplate.opsForHash().delete("menu","types");
             attributes.addFlashAttribute("message","添加成功");
         }
         return "redirect:/admin/types";
@@ -119,6 +121,8 @@ public class TypeController {
             // 保存成功
             // 清空首页分类redis缓存
             redisTemplate.opsForHash().delete("index","types");
+            // 清空所有分类redis缓存
+            redisTemplate.opsForHash().delete("menu","types");
             attributes.addFlashAttribute("message","更新成功");
         }
         return "redirect:/admin/types";
@@ -135,6 +139,8 @@ public class TypeController {
         typeService.deleteType(id);
         // 清空首页分类redis缓存
         redisTemplate.opsForHash().delete("index","types");
+        // 清空所有分类redis缓存
+        redisTemplate.opsForHash().delete("menu","types");
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/types";
     }
