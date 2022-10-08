@@ -23,8 +23,9 @@ public interface BlogService {
     /**
      * 查询全部博客
      * 过滤博客状态为草稿的博客
+     *
      * @param pageNum 页码
-     * @param size 分页大小
+     * @param size    分页大小
      * @return 分页查询
      */
     PageInfo<BlogEntity> findAllBlogs(int pageNum, int size);
@@ -33,19 +34,23 @@ public interface BlogService {
      * 查询指定分类下的所有博客
      * 过滤博客状态为草稿的博客
      *
-     * @param id 分类id
-     * @return 装有博客信息的list集合
+     * @param pageNum 当前页数
+     * @param size    分页大小
+     * @param id      当前分类id
+     * @return 分页查询结果
      */
-    List<BlogEntity> findAllBlogsByType(int id);
+    PageInfo<BlogEntity> findAllBlogsByType(int pageNum, int size, int id);
 
     /**
      * 查询指定标签下的所有博客
      * 过滤博客状态为草稿的博客
      *
-     * @param id 标签的id
-     * @return 装有博客信息的list集合
+     * @param pageNum 当前页数
+     * @param size    分页大小
+     * @param id      当前标签id
+     * @return 分页查询结果
      */
-    List<BlogEntity> findAllBlogsByTag(int id);
+    PageInfo<BlogEntity> findAllBlogsByTag(int pageNum, int size, int id);
 
     /**
      * 根据主键获取指定博客
@@ -84,12 +89,13 @@ public interface BlogService {
 
     /**
      * 搜索博客
+     *
      * @param pageNum 页码
-     * @param size 分页大小
-     * @param query 用户输入
+     * @param size    分页大小
+     * @param query   用户输入
      * @return 分页查询所有博客
      */
-    PageInfo<BlogEntity> searchBlogs(int pageNum,int size,String query);
+    PageInfo<BlogEntity> searchBlogs(int pageNum, int size, String query);
 
     /**
      * 根据指定的数量

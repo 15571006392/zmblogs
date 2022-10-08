@@ -1,9 +1,7 @@
 package com.controller;
 
-import com.NotFoundException;
 import com.bean.BlogEntity;
 import com.bean.TypeEntity;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
 import com.service.TypeService;
@@ -45,15 +43,11 @@ public class TypeShowController {
             id = list.get(0).getId();
         }
         model.addAttribute("types", list);
+
         // 分页查询 指定分类的所有博客
-        PageHelper.startPage(pageNum, 10);
-        List<BlogEntity> allBlogsByType = blogService.findAllBlogsByType(id);
-        if (allBlogsByType.size() == 0) {
-            throw new NotFoundException("分类不存在");
-        }
-        // 得到分页结果对象
-        PageInfo<BlogEntity> pageInfo = new PageInfo<>(allBlogsByType);
-        model.addAttribute("page", pageInfo);
+        PageInfo<BlogEntity> allBlogsByType = blogService.findAllBlogsByType(pageNum, 10, id);
+        model.addAttribute("page", allBlogsByType);
+
         // 当前活跃的id
         model.addAttribute("activeTypeId", id);
         return "type";
