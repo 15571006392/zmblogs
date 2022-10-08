@@ -90,11 +90,11 @@ public class TypeServiceImpl implements TypeService {
     /**
      * 保存分类
      *
-     * @param type
-     * @return
+     * @param type 分类
+     * @return 分类
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Type saveType(Type type) {
         return typeRepository.save(type);
     }
@@ -102,24 +102,25 @@ public class TypeServiceImpl implements TypeService {
     /**
      * 根据ID查询分类
      *
-     * @param id
-     * @return
+     * @param id 分类id
+     * @return 查询到的分类
      */
     @Override
-    @Transactional
     public Type getType(Long id) {
         Optional<Type> optional = typeRepository.findById(id);
+        if (!optional.isPresent()) {
+            throw new NotFoundException("结果不存在");
+        }
         return optional.get();
     }
 
     /**
      * 分页查询
      *
-     * @param pageable
-     * @return
+     * @param pageable 分页
+     * @return 结果
      */
     @Override
-    @Transactional
     public Page<Type> listType(Pageable pageable) {
         return typeRepository.findAll(pageable);
     }
@@ -137,7 +138,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Type updateType(Long id, Type type) {
         Optional<Type> optional = typeRepository.findById(id);
         if (!optional.isPresent()) {
@@ -149,7 +150,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteType(Long id) {
         typeRepository.deleteById(id);
     }
@@ -158,7 +159,6 @@ public class TypeServiceImpl implements TypeService {
      * 通过名字查询
      */
     @Override
-    @Transactional
     public Type getTypeByName(String name) {
         return typeRepository.findByName(name);
     }

@@ -35,7 +35,7 @@ public class TagServiceImpl implements TagService {
     private final RedisTemplate redisTemplate;
 
     @Autowired
-    public TagServiceImpl(TagRepository tagRepository, TagDao tagDao,RedisTemplate redisTemplate) {
+    public TagServiceImpl(TagRepository tagRepository, TagDao tagDao, RedisTemplate redisTemplate) {
         this.tagRepository = tagRepository;
         this.tagDao = tagDao;
         this.redisTemplate = redisTemplate;
@@ -43,6 +43,7 @@ public class TagServiceImpl implements TagService {
 
     /**
      * 查询首页标签，指定数量，按照标签的博客数量排序，过滤草稿状态博客
+     *
      * @param count 标签数量
      * @return 标签结果
      */
@@ -66,28 +67,30 @@ public class TagServiceImpl implements TagService {
 
     /**
      * 查询全部标签
+     *
      * @return 标签的list集合
      */
     @Override
     public List<TagEntity> findTag() {
         // 先从redis找
         List<TagEntity> tagEntities = (List<TagEntity>) redisTemplate.opsForHash().get("menu", "tags");
-        if(tagEntities == null){
+        if (tagEntities == null) {
             // 从mysql中找
             List<TagEntity> tags = tagDao.findTag();
             // 加入到redis
-            redisTemplate.opsForHash().put("menu","tags",tags);
+            redisTemplate.opsForHash().put("menu", "tags", tags);
             // 设置超时时间 1天
             redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return tags;
         }
         // 结果先转为字符串再转为list集合，避免java.util.LinkedHashMap cannot be cast to 实体类异常
         String tags = JSON.toJSONString(tagEntities);
-        return JSON.parseArray(tags,TagEntity.class);
+        return JSON.parseArray(tags, TagEntity.class);
     }
 
     /**
      * 查找指定博客的所有标签
+     *
      * @param id 博客id
      * @return 标签集合
      */
@@ -98,69 +101,73 @@ public class TagServiceImpl implements TagService {
 
     /**
      * 保存标签
-     * @param tag
-     * @return
+     *
+     * @param tag 标签
+     * @return 标签
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Tag saveTag(Tag tag) {
         return tagRepository.save(tag);
     }
 
     /**
      * 根据id查询标签
-     * @param id
-     * @return
+     *
+     * @param id 标签id
+     * @return 标签
      */
     @Override
-    @Transactional
     public Tag getTag(Long id) {
         Optional<Tag> byId = tagRepository.findById(id);
+        if (!byId.isPresent()) {
+            throw new NotFoundException("结果不存在");
+        }
         return byId.get();
     }
 
     /**
      * 分页查询
-     * @param pageable
-     * @return
+     *
+     * @param pageable 分页
+     * @return 分页结果
      */
     @Override
-    @Transactional
     public Page<Tag> listTag(Pageable pageable) {
         return tagRepository.findAll(pageable);
     }
 
     /**
      * 查找全部
-     * @return
+     *
+     * @return 全部标签
      */
     @Override
-    @Transactional
     public List<Tag> listTag() {
         return tagRepository.findAll();
     }
 
     /**
      * 通过多个ID查找
-     * @param ids
-     * @return
+     *
+     * @param ids 多个id
+     * @return 结果集合
      */
     @Override
-    @Transactional
     public List<Tag> listTag(String ids) {
         return tagRepository.findAllById(convertToList(ids));
     }
 
     @Override
     public List<Tag> listTagTop(Integer size) {
-        Sort sort = Sort.by(Sort.Direction.DESC,"details.size");
-        Pageable pageable = PageRequest.of(0,size,sort);
+        Sort sort = Sort.by(Sort.Direction.DESC, "details.size");
+        Pageable pageable = PageRequest.of(0, size, sort);
         return tagRepository.findTop(pageable);
     }
 
-    private List<Long> convertToList(String ids){
+    private List<Long> convertToList(String ids) {
         List<Long> list = new ArrayList<>();
-        if(!"".equals(ids) && ids != null){
+        if (!"".equals(ids) && ids != null) {
             String[] array = ids.split(",");
             for (String s : array) {
                 list.add(new Long(s));
@@ -170,25 +177,25 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Tag updateTag(Long id, Tag tag) {
         Optional<Tag> byId = tagRepository.findById(id);
-        if(!byId.isPresent()){
+        if (!byId.isPresent()) {
             throw new NotFoundException("该标签不存在");
         }
         Tag tag1 = byId.get();
-        BeanUtils.copyProperties(tag,tag1);
+        BeanUtils.copyProperties(tag, tag1);
         return tagRepository.save(tag1);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteTag(Long id) {
         tagRepository.deleteById(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Tag getTagByName(String name) {
         return tagRepository.findByName(name);
     }

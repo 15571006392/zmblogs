@@ -35,7 +35,7 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Comment saveComment(Comment comment) {
         Long parentCommentId = comment.getParentComment().getId();
         if(parentCommentId != -1){

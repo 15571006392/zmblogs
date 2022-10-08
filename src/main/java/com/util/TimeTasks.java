@@ -34,7 +34,7 @@ public class TimeTasks {
     /**
      * 每天晚上12点执行
      * 统计用户日访问量和总访问量，持久化数据到数据库
-     * // @Scheduled(cron = "0 0/1 * * * ?") 测试代码，每分钟执行一次
+     * @Scheduled(cron = "0 0/1 * * * ?") 测试代码，每分钟执行一次
      */
     @Scheduled(cron = "00 00 00 * * ?")
     private void clearIpProperties() {

@@ -177,7 +177,7 @@ public class BlogServiceImpl implements BlogService {
      * @return 博客详情
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Detail getAndConvert(Long id) {
         Optional<Detail> byId = blogRepository.findById(id);
         if (!byId.isPresent()) {
@@ -279,7 +279,7 @@ public class BlogServiceImpl implements BlogService {
      * @return 博客对象
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Detail saveBlog(Detail detail) {
         // 首次创建，初始化属性
         if (detail.getId() == null) {
@@ -300,7 +300,7 @@ public class BlogServiceImpl implements BlogService {
      * @return 新增博客对象
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Detail updateBlog(Long id, Detail detail) {
         Optional<Detail> byId = blogRepository.findById(id);
         if (!byId.isPresent()) {
@@ -315,7 +315,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
     }

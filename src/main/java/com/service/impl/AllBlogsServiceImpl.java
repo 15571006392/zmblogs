@@ -5,6 +5,7 @@ import com.dao.AllBlogsDao;
 import com.service.AllBlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class AllBlogsServiceImpl implements AllBlogsService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void modifyState(Long id) {
         allBlogsDao.modifyState(id);
     }
