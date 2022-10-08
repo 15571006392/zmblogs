@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -61,6 +62,8 @@ public class BlogServiceImpl implements BlogService {
             List<BlogEntity> indexRecommendBlog = detailDao.findIndexRecommendBlog(count);
             // 添加到redis
             redisTemplate.opsForHash().put("index", "recommends", indexRecommendBlog);
+            // 设置超时时间 1天
+            redisTemplate.expire("index", 60 * 60 * 24, TimeUnit.SECONDS);
             return indexRecommendBlog;
         } else {
             // 找到了
@@ -241,6 +244,8 @@ public class BlogServiceImpl implements BlogService {
             }
             // 存入redis
             redisTemplate.opsForHash().put("menu", "archiveBlogs", map);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return map;
         }
         return archiveBlogs;
@@ -260,6 +265,8 @@ public class BlogServiceImpl implements BlogService {
             long count = blogRepository.count();
             // 加入redis
             redisTemplate.opsForHash().put("menu", "archiveCount", count);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return count;
         }
         return archiveCount.longValue();

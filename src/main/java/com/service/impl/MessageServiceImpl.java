@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Zm-Mmm
@@ -49,6 +50,8 @@ public class MessageServiceImpl implements MessageService {
             List<MessageEntity> messageByCount = messageDao.findMessageByCount(count);
             // 加入redis
             redisTemplate.opsForHash().put("menu","message",messageByCount);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return messageByCount;
         }
         return list;

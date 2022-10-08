@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Zm-Mmm
@@ -54,6 +55,8 @@ public class TagServiceImpl implements TagService {
             List<TagEntity> indexTag = tagDao.findIndexTag(count);
             // 添加到redis
             redisTemplate.opsForHash().put("index", "tags", indexTag);
+            // 设置超时时间 1天
+            redisTemplate.expire("index", 60 * 60 * 24, TimeUnit.SECONDS);
             return indexTag;
         } else {
             // 找到了
@@ -74,6 +77,8 @@ public class TagServiceImpl implements TagService {
             List<TagEntity> tags = tagDao.findTag();
             // 加入到redis
             redisTemplate.opsForHash().put("menu","tags",tags);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return tags;
         }
         // 结果先转为字符串再转为list集合，避免java.util.LinkedHashMap cannot be cast to 实体类异常

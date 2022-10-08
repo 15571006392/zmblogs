@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Zm-Mmm
  */
@@ -31,6 +33,8 @@ public class AboutServiceImpl implements AboutService {
             Integer userCount = aboutDao.findUserCount();
             // 同步
             redisTemplate.opsForHash().put("menu","registerUserCount",userCount);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return userCount;
         }
         return registerUserCount;
