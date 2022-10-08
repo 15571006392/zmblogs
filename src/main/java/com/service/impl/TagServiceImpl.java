@@ -195,7 +195,6 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public Tag getTagByName(String name) {
         return tagRepository.findByName(name);
     }

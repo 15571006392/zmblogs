@@ -7,7 +7,6 @@ import com.dao.UserInfoDao;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -40,7 +39,6 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public void updateUserUpdateTime(Date updateTime, Long id) {
         userInfoDao.updateUserUpdateTime(updateTime, id);
     }
