@@ -2,6 +2,7 @@ package com.service;
 
 import com.bean.BlogEntity;
 import com.bean.Detail;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -14,18 +15,19 @@ public interface BlogService {
     /**
      * 查询首页推荐博客，指定数量，按照博客更新日期排序
      *
-     * @param count
-     * @return
+     * @param count 推荐数量
+     * @return 推荐博客集合
      */
     List<BlogEntity> findIndexRecommendBlog(Integer count);
 
     /**
      * 查询全部博客
      * 过滤博客状态为草稿的博客
-     *
-     * @return 装有博客信息的list集合
+     * @param pageNum 页码
+     * @param size 分页大小
+     * @return 分页查询
      */
-    List<BlogEntity> findAllBlogs();
+    PageInfo<BlogEntity> findAllBlogs(int pageNum, int size);
 
     /**
      * 查询指定分类下的所有博客
@@ -82,11 +84,12 @@ public interface BlogService {
 
     /**
      * 搜索博客
-     *
+     * @param pageNum 页码
+     * @param size 分页大小
      * @param query 用户输入
-     * @return 博客列表
+     * @return 分页查询所有博客
      */
-    List<BlogEntity> searchBlogs(String query);
+    PageInfo<BlogEntity> searchBlogs(int pageNum,int size,String query);
 
     /**
      * 根据指定的数量

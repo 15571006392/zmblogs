@@ -4,6 +4,8 @@ import com.bean.BlogEntity;
 import com.bean.Detail;
 import com.dao.BlogRepository;
 import com.dao.DetailDao;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
 import com.util.Markdown;
 import com.util.NullBeanProperties;
@@ -39,14 +41,40 @@ public class BlogServiceImpl implements BlogService {
         this.redisTemplate = redisTemplate;
     }
 
+    /**
+     * 查询首页推荐博客，指定数量，按照博客更新日期排序
+     *
+     * @param count 推荐数量
+     * @return 推荐博客集合
+     */
     @Override
     public List<BlogEntity> findIndexRecommendBlog(Integer count) {
-        return detailDao.findIndexRecommendBlog(count);
+        // 先从redis中找
+        List<BlogEntity> indexRecommends = (List<BlogEntity>) redisTemplate.opsForHash().get("index", "recommends");
+        if (indexRecommends == null) {
+            // 从mysql中找
+            List<BlogEntity> indexRecommendBlog = detailDao.findIndexRecommendBlog(count);
+            // 添加到redis
+            redisTemplate.opsForHash().put("index", "recommends", indexRecommendBlog);
+            return indexRecommendBlog;
+        } else {
+            // 找到了
+            return indexRecommends;
+        }
     }
 
+    /**
+     * 查询全部博客
+     * 过滤博客状态为草稿的博客
+     * @param pageNum 页码
+     * @param size 分页大小
+     * @return 分页查询
+     */
     @Override
-    public List<BlogEntity> findAllBlogs() {
-        return detailDao.findAllBlogs();
+    public PageInfo<BlogEntity> findAllBlogs(int pageNum, int size) {
+        PageHelper.startPage(pageNum, 10);
+        List<BlogEntity> allBlogs = detailDao.findAllBlogs();
+        return new PageInfo<>(allBlogs);
     }
 
     @Override
@@ -130,13 +158,16 @@ public class BlogServiceImpl implements BlogService {
 
     /**
      * 搜索博客
-     *
+     * @param pageNum 页码
+     * @param size 分页大小
      * @param query 用户输入
-     * @return 博客列表
+     * @return 分页查询所有博客
      */
     @Override
-    public List<BlogEntity> searchBlogs(String query) {
-        return detailDao.searchBlogs(query);
+    public PageInfo<BlogEntity> searchBlogs(int pageNum,int size,String query) {
+        PageHelper.startPage(pageNum, 10);
+        List<BlogEntity> blogEntities = detailDao.searchBlogs(query);
+        return new PageInfo<>(blogEntities);
     }
 
     @Override

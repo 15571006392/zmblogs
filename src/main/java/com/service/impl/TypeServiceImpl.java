@@ -39,9 +39,25 @@ public class TypeServiceImpl implements TypeService {
         this.redisTemplate = redisTemplate;
     }
 
+    /**
+     * 首页分类查询，指定数量，按照分类下的博客数量从大到小排序，过滤草稿状态博客
+     * @param count 查询分类的数量
+     * @return 分类结果
+     */
     @Override
     public List<TypeEntity> findIndexType(Integer count) {
-        return typeDao.findIndexType(count);
+        // 先从redis中找
+        List<TypeEntity> indexTypes = (List<TypeEntity>) redisTemplate.opsForHash().get("index", "types");
+        if (indexTypes == null) {
+            // 从mysql中找
+            List<TypeEntity> indexType = typeDao.findIndexType(count);
+            // 添加到redis
+            redisTemplate.opsForHash().put("index", "types", indexType);
+            return indexType;
+        } else {
+            // 找到了
+            return indexTypes;
+        }
     }
 
     /**

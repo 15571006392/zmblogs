@@ -40,9 +40,25 @@ public class TagServiceImpl implements TagService {
         this.redisTemplate = redisTemplate;
     }
 
+    /**
+     * 查询首页标签，指定数量，按照标签的博客数量排序，过滤草稿状态博客
+     * @param count 标签数量
+     * @return 标签结果
+     */
     @Override
     public List<TagEntity> findIndexTag(Integer count) {
-        return tagDao.findIndexTag(count);
+        // 先从redis中找
+        List<TagEntity> indexTags = (List<TagEntity>) redisTemplate.opsForHash().get("index", "tags");
+        if (indexTags == null) {
+            // 从mysql中找
+            List<TagEntity> indexTag = tagDao.findIndexTag(count);
+            // 添加到redis
+            redisTemplate.opsForHash().put("index", "tags", indexTag);
+            return indexTag;
+        } else {
+            // 找到了
+            return indexTags;
+        }
     }
 
     /**
