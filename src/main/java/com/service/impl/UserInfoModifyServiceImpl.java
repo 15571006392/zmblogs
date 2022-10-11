@@ -6,6 +6,7 @@ import com.dao.UserInfoModifyDao;
 import com.service.UserInfoModifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Zm-Mmm
@@ -36,11 +37,13 @@ public class UserInfoModifyServiceImpl implements UserInfoModifyService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void modifyAvatar(int id, String avatar) {
         userInfoModifyDao.modifyAvatar(id, avatar);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void modifyInfo(int id, String nickname, String email) {
         userInfoModifyDao.modifyInfo(id, nickname, email);
     }

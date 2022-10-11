@@ -13,7 +13,7 @@ import java.util.List;
 public class Detail {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
      * 标题

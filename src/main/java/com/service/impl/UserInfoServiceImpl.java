@@ -27,7 +27,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserEntity findUserById(Integer id) {
         UserEntity userById = userInfoDao.findUserById(id);
-        if(userById == null){
+        if (userById == null) {
             throw new NotFoundException("用户不存在");
         }
         return userById;
@@ -40,7 +40,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public void updateUserUpdateTime(Date updateTime, Long id) {
-        userInfoDao.updateUserUpdateTime(updateTime,id);
+        userInfoDao.updateUserUpdateTime(updateTime, id);
     }
 
     @Override

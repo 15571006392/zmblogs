@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.NotFoundException;
 import com.bean.Comment;
 import com.dao.CommentRepository;
 import com.service.CommentService;
@@ -29,29 +30,34 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {
         Sort sort = Sort.by("createTime");
-        List<Comment> comments = commentRepository.findByDetailIdAndParentCommentNull(blogId,sort);
+        List<Comment> comments = commentRepository.findByDetailIdAndParentCommentNull(blogId, sort);
         return eachComment(comments);
     }
 
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Comment saveComment(Comment comment) {
         Long parentCommentId = comment.getParentComment().getId();
-        if(parentCommentId != -1){
+        if (parentCommentId != -1) {
             Optional<Comment> byId = commentRepository.findById(parentCommentId);
+            if (!byId.isPresent()) {
+                throw new NotFoundException("结果不存在");
+            }
             Comment comment1 = byId.get();
             comment.setParentComment(comment1);
-        }else{
+        } else {
             comment.setParentComment(null);
         }
         comment.setCreateTime(new Date());
         return commentRepository.save(comment);
     }
+
     /**
      * 循环每个顶级的评论节点
-     * @param comments
-     * @return
+     *
+     * @param comments 评论
+     * @return 评论集合
      */
     private List<Comment> eachComment(List<Comment> comments) {
         /*
@@ -67,16 +73,15 @@ public class CommentServiceImpl implements CommentService {
         combineChildren(comments);
         return comments;
     }
+
     /**
-     *
      * @param comments root根节点，blog不为空的对象集合
-     * @return
      */
     private void combineChildren(List<Comment> comments) {
 
         for (Comment comment : comments) {
             List<Comment> replys1 = comment.getReplyComments();
-            for(Comment reply1 : replys1) {
+            for (Comment reply1 : replys1) {
                 //循环迭代，找出子代，存放在tempReplys中
                 recursively(reply1);
             }
@@ -91,19 +96,20 @@ public class CommentServiceImpl implements CommentService {
      * 存放迭代找出的所有子代的集合
      */
     private List<Comment> tempReplys = new ArrayList<>();
+
     /**
      * 递归迭代，剥洋葱
+     *
      * @param comment 被迭代的对象
-     * @return
      */
     private void recursively(Comment comment) {
         //顶节点添加到临时存放集合
         tempReplys.add(comment);
-        if (comment.getReplyComments().size()>0) {
+        if (comment.getReplyComments().size() > 0) {
             List<Comment> replys = comment.getReplyComments();
             for (Comment reply : replys) {
                 tempReplys.add(reply);
-                if (reply.getReplyComments().size()>0) {
+                if (reply.getReplyComments().size() > 0) {
                     recursively(reply);
                 }
             }

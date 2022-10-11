@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "t_leaving_message")
 public class LeavingMessage {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String mail;

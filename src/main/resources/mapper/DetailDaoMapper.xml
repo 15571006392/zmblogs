@@ -227,7 +227,7 @@
 
     <!--  查询首页推荐博客，指定数量，按照博客更新日期排序  -->
     <select id="findIndexRecommendBlog" resultType="BlogEntity" parameterType="Integer">
-        select d.title
+        select d.title,d.id
         FROM t_detail d
         WHERE d.recommend = 1
           and d.published = 1

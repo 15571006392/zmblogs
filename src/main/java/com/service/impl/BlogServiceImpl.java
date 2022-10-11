@@ -2,9 +2,13 @@ package com.service.impl;
 
 import com.bean.BlogEntity;
 import com.bean.Detail;
+import com.bean.TagEntity;
 import com.dao.BlogRepository;
 import com.dao.DetailDao;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.service.BlogService;
+import com.service.TagService;
 import com.util.Markdown;
 import com.util.NullBeanProperties;
 import com.NotFoundException;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -26,6 +31,8 @@ import java.util.*;
 @Service
 public class BlogServiceImpl implements BlogService {
 
+    private final TagService tagService;
+
     private final BlogRepository blogRepository;
 
     private final DetailDao detailDao;
@@ -33,30 +40,94 @@ public class BlogServiceImpl implements BlogService {
     private final RedisTemplate redisTemplate;
 
     @Autowired
-    public BlogServiceImpl(BlogRepository blogRepository, DetailDao detailDao, RedisTemplate redisTemplate) {
+    public BlogServiceImpl(BlogRepository blogRepository, DetailDao detailDao, RedisTemplate redisTemplate, TagService tagService) {
         this.blogRepository = blogRepository;
         this.detailDao = detailDao;
         this.redisTemplate = redisTemplate;
+        this.tagService = tagService;
     }
 
+    /**
+     * 查询首页推荐博客，指定数量，按照博客更新日期排序
+     *
+     * @param count 推荐数量
+     * @return 推荐博客集合
+     */
     @Override
     public List<BlogEntity> findIndexRecommendBlog(Integer count) {
-        return detailDao.findIndexRecommendBlog(count);
+        // 先从redis中找
+        List<BlogEntity> indexRecommends = (List<BlogEntity>) redisTemplate.opsForHash().get("index", "recommends");
+        if (indexRecommends == null) {
+            // 从mysql中找
+            List<BlogEntity> indexRecommendBlog = detailDao.findIndexRecommendBlog(count);
+            // 添加到redis
+            redisTemplate.opsForHash().put("index", "recommends", indexRecommendBlog);
+            // 设置超时时间 1天
+            redisTemplate.expire("index", 60 * 60 * 24, TimeUnit.SECONDS);
+            return indexRecommendBlog;
+        } else {
+            // 找到了
+            return indexRecommends;
+        }
     }
 
+    /**
+     * 查询全部博客
+     * 过滤博客状态为草稿的博客
+     *
+     * @param pageNum 页码
+     * @param size    分页大小
+     * @return 分页查询
+     */
     @Override
-    public List<BlogEntity> findAllBlogs() {
-        return detailDao.findAllBlogs();
+    public PageInfo<BlogEntity> findAllBlogs(int pageNum, int size) {
+        PageHelper.startPage(pageNum, 10);
+        List<BlogEntity> allBlogs = detailDao.findAllBlogs();
+        return new PageInfo<>(allBlogs);
     }
 
+    /**
+     * 查询指定分类下的所有博客
+     * 过滤博客状态为草稿的博客
+     *
+     * @param pageNum 当前页数
+     * @param size    分页大小
+     * @param id      当前分裂id
+     * @return 分页查询结果
+     */
     @Override
-    public List<BlogEntity> findAllBlogsByType(int id) {
-        return detailDao.findAllBlogsByType(id);
+    public PageInfo<BlogEntity> findAllBlogsByType(int pageNum, int size, int id) {
+        PageHelper.startPage(pageNum, 10);
+        List<BlogEntity> allBlogsByType = detailDao.findAllBlogsByType(id);
+        if (allBlogsByType.size() == 0) {
+            throw new NotFoundException("分类不存在");
+        }
+        return new PageInfo<>(allBlogsByType);
     }
 
+    /**
+     * 查询指定标签下的所有博客
+     * 过滤博客状态为草稿的博客
+     *
+     * @param pageNum 当前页数
+     * @param size    分页大小
+     * @param id      当前标签id
+     * @return 分页查询结果
+     */
     @Override
-    public List<BlogEntity> findAllBlogsByTag(int id) {
-        return detailDao.findAllBlogsByTag(id);
+    public PageInfo<BlogEntity> findAllBlogsByTag(int pageNum, int size, int id) {
+        PageHelper.startPage(pageNum, 10);
+        List<BlogEntity> allBlogsByTag = detailDao.findAllBlogsByTag(id);
+
+        // 查询指定博客的所有标签并替换到分页结果对象
+        allBlogsByTag.forEach(values -> {
+            List<TagEntity> tagByDetail = tagService.findTagByDetail(values.getId());
+            values.setTags(tagByDetail);
+        });
+        if (allBlogsByTag.size() == 0) {
+            throw new NotFoundException("标签不存在");
+        }
+        return new PageInfo<>(allBlogsByTag);
     }
 
     /**
@@ -106,7 +177,7 @@ public class BlogServiceImpl implements BlogService {
      * @return 博客详情
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Detail getAndConvert(Long id) {
         Optional<Detail> byId = blogRepository.findById(id);
         if (!byId.isPresent()) {
@@ -131,12 +202,16 @@ public class BlogServiceImpl implements BlogService {
     /**
      * 搜索博客
      *
-     * @param query 用户输入
-     * @return 博客列表
+     * @param pageNum 页码
+     * @param size    分页大小
+     * @param query   用户输入
+     * @return 分页查询所有博客
      */
     @Override
-    public List<BlogEntity> searchBlogs(String query) {
-        return detailDao.searchBlogs(query);
+    public PageInfo<BlogEntity> searchBlogs(int pageNum, int size, String query) {
+        PageHelper.startPage(pageNum, 10);
+        List<BlogEntity> blogEntities = detailDao.searchBlogs(query);
+        return new PageInfo<>(blogEntities);
     }
 
     @Override
@@ -149,8 +224,8 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Map<String, List<Detail>> archiveBlog() {
         // 先从redis中找
-        Map<String, List<Detail>> archiveBlogs  = (Map<String, List<Detail>>) redisTemplate.opsForHash().get("menu", "archiveBlogs");
-        if(archiveBlogs == null){
+        Map<String, List<Detail>> archiveBlogs = (Map<String, List<Detail>>) redisTemplate.opsForHash().get("menu", "archiveBlogs");
+        if (archiveBlogs == null) {
             // 查找博客年份
             List<String> years = blogRepository.findGroupYear();
             // 存放博客的map容器，key为博客年份
@@ -158,7 +233,7 @@ public class BlogServiceImpl implements BlogService {
             for (String year : years) {
                 List<Detail> byYear = blogRepository.findByYear(year);
                 // 把有关联关系的字段置为null
-                byYear.forEach(values ->{
+                byYear.forEach(values -> {
                     values.setTags(null);
                     values.setType(null);
                     values.setUser(null);
@@ -168,7 +243,9 @@ public class BlogServiceImpl implements BlogService {
                 map.put(year, byYear);
             }
             // 存入redis
-            redisTemplate.opsForHash().put("menu","archiveBlogs",map);
+            redisTemplate.opsForHash().put("menu", "archiveBlogs", map);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return map;
         }
         return archiveBlogs;
@@ -188,6 +265,8 @@ public class BlogServiceImpl implements BlogService {
             long count = blogRepository.count();
             // 加入redis
             redisTemplate.opsForHash().put("menu", "archiveCount", count);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return count;
         }
         return archiveCount.longValue();
@@ -200,7 +279,7 @@ public class BlogServiceImpl implements BlogService {
      * @return 博客对象
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Detail saveBlog(Detail detail) {
         // 首次创建，初始化属性
         if (detail.getId() == null) {
@@ -221,7 +300,7 @@ public class BlogServiceImpl implements BlogService {
      * @return 新增博客对象
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Detail updateBlog(Long id, Detail detail) {
         Optional<Detail> byId = blogRepository.findById(id);
         if (!byId.isPresent()) {
@@ -236,7 +315,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
     }

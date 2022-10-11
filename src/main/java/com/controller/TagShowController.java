@@ -45,20 +45,11 @@ public class TagShowController {
             id = list.get(0).getId();
         }
         model.addAttribute("tags", list);
+
         // 分页查询 指定标签的所有博客
-        PageHelper.startPage(pageNum, 10);
-        List<BlogEntity> allBlogsByTag = blogService.findAllBlogsByTag(id);
-        // 查询指定博客的所有标签并替换到分页结果对象
-        allBlogsByTag.forEach(values ->{
-            List<TagEntity> tagByDetail = tagService.findTagByDetail(values.getId());
-            values.setTags(tagByDetail);
-        });
-        if (allBlogsByTag.size() == 0) {
-            throw new NotFoundException("标签不存在");
-        }
-        // 得到分页结果对象
-        PageInfo<BlogEntity> pageInfo = new PageInfo<>(allBlogsByTag);
-        model.addAttribute("page", pageInfo);
+        PageInfo<BlogEntity> allBlogsByTag = blogService.findAllBlogsByTag(pageNum, 10, id);
+        model.addAttribute("page", allBlogsByTag);
+
         // 当前活跃的id
         model.addAttribute("activeTagId", id);
         return "tags";

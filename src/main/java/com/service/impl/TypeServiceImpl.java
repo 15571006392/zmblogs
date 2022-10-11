@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Zm-Mmm
@@ -33,67 +34,93 @@ public class TypeServiceImpl implements TypeService {
     private final RedisTemplate redisTemplate;
 
     @Autowired
-    public TypeServiceImpl(TypeRepository typeRepository, TypeDao typeDao,RedisTemplate redisTemplate) {
+    public TypeServiceImpl(TypeRepository typeRepository, TypeDao typeDao, RedisTemplate redisTemplate) {
         this.typeRepository = typeRepository;
         this.typeDao = typeDao;
         this.redisTemplate = redisTemplate;
     }
 
+    /**
+     * 首页分类查询，指定数量，按照分类下的博客数量从大到小排序，过滤草稿状态博客
+     *
+     * @param count 查询分类的数量
+     * @return 分类结果
+     */
     @Override
     public List<TypeEntity> findIndexType(Integer count) {
-        return typeDao.findIndexType(count);
+        // 先从redis中找
+        List<TypeEntity> indexTypes = (List<TypeEntity>) redisTemplate.opsForHash().get("index", "types");
+        if (indexTypes == null) {
+            // 从mysql中找
+            List<TypeEntity> indexType = typeDao.findIndexType(count);
+            // 添加到redis
+            redisTemplate.opsForHash().put("index", "types", indexType);
+            // 设置超时时间 1天
+            redisTemplate.expire("index", 60 * 60 * 24, TimeUnit.SECONDS);
+            return indexType;
+        } else {
+            // 找到了
+            return indexTypes;
+        }
     }
 
     /**
      * 查询所有分类
+     *
      * @return 分类集合
      */
     @Override
     public List<TypeEntity> findType() {
         // 先从redis找
         List<TypeEntity> typeEntities = (List<TypeEntity>) redisTemplate.opsForHash().get("menu", "types");
-        if(typeEntities == null){
+        if (typeEntities == null) {
             // 从mysql中找
             List<TypeEntity> types = typeDao.findType();
             // 加入到redis
-            redisTemplate.opsForHash().put("menu","types",types);
+            redisTemplate.opsForHash().put("menu", "types", types);
+            // 设置超时时间 1天
+            redisTemplate.expire("menu", 60 * 60 * 24, TimeUnit.SECONDS);
             return types;
         }
         // 结果先转为字符串再转为list集合，避免java.util.LinkedHashMap cannot be cast to 实体类异常
         String types = JSON.toJSONString(typeEntities);
-        return JSON.parseArray(types,TypeEntity.class);
+        return JSON.parseArray(types, TypeEntity.class);
     }
 
     /**
      * 保存分类
-     * @param type
-     * @return
+     *
+     * @param type 分类
+     * @return 分类
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Type saveType(Type type) {
         return typeRepository.save(type);
     }
 
     /**
      * 根据ID查询分类
-     * @param id
-     * @return
+     *
+     * @param id 分类id
+     * @return 查询到的分类
      */
     @Override
-    @Transactional
     public Type getType(Long id) {
-        Optional<Type> optional =  typeRepository.findById(id);
+        Optional<Type> optional = typeRepository.findById(id);
+        if (!optional.isPresent()) {
+            throw new NotFoundException("结果不存在");
+        }
         return optional.get();
     }
 
     /**
      * 分页查询
-     * @param pageable
-     * @return
+     *
+     * @param pageable 分页
+     * @return 结果
      */
     @Override
-    @Transactional
     public Page<Type> listType(Pageable pageable) {
         return typeRepository.findAll(pageable);
     }
@@ -105,25 +132,25 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public List<Type> listTypeTop(Integer size) {
-        Sort sort = Sort.by(Sort.Direction.DESC,"details.size");
-        Pageable pageable = PageRequest.of(0,size,sort);
+        Sort sort = Sort.by(Sort.Direction.DESC, "details.size");
+        Pageable pageable = PageRequest.of(0, size, sort);
         return typeRepository.findTop(pageable);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Type updateType(Long id, Type type) {
         Optional<Type> optional = typeRepository.findById(id);
-        if(!optional.isPresent()){
+        if (!optional.isPresent()) {
             throw new NotFoundException("该分类不存在");
         }
         Type type1 = optional.get();
-        BeanUtils.copyProperties(type,type1);
+        BeanUtils.copyProperties(type, type1);
         return typeRepository.save(type1);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteType(Long id) {
         typeRepository.deleteById(id);
     }
@@ -132,7 +159,6 @@ public class TypeServiceImpl implements TypeService {
      * 通过名字查询
      */
     @Override
-    @Transactional
     public Type getTypeByName(String name) {
         return typeRepository.findByName(name);
     }
