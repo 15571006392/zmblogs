@@ -66,7 +66,18 @@
 
 4. 项目使用**redis**缓存，请确保本地缓存开启，相关配置在**dev**环境配置文件中
 
-5. 网站后台登录默认管理账号**用户名:admin 密码:admin**
+5. **请使用自己的对象存储服务，或其他文件上传下载服务器**
+    1. 对象存储配置在**application.properties**主配置文件中 
+    2. 参数详情
+       1. **huawei.obs.ak**= 你的Access Key Id
+       2. **huawei.obs.sk**= 你的Secret Access Key
+       3. **huawei.obs.endPoint**= 你的endPoint
+       4. **huawei.obs.bucketName**= 你的桶名称
+    3. 相关控制器类
+        1. 对象存储服务调用： src/main/java/com/controller/admin/**BlogController**.java
+        2. **如果不需要特殊配置，修改配置文件后即可运行。相关代码均有注解**
+
+6. 网站后台登录默认管理账号**用户名:admin 密码:admin**
 
 #### 参与贡献
 
