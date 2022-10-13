@@ -16,16 +16,16 @@ public interface BlogRepository extends JpaRepository<Detail, Long> , JpaSpecifi
 
     /**
      *分页查找推荐的博客
-     * @param pageable
-     * @return
+     * @param pageable 分页
+     * @return 结果
      */
     @Query("select b from Detail b where b.recommend = true")
     List<Detail> findTop(Pageable pageable);
 
     /**
      * 更新文章的浏览量
-     * @param id
-     * @return
+     * @param id 文章id
+     * @return 是否成功
      */
     @Modifying
     @Query("update Detail b set b.views = b.views + 1 where b.id = ?1")
@@ -35,7 +35,7 @@ public interface BlogRepository extends JpaRepository<Detail, Long> , JpaSpecifi
      * 查找文章的创建日期
      * 按年份格式化日期
      * 分组
-     * @return
+     * @return 文章
      */
     @Query("select function('date_format',b.createTime,'%Y') from Detail b group by function('date_format',b.createTime,'%Y')")
     List<String> findGroupYear();
@@ -43,8 +43,8 @@ public interface BlogRepository extends JpaRepository<Detail, Long> , JpaSpecifi
     /**
      * 查找指定年份的文章
      * 按年份格式化日期
-     * @param year
-     * @return
+     * @param year 年份
+     * @return 文章
      */
     @Query("select b from Detail b where function('date_format',b.createTime,'%Y') = ?1")
     List<Detail> findByYear(String year);
